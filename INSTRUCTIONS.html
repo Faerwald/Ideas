@@ -1,0 +1,67 @@
+<!doctype html><meta charset="utf-8">
+<title>Portfolio Setup & Provenance (Jason)</title>
+<style>
+  body { font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+  code, pre { background: #111; color: #eee; padding: .15rem .35rem; border-radius: .25rem; }
+  pre { padding: .75rem; overflow:auto; }
+  h1, h2, h3 { margin-top: 2rem; }
+  .callout { background: #0b0d12; color: #e9eef2; border-left: 4px solid #6aa0ff; padding: 1rem; }
+  ol li { margin-bottom: .5rem; }
+</style>
+<h1>Get this Portfolio Online + Protect Your IP</h1>
+
+<div class="callout"><strong>Overview:</strong> Host the site on <em>GitHub Pages</em>, store PDFs in <em>Google Drive</em>, add rights notices to the site and each PDF, timestamp with <em>OpenTimestamps</em>, and mint DOIs via <em>Zenodo</em>.</div>
+
+<h2>1) Publish the site</h2>
+<ol>
+  <li>Create a public repo named <code>YOUR_USERNAME.github.io</code> on GitHub.</li>
+  <li>Upload all files from this folder. Commit.</li>
+  <li>Your site will be at <code>https://YOUR_USERNAME.github.io/</code>.</li>
+</ol>
+
+<h2>2) Link PDFs from Google Drive</h2>
+<ol>
+  <li>Upload your PDFs to Drive, set sharing to <em>Anyone with the link: Viewer</em>.</li>
+  <li>Get the file ID from the Drive URL and place it into <code>papers.json</code> as <code>driveId</code>.</li>
+  <li>Optionally add a direct download: the site builds this from the ID automatically.</li>
+</ol>
+
+<h2>3) Rights notice in each PDF</h2>
+<ol>
+  <li>Decide license terms (e.g., “All rights reserved” or a CC license).</li>
+  <li>Use <code>scripts/append_copyright_page.py</code> to append a one-page notice to each PDF (see script header for instructions).</li>
+</ol>
+
+<h2>4) Timestamp files with OpenTimestamps</h2>
+<p>Install locally:</p>
+<pre>pip install opentimestamps-client
+ots stamp MyPaper.pdf
+ots upgrade MyPaper.pdf.ots   # (optional, later)
+ots verify MyPaper.pdf.ots</pre>
+
+<h2>5) Mint DOIs with Zenodo (via GitHub releases)</h2>
+<ol>
+  <li>Sign in at <a href="https://zenodo.org/">Zenodo</a> with GitHub and authorize.</li>
+  <li>Toggle your repository “on” in Zenodo’s GitHub section.</li>
+  <li>Create a GitHub <em>Release</em> (v0.1.0). Zenodo will archive it and mint a DOI.</li>
+  <li>Add the DOI badge/link back into your repo README and the site.</li>
+</ol>
+
+<h2>6) Add a site-wide licensing page</h2>
+<p>Edit <code>LICENSE.html</code>. Typical options:</p>
+<ul>
+  <li><strong>All rights reserved</strong> (default). Readers can view; ask permission for reuse.</li>
+  <li><strong>Creative Commons</strong> variants (e.g., <em>CC BY-NC-ND 4.0</em>) for noncommercial, no-derivatives sharing. Put the chosen license line on the PDF notice page and in <code>LICENSE.html</code>.</li>
+</ul>
+
+<h2>7) Patents (if applicable)</h2>
+<p>Public disclosure may affect patent rights outside the U.S. U.S. has a 1-year grace period; EPO generally no broad grace period. If patenting is possible, file first or consult counsel before posting.</p>
+
+<h2>8) Maintenance workflow</h2>
+<ol>
+  <li>Upload new PDF to Drive → add to <code>papers.json</code>.</li>
+  <li>Run the append script (for rights page) and <em>ots stamp</em> to generate an <code>.ots</code> proof.</li>
+  <li>Commit and push updates to GitHub Pages. Optionally cut a release to mint a new DOI.</li>
+</ol>
+
+<p><em>Last updated:</em> 2025-08-15</p>

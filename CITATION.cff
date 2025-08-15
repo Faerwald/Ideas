@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this portfolio or its papers, please cite it."
+title: "Jason — Research Portfolio"
+authors:
+  - family-names: "Sokaris"
+    given-names: "Jason Agamemnon"
+    orcid: ""
+date-released: "2025-08-15"
+version: "0.1.0"
+repository-code: "https://github.com/YOUR_USERNAME/YOUR_REPO"
+license: "proprietary"
