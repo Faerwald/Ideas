@@ -1,0 +1,64 @@
+[
+  {
+    "id": "warp",
+    "label": "Warp Drive",
+    "filter": {
+      "anyTags": [
+        "warp drive",
+        "wormhole",
+        "geodesic",
+        "metric engineering",
+        "TT spacewarp"
+      ]
+    }
+  },
+  {
+    "id": "hyper",
+    "label": "Hypercomputing",
+    "filter": {
+      "anyTags": [
+        "hypercomputing",
+        "super-recursive",
+        "postselection",
+        "oracle",
+        "chaos computing"
+      ]
+    }
+  },
+  {
+    "id": "ghost",
+    "label": "Ghost Fields",
+    "filter": {
+      "anyTags": [
+        "ghost fields",
+        "vector potential",
+        "A-waves",
+        "gauge theory"
+      ]
+    }
+  },
+  {
+    "id": "mindwarp",
+    "label": "MindWarp",
+    "filter": {
+      "anyTags": [
+        "mindwarp",
+        "psychodynamics",
+        "force-field psychodynamics",
+        "cybernetics"
+      ]
+    }
+  },
+  {
+    "id": "phase",
+    "label": "Quantum Phase / A‑waves",
+    "filter": {
+      "anyTags": [
+        "quantum phase",
+        "A-waves",
+        "Aharonov–Bohm",
+        "vector potential"
+      ]
+    }
+  }
+]

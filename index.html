@@ -14,13 +14,31 @@
       I generate a lot of ideas—my imagination rarely stops. I articulate them to ChatGPT and ask it to draft papers with minimal editing.
       These are working notes and drafts; I haven't read through them all.
     </p>
-    <div class="controls">
+    <div class="toolbar">
       <input id="q" type="search" placeholder="Search title, abstract, or tags…" aria-label="Search papers" />
-      <div id="tags" class="tags"></div>
+      <div class="view-controls">
+        <label class="switch"><input id="andMode" type="checkbox"><span>Tag match: AND</span></label>
+        <label class="switch"><input id="compact" type="checkbox"><span>Compact list</span></label>
+        <label>Sort:
+          <select id="sortSel">
+            <option value="year_desc">Year ↓</option>
+            <option value="year_asc">Year ↑</option>
+            <option value="title_asc">Title A→Z</option>
+          </select>
+        </label>
+      </div>
     </div>
+    <div id="collections" class="collections"></div>
+    <div id="tags" class="tags"></div>
   </header>
 
   <main id="grid" class="grid" aria-live="polite"></main>
+
+  <nav class="pager" aria-label="Pagination">
+    <button id="prev" class="btn ghost" disabled>Prev</button>
+    <span id="range" class="range">Showing 0–0 of 0</span>
+    <button id="next" class="btn ghost" disabled>Next</button>
+  </nav>
 
   <footer class="footer">
     <p>
@@ -28,7 +46,6 @@
       Please cite appropriately. See <a href="LICENSE.html">Licensing &amp; Use</a>.
     </p>
     <p><small>No AI training or dataset ingestion is permitted without prior written consent.</small></p>
-    <noscript><strong>Note:</strong> This site uses a tiny bit of JavaScript to render the index.</noscript>
   </footer>
 
   <script src="assets/script.js"></script>
