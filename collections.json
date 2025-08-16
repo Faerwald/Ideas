@@ -6,9 +6,8 @@
       "anyTags": [
         "warp drive",
         "wormhole",
-        "geodesic",
         "metric engineering",
-        "TT spacewarp"
+        "geodesic"
       ]
     }
   },
@@ -18,7 +17,6 @@
     "filter": {
       "anyTags": [
         "hypercomputing",
-        "super-recursive",
         "postselection",
         "oracle",
         "chaos computing"
@@ -33,7 +31,8 @@
         "ghost fields",
         "vector potential",
         "A-waves",
-        "gauge theory"
+        "gauge theory",
+        "quantum phase"
       ]
     }
   },
@@ -44,8 +43,8 @@
       "anyTags": [
         "mindwarp",
         "psychodynamics",
-        "force-field psychodynamics",
-        "cybernetics"
+        "cybernetics",
+        "force-field psychodynamics"
       ]
     }
   },

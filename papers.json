@@ -3,7 +3,11 @@
     "title": "Postselected Temporal Search: Energy, Bits, Length",
     "year": 2025,
     "venue": "Working Draft",
-    "tags": ["postselection", "temporal search", "information theory"],
+    "tags": [
+      "postselection",
+      "temporal search",
+      "information theory"
+    ],
     "abstract": "Explores constraints linking energy cost, description length, and bit-complexity for postselected temporal search protocols.",
     "driveId": "18ZY97yTXQzQHQoWGoAIvrhVDt6ejzLrj",
     "doi": "",
@@ -14,7 +18,12 @@
     "title": "Holonomy Recursion and Code Catalysis: Foundations",
     "year": 2025,
     "venue": "Working Draft",
-    "tags": ["holonomy", "recursion", "coding theory", "foundations"],
+    "tags": [
+      "holonomy",
+      "recursion",
+      "coding theory",
+      "foundations"
+    ],
     "abstract": "Outlines a holonomy-based recursion and catalytic coding framework and states foundational invariants and conditions.",
     "driveId": "1czOXXUnb93PKIgI0T71j7o0Zo5splhNK",
     "doi": "",
@@ -25,7 +34,11 @@
     "title": "Boundary-Encoded Postselection for Reality Editing",
     "year": 2025,
     "venue": "Working Draft",
-    "tags": ["boundary conditions", "postselection", "control"],
+    "tags": [
+      "boundary conditions",
+      "postselection",
+      "control"
+    ],
     "abstract": "Introduces boundary-encoded postselection mechanisms for controlled state selection and reality-editing protocols; sketches operational architecture.",
     "driveId": "1ppn-ad0ui4b977plpAnTzVE4eFtQVyVI",
     "doi": "",
