@@ -14,7 +14,7 @@ a { color: var(--accent); text-decoration: none; }
 .hero h1 { font-size: 2rem; margin: 0 0 .5rem; }
 .lede { color: var(--muted); max-width: 80ch; }
 
-/* MOBILE-FIRST: search on its own row, controls below */
+/* MOBILE-FIRST – search on its own row; controls below */
 .toolbar {
   margin-top: 1rem;
   display: grid;
@@ -25,26 +25,40 @@ a { color: var(--accent); text-decoration: none; }
     "controls";
   align-items: start;
 }
+
+/* Search input */
 #q {
   grid-area: search;
+  display: block;
   width: 100%;
+  min-height: 44px;            /* ensures it’s visible on Android */
   padding: .8rem 1rem;
   border: 1px solid var(--line);
   background: var(--card);
   color: var(--fg);
   border-radius: .75rem;
 }
+
+/* Controls under the search */
 .view-controls {
   grid-area: controls;
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem;
+  gap: .5rem .75rem;
   align-items: center;
   justify-content: flex-start; /* left-align on mobile */
 }
+
+/* Keep label+control tight and readable on mobile */
+.view-controls > label {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+}
+
 .switch { display: inline-flex; gap: .4rem; align-items: center; color: var(--muted); }
 
-/* DESKTOP: put search and controls side-by-side */
+/* DESKTOP – put search and controls side-by-side */
 @media (min-width: 900px) {
   .toolbar {
     grid-template-columns: 1fr auto;
