@@ -87,45 +87,6 @@
     ]
   },
   {
-    "label": "Postselection",
-    "any": [
-      "postselect",
-      "postselection"
-    ]
-  },
-  {
-    "label": "Holonomy",
-    "any": [
-      "holonomic",
-      "holonomy"
-    ]
-  },
-  {
-    "label": "LDPC",
-    "any": [
-      "ldpc",
-      "low density parity check",
-      "low-density parity-check",
-      "low-density-parity-check",
-      "low-densityparity-check",
-      "lowdensity paritycheck"
-    ]
-  },
-  {
-    "label": "JSON",
-    "any": [
-      "json"
-    ]
-  },
-  {
-    "label": "JSON-Memnon",
-    "any": [
-      "json memnon",
-      "json-memnon",
-      "jsonmemnon"
-    ]
-  },
-  {
     "label": "Chaos",
     "any": [
       "chaos",
