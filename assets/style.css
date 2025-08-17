@@ -51,14 +51,15 @@ a{color:var(--accent);text-decoration:none}
 .empty{color:var(--muted);text-align:center;padding:2rem}
 
 
-/* --- Fix long unbroken titles/tags overflowing cards --- */
+/* --- Fix long filenames/tokens (underscores, hyphens, etc.) --- */
+.card { min-width: 0; }                     /* let grid item shrink */
 .card h2,
 .card p,
+.meta,
 .tag {
-  overflow-wrap: anywhere;     /* modern: break inside long tokens (incl. underscores) */
-  word-break: break-word;      /* fallback */
-  white-space: normal;
-  hyphens: auto;               /* helps real words; safe to keep */
-  max-width: 100%;
-  line-height: 1.25;
+  overflow-wrap: anywhere;                  /* modern wrap */
+  word-wrap: break-word;                    /* legacy */
+  word-break: break-word;                   /* Safari fallback */
+  hyphens: auto;
 }
+
