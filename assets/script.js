@@ -211,3 +211,5 @@ function adjustCardSize(n){
 }
 
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
+
+const PRIVATE_NOTICE_ID = "PUT_PRIVATE_NOTICE_DRIVE_ID_HERE";
