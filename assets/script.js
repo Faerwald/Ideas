@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   Promise.all([
     fetch('papers.json?ts=' + Date.now()).then(r => r.json()),
-    fetch('keywords.json?ts=' + Date.now()).then(r => r.json()).catch(_ => [])
+    fetch('topics.json?ts=' + Date.now()).then(r => r.json()).catch(_ => [])
   ]).then(([papers, keywords]) => {
     state.data = Array.isArray(papers) ? papers : [];
     state.keywords = (Array.isArray(keywords) ? keywords : []).map(s => String(s).trim()).filter(Boolean);
