@@ -1,19 +1,16 @@
-/* One-page view with keyword buttons (AND) using the same search pipeline
-   (title + abstract + tags + first-page text `fp`). Buttons come from keywords.json. */
+/* One-page view with TOPIC BUTTONS (AND).
+   Each topic = OR list of keywords from topics.json (label + any[]).
+   Search bar also applies (title + abstract + tags + fp). */
 
 const state = {
   data: [],
   q: "",
-  keywords: [],           // from keywords.json
-  selected: new Set(),    // AND filter (selected keywords)
+  topics: [],         // [{label, any: [..]}]
+  selected: new Set() // set of labels
 };
 
 const els = {
-  q: null,
-  topicBox: null,
-  sections: null,
-  grid: null,
-  count: null,
+  q: null, topicBox: null, sections: null, grid: null, count: null
 };
 
 const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
@@ -29,48 +26,51 @@ document.addEventListener("DOMContentLoaded", () => {
   Promise.all([
     fetch('papers.json?ts=' + Date.now()).then(r => r.json()),
     fetch('topics.json?ts=' + Date.now()).then(r => r.json()).catch(_ => [])
-  ]).then(([papers, keywords]) => {
+  ]).then(([papers, topics]) => {
     state.data = Array.isArray(papers) ? papers : [];
-    state.keywords = (Array.isArray(keywords) ? keywords : []).map(s => String(s).trim()).filter(Boolean);
-    renderKeywordButtons();
+    state.topics = (Array.isArray(topics) ? topics : []);
+    renderTopicButtons();
     attachEvents();
     applyFilters();
   });
 });
 
-/* ---------- UI: keyword buttons from keywords.json ---------- */
-function renderKeywordButtons() {
+function haystack(p){
+  return [
+    p.title || "",
+    p.abstract || "",
+    (p.tags || []).join(" "),
+    p.fp || ""
+  ].join(" ").toLowerCase();
+}
+
+function renderTopicButtons(){
   const box = els.topicBox;
   box.innerHTML = "";
   const frag = document.createDocumentFragment();
 
-  state.keywords.forEach(label => {
+  state.topics.forEach(t => {
     const b = document.createElement("button");
     b.className = "topic-chip";
     b.type = "button";
-    b.textContent = label;
-    b.setAttribute("aria-pressed", "false");
+    b.textContent = t.label;
+    b.setAttribute("aria-pressed","false");
     b.onclick = () => {
-      if (state.selected.has(label)) {
-        state.selected.delete(label);
-        b.setAttribute("aria-pressed", "false");
-      } else {
-        state.selected.add(label);
-        b.setAttribute("aria-pressed", "true");
-      }
+      const on = state.selected.has(t.label);
+      if (on) { state.selected.delete(t.label); b.setAttribute("aria-pressed","false"); }
+      else { state.selected.add(t.label); b.setAttribute("aria-pressed","true"); }
       applyFilters();
     };
     frag.appendChild(b);
   });
 
-  // Clear button
   const clr = document.createElement("button");
   clr.className = "btn ghost small";
   clr.type = "button";
   clr.textContent = "Clear";
   clr.onclick = () => {
     state.selected.clear();
-    [...box.querySelectorAll('.topic-chip')].forEach(x => x.setAttribute('aria-pressed','false'));
+    [...box.querySelectorAll('.topic-chip')].forEach(x=>x.setAttribute('aria-pressed','false'));
     applyFilters();
   };
   frag.appendChild(clr);
@@ -78,64 +78,59 @@ function renderKeywordButtons() {
   box.appendChild(frag);
 }
 
-/* ---------- filter logic (same pipeline as search bar) ---------- */
-function attachEvents() {
-  els.q.addEventListener("input", () => {
-    state.q = els.q.value.toLowerCase();
-    applyFilters();
-  });
+function attachEvents(){
+  els.q.addEventListener("input", ()=>{ state.q = els.q.value.toLowerCase(); applyFilters(); });
 }
 
-function haystack(p) {
-  return [
-    p.title || "",
-    p.abstract || "",
-    (p.tags || []).join(" "),
-    p.fp || ""     // first-page text
-  ].join(" ").toLowerCase();
-}
-
-function matchesQuery(p) {
+function matchesQuery(p){
   if (!state.q) return true;
   return haystack(p).includes(state.q);
 }
 
-function matchesKeywords(p) {
+function matchesTopics(p){
   if (state.selected.size === 0) return true;
   const h = haystack(p);
-  // AND: every selected keyword must appear in the same haystack
-  for (const kw of state.selected) {
-    if (!h.includes(kw.toLowerCase())) return false;
+  // AND across selected topics; topic passes if ANY of its synonyms appear
+  for (const label of state.selected){
+    const topic = state.topics.find(t => t.label === label);
+    if (!topic) return false;
+    const any = topic.any || [];
+    let ok = false;
+    for (const kw of any){
+      const k = String(kw).toLowerCase();
+      // match k and common hyphen/space variants
+      if (h.includes(k) || h.includes(k.replace(/-/g," ")) || h.includes(k.replace(/ /g,"-"))) {
+        ok = true; break;
+      }
+    }
+    if (!ok) return false;
   }
   return true;
 }
 
-function applyFilters() {
-  const items = state.data.filter(p => matchesQuery(p) && matchesKeywords(p));
+function applyFilters(){
+  const items = state.data.filter(p => matchesQuery(p) && matchesTopics(p));
   updateCounts(items.length, state.data.length);
   adjustCardSize(items.length);
 
-  if (state.selected.size === 0 && !state.q) {
-    // no filters: group by category for overview
+  if (state.selected.size === 0 && !state.q){
     els.grid.style.display = "none";
     els.sections.style.display = "";
     renderSections(groupByCategory(items));
   } else {
-    // filters active: single grid
     els.sections.style.display = "none";
     els.grid.style.display = "";
     renderGrid(items);
   }
 }
 
-/* ---------- render ---------- */
-function card(p) {
+/* ---------- render helpers ---------- */
+function card(p){
   const el = document.createElement("article");
   el.className = "card";
   const sizeBadge = p.pages ? `<span class="tag">${p.pages} pp</span>` : "";
   const catBadge = p.category ? `<span class="tag">${escapeHTML(p.category)}</span>` : "";
   const sizeGroup = p.size ? `<span class="tag">${escapeHTML(p.size)}</span>` : "";
-
   el.innerHTML = `
     <h2>${escapeHTML(p.title || "")}</h2>
     <p class="meta">${p.year || ''} ${p.venue ? '· ' + escapeHTML(p.venue) : ''}</p>
@@ -149,14 +144,15 @@ function card(p) {
   return el;
 }
 
-function renderGrid(items) {
-  els.grid.innerHTML = "";
+function renderGrid(items){
+  const grid = document.getElementById("grid");
+  grid.innerHTML = "";
   const frag = document.createDocumentFragment();
   items.forEach(p => frag.appendChild(card(p)));
-  els.grid.appendChild(frag);
+  grid.appendChild(frag);
 }
 
-function groupByCategory(items) {
+function groupByCategory(items){
   const map = new Map();
   items.forEach(p => {
     const k = p.category || "Misc";
@@ -166,28 +162,28 @@ function groupByCategory(items) {
   return [...map.entries()].sort((a,b)=>a[0].localeCompare(b[0]));
 }
 
-function renderSections(groups) {
-  els.sections.innerHTML = "";
+function renderSections(groups){
+  const box = document.getElementById("sections");
+  box.innerHTML = "";
   const frag = document.createDocumentFragment();
-  groups.forEach(([label, arr]) => {
+  groups.forEach(([label, arr])=>{
     const h = document.createElement("h2");
     h.className = "section-title";
     h.textContent = label;
-    const grid = document.createElement("div");
-    grid.className = "grid";
-    arr.forEach(p => grid.appendChild(card(p)));
-    frag.appendChild(h);
-    frag.appendChild(grid);
+    const g = document.createElement("div");
+    g.className = "grid";
+    arr.forEach(p => g.appendChild(card(p)));
+    frag.appendChild(h); frag.appendChild(g);
   });
-  els.sections.appendChild(frag);
+  box.appendChild(frag);
 }
 
-function updateCounts(shown, total) {
-  if (els.count) els.count.textContent = `${shown} of ${total} shown`;
+function updateCounts(shown, total){
+  const c = document.getElementById("countLabel");
+  if (c) c.textContent = `${shown} of ${total} shown`;
 }
 
-function adjustCardSize(n) {
-  // smaller cards for huge result sets; larger when narrowed
+function adjustCardSize(n){
   let min = 360;
   if (n >= 400) min = 180;
   else if (n >= 250) min = 220;
