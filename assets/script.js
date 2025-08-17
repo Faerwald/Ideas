@@ -1,28 +1,47 @@
 <script>
-const $  = s => document.querySelector(s);
-const $$ = s => Array.from(document.querySelectorAll(s));
+/* ---------- tiny helpers ---------- */
+const $ = s => document.querySelector(s);
 
+/* ---------- state ---------- */
 let PAPERS = [];
 let TOPICS = [];
 let activeTopics = new Set();
-let view = null;   // will be set by setView()
+let q = "";
+let view = "table";
 
-document.addEventListener("DOMContentLoaded", async () => {
-  // Load data
+/* ---------- FIRST-PAINT view choice (runs before data load) ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  const saved = localStorage.getItem("view");
+  const coarse = window.matchMedia("(pointer:coarse)").matches;                 // touch device
+  const narrow = window.matchMedia("(max-width: 980px)").matches;               // small layout
+  const smallScreen = Math.min(screen.width, screen.height) <= 1024;            // fallback
+  const prefersCards = saved ? (saved === "cards") : (coarse || narrow || smallScreen);
+
+  // Show the right shell immediately (prevents “table first” flash on Android)
+  applyViewShell(prefersCards ? "cards" : "table");
+
+  // continue boot
+  boot(prefersCards ? "cards" : "table");
+});
+
+/* ---------- boot after shell ---------- */
+async function boot(defaultView){
+  // load data
   const [papers, topics] = await Promise.all([
-    fetch("papers.json").then(r=>r.json()),
-    fetch("topics.json").then(r=>r.json()).catch(()=>[])
+    fetch("papers.json").then(r => r.json()),
+    fetch("topics.json").then(r => r.json()).catch(() => [])
   ]);
   PAPERS = papers;
   TOPICS = topics || [];
 
-  // Build topic buttons
+  // topic buttons
   const wrap = $("#topicButtons");
   if (wrap){
     wrap.innerHTML = "";
     TOPICS.forEach(t => {
       const b = document.createElement("button");
-      b.className = "chip"; b.type="button";
+      b.className = "chip";
+      b.type = "button";
       b.textContent = t.label;
       b.setAttribute("aria-pressed","false");
       b.addEventListener("click", () => {
@@ -35,129 +54,111 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // Search
-  const qEl = $("#q");
-  if (qEl) qEl.addEventListener("input", e => { q = e.target.value.trim(); render(); });
+  // search
+  $("#q")?.addEventListener("input", e => { q = e.target.value.trim(); render(); });
 
-  // View toggles
+  // view toggles (save user choice)
   $("#viewTable")?.addEventListener("click", () => setView("table", true));
   $("#viewCards")?.addEventListener("click", () => setView("cards", true));
 
-  // Decide default view (Cards on phones/tablets; Table otherwise)
-  const prefersCards =
-    window.matchMedia("(max-width: 980px)").matches ||
-    window.matchMedia("(pointer: coarse)").matches ||
-    /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-
-  setView(prefersCards ? "cards" : "table", false);
+  // set initial view & paint
+  setView(defaultView, false);
   render();
-});
+}
 
-let q = "";
-function normalized(s){ return (s||"").toLowerCase(); }
+/* ---------- view helpers ---------- */
+function applyViewShell(v){
+  view = v;
+  const tablewrap = document.getElementById("tablewrap");
+  const grid      = document.getElementById("grid");
+  if (tablewrap) tablewrap.style.display = (v==="table") ? "" : "none";
+  if (grid)      grid.style.display      = (v==="cards") ? "" : "none";
+  document.getElementById("viewTable")?.setAttribute("aria-pressed", String(v==="table"));
+  document.getElementById("viewCards")?.setAttribute("aria-pressed", String(v==="cards"));
+}
+function setView(v, fromUser){
+  applyViewShell(v);
+  if (fromUser) localStorage.setItem("view", v);
+}
 
+/* ---------- filtering ---------- */
+function normalized(str){ return (str||"").toLowerCase(); }
 function matchesTopics(p){
   if (activeTopics.size===0) return true;
-  const text = normalized([p.title,p.abstract,(p.tags||[]).join(" "), (p.firstPage||"")].join(" "));
+  const hay = normalized([p.title,p.abstract,(p.tags||[]).join(" "), (p.firstPage||"")].join(" "));
   for (const label of activeTopics){
-    const topic = TOPICS.find(t => t.label===label);
-    if (!topic) return false;
-    const any = topic.any || [];
-    const hit = any.some(term => text.includes(term.toLowerCase()));
-    if (!hit) return false;
+    const t = TOPICS.find(x => x.label===label);
+    if (!t) return false;
+    const any = t.any||[];
+    if (!any.some(term => hay.includes(term.toLowerCase()))) return false;
   }
   return true;
 }
 function matchesQuery(p){
   if (!q) return true;
-  const text = normalized([p.title,p.abstract,(p.tags||[]).join(" "), (p.firstPage||"")].join(" "));
-  return q.toLowerCase().split(/\s+/).every(tok => text.includes(tok));
+  const hay = normalized([p.title,p.abstract,(p.tags||[]).join(" "), (p.firstPage||"")].join(" "));
+  return q.toLowerCase().split(/\s+/).every(tok => hay.includes(tok));
 }
 function currentRows(){ return PAPERS.filter(p => matchesTopics(p) && matchesQuery(p)); }
 
-function setView(v, userTriggered){
-  view = v;
-  document.body.classList.remove("view-table","view-cards");
-  document.body.classList.add(v==="cards" ? "view-cards" : "view-table");
-  $("#viewTable")?.setAttribute("aria-pressed", String(v==="table"));
-  $("#viewCards")?.setAttribute("aria-pressed", String(v==="cards"));
-  // If user explicitly chooses, remember it for the session
-  if (userTriggered) sessionStorage.setItem("viewPref", v);
-  // If no user choice yet, honor a past session choice
-  if (!userTriggered){
-    const remembered = sessionStorage.getItem("viewPref");
-    if (remembered && remembered!==v){
-      // override default with remembered preference
-      setView(remembered, false);
-      return;
-    }
-  }
-}
-
+/* ---------- renderers ---------- */
 function render(){
   const rows = currentRows();
-  const count = $("#countLabel"); if (count) count.textContent = `${rows.length} of ${PAPERS.length} shown`;
+  const label = document.getElementById("countLabel");
+  if (label) label.textContent = `${rows.length} of ${PAPERS.length} shown`;
   if (view==="table") renderTable(rows); else renderCards(rows);
 }
-
 function renderTable(rows){
-  const tbody = $("#tbody"); if (!tbody) return;
+  const tbody = document.getElementById("tbody");
+  if (!tbody) return;
   tbody.innerHTML = "";
   for (const p of rows){
     const tr = document.createElement("tr");
 
-    td(tr, "title", p.title || "(untitled)");
-    td(tr, "year",  p.year || "");
-    td(tr, "category", p.category || p.group || "Misc");
-    td(tr, "pages", p.pages || "");
-    td(tr, "wait",  p.wait ?? "");
-    td(tr, "locked", p.locked ? "🔒" : "");
-    td(tr, "tags",  (p.tags||[]).join(", "));
+    td(tr,"title", p.title || "(untitled)");
+    td(tr,"year",  p.year || "");
+    td(tr,"category", p.category || p.group || "Misc");
+    td(tr,"pages", p.pages || "");
+    td(tr,"wait",  (p.wait ?? ""));
+    td(tr,"locked", p.locked ? "🔒" : "");
+    td(tr,"tags",  (p.tags||[]).join(", "));
 
-    // actions
-    const tda = document.createElement("td"); tda.className = "actions";
-    const read = linkBtn("Read", p);
-    const dl   = linkBtn("Download", p, true);
-    tda.append(read, dl);
-    tr.appendChild(tda);
+    const act = document.createElement("td");
+    act.className = "actions";
+    act.appendChild(aBtn("btn", "Read", p.locked && p.lockNotice ? p.lockNotice : (p.preview || p.drivePreview || `https://drive.google.com/file/d/${p.driveId}/preview`)));
+    act.appendChild(aBtn("btn ghost", "Download", p.locked && p.lockNotice ? p.lockNotice : (p.download || p.driveDownload || `https://drive.google.com/uc?export=download&id=${p.driveId}`)));
+    tr.appendChild(act);
 
     tbody.appendChild(tr);
   }
 }
-function td(tr, cls, text){ const el=document.createElement("td"); el.className=cls; el.textContent=String(text); tr.appendChild(el); }
-function linkBtn(kind, p, ghost=false){
-  const a=document.createElement("a");
-  a.className = "btn" + (ghost?" ghost":"");
-  a.textContent = kind;
-  const prev = p.preview || p.drivePreview || (p.driveId ? `https://drive.google.com/file/d/${p.driveId}/preview` : "#");
-  const down = p.download || p.driveDownload || (p.driveId ? `https://drive.google.com/uc?export=download&id=${p.driveId}` : "#");
-  const url  = (kind==="Read" ? prev : down);
-  a.href = (p.locked && p.lockNotice) ? p.lockNotice : url;
-  a.target = "_blank";
-  return a;
-}
-
 function renderCards(rows){
-  const grid = $("#grid"); if (!grid) return;
+  const grid = document.getElementById("grid");
+  if (!grid) return;
   grid.innerHTML = "";
   for (const p of rows){
-    const c = document.createElement("div"); c.className="card";
-    const h = document.createElement("h2"); h.textContent = p.title || "(untitled)"; c.appendChild(h);
-    const m = document.createElement("p"); m.className="meta";
-    m.textContent = `${p.year||""} · ${p.category||p.group||"Misc"}${p.pages?` · ${p.pages} pp`:``}${p.wait?` · WAIT ${p.wait}`:``}`;
-    c.appendChild(m);
+    const c = el("div","card");
+    const h = el("h2"); h.textContent = p.title || "(untitled)"; c.appendChild(h);
+    const m = el("p","meta"); m.textContent = `${p.year||""} · ${p.category||p.group||"Misc"}${p.pages?` · ${p.pages} pp`:``}`; c.appendChild(m);
 
-    if ((p.tags||[]).length){
-      const tg=document.createElement("div"); tg.style.display="flex"; tg.style.flexWrap="wrap"; tg.style.gap=".35rem";
-      for (const t of p.tags){ const s=document.createElement("span"); s.className="tag"; s.textContent=t; tg.appendChild(s); }
+    const tags = (p.tags||[]);
+    if (tags.length){
+      const tg = el("div"); tg.style.display="flex"; tg.style.flexWrap="wrap"; tg.style.gap=".35rem";
+      tags.forEach(t => { const s = el("span","tag"); s.textContent = t; tg.appendChild(s); });
       c.appendChild(tg);
     }
-    const act=document.createElement("div"); act.className="actions";
-    act.appendChild(linkBtn("Read", p));
-    act.appendChild(linkBtn("Download", p, true));
+
+    const act = el("div","actions");
+    act.appendChild(aBtn("btn", "Read", p.locked && p.lockNotice ? p.lockNotice : (p.preview || p.drivePreview || `https://drive.google.com/file/d/${p.driveId}/preview`)));
+    act.appendChild(aBtn("btn ghost", "Download", p.locked && p.lockNotice ? p.lockNotice : (p.download || p.driveDownload || `https://drive.google.com/uc?export=download&id=${p.driveId}`)));
     c.appendChild(act);
 
     grid.appendChild(c);
   }
 }
+
+/* ---------- tiny dom utils ---------- */
+function el(tag, cls){ const n=document.createElement(tag); if(cls) n.className=cls; return n; }
+function td(tr, cls, text){ const n=el("td", cls); n.textContent = text; tr.appendChild(n); }
+function aBtn(cls, text, href){ const a=el("a",cls); a.textContent=text; a.href=href; a.target="_blank"; return a; }
 </script>
