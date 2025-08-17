@@ -49,3 +49,16 @@ a{color:var(--accent);text-decoration:none}
 
 .footer{border-top:1px solid var(--line);color:var(--muted);max-width:1200px;margin:1rem auto;padding:1rem}
 .empty{color:var(--muted);text-align:center;padding:2rem}
+
+
+/* --- Fix long unbroken titles/tags overflowing cards --- */
+.card h2,
+.card p,
+.tag {
+  overflow-wrap: anywhere;     /* modern: break inside long tokens (incl. underscores) */
+  word-break: break-word;      /* fallback */
+  white-space: normal;
+  hyphens: auto;               /* helps real words; safe to keep */
+  max-width: 100%;
+  line-height: 1.25;
+}
