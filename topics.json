@@ -83,7 +83,7 @@
     ]
   },
   {
-    "label": "A-waves & Vector Potential (Ghost Fields)",
+    "label": "A-waves (Ghost Fields)",
     "any": [
       "a-waves",
       "a waves",
@@ -113,7 +113,19 @@
       "off-shell",
       "off shell",
       "virtual field",
-      "vacuum channel"
+      "vacuum channel",
+      "vector-potential",
+      "vector potential",
+      "vector-potential communication",
+      "vector potential communication",
+      "phase-only signaling",
+      "phase only signaling",
+      "phase channel",
+      "phase-only channel",
+      "a-wave communication",
+      "a wave communication",
+      "gauge-only signal",
+      "gauge signal"
     ]
   },
   {
@@ -239,23 +251,6 @@
       "schelling point",
       "coordination point",
       "convention signal"
-    ]
-  },
-  {
-    "label": "Vector-Potential Communication",
-    "any": [
-      "vector-potential",
-      "vector potential",
-      "vector-potential communication",
-      "vector potential communication",
-      "phase-only signaling",
-      "phase only signaling",
-      "phase channel",
-      "phase-only channel",
-      "a-wave communication",
-      "a wave communication",
-      "gauge-only signal",
-      "gauge signal"
     ]
   },
   {
