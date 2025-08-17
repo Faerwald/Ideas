@@ -63,3 +63,10 @@ a{color:var(--accent);text-decoration:none}
   hyphens: auto;
 }
 
+/* --- mobile fix: disable sticky sidebar so chips don't overlay cards --- */
+@media (max-width: 979px) {
+  #sidebar {
+    position: static !important;
+    top: auto !important;
+  }
+}
