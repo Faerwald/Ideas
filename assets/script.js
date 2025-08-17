@@ -1,64 +1,214 @@
-:root{
-  --bg:#0b0d12;--fg:#e9eef2;--muted:#a5b3c3;--card:#131722;--line:#1d2230;--accent:#6aa0ff;
+<script>
+/* ========= tiny helpers ========= */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+/* ========= state ========= */
+let PAPERS = [];
+let TOPICS = [];          // from topics.json (label + any[])
+let activeTopics = new Set();
+let view = "table";       // will be flipped to "cards" on phones
+let q = "";               // search text
+
+/* ========= boot ========= */
+document.addEventListener("DOMContentLoaded", async () => {
+  // load data
+  const [papers, topics] = await Promise.all([
+    fetch("papers.json").then(r => r.json()),
+    fetch("topics.json").then(r => r.json()).catch(() => [])
+  ]);
+  PAPERS = papers;
+  TOPICS = topics || [];
+
+  // build topic buttons
+  const wrap = $("#topicButtons");
+  wrap.innerHTML = "";
+  TOPICS.forEach(t => {
+    const b = document.createElement("button");
+    b.className = "chip";
+    b.type = "button";
+    b.textContent = t.label;
+    b.setAttribute("aria-pressed","false");
+    b.addEventListener("click", () => {
+      const on = b.getAttribute("aria-pressed")==="true";
+      b.setAttribute("aria-pressed", String(!on));
+      if (on) activeTopics.delete(t.label); else activeTopics.add(t.label);
+      render();
+    });
+    wrap.appendChild(b);
+  });
+
+  // search
+  $("#q").addEventListener("input", e => { q = e.target.value.trim(); render(); });
+
+  // view toggles
+  $("#viewTable").addEventListener("click", () => setView("table"));
+  $("#viewCards").addEventListener("click", () => setView("cards"));
+
+  // --- DEFAULT VIEW: Cards on mobile/tablet, Table on desktop
+  const prefersCards =
+    window.matchMedia("(max-width: 980px)").matches ||
+    /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  setView(prefersCards ? "cards" : "table");
+
+  render();
+});
+
+/* ========= view switch ========= */
+function setView(v){
+  view = v;
+  $("#viewTable").setAttribute("aria-pressed", String(v==="table"));
+  $("#viewCards").setAttribute("aria-pressed", String(v==="cards"));
+  $("#tablewrap").style.display = v==="table" ? "" : "none";
+  $("#grid").style.display      = v==="cards" ? "" : "none";
+  $("#sections").style.display  = "none"; // we’re using flat grid for simplicity here
 }
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif}
-a{color:var(--accent);text-decoration:none}
 
-.hero{padding:2rem 1rem;max-width:1200px;margin:0 auto}
-.hero h1{font-size:2rem;margin:0 0 .5rem}
-.lede{color:var(--muted);max-width:80ch}
-
-.layout{display:grid;grid-template-columns:260px 1fr;gap:1rem;max-width:1200px;margin:0 auto;padding:0 1rem 2rem}
-#sidebar h3{margin:.5rem 0 0;color:var(--muted)}
-.topics{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0 1rem}
-.chip{padding:.45rem .8rem;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:999px;cursor:pointer}
-.chip[aria-pressed="true"]{outline:2px solid var(--accent)}
-
-.toolbar{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:.75rem;margin-bottom:.75rem}
-#q{padding:.8rem 1rem;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:.75rem;width:100%}
-.counts{color:var(--muted)}
-.view-toggle{display:flex;align-items:center;gap:.5rem}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:1rem;padding:1rem;display:grid;gap:.5rem}
-.card h2{margin:0;font-size:1.05rem}
-.meta{color:var(--muted);margin:0}
-.tag{font-size:.8rem;color:var(--muted);border:1px dashed var(--line);padding:.15rem .5rem;border-radius:999px}
-.actions{display:flex;gap:.5rem;flex-wrap:wrap}
-.btn{display:inline-block;padding:.5rem .8rem;border-radius:.6rem;background:var(--accent);color:#081227;font-weight:600}
-.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-
-.footer{border-top:1px solid var(--line);color:var(--muted);max-width:1200px;margin:1rem auto;padding:1rem}
-
-/* ---- Table ---- */
-#tablewrap{background:transparent;border:1px solid var(--line);border-radius:.75rem;overflow-x:auto} /* allow horizontal scroll on small screens */
-table.data{width:100%;border-collapse:collapse;min-width:720px} /* min width so columns don’t crush */
-.data th,.data td{padding:.75rem;border-bottom:1px solid var(--line);vertical-align:middle}
-.data th{color:var(--muted);font-weight:600;text-align:left;white-space:nowrap}
-.data td.title{word-break:break-word}
-
-/* Wider first column + sensible defaults */
-.data th[data-key="title"], .data td.title{width:42%}
-.data th[data-key="year"], .data td.year{width:7%}
-.data th[data-key="category"], .data td.category{width:16%}
-.data th[data-key="pages"], .data td.pages{width:8%}
-.data th[data-key="wait"], .data td.wait{width:6%;text-align:center}
-.data th[data-key="locked"], .data td.locked{width:6%;text-align:center}
-.data th[data-key="tags"], .data td.tags{width:15%}
-.data th[data-key="actions"], .data td.actions{width:14%;white-space:nowrap}
-
-/* ---- Responsive tweaks ---- */
-@media (max-width: 980px){
-  .layout{grid-template-columns:1fr}
-  #sidebar{order:-1}
-  .toolbar{grid-template-columns:1fr auto}
-  .hero h1{font-size:1.8rem}
-  .lede{font-size:.95rem}
+/* ========= filtering ========= */
+function normalized(str){
+  return (str||"").toLowerCase();
 }
-@media (max-width: 560px){
-  html,body{font-size:15px}
-  .chip{padding:.4rem .7rem}
-  /* table still scrolls horizontally; keep headers readable */
-  .data th,.data td{padding:.6rem}
+function matchesTopics(p){
+  if (activeTopics.size===0) return true;
+  const text = normalized([p.title,p.abstract,(p.tags||[]).join(" "), (p.firstPage||"")].join(" "));
+  // AND over selected topics; within each topic: OR over its seed terms
+  for (const label of activeTopics){
+    const topic = TOPICS.find(t => t.label===label);
+    if (!topic) return false;
+    const any = topic.any || [];
+    const hit = any.some(term => text.includes(term.toLowerCase()));
+    if (!hit) return false;
+  }
+  return true;
 }
+function matchesQuery(p){
+  if (!q) return true;
+  const text = normalized([p.title,p.abstract,(p.tags||[]).join(" "), (p.firstPage||"")].join(" "));
+  return q.toLowerCase().split(/\s+/).every(tok => text.includes(tok));
+}
+function currentRows(){
+  return PAPERS.filter(p => matchesTopics(p) && matchesQuery(p));
+}
+
+/* ========= render ========= */
+function render(){
+  const rows = currentRows();
+  $("#countLabel").textContent = `${rows.length} of ${PAPERS.length} shown`;
+  if (view==="table") renderTable(rows); else renderCards(rows);
+}
+
+function renderTable(rows){
+  const tbody = $("#tbody");
+  tbody.innerHTML = "";
+  for (const p of rows){
+    const tr = document.createElement("tr");
+
+    // Title
+    const tdTitle = document.createElement("td");
+    tdTitle.className = "title";
+    tdTitle.textContent = p.title || "(untitled)";
+    tr.appendChild(tdTitle);
+
+    // Year
+    const tdYear = document.createElement("td");
+    tdYear.className = "year";
+    tdYear.textContent = p.year || "";
+    tr.appendChild(tdYear);
+
+    // Category (from topics pass 1 if available, else Misc)
+    const tdCat = document.createElement("td");
+    tdCat.className = "category";
+    tdCat.textContent = p.category || p.group || "Misc";
+    tr.appendChild(tdCat);
+
+    // Pages
+    const tdPages = document.createElement("td");
+    tdPages.className = "pages";
+    tdPages.textContent = p.pages || "";
+    tr.appendChild(tdPages);
+
+    // WAIT
+    const tdWait = document.createElement("td");
+    tdWait.className = "wait";
+    tdWait.textContent = p.wait ?? "";
+    tr.appendChild(tdWait);
+
+    // Locked
+    const tdLock = document.createElement("td");
+    tdLock.className = "locked";
+    tdLock.textContent = p.locked ? "🔒" : "";
+    tr.appendChild(tdLock);
+
+    // Tags
+    const tdTags = document.createElement("td");
+    tdTags.className = "tags";
+    tdTags.textContent = (p.tags||[]).join(", ");
+    tr.appendChild(tdTags);
+
+    // Actions
+    const tdAct = document.createElement("td");
+    tdAct.className = "actions";
+    const read = document.createElement("a");
+    read.className = "btn";
+    read.textContent = "Read";
+    read.href = p.locked && p.lockNotice ? p.lockNotice : (p.preview||p.drivePreview||`https://drive.google.com/file/d/${p.driveId}/preview`);
+    read.target = "_blank";
+    tdAct.appendChild(read);
+
+    const dl = document.createElement("a");
+    dl.className = "btn ghost";
+    dl.textContent = "Download";
+    dl.href = p.locked && p.lockNotice ? p.lockNotice : (p.download||p.driveDownload||`https://drive.google.com/uc?export=download&id=${p.driveId}`);
+    dl.target = "_blank";
+    tdAct.appendChild(dl);
+
+    tr.appendChild(tdAct);
+    tbody.appendChild(tr);
+  }
+}
+
+function renderCards(rows){
+  const grid = $("#grid");
+  grid.innerHTML = "";
+  for (const p of rows){
+    const c = document.createElement("div");
+    c.className = "card";
+    const h = document.createElement("h2");
+    h.textContent = p.title || "(untitled)";
+    c.appendChild(h);
+
+    const m = document.createElement("p");
+    m.className = "meta";
+    m.textContent = `${p.year||""} · ${p.category||p.group||"Misc"}${p.pages?` · ${p.pages} pp`:``}`;
+    c.appendChild(m);
+
+    if ((p.tags||[]).length){
+      const tg = document.createElement("div");
+      tg.style.display="flex"; tg.style.flexWrap="wrap"; tg.style.gap=".35rem";
+      for (const t of p.tags) {
+        const span = document.createElement("span"); span.className="tag"; span.textContent=t; tg.appendChild(span);
+      }
+      c.appendChild(tg);
+    }
+
+    const act = document.createElement("div");
+    act.className = "actions";
+    const read = document.createElement("a");
+    read.className = "btn";
+    read.textContent = "Read";
+    read.href = p.locked && p.lockNotice ? p.lockNotice : (p.preview||p.drivePreview||`https://drive.google.com/file/d/${p.driveId}/preview`);
+    read.target = "_blank";
+    act.appendChild(read);
+
+    const dl = document.createElement("a");
+    dl.className = "btn ghost";
+    dl.textContent = "Download";
+    dl.href = p.locked && p.lockNotice ? p.lockNotice : (p.download||p.driveDownload||`https://drive.google.com/uc?export=download&id=${p.driveId}`);
+    dl.target = "_blank";
+    act.appendChild(dl);
+
+    c.appendChild(act);
+    grid.appendChild(c);
+  }
+}
+</script>
