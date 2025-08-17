@@ -118,3 +118,27 @@ table.data th[data-key="locked"],table.data td:nth-child(6)  { width: 48px;  tex
   table.data th:nth-child(6), table.data td:nth-child(6) { display:none; }
 }
 */
+
+/* --- Responsive table fixes (mobile) ----------------------------------- */
+
+/* Use natural widths; stop breaking words into single letters */
+.data { width: 100%; border-collapse: collapse; table-layout: auto; }
+.data th, .data td { padding: .6rem .75rem; vertical-align: middle; }
+.data th, .data td {
+  word-break: normal;            /* don't split inside words */
+  overflow-wrap: anywhere;       /* wrap between words / safe points */
+  white-space: normal;           /* allow lines to wrap */
+}
+
+/* Give important columns some minimum space */
+.data td:nth-child(1), .data th:nth-child(1) { min-width: 15rem; } /* Title */
+.data td:nth-child(3), .data th:nth-child(3) { min-width: 8rem; }  /* Category */
+.data td:nth-child(8), .data th:nth-child(8) { min-width: 9rem; }  /* Actions */
+
+/* On small screens, allow horizontal scroll and hide low-priority columns */
+@media (max-width: 760px) {
+  #tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #tbl { min-width: 720px; }     /* table can be wider than viewport */
+  /* Hide Tags column on phones (optional; keeps table compact) */
+  .data td:nth-child(7), .data th:nth-child(7) { display: none; }
+}
