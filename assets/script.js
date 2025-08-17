@@ -1,17 +1,14 @@
-/* Responsive UI:
-   - Mobile (<=980px or mobile UA): default view = "cards"
-   - Desktop: default view = "table"
-   - AND filter across topics (OR inside a topic via topics.json)
+/* Stable table/cards UI:
+   - Default view = "table" (user can switch to "cards")
+   - Topic buttons (AND across topics, OR within topic via topics.json)
    - Search over title + abstract + tags + first-page text (fp)
    - Sortable table (Title/Year/Category/Pages/WAIT/Lock/Tags)
+   - Cards view preserved for browsing
    - Locked items greyed + 🔒 and redirect to a notice PDF
+   - No auto mobile switching
 */
 
-const PRIVATE_NOTICE_ID = "PUT_PRIVATE_NOTICE_DRIVE_ID_HERE"; // <-- set to your Drive ID for the notice PDF
-
-// Detect mobile (viewport or UA)
-const IS_MOBILE = window.matchMedia("(max-width: 980px)").matches ||
-                  /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+const PRIVATE_NOTICE_ID = "PUT_PRIVATE_NOTICE_DRIVE_ID_HERE"; // <-- set to your Drive ID of the notice PDF
 
 const state = {
   data: [],
@@ -19,13 +16,13 @@ const state = {
   topics: [],
   selected: new Set(),
   blacklist: new Set(),
-  view: IS_MOBILE ? "cards" : "table",   // mobile=cards, desktop=table
-  sort: { key: "year", dir: "desc" }     // default: newest first on desktop
+  view: "table",                         // stable default
+  sort: { key: "year", dir: "desc" }     // newest first by default
 };
 
 const els = {
-  q: null, topicBox: null, sections: null, grid: null, count: null,
-  tbody: null, viewTable: null, viewCards: null, tablewrap: null
+  q:null, topicBox:null, sections:null, grid:null, count:null,
+  tbody:null, viewTable:null, viewCards:null, tablewrap:null
 };
 
 const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
@@ -34,7 +31,7 @@ const driveDownload = id => `https://drive.google.com/uc?export=download&id=${id
 document.addEventListener("DOMContentLoaded", () => {
   els.q         = document.getElementById("q");
   els.topicBox  = document.getElementById("topicButtons");
-  els.sections  = document.getElementById("sections"); // kept but not used for default
+  els.sections  = document.getElementById("sections");
   els.grid      = document.getElementById("grid");
   els.count     = document.getElementById("countLabel");
   els.tbody     = document.getElementById("tbody");
@@ -54,62 +51,50 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTopicButtons();
     attachEvents();
 
-    // Set initial toggle buttons and containers to match the auto-default
-    els.viewTable.setAttribute("aria-pressed", state.view==="table" ? "true" : "false");
-    els.viewCards.setAttribute("aria-pressed", state.view==="cards" ? "true" : "false");
+    // Set initial toggle buttons and containers to match the stable default (table)
+    els.viewTable.setAttribute("aria-pressed","true");
+    els.viewCards.setAttribute("aria-pressed","false");
+    if (els.tablewrap) els.tablewrap.style.display = "";
+    if (els.sections)  els.sections.style.display  = "none";
+    if (els.grid)      els.grid.style.display      = "none";
 
-    // Ensure the right containers are visible before the first render
-    if (state.view === "cards") {
-      if (els.tablewrap) els.tablewrap.style.display = "none";
-      if (els.sections)  els.sections.style.display  = "none";
-      if (els.grid)      els.grid.style.display      = "";
-    } else {
-      if (els.tablewrap) els.tablewrap.style.display = "";
-      if (els.sections)  els.sections.style.display  = "none";
-      if (els.grid)      els.grid.style.display      = "none";
-    }
-
-    applyFilters();   // This renders the correct view immediately on load
+    applyFilters();
   });
 });
 
+/* --------- Helpers --------- */
 function haystack(p){
-  return [
-    p.title || "",
-    p.abstract || "",
-    (p.tags || []).join(" "),
-    p.fp || ""
-  ].join(" ").toLowerCase();
+  return [p.title||"", p.abstract||"", (p.tags||[]).join(" "), p.fp||""].join(" ").toLowerCase();
 }
 function isLocked(p){ return !!p.locked || (p.driveId && state.blacklist.has(p.driveId)); }
 function esc(s){ return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])); }
 
-/* ---------- Topics (AND across labels) ---------- */
+/* --------- Topics UI (AND across labels) --------- */
 function renderTopicButtons(){
   const box = document.getElementById("topicButtons");
   box.innerHTML = "";
   const frag = document.createDocumentFragment();
 
   state.topics.forEach(t=>{
-    const b = document.createElement("button");
-    b.className = "topic-chip";
-    b.type = "button";
-    b.textContent = t.label;
+    const b=document.createElement("button");
+    b.className="topic-chip";
+    b.type="button";
+    b.textContent=t.label;
     b.setAttribute("aria-pressed","false");
-    b.onclick = () => {
+    b.onclick=()=>{
       const on = state.selected.has(t.label);
       if(on){ state.selected.delete(t.label); b.setAttribute("aria-pressed","false"); }
-      else  { state.selected.add(t.label);   b.setAttribute("aria-pressed","true");  }
+      else { state.selected.add(t.label); b.setAttribute("aria-pressed","true"); }
       applyFilters();
     };
     frag.appendChild(b);
   });
 
-  const clr = document.createElement("button");
-  clr.className = "btn ghost small";
-  clr.type  = "button";
-  clr.textContent = "Clear";
-  clr.onclick = () => {
+  const clr=document.createElement("button");
+  clr.className="btn ghost small";
+  clr.type="button";
+  clr.textContent="Clear";
+  clr.onclick=()=>{
     state.selected.clear();
     [...box.querySelectorAll(".topic-chip")].forEach(x=>x.setAttribute("aria-pressed","false"));
     applyFilters();
@@ -119,9 +104,9 @@ function renderTopicButtons(){
   box.appendChild(frag);
 }
 
-/* ---------- Events ---------- */
+/* --------- Events --------- */
 function attachEvents(){
-  if (els.q) els.q.addEventListener("input", ()=>{ state.q = els.q.value.toLowerCase(); applyFilters(); });
+  if (els.q) els.q.addEventListener("input", ()=>{ state.q=els.q.value.toLowerCase(); applyFilters(); });
 
   els.viewTable.onclick = ()=>{ state.view="table";
     els.viewTable.setAttribute("aria-pressed","true");
@@ -134,31 +119,36 @@ function attachEvents(){
     applyFilters();
   };
 
-  // If the user resizes across the breakpoint, keep the current view,
-  // but you could auto-switch by uncommenting below:
-  // window.matchMedia("(max-width: 980px)").addEventListener("change", e=>{
-  //   state.view = e.matches ? "cards" : "table";
-  //   els.viewCards.setAttribute("aria-pressed", e.matches ? "true" : "false");
-  //   els.viewTable.setAttribute("aria-pressed", e.matches ? "false" : "true");
-  //   applyFilters();
-  // });
+  // sortable headers
+  document.addEventListener("click", (e)=>{
+    const th = e.target.closest("#tbl thead th");
+    if (!th) return;
+    const key = th.getAttribute("data-key");
+    if (!key || key==="actions") return;
+    if (state.sort.key===key){ state.sort.dir = state.sort.dir==="asc" ? "desc":"asc"; }
+    else {
+      state.sort.key = key;
+      state.sort.dir = (key==="title"||key==="category"||key==="tags") ? "asc" : "desc";
+    }
+    applyFilters();
+  });
 }
 
-/* ---------- Filtering logic ---------- */
+/* --------- Filtering --------- */
 function matchesQuery(p){ return !state.q || haystack(p).includes(state.q); }
 
 function matchesTopics(p){
-  if (state.selected.size===0) return true;
+  if(state.selected.size===0) return true;
   const h = haystack(p);
-  for (const label of state.selected){
+  for(const label of state.selected){
     const topic = state.topics.find(t=>t.label===label);
     if(!topic) return false;
-    const any = topic.any || [];
+    const any = topic.any||[];
     let ok=false;
-    for (const kw of any){
+    for(const kw of any){
       const k = String(kw).toLowerCase();
-      // match keyword plus simple hyphen/space flips
-      if (h.includes(k) || h.includes(k.replace(/-/g," ")) || h.includes(k.replace(/ /g,"-"))) { ok=true; break; }
+      // match k and simple hyphen/space flips
+      if(h.includes(k) || h.includes(k.replace(/-/g," ")) || h.includes(k.replace(/ /g,"-"))){ ok=true; break; }
     }
     if(!ok) return false;
   }
@@ -168,63 +158,68 @@ function matchesTopics(p){
 function applyFilters(){
   let items = state.data.filter(p => matchesQuery(p) && matchesTopics(p));
 
-  // Sorting for table view (locked last, then by chosen column)
   if (state.view === "table") {
-    const dir = state.sort.dir === "asc" ? 1 : -1;
+    // sort for table view: locked last, then by chosen column
+    const dir = state.sort.dir==="asc" ? 1 : -1;
     items.sort((a,b)=>{
       const la=isLocked(a), lb=isLocked(b);
       if(la!==lb) return la? 1 : -1;
       const key = state.sort.key;
-      const sa = v => String(v||"").toLowerCase();
-      if(key==="title")   return dir * sa(a.title).localeCompare(sa(b.title));
-      if(key==="category")return dir * sa(a.category).localeCompare(sa(b.category));
+      const sa = v=>String(v||"").toLowerCase();
+      if(key==="title")    return dir * sa(a.title).localeCompare(sa(b.title));
+      if(key==="category") return dir * sa(a.category).localeCompare(sa(b.category));
       if(key==="tags"){
         const ta=(a.tags||[]).join(", "), tb=(b.tags||[]).join(", ");
         return dir * ta.localeCompare(tb);
       }
-      if(key==="pages")   return dir * ((a.pages||0)-(b.pages||0));
-      if(key==="year")    return dir * ((a.year||0)-(b.year||0));
-      if(key==="wait")    return dir * ((a.wait||0)-(b.wait||0));
-      if(key==="locked")  return dir * ((isLocked(a)?1:0)-(isLocked(b)?1:0));
+      if(key==="pages")    return dir * ((a.pages||0)-(b.pages||0));
+      if(key==="year")     return dir * ((a.year||0)-(b.year||0));
+      if(key==="wait")     return dir * ((a.wait||0)-(b.wait||0));
+      if(key==="locked")   return dir * ((isLocked(a)?1:0)-(isLocked(b)?1:0));
       return 0;
     });
+
+    // show table only
+    if (els.tablewrap) els.tablewrap.style.display = "";
+    if (els.sections)  els.sections.style.display  = "none";
+    if (els.grid)      els.grid.style.display      = "none";
+    renderTable(items);
+  } else {
+    // cards view
+    if (els.tablewrap) els.tablewrap.style.display = "none";
+    if (els.sections)  els.sections.style.display  = (state.selected.size===0 && !state.q) ? "" : "none";
+    if (els.grid)      els.grid.style.display      = (state.selected.size===0 && !state.q) ? "none" : "";
+
+    if (state.selected.size===0 && !state.q){
+      renderSections(groupByCategory(items));
+    } else {
+      renderGrid(items);
+    }
   }
 
   updateCounts(items.length, state.data.length);
   adjustCardSize(items.length);
-
-  // Show correct container(s) and render
-  if (state.view === "table") {
-    if (els.tablewrap) els.tablewrap.style.display = "";
-    if (els.grid)      els.grid.style.display      = "none";
-    if (els.sections)  els.sections.style.display  = "none";
-    renderTable(items);
-  } else { // cards
-    if (els.tablewrap) els.tablewrap.style.display = "none";
-    if (els.sections)  els.sections.style.display  = "none";
-    if (els.grid)      els.grid.style.display      = "";
-    renderGrid(items);   // Always render cards directly (even with no filters)
-  }
 }
 
-/* ---------- Table rendering ---------- */
+/* --------- Table rendering --------- */
 function renderTable(items){
   const tb = els.tbody;
   if (!tb) return;
   tb.innerHTML = "";
   const frag = document.createDocumentFragment();
-  for (const p of items){
+
+  for(const p of items){
     const tr = document.createElement("tr");
-    if (isLocked(p)) tr.className = "row-locked";
+    if(isLocked(p)) tr.className="row-locked";
 
     const w  = p.wait ?? "";
     const wc = w ? ` w${w}` : "";
     const waitBadge = w ? `<span class="badge-wait${wc}">${w}</span>` : "";
 
     const targetId = (isLocked(p) && PRIVATE_NOTICE_ID) ? PRIVATE_NOTICE_ID : p.driveId;
-    const readBtn = targetId ? `<a class="btn" target="_blank" rel="noopener" href="${drivePreview(targetId)}">Read</a>` : "";
-    const dlBtn   = targetId ? `<a class="btn ghost" target="_blank" rel="noopener" href="${driveDownload(targetId)}">Download</a>` : "";
-    const lockIco = isLocked(p) ? "🔒" : "";
+    const readBtn  = targetId ? `<a class="btn" target="_blank" rel="noopener" href="${drivePreview(targetId)}">Read</a>` : "";
+    const dlBtn    = targetId ? `<a class="btn ghost" target="_blank" rel="noopener" href="${driveDownload(targetId)}">Download</a>` : "";
+    const lockIco  = isLocked(p) ? "🔒" : "";
 
     tr.innerHTML = `
       <td>${esc(p.title)}</td>
@@ -241,7 +236,7 @@ function renderTable(items){
   tb.appendChild(frag);
 }
 
-/* ---------- Cards rendering ---------- */
+/* --------- Cards rendering --------- */
 function card(p){
   const locked = isLocked(p);
   const el = document.createElement("article");
@@ -279,29 +274,34 @@ function renderGrid(items){
   g.appendChild(frag);
 }
 
-/* ---------- Misc ---------- */
-function updateCounts(shown,total){ if(els.count) els.count.textContent = `${shown} of ${total} shown`; }
-function adjustCardSize(n){
-  let min = 360;
-  if (n >= 400) min = 180;
-  else if (n >= 250) min = 220;
-  else if (n >= 120) min = 260;
-  else if (n >= 60)  min = 300;
-  else if (n >= 24)  min = 340;
-  document.documentElement.style.setProperty("--card-min", min+"px");
+/* Grouping for Cards when no filters */
+function groupByCategory(items){
+  const map=new Map();
+  items.forEach(p=>{
+    const k=p.category||"Misc";
+    if(!map.has(k)) map.set(k,[]);
+    map.get(k).push(p);
+  });
+  return [...map.entries()].sort((a,b)=>a[0].localeCompare(b[0]));
+}
+function renderSections(groups){
+  const box=els.sections; if(!box) return;
+  box.innerHTML="";
+  const frag=document.createDocumentFragment();
+  groups.forEach(([label,arr])=>{
+    const h=document.createElement("h2");
+    h.className="section-title"; h.textContent=label;
+    const g=document.createElement("div"); g.className="grid";
+    arr.forEach(p=>g.appendChild(card(p)));
+    frag.appendChild(h); frag.appendChild(g);
+  });
+  box.appendChild(frag);
 }
 
-// Sortable header clicks
-document.addEventListener("click", (e)=>{
-  const th = e.target.closest("#tbl thead th");
-  if (!th) return;
-  const key = th.getAttribute("data-key");
-  if (!key || key==="actions") return;
-  if (state.sort.key === key) {
-    state.sort.dir = state.sort.dir === "asc" ? "desc" : "asc";
-  } else {
-    state.sort.key = key;
-    state.sort.dir = (key==="title"||key==="category"||key==="tags") ? "asc" : "desc";
-  }
-  applyFilters();
-});
+/* Misc */
+function updateCounts(shown,total){ if(els.count) els.count.textContent=`${shown} of ${total} shown`; }
+function adjustCardSize(n){
+  let min=360;
+  if(n>=400) min=180; else if(n>=250) min=220; else if(n>=120) min=260; else if(n>=60) min=300; else if(n>=24) min=340;
+  document.documentElement.style.setProperty("--card-min", min+"px");
+}
