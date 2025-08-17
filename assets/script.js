@@ -1,11 +1,11 @@
-/* Ideas — one-page view with topic buttons (AND), search in title+abstract+tags+first-page text,
-   grouped by category when no filters, auto-resize cards by result count. */
+/* One-page view with keyword buttons (AND) using the same search pipeline
+   (title + abstract + tags + first-page text `fp`). Buttons come from keywords.json. */
 
 const state = {
   data: [],
   q: "",
-  selectedTopics: new Set(), // AND filter
-  topics: [],                // unique topic labels (category + tags + "Large")
+  keywords: [],           // from keywords.json
+  selected: new Set(),    // AND filter (selected keywords)
 };
 
 const els = {
@@ -19,7 +19,6 @@ const els = {
 const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
 const driveDownload = id => `https://drive.google.com/uc?export=download&id=${id}`;
 
-// ---------- boot ----------
 document.addEventListener("DOMContentLoaded", () => {
   els.q = document.getElementById("q");
   els.topicBox = document.getElementById("topicButtons");
@@ -27,45 +26,36 @@ document.addEventListener("DOMContentLoaded", () => {
   els.grid = document.getElementById("grid");
   els.count = document.getElementById("countLabel");
 
-  fetch('papers.json?ts=' + Date.now())
-    .then(r => r.json())
-    .then(data => {
-      state.data = Array.isArray(data) ? data : [];
-      buildTopics();
-      renderTopicButtons();
-      attachEvents();
-      applyFilters();
-    });
+  Promise.all([
+    fetch('papers.json?ts=' + Date.now()).then(r => r.json()),
+    fetch('keywords.json?ts=' + Date.now()).then(r => r.json()).catch(_ => [])
+  ]).then(([papers, keywords]) => {
+    state.data = Array.isArray(papers) ? papers : [];
+    state.keywords = (Array.isArray(keywords) ? keywords : []).map(s => String(s).trim()).filter(Boolean);
+    renderKeywordButtons();
+    attachEvents();
+    applyFilters();
+  });
 });
 
-// ---------- topics ----------
-function buildTopics() {
-  const tset = new Set();
-  state.data.forEach(p => {
-    if (p.category) tset.add(p.category);
-    (p.tags || []).forEach(t => tset.add(t));
-    if (p.size === "Large") tset.add("Large");
-  });
-  state.topics = [...tset].sort((a,b)=>a.localeCompare(b));
-}
-
-function renderTopicButtons() {
+/* ---------- UI: keyword buttons from keywords.json ---------- */
+function renderKeywordButtons() {
   const box = els.topicBox;
   box.innerHTML = "";
   const frag = document.createDocumentFragment();
 
-  state.topics.forEach(label => {
+  state.keywords.forEach(label => {
     const b = document.createElement("button");
     b.className = "topic-chip";
     b.type = "button";
     b.textContent = label;
     b.setAttribute("aria-pressed", "false");
     b.onclick = () => {
-      if (state.selectedTopics.has(label)) {
-        state.selectedTopics.delete(label);
+      if (state.selected.has(label)) {
+        state.selected.delete(label);
         b.setAttribute("aria-pressed", "false");
       } else {
-        state.selectedTopics.add(label);
+        state.selected.add(label);
         b.setAttribute("aria-pressed", "true");
       }
       applyFilters();
@@ -79,8 +69,8 @@ function renderTopicButtons() {
   clr.type = "button";
   clr.textContent = "Clear";
   clr.onclick = () => {
-    state.selectedTopics.clear();
-    [...box.querySelectorAll('.topic-chip')].forEach(x=>x.setAttribute('aria-pressed','false'));
+    state.selected.clear();
+    [...box.querySelectorAll('.topic-chip')].forEach(x => x.setAttribute('aria-pressed','false'));
     applyFilters();
   };
   frag.appendChild(clr);
@@ -88,7 +78,7 @@ function renderTopicButtons() {
   box.appendChild(frag);
 }
 
-// ---------- filtering ----------
+/* ---------- filter logic (same pipeline as search bar) ---------- */
 function attachEvents() {
   els.q.addEventListener("input", () => {
     state.q = els.q.value.toLowerCase();
@@ -96,60 +86,59 @@ function attachEvents() {
   });
 }
 
-function matchesText(p) {
-  if (!state.q) return true;
-  const hay = [
+function haystack(p) {
+  return [
     p.title || "",
     p.abstract || "",
     (p.tags || []).join(" "),
-    p.fp || ""   // first-page text if present
+    p.fp || ""     // first-page text
   ].join(" ").toLowerCase();
-  return hay.includes(state.q);
 }
 
-function matchesTopics(p) {
-  if (state.selectedTopics.size === 0) return true;
-  const pTopics = new Set([
-    ...(p.tags || []),
-    ...(p.category ? [p.category] : []),
-    ...(p.size === "Large" ? ["Large"] : [])
-  ]);
-  // AND logic
-  for (const t of state.selectedTopics) {
-    if (!pTopics.has(t)) return false;
+function matchesQuery(p) {
+  if (!state.q) return true;
+  return haystack(p).includes(state.q);
+}
+
+function matchesKeywords(p) {
+  if (state.selected.size === 0) return true;
+  const h = haystack(p);
+  // AND: every selected keyword must appear in the same haystack
+  for (const kw of state.selected) {
+    if (!h.includes(kw.toLowerCase())) return false;
   }
   return true;
 }
 
 function applyFilters() {
-  const filtered = state.data.filter(p => matchesText(p) && matchesTopics(p));
-  updateCounts(filtered.length, state.data.length);
-  adjustCardSize(filtered.length);
+  const items = state.data.filter(p => matchesQuery(p) && matchesKeywords(p));
+  updateCounts(items.length, state.data.length);
+  adjustCardSize(items.length);
 
-  if (state.selectedTopics.size === 0 && !state.q) {
-    // no filters: group by category
+  if (state.selected.size === 0 && !state.q) {
+    // no filters: group by category for overview
     els.grid.style.display = "none";
     els.sections.style.display = "";
-    renderSections(groupByCategory(filtered));
+    renderSections(groupByCategory(items));
   } else {
     // filters active: single grid
     els.sections.style.display = "none";
     els.grid.style.display = "";
-    renderGrid(filtered);
+    renderGrid(items);
   }
 }
 
-// ---------- render ----------
+/* ---------- render ---------- */
 function card(p) {
   const el = document.createElement("article");
   el.className = "card";
   const sizeBadge = p.pages ? `<span class="tag">${p.pages} pp</span>` : "";
-  const catBadge = p.category ? `<span class="tag">${p.category}</span>` : "";
-  const sizeGroup = p.size ? `<span class="tag">${p.size}</span>` : "";
+  const catBadge = p.category ? `<span class="tag">${escapeHTML(p.category)}</span>` : "";
+  const sizeGroup = p.size ? `<span class="tag">${escapeHTML(p.size)}</span>` : "";
 
   el.innerHTML = `
     <h2>${escapeHTML(p.title || "")}</h2>
-    <p class="meta">${p.year || ''} ${p.venue ? '· ' + p.venue : ''}</p>
+    <p class="meta">${p.year || ''} ${p.venue ? '· ' + escapeHTML(p.venue) : ''}</p>
     <p>${escapeHTML(p.abstract || '')}</p>
     <div class="tagrow">${sizeBadge}${catBadge}${sizeGroup}${(p.tags||[]).map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join('')}</div>
     <div class="actions">
@@ -161,11 +150,10 @@ function card(p) {
 }
 
 function renderGrid(items) {
-  const g = els.grid;
-  g.innerHTML = "";
+  els.grid.innerHTML = "";
   const frag = document.createDocumentFragment();
   items.forEach(p => frag.appendChild(card(p)));
-  g.appendChild(frag);
+  els.grid.appendChild(frag);
 }
 
 function groupByCategory(items) {
@@ -179,8 +167,7 @@ function groupByCategory(items) {
 }
 
 function renderSections(groups) {
-  const box = els.sections;
-  box.innerHTML = "";
+  els.sections.innerHTML = "";
   const frag = document.createDocumentFragment();
   groups.forEach(([label, arr]) => {
     const h = document.createElement("h2");
@@ -192,7 +179,7 @@ function renderSections(groups) {
     frag.appendChild(h);
     frag.appendChild(grid);
   });
-  box.appendChild(frag);
+  els.sections.appendChild(frag);
 }
 
 function updateCounts(shown, total) {
@@ -201,7 +188,7 @@ function updateCounts(shown, total) {
 
 function adjustCardSize(n) {
   // smaller cards for huge result sets; larger when narrowed
-  let min = 360; // px
+  let min = 360;
   if (n >= 400) min = 180;
   else if (n >= 250) min = 220;
   else if (n >= 120) min = 260;
@@ -210,5 +197,4 @@ function adjustCardSize(n) {
   document.documentElement.style.setProperty('--card-min', min + 'px');
 }
 
-// small HTML escaper
-function escapeHTML(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
