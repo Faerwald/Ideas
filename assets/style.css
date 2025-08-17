@@ -98,3 +98,23 @@ td.nowrap { white-space: nowrap; }
 /* Footer */
 .footer{border-top:1px solid var(--line);color:var(--muted);max-width:1200px;margin:1rem auto;padding:1rem}
 .empty{color:var(--muted);text-align:center;padding:2rem}
+
+/* --- Table header readability fix --- */
+table.data th {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  white-space: nowrap !important;   /* keep 'WAIT' and 'Pages' on one line */
+}
+
+/* Column widths + alignment (no more squish) */
+table.data th[data-key="year"],  table.data td:nth-child(2)  { width: 72px;  text-align: center; }
+table.data th[data-key="category"], table.data td:nth-child(3){ width: 140px; }
+table.data th[data-key="pages"], table.data td:nth-child(4)  { width: 68px;  text-align: center; }
+table.data th[data-key="wait"],  table.data td:nth-child(5)  { width: 68px;  text-align: center; }
+table.data th[data-key="locked"],table.data td:nth-child(6)  { width: 48px;  text-align: center; }
+
+/* Optional: on very small screens you can hide the lock column too
+@media (max-width: 700px){
+  table.data th:nth-child(6), table.data td:nth-child(6) { display:none; }
+}
+*/
