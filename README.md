@@ -13,3 +13,4 @@ Open `index.html` in a browser, or use any static server (e.g., `python -m http.
 ## Deploy to GitHub Pages
 Create a public repo named `YOUR_USERNAME.github.io`, commit these files, push. Settings → Pages (if needed).
 
+republish
