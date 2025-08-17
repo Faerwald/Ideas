@@ -14,7 +14,35 @@ a{color:var(--accent);text-decoration:none}
 .layout{display:grid;gap:1rem;max-width:1200px;margin:0 auto;padding:0 1rem}
 @media (min-width: 980px){ .layout{grid-template-columns: 260px 1fr} }
 
-#sidebar{position:sticky; top:0.5rem; align-self:start}
+/* Default: NOT sticky */
+#sidebar{
+  position: static;
+  top: auto;
+  align-self: start;
+  z-index: 0;                /* ensure it doesn't float over content */
+}
+
+/* Only make it sticky on large desktops if you want it */
+@media (min-width: 1200px){
+  #sidebar{
+    position: sticky;
+    top: 0.5rem;
+    z-index: 1;             /* small bump is fine on desktop */
+  }
+}
+
+/* Mobile hard reset — in case any other rule leaks through */
+@media (max-width: 1199px){
+  #sidebar, #topicButtons, .topics{
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+  }
+  #sidebar{ margin-bottom: .75rem; }  /* space below the chips */
+}
+
+
+
 #sidebar h3{margin:.5rem 0 .5rem 0; font-size:1rem; color:var(--muted)}
 .topics{display:flex;flex-wrap:wrap;gap:.5rem}
 .topic-chip{
