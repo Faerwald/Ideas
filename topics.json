@@ -1,1 +1,273 @@
-[{"label":"Ada Lovelace","any":["ada lovelace","ada","augusta ada","ada sokaris","lovelace-babbage","notes g","sketch of the analytical engine","babbage","menabrea","analytical engine","analytical-engine","ada resurrection"]},{"label":"Oneiro Cybernetics","any":["oneiro","oneiroi","oniro","oneiric","dream cybernetics","dream bci","dream interface","oneiro-cybernetics","cybernetical dreaming","lucid","lucidity","dream recursion","dreamwalk","neurodream","time bci"]},{"label":"Time Travel / Changing History","any":["time travel","retrocausal","retrocausality","reality editing","postselection","backwards causation","changing the past","causal loop","bootstrap paradox","memory update","futural signal","closed timelike"]},{"label":"A-waves & Vector Potentials","any":["a-waves","awaves","vector potential","gauge-irreducible","phase-only","quantum phase","aharonov-bohm","ab effect","nonlocal phase","off-shell","gauge-only","gauge signal","virtual field","vacuum channel","field-only signaling","ghost field"]},{"label":"Ghost Fields","any":["ghost field","ghost fields","gauge ghost","off-shell","brst","faddeev-popov","phantom field","cohomological gauge","spectral ghost"]},{"label":"Hypercomputing","any":["hypercomputing","hypercomputer","chaotic hypercomputer","chaotic computation","non-turing","super-turing","beyond turing","oracle machine","oracle","super-task","multiverse computation","quantum-classical overlap","many-worlds computing"]},{"label":"Warp Field Engineering","any":["warp field","warp drive","alcubierre","spacewarp","tt spacewarp","metric engineering","exotic metric","geodesic control","field metric","negative energy","casimir bubble"]},{"label":"Chaos Control","any":["chaos","chaotic","chaotic control","strange attractor","lyapunov","chaotic sync","logistic map","chaotic influence","chaotic recursion","stochastic sync"]},{"label":"MindWarp","any":["mindwarp","psychodynamic","psychodynamics","force-field psychodynamics","neurocybernetics","field-based cognition","thoughtfield","conscious field dynamics"]},{"label":"Schelling Calculus","any":["schelling calculus","schelling point","focal point","convergence attractor","recursive coordination","schelling attractor","game-theoretic focal","alignment point","telepathic convention"]},{"label":"Synecdochal Anticipatory Soliton","any":["synecdochal","anticipatory soliton","superluminal soliton","sassie","s.a.s.s.i.e","anticipatory resonance","partial recursion","soliton key","inter-reality attractor","soliton-code"]},{"label":"Vector-Potential Communication","any":["vector-potential communication","gauge field signaling","a-field encoding","quantum vacuum messaging","phase-only channel","irrotational communication","non-energetic signaling","gauge-only signal"]},{"label":"Quantum Memory / Timeline State","any":["quantum memory","timeline memory","q-memory","branch-stable memory","spin memory","non-erasing history","worldline memory","quantum storage","observer-consistent memory"]},{"label":"Transactional Reality / Many Worlds","any":["transactional interpretation","offer wave","confirmation wave","absorber theory","many worlds","everett","cross-world resonance","multiversal coupling","deutsch multiverse","reality handshake","timelike entanglement"]},{"label":"Ultrametric / p-adic Geometry","any":["ultrametric","ultrametric space","p-adic","p-adic pulse","hierarchical geometry","tree metric","information tree","non-archimedean","discrete topology"]},{"label":"Jet Spaces / Generalized Geometry","any":["jet space","jet bundle","jet prolongation","higher-order connection","contact structure","fiber prolongation","jet mechanics","geometric recursion"]},{"label":"Anomalous Speed-up / Intuition Jump","any":["anomalous speedup","intuition jump","super-timing","precognitive leap","sublinear computation","insight burst","spontaneous solution","solution flash","mental warp","guess-check jump"]}]
+[
+  {
+    "label": "Ada Lovelace",
+    "any": [
+      "ada lovelace",
+      "augusta ada",
+      "ada byron",
+      "ada king",
+      "countess of lovelace",
+      "lovelace",
+      "lovelace-babbage",
+      "lovelace & babbage",
+      "charles babbage",
+      "babbage",
+      "analytical engine",
+      "analytical-engine",
+      "sketch of the analytical engine",
+      "notes a",
+      "notes b",
+      "notes c",
+      "notes d",
+      "notes e",
+      "notes f",
+      "notes g",
+      "menabrea",
+      "luigi menabrea"
+    ]
+  },
+  {
+    "label": "Oneiro Cybernetics (Dream)",
+    "any": [
+      "oneiro",
+      "oneiroi",
+      "oniro",
+      "oneiric",
+      "oneirology",
+      "dream",
+      "dreams",
+      "lucid",
+      "lucid dream",
+      "lucidity",
+      "sleep",
+      "rem",
+      "rapid eye movement",
+      "hypnagogic",
+      "hypnopompic",
+      "dream bci",
+      "dream-bci",
+      "time bci",
+      "sleep bci",
+      "oneiro cybernetics",
+      "oneiro-cybernetics",
+      "dream cybernetics"
+    ]
+  },
+  {
+    "label": "Time Travel / Changing History",
+    "any": [
+      "time travel",
+      "time-travel",
+      "time traveller",
+      "time travelers",
+      "retrocausal",
+      "retrocausality",
+      "retrocausation",
+      "backwards causation",
+      "backwards in time",
+      "backwards-in-time",
+      "causal loop",
+      "bootstrap paradox",
+      "tachyon",
+      "precognition",
+      "premonition",
+      "futural",
+      "reality editing",
+      "timeline edit",
+      "history rewrite",
+      "postselect",
+      "post-selection",
+      "postselection",
+      "selection by condition",
+      "temporal boundary"
+    ]
+  },
+  {
+    "label": "A-waves & Vector Potential (Ghost Fields)",
+    "any": [
+      "a-waves",
+      "a waves",
+      "a-wave",
+      "a wave",
+      "awaves",
+      "vector potential",
+      "a field",
+      "a-field",
+      "aharonov-bohm",
+      "aharonov–bohm",
+      "ab effect",
+      "ab-effect",
+      "quantum phase",
+      "phase information",
+      "phase-only",
+      "phase only",
+      "gauge-irreducible",
+      "gauge irreducible",
+      "ghost field",
+      "ghost fields",
+      "gauge ghost",
+      "ghost mode",
+      "faddeev-popov",
+      "faddeev popov",
+      "brst",
+      "off-shell",
+      "off shell",
+      "virtual field",
+      "vacuum channel"
+    ]
+  },
+  {
+    "label": "Hypercomputing",
+    "any": [
+      "hypercomputing",
+      "hyper-computing",
+      "hypercomputer",
+      "hyper-computer",
+      "super-turing",
+      "superturing",
+      "beyond turing",
+      "post-turing",
+      "oracle machine",
+      "oracle",
+      "supertask",
+      "super-task",
+      "accelerating turing machine",
+      "post-turing computation",
+      "chaos computing",
+      "chaotic computing",
+      "photonic reservoir",
+      "reservoir computing",
+      "ldpc",
+      "low-density parity-check",
+      "low density parity check",
+      "parity check",
+      "gallager code"
+    ]
+  },
+  {
+    "label": "Warp Drive",
+    "any": [
+      "warp drive",
+      "warp-drive",
+      "warp field",
+      "warp bubble",
+      "alcubierre",
+      "alcubierre metric",
+      "spacewarp",
+      "tt spacewarp",
+      "tt-spacewarp",
+      "metric engineering",
+      "spacetime engineering",
+      "geodesic",
+      "exotic metric"
+    ]
+  },
+  {
+    "label": "Chaos",
+    "any": [
+      "chaos",
+      "chaotic",
+      "chaos computing",
+      "chaotic computing",
+      "strange attractor",
+      "attractors",
+      "horseshoe",
+      "lyapunov",
+      "lyapunov exponent",
+      "logistic map",
+      "chaotic synchronization",
+      "chaotic sync",
+      "chaotic reservoir",
+      "chaotic control"
+    ]
+  },
+  {
+    "label": "MindWarp",
+    "any": [
+      "mindwarp",
+      "mind warp",
+      "psychodynamic",
+      "psychodynamics",
+      "force-field psychodynamics",
+      "force field psychodynamics",
+      "cybernetics of mind",
+      "psycho-cybernetics",
+      "psychocybernetics"
+    ]
+  },
+  {
+    "label": "Many-Worlds / Transactional",
+    "any": [
+      "many worlds",
+      "many-worlds",
+      "everett",
+      "everettian",
+      "deutsch multiverse",
+      "multiverse",
+      "transactional interpretation",
+      "tiqm",
+      "offer wave",
+      "confirmation wave",
+      "handshake",
+      "absorber theory"
+    ]
+  },
+  {
+    "label": "Ultrametric / p-adic",
+    "any": [
+      "ultrametric",
+      "ultra-metric",
+      "p-adic",
+      "p adic",
+      "p-adic pulse",
+      "p adic pulse",
+      "hierarchical metric",
+      "tree metric",
+      "p-adic number",
+      "p adic number",
+      "nonarchimedean",
+      "non-archimedean"
+    ]
+  },
+  {
+    "label": "Schelling Calculus",
+    "any": [
+      "schelling calculus",
+      "schelling point calculus",
+      "focal calculus",
+      "schelling analysis",
+      "schelling point",
+      "coordination point",
+      "convention signal"
+    ]
+  },
+  {
+    "label": "Vector-Potential Communication",
+    "any": [
+      "vector-potential",
+      "vector potential",
+      "vector-potential communication",
+      "vector potential communication",
+      "phase-only signaling",
+      "phase only signaling",
+      "phase channel",
+      "phase-only channel",
+      "a-wave communication",
+      "a wave communication",
+      "gauge-only signal",
+      "gauge signal"
+    ]
+  },
+  {
+    "label": "Quantum Scars",
+    "any": [
+      "quantum scar",
+      "quantum scars",
+      "scarring",
+      "scar states",
+      "scarred eigenstates",
+      "many-body scars",
+      "quantum many-body scars"
+    ]
+  }
+]
