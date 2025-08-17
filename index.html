@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Jason — Research Portfolio</title>
-  <link rel="stylesheet" href="assets/style.css" />
-  <meta name="description" content="Research drafts and papers by Jason. AI-assisted drafting; minimal editing. Explore by topic." />
+  <link rel="stylesheet" href="assets/style.css"/>
+  <meta name="description" content="Research drafts and papers by Jason. AI-assisted drafting; minimal editing. Explore by topic."/>
 </head>
 <body>
   <header class="hero">
@@ -14,38 +14,30 @@
       I generate a lot of ideas—my imagination rarely stops. I articulate them to ChatGPT and ask it to draft papers with minimal editing.
       These are working notes and drafts; I haven't read through them all.
     </p>
-    <div class="toolbar">
-      <input id="q" type="search" placeholder="Search title, abstract, or tags…" aria-label="Search papers" />
-      <div class="view-controls">
-        <label class="switch"><input id="andMode" type="checkbox"><span>Tag match: AND</span></label>
-        <label class="switch"><input id="compact" type="checkbox"><span>Compact list</span></label>
-        <label>Sort:
-          <select id="sortSel">
-            <option value="year_desc">Year ↓</option>
-            <option value="year_asc">Year ↑</option>
-            <option value="title_asc">Title A→Z</option>
-          </select>
-        </label>
-      </div>
-    </div>
-    <div id="collections" class="collections"></div>
-    <div id="tags" class="tags"></div>
   </header>
 
-  <main id="grid" class="grid" aria-live="polite"></main>
+  <div class="layout">
+    <aside id="sidebar">
+      <h3>Topics (click to toggle — AND)</h3>
+      <div id="topicButtons" class="topics"></div>
+    </aside>
 
-  <nav class="pager" aria-label="Pagination">
-    <button id="prev" class="btn ghost" disabled>Prev</button>
-    <span id="range" class="range">Showing 0–0 of 0</span>
-    <button id="next" class="btn ghost" disabled>Next</button>
-  </nav>
+    <section class="content">
+      <div class="toolbar">
+        <input id="q" type="search" placeholder="Search title, abstract, tags, or first page…" aria-label="Search papers"/>
+        <div class="counts"><span id="countLabel"></span></div>
+      </div>
+
+      <!-- When no filters: grouped sections go here -->
+      <div id="sections"></div>
+
+      <!-- When filters active: a single grid goes here -->
+      <div id="grid" class="grid"></div>
+    </section>
+  </div>
 
   <footer class="footer">
-    <p>
-      © 2025 Jason — All rights reserved (unless a specific paper says otherwise).
-      Please cite appropriately. See <a href="LICENSE.html">Licensing &amp; Use</a>.
-    </p>
-    <p><small>No AI training or dataset ingestion is permitted without prior written consent.</small></p>
+    <p>© 2025 Jason — All rights reserved (unless a specific paper says otherwise). See <a href="LICENSE.html">Licensing &amp; Use</a>.</p>
   </footer>
 
   <script src="assets/script.js"></script>
