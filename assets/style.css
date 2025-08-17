@@ -1,140 +1,64 @@
 :root{
-  --bg:#0b0d12; --fg:#e9eef2; --muted:#a5b3c3; --card:#131722; --line:#1d2230; --accent:#6aa0ff;
-  --card-min: 320px; /* JS adjusts based on result count */
+  --bg:#0b0d12;--fg:#e9eef2;--muted:#a5b3c3;--card:#131722;--line:#1d2230;--accent:#6aa0ff;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif}
 a{color:var(--accent);text-decoration:none}
 
-/* Header */
 .hero{padding:2rem 1rem;max-width:1200px;margin:0 auto}
 .hero h1{font-size:2rem;margin:0 0 .5rem}
 .lede{color:var(--muted);max-width:80ch}
 
-/* Layout: sidebar left on desktop, stacked on mobile */
-.layout{display:grid;gap:1rem;max-width:1200px;margin:0 auto;padding:0 1rem}
-@media (min-width: 980px){ .layout{grid-template-columns: 260px 1fr} }
-
-/* Sidebar */
-#sidebar{
-  position: static; top: auto; align-self: start; z-index: 0;
-}
-@media (min-width: 1200px){
-  #sidebar{ position: sticky; top: .5rem; z-index: 1; }
-}
-@media (max-width: 1199px){
-  #sidebar, #topicButtons, .topics{ position: static !important; top: auto !important; z-index: auto !important; }
-  #sidebar{ margin-bottom: .75rem; }
-}
-#sidebar h3{margin:.5rem 0 .5rem 0; font-size:1rem; color:var(--muted)}
-.topics{display:flex;flex-wrap:wrap;gap:.5rem}
-.topic-chip{
-  padding:.45rem .7rem;background:var(--card);color:var(--fg);
-  border:1px solid var(--line);border-radius:999px;cursor:pointer;font-size:.9rem
-}
-.topic-chip[aria-pressed="true"]{outline:2px solid var(--accent)}
-
-/* Toolbar */
-.toolbar{display:grid;gap:.75rem;margin:.5rem 0 0}
-#q{
-  display:block;width:100%;min-height:44px;padding:.8rem 1rem;border:1px solid var(--line);
-  background:var(--card);color:var(--fg);border-radius:.75rem
-}
-.counts{color:var(--muted);font-size:.9rem}
-.view-toggle{display:flex;gap:.5rem;align-items:center}
-.chip{padding:.35rem .6rem;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:999px;cursor:pointer}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:1rem;max-width:1200px;margin:0 auto;padding:0 1rem 2rem}
+#sidebar h3{margin:.5rem 0 0;color:var(--muted)}
+.topics{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0 1rem}
+.chip{padding:.45rem .8rem;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:999px;cursor:pointer}
 .chip[aria-pressed="true"]{outline:2px solid var(--accent)}
 
-/* Cards/Grid */
-.grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
-  gap:1rem; padding:.5rem 0;
-}
+.toolbar{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:.75rem;margin-bottom:.75rem}
+#q{padding:.8rem 1rem;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:.75rem;width:100%}
+.counts{color:var(--muted)}
+.view-toggle{display:flex;align-items:center;gap:.5rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem}
 .card{background:var(--card);border:1px solid var(--line);border-radius:1rem;padding:1rem;display:grid;gap:.5rem}
 .card h2{margin:0;font-size:1.05rem}
 .meta{color:var(--muted);margin:0}
-.tagrow{display:flex;flex-wrap:wrap;gap:.35rem}
 .tag{font-size:.8rem;color:var(--muted);border:1px dashed var(--line);padding:.15rem .5rem;border-radius:999px}
-.actions{display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap}
+.actions{display:flex;gap:.5rem;flex-wrap:wrap}
 .btn{display:inline-block;padding:.5rem .8rem;border-radius:.6rem;background:var(--accent);color:#081227;font-weight:600}
 .btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-.card.locked{ opacity:.55; filter:saturate(.7); }
-.card .lock-badge{ float:right; font-size:1.1rem; margin-left:.4rem; opacity:.9; }
 
-/* Wrapping fixes for long tokens (underscores/hyphens) */
-.card h2, .card p, .meta, .tag, td, th{
-  overflow-wrap:anywhere; word-wrap:break-word; word-break:break-word; hyphens:auto;
-}
-
-/* Table view */
-html, body { font-size: 15px; } /* slightly denser */
-#tablewrap { overflow-x: auto; padding-top: .5rem; }
-table.data { width: 100%; border-collapse: collapse; font-size: 14px; }
-table.data th, table.data td { border-bottom: 1px solid var(--line); padding: .45rem .5rem; vertical-align: top; }
-table.data th { text-align: left; color: var(--muted); cursor: pointer; user-select: none; position: sticky; top: 0; background: var(--bg); z-index: 1; }
-table.data tr:hover { background: rgba(255,255,255,0.03); }
-td.nowrap { white-space: nowrap; }
-
-/* WAIT-o-meter badge + optional colors */
-.badge-wait { display:inline-block; min-width:1.8ch; text-align:center; font-weight:700; padding:.05rem .35rem; border-radius:.35rem; border:1px solid var(--line); background: var(--card); }
-.badge-wait.w1{ background:#2a2c35; color:#c8cbd2; }
-.badge-wait.w2{ background:#333644; color:#cfd3db; }
-.badge-wait.w3{ background:#3b3f2f; color:#dfe7c5; }
-.badge-wait.w4{ background:#494d2b; color:#eef5c0; }
-.badge-wait.w5{ background:#2f5a37; color:#e3f7df; }
-.badge-wait.w6{ background:#1e6a3f; color:#eafff0; }
-.badge-wait.w7{ background:#0f7a45; color:#edfff5; box-shadow:0 0 0 1px var(--accent) inset; }
-
-/* Lock flag in table */
-.lock-ico { opacity:.9 }
-.row-locked { opacity:.6; filter:saturate(.75); }
-
-/* Hide very wide “Tags” column on phones */
-@media (max-width: 980px){
-  table.data th:nth-child(7), table.data td:nth-child(7) { display:none; }
-}
-
-/* Footer */
 .footer{border-top:1px solid var(--line);color:var(--muted);max-width:1200px;margin:1rem auto;padding:1rem}
-.empty{color:var(--muted);text-align:center;padding:2rem}
 
-/* --- Table header readability fix --- */
-table.data th {
-  overflow-wrap: normal !important;
-  word-break: normal !important;
-  white-space: nowrap !important;   /* keep 'WAIT' and 'Pages' on one line */
+/* ---- Table ---- */
+#tablewrap{background:transparent;border:1px solid var(--line);border-radius:.75rem;overflow-x:auto} /* allow horizontal scroll on small screens */
+table.data{width:100%;border-collapse:collapse;min-width:720px} /* min width so columns don’t crush */
+.data th,.data td{padding:.75rem;border-bottom:1px solid var(--line);vertical-align:middle}
+.data th{color:var(--muted);font-weight:600;text-align:left;white-space:nowrap}
+.data td.title{word-break:break-word}
+
+/* Wider first column + sensible defaults */
+.data th[data-key="title"], .data td.title{width:42%}
+.data th[data-key="year"], .data td.year{width:7%}
+.data th[data-key="category"], .data td.category{width:16%}
+.data th[data-key="pages"], .data td.pages{width:8%}
+.data th[data-key="wait"], .data td.wait{width:6%;text-align:center}
+.data th[data-key="locked"], .data td.locked{width:6%;text-align:center}
+.data th[data-key="tags"], .data td.tags{width:15%}
+.data th[data-key="actions"], .data td.actions{width:14%;white-space:nowrap}
+
+/* ---- Responsive tweaks ---- */
+@media (max-width: 980px){
+  .layout{grid-template-columns:1fr}
+  #sidebar{order:-1}
+  .toolbar{grid-template-columns:1fr auto}
+  .hero h1{font-size:1.8rem}
+  .lede{font-size:.95rem}
 }
-
-/* Column widths + alignment (no more squish) */
-table.data th[data-key="year"],  table.data td:nth-child(2)  { width: 72px;  text-align: center; }
-table.data th[data-key="category"], table.data td:nth-child(3){ width: 140px; }
-table.data th[data-key="pages"], table.data td:nth-child(4)  { width: 68px;  text-align: center; }
-table.data th[data-key="wait"],  table.data td:nth-child(5)  { width: 68px;  text-align: center; }
-table.data th[data-key="locked"],table.data td:nth-child(6)  { width: 48px;  text-align: center; }
-
-/* Optional: on very small screens you can hide the lock column too
-@media (max-width: 700px){
-  table.data th:nth-child(6), table.data td:nth-child(6) { display:none; }
-}
-*/
-/* --- Mobile = Cards only ----------------------------------------------- */
-@media (max-width: 760px) {
-  /* Hide the Table toggle and the table itself */
-  #viewTable { display: none !important; }
-  #tablewrap { display: none !important; }
-
-  /* Ensure the cards container shows */
-  #grid { display: grid !important; }
-  /* If you use grouped sections for unfiltered view, allow those too */
-  #sections { display: block !important; }
-
-  /* Optional helper label */
-  .view-toggle::before {
-    content: "Cards view on mobile";
-    display: block;
-    font-size: .875rem;
-    color: var(--muted);
-    margin-bottom: .25rem;
-  }
+@media (max-width: 560px){
+  html,body{font-size:15px}
+  .chip{padding:.4rem .7rem}
+  /* table still scrolls horizontally; keep headers readable */
+  .data th,.data td{padding:.6rem}
 }
