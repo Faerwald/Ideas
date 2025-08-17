@@ -20,7 +20,7 @@
     ]
   },
   {
-    "label": "Time Travel / Retrocausality",
+    "label": "Time Travel / Changing History",
     "any": [
       "time travel","time-travel","time traveller","time travelers",
       "retrocausal","retrocausality","retrocausation","backwards causation",
@@ -30,19 +30,13 @@
     ]
   },
   {
-    "label": "A-waves & Vector Potential",
+    "label": "A-waves & Vector Potential (Ghost Fields)",
     "any": [
       "a-waves","a waves","a-wave","a wave","awaves",
       "vector potential","a field","a-field",
       "aharonov-bohm","aharonov–bohm","ab effect","ab-effect",
       "quantum phase","phase information","phase-only","phase only",
-      "gauge-irreducible","gauge irreducible"
-    ]
-  },
-  {
-    "label": "Ghost Fields",
-    "any": [
-      "ghost field","ghost fields","gauge ghost","ghost mode",
+      "gauge-irreducible","gauge irreducible", "ghost field","ghost fields","gauge ghost","ghost mode",
       "faddeev-popov","faddeev popov","brst",
       "off-shell","off shell","virtual field"
     ]
@@ -57,7 +51,7 @@
     ]
   },
   {
-    "label": "Warp Drive / Spacewarp",
+    "label": "Warp Drive",
     "any": [
       "warp drive","warp-drive","warp field","warp bubble",
       "alcubierre","alcubierre metric",
@@ -67,21 +61,12 @@
     ]
   },
   {
-    "label": "Chaos / Chaotic Computing",
+    "label": "Chaos",
     "any": [
       "chaos","chaotic","chaos computing","chaotic computing",
       "strange attractor","attractors","horseshoe",
       "lyapunov","lyapunov exponent","logistic map",
       "chaotic synchronization","chaotic sync","chaotic reservoir"
-    ]
-  },
-  {
-    "label": "Schelling Points",
-    "any": [
-      "schelling point","schelling points",
-      "focal point","focal points",
-      "coordination point","coordination points",
-      "convention signal","meeting point","rendezvous"
     ]
   },
   {
@@ -94,15 +79,6 @@
     ]
   },
   {
-    "label": "Quantum Memory",
-    "any": [
-      "quantum memory","q-memory","q memory",
-      "quantum storage","memory register",
-      "photon memory","photonic memory","spin memory","spin ensemble",
-      "atomic memory","holographic memory"
-    ]
-  },
-  {
     "label": "Many-Worlds / Transactional",
     "any": [
       "many worlds","many-worlds","everett","everettian",
@@ -112,7 +88,7 @@
     ]
   },
   {
-    "label": "Ultrametric / p-adic Pulse",
+    "label": "Ultrametric / p-adic",
     "any": [
       "ultrametric","ultra-metric",
       "p-adic","p adic","p-adic pulse","p adic pulse",
@@ -120,32 +96,15 @@
     ]
   },
   {
-    "label": "Jet Spaces",
-    "any": [
-      "jet space","jet spaces",
-      "jet bundle","jet-bundle",
-      "prolongation","jet prolongation",
-      "contact structure","jet atlas"
-    ]
-  },
-  {
-    "label": "Anomalous Speed-up",
-    "any": [
-      "anomalous speedup","anomalous speed-up","speedup anomaly",
-      "beyond expected time","sublinear insight","intuition jump",
-      "sudden solution","surprising solution"
-    ]
-  },
-  {
     "label": "Schelling Calculus",
     "any": [
-      "schelling calculus","schelling point calculus","focal calculus","schelling analysis"
+      "schelling","calculus","focal calculus","schelling analysis"
     ]
   },
   {
     "label": "Vector-Potential Communication",
     "any": [
-      "vector-potential communication","vector potential communication",
+      "vector-potential","vector potential",
       "phase-only signaling","phase only signaling",
       "phase channel","phase-only channel",
       "a-wave communication","a wave communication"
