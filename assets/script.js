@@ -262,3 +262,28 @@ function adjustCardSize(n){
   if(n>=400) min=180; else if(n>=250) min=220; else if(n>=120) min=260; else if(n>=60) min=300; else if(n>=24) min=340;
   document.documentElement.style.setProperty("--card-min", min+"px");
 }
+
+// --- Force Cards view on phones ------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const mq = window.matchMedia('(max-width: 760px)');
+  const btnCards = document.getElementById('viewCards');
+  const btnTable = document.getElementById('viewTable');
+
+  function enforceMobileMode() {
+    if (!mq.matches) {
+      // desktop: allow both
+      if (btnTable) btnTable.removeAttribute('disabled');
+      return;
+    }
+    // mobile: disable table and switch to cards if not already active
+    if (btnTable) btnTable.setAttribute('disabled', 'true');
+    if (btnCards && btnCards.getAttribute('aria-pressed') !== 'true') {
+      // trigger the same handler your app already uses
+      btnCards.click();
+    }
+  }
+
+  enforceMobileMode();
+  mq.addEventListener('change', enforceMobileMode);
+});
+
