@@ -2,11 +2,13 @@
    - Topic buttons (AND across topics, OR inside each topic via topics.json)
    - Search over title+abstract+tags+fp
    - Sortable table (Title/Year/Category/Pages/WAIT/Lock/Tags)
-   - Cards view optional (default on mobile)
+   - Cards view optional
    - Locked items greyed + 🔒 and redirect to a notice PDF
+   - NEW: Auto-view (desktop=Table, mobile=Cards) with manual override
 */
 
 const PRIVATE_NOTICE_ID = "https://drive.google.com/file/d/1iCLtsAIsN8Gu7BpH3owzZfIKBvntBh-_/view?usp=sharing"; // <-- set this to your Drive file ID
+const MOBILE_BP = 979;              // mobile if viewport <= this width
 
 const state = {
   data: [],
@@ -14,8 +16,9 @@ const state = {
   topics: [],
   selected: new Set(),
   blacklist: new Set(),
-  view: "table",                           // overridden at runtime by device check
-  sort: { key: "year", dir: "desc" }       // default: newest first
+  view: null,                       // "table" | "cards" (filled by autoView on load)
+  sort: { key: "year", dir: "desc" },
+  autoView: true                    // auto-switch between table/cards until user clicks
 };
 
 const els = { q:null, topicBox:null, sections:null, grid:null, count:null, tbody:null, viewTable:null, viewCards:null };
@@ -24,7 +27,6 @@ const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
 const driveDownload = id => `https://drive.google.com/uc?export=download&id=${id}`;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Elements
   els.q = document.getElementById("q");
   els.topicBox = document.getElementById("topicButtons");
   els.sections = document.getElementById("sections");
@@ -34,12 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
   els.viewTable = document.getElementById("viewTable");
   els.viewCards = document.getElementById("viewCards");
 
-  // --- Default view by device: Cards on mobile, Table on desktop ---
-  const isMobile = window.matchMedia('(max-width: 980px)').matches
-                || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-  state.view = isMobile ? "cards" : "table";
-  reflectViewButtons();
-
   Promise.all([
     fetch("papers.json?ts="+Date.now()).then(r=>r.json()),
     fetch("topics.json?ts="+Date.now()).then(r=>r.json()).catch(_=>[]),
@@ -48,34 +44,43 @@ document.addEventListener("DOMContentLoaded", () => {
     state.data = Array.isArray(papers)? papers : [];
     state.topics = Array.isArray(topics)? topics : [];
     if (Array.isArray(bl)) state.blacklist = new Set(bl);
+
     renderTopicButtons();
     attachEvents();
+    initAutoView();       // <-- decide initial view based on viewport
     applyFilters();
   });
 });
 
-/* ---------- helpers ---------- */
+/* ------------------ auto-view logic ------------------ */
+function initAutoView(){
+  const mq = window.matchMedia(`(max-width: ${MOBILE_BP}px)`);
+  setView(mq.matches ? "cards" : "table", "auto");
+  // keep listening while autoView is true
+  mq.addEventListener?.("change", e => {
+    if (state.autoView) setView(e.matches ? "cards" : "table", "auto");
+  });
+}
+
+function setView(newView, source="manual"){
+  if (state.view === newView && source !== "auto") return;
+  state.view = newView;
+  if (source === "manual") state.autoView = false;  // user choice locks it
+  // update buttons
+  if (els.viewTable && els.viewCards){
+    els.viewTable.setAttribute("aria-pressed", String(newView==="table"));
+    els.viewCards.setAttribute("aria-pressed", String(newView==="cards"));
+  }
+  // re-render using current filters
+  applyFilters();
+}
+
+/* ------------------ search & topics ------------------ */
 function haystack(p){
   return [p.title||"", p.abstract||"", (p.tags||[]).join(" "), p.fp||""].join(" ").toLowerCase();
 }
 function isLocked(p){ return !!p.locked || (p.driveId && state.blacklist.has(p.driveId)); }
-function escapeHTML(s){
-  return String(s||"").replace(/[&<>"']/g, m => (
-    m==="&"?"&amp;": m==="<"?"&lt;": m===">"?"&gt;": m==="\""?"&quot;":"&#39;"
-  ));
-}
-function reflectViewButtons(){
-  if (!els.viewTable || !els.viewCards) return;
-  if (state.view === "cards") {
-    els.viewCards.setAttribute("aria-pressed","true");
-    els.viewTable.setAttribute("aria-pressed","false");
-  } else {
-    els.viewTable.setAttribute("aria-pressed","true");
-    els.viewCards.setAttribute("aria-pressed","false");
-  }
-}
 
-/* ---------- topic buttons ---------- */
 function renderTopicButtons(){
   const box = document.getElementById("topicButtons");
   box.innerHTML = "";
@@ -107,14 +112,14 @@ function renderTopicButtons(){
   box.appendChild(frag);
 }
 
-/* ---------- events ---------- */
 function attachEvents(){
   els.q.addEventListener("input", ()=>{ state.q=els.q.value.toLowerCase(); applyFilters(); });
 
-  els.viewTable.onclick = ()=>{ state.view="table"; reflectViewButtons(); applyFilters(); };
-  els.viewCards.onclick = ()=>{ state.view="cards"; reflectViewButtons(); applyFilters(); };
+  // Manual view toggle (disables autoView)
+  els.viewTable.onclick = ()=> setView("table", "manual");
+  els.viewCards.onclick = ()=> setView("cards", "manual");
 
-  // sortable headers
+  // Sortable headers
   document.querySelectorAll("#tbl thead th").forEach(th=>{
     const key = th.getAttribute("data-key");
     if(!key || key==="actions") return;
@@ -129,7 +134,6 @@ function attachEvents(){
   });
 }
 
-/* ---------- filters ---------- */
 function matchesQuery(p){ return !state.q || haystack(p).includes(state.q); }
 function matchesTopics(p){
   if(state.selected.size===0) return true;
@@ -149,18 +153,18 @@ function matchesTopics(p){
   return true;
 }
 
-/* ---------- pipeline ---------- */
+/* ------------------ render pipeline ------------------ */
 function applyFilters(){
   let items = state.data.filter(p => matchesQuery(p) && matchesTopics(p));
 
-  // sort: locked last, then by chosen column
+  // sort: locked last, then by selected column
   const dir = state.sort.dir==="asc" ? 1 : -1;
   items.sort((a,b)=>{
     const la=isLocked(a), lb=isLocked(b);
-    if(la!==lb) return la? 1 : -1; // locked always last
+    if(la!==lb) return la? 1 : -1; // locked last
     const key = state.sort.key;
-    const sa = v => String(v||"").toLowerCase();
-    if(key==="title") return dir * sa(a.title).localeCompare(sa(b.title));
+    const sa = v=>String(v||"").toLowerCase();
+    if(key==="title")    return dir * sa(a.title).localeCompare(sa(b.title));
     if(key==="category") return dir * sa(a.category).localeCompare(sa(b.category));
     if(key==="tags"){
       const ta=(a.tags||[]).join(", "), tb=(b.tags||[]).join(", ");
@@ -177,11 +181,13 @@ function applyFilters(){
   adjustCardSize(items.length);
 
   if(state.view==="table"){
+    // Show table
     document.getElementById("tablewrap").style.display="";
     els.sections.style.display="none";
     els.grid.style.display="none";
     renderTable(items);
   }else{
+    // Show cards
     document.getElementById("tablewrap").style.display="none";
     if(state.selected.size===0 && !state.q){
       els.sections.style.display="";
@@ -195,7 +201,6 @@ function applyFilters(){
   }
 }
 
-/* ---------- table rendering ---------- */
 function renderTable(items){
   const tb = els.tbody;
   tb.innerHTML = "";
@@ -227,7 +232,7 @@ function renderTable(items){
   tb.appendChild(frag);
 }
 
-/* ---------- cards rendering ---------- */
+/* Cards view */
 function card(p){
   const locked = isLocked(p);
   const el=document.createElement("article");
@@ -260,7 +265,7 @@ function renderGrid(items){
   g.appendChild(frag);
 }
 
-/* ---------- grouping for cards/no-filters ---------- */
+/* Grouping for Cards/no-filters */
 function groupByCategory(items){
   const map=new Map();
   items.forEach(p=>{
@@ -283,10 +288,15 @@ function renderSections(groups){
   box.appendChild(frag);
 }
 
-/* ---------- misc ---------- */
+/* Misc helpers */
 function updateCounts(shown,total){ const c=document.getElementById("countLabel"); if(c) c.textContent=`${shown} of ${total} shown`; }
 function adjustCardSize(n){
   let min=360;
   if(n>=400) min=180; else if(n>=250) min=220; else if(n>=120) min=260; else if(n>=60) min=300; else if(n>=24) min=340;
   document.documentElement.style.setProperty("--card-min", min+"px");
+}
+function escapeHTML(s){
+  return String(s||"").replace(/[&<>"']/g, m => (
+    {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]
+  ));
 }
