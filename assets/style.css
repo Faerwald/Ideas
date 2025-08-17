@@ -106,16 +106,21 @@ table.data th {
   white-space: nowrap !important;   /* keep short headers on one line */
 }
 
-/* Column widths + alignment (no more squish) */
-table.data th[data-key="year"],     table.data td:nth-child(2) { width: 72px;  text-align: center; }
-table.data th[data-key="category"], table.data td:nth-child(3) { width: 140px; }
-table.data th[data-key="pages"],    table.data td:nth-child(4) { width: 68px;  text-align: center; }
-table.data th[data-key="wait"],     table.data td:nth-child(5) { width: 68px;  text-align: center; }
-table.data th[data-key="locked"],   table.data td:nth-child(6) { width: 48px;  text-align: center; }
-
-/* Optional: on very small screens you can hide the lock column too
-@media (max-width: 700px){
-  table.data th:nth-child(6), table.data td:nth-child(6) { display:none; }
+/* Force compact header tokens to stay on one line (no hyphenation, no wrap) */
+table.data th[data-key="wait"],
+table.data th[data-key="pages"],
+table.data th[data-key="year"],
+table.data th[data-key="locked"]{
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  hyphens: manual !important;
 }
-*/
+
+/* Give WAIT/Pages a touch more width so the browser never tries to crush them */
+table.data th[data-key="pages"], table.data td:nth-child(4)  { width: 80px !important; text-align: center; }
+table.data th[data-key="wait"],  table.data td:nth-child(5)  { width: 80px !important; text-align: center; }
+
+/* Optional: abbr styling (we'll add <abbr> in the header text) */
+abbr { text-decoration: none; border-bottom: 0; }
 
