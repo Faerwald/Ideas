@@ -3,7 +3,12 @@
   --card-min: 320px; /* JS adjusts based on result count */
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif}
+html,body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font: 15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif; /* base size consolidated here */
+}
 a{color:var(--accent);text-decoration:none}
 
 /* Header */
@@ -63,17 +68,16 @@ a{color:var(--accent);text-decoration:none}
   overflow-wrap:anywhere; word-wrap:break-word; word-break:break-word; hyphens:auto;
 }
 
-/* Table view (default on desktop) */
-html, body { font-size: 15px; } /* slightly denser */
+/* Table view */
 #tablewrap { overflow-x: auto; padding-top: .5rem; }
-table.data { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.data { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: fixed; } /* fixed keeps widths stable */
 table.data th, table.data td { border-bottom: 1px solid var(--line); padding: .45rem .5rem; vertical-align: top; }
 table.data th { text-align: left; color: var(--muted); cursor: pointer; user-select: none; position: sticky; top: 0; background: var(--bg); z-index: 1; }
 table.data tr:hover { background: rgba(255,255,255,0.03); }
 td.nowrap { white-space: nowrap; }
 
 /* WAIT-o-meter badge + optional colors */
-.badge-wait { display:inline-block; min-width:1.8ch; text-align:center; font-weight:700; padding:.05rem .35rem; border-radius:.35rem; border:1px solid var(--line); background: var(--card); }
+.badge-wait { display:inline-block; min-width:1.8ch; text-align:center; font-weight:700; padding:.05rem .35rem; border-radius:.35rem; border:1px solid var(--line); background: var(--card); font-variant-numeric: tabular-nums; }
 .badge-wait.w1{ background:#2a2c35; color:#c8cbd2; }
 .badge-wait.w2{ background:#333644; color:#cfd3db; }
 .badge-wait.w3{ background:#3b3f2f; color:#dfe7c5; }
@@ -99,15 +103,15 @@ td.nowrap { white-space: nowrap; }
 table.data th {
   overflow-wrap: normal !important;
   word-break: normal !important;
-  white-space: nowrap !important;   /* keep 'WAIT' and 'Pages' on one line */
+  white-space: nowrap !important;   /* keep short headers on one line */
 }
 
 /* Column widths + alignment (no more squish) */
-table.data th[data-key="year"],  table.data td:nth-child(2)  { width: 72px;  text-align: center; }
-table.data th[data-key="category"], table.data td:nth-child(3){ width: 140px; }
-table.data th[data-key="pages"], table.data td:nth-child(4)  { width: 68px;  text-align: center; }
-table.data th[data-key="wait"],  table.data td:nth-child(5)  { width: 68px;  text-align: center; }
-table.data th[data-key="locked"],table.data td:nth-child(6)  { width: 48px;  text-align: center; }
+table.data th[data-key="year"],     table.data td:nth-child(2) { width: 72px;  text-align: center; }
+table.data th[data-key="category"], table.data td:nth-child(3) { width: 140px; }
+table.data th[data-key="pages"],    table.data td:nth-child(4) { width: 68px;  text-align: center; }
+table.data th[data-key="wait"],     table.data td:nth-child(5) { width: 68px;  text-align: center; }
+table.data th[data-key="locked"],   table.data td:nth-child(6) { width: 48px;  text-align: center; }
 
 /* Optional: on very small screens you can hide the lock column too
 @media (max-width: 700px){
