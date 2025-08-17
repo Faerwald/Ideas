@@ -98,3 +98,7 @@ a{color:var(--accent);text-decoration:none}
     top: auto !important;
   }
 }
+
+/* lock styling */
+.card.locked{ opacity:.55; filter:saturate(.7); }
+.card .lock-badge{ float:right; font-size:1.1rem; margin-left:.4rem; opacity:.9; }
