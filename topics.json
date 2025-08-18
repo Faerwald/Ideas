@@ -16,6 +16,17 @@
       "analytical-engine"
     ]
   },
+
+  {
+    "label": "Eternity", 
+    "any": [
+      "eternity",
+      "asimov",
+      "cooper",
+      "mallansohn",
+      "lambent"
+    ]
+  },
   {
     "label": "Oneiro Cybernetics (Dream)",
     "any": [
