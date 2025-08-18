@@ -124,3 +124,12 @@ table.data th[data-key="wait"],  table.data td:nth-child(5)  { width: 80px !impo
 /* Optional: abbr styling (we'll add <abbr> in the header text) */
 abbr { text-decoration: none; border-bottom: 0; }
 
+/* --- table: Title | Pages | Actions layout --- */
+table.data { table-layout: fixed; }
+table.data th[data-key="title"], table.data td:nth-child(1) { width: auto; }
+table.data th[data-key="pages"], table.data td:nth-child(2) { width: 80px; text-align: center; white-space: nowrap; }
+table.data th[data-key="actions"], table.data td:nth-child(3) { width: 190px; white-space: nowrap; }
+
+/* smaller outline buttons (no “selected” look) */
+.btn.sm { padding:.35rem .6rem; font-size:.9rem; }
+.btn.ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
