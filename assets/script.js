@@ -195,7 +195,7 @@ function renderTable(items){
     const dlUrl   = target ? asDownloadUrl(target) : null;
 
     // outline, smaller buttons (no “selected” look)
-    const readBtn = readUrl ? `<a class="btn ghost sm" target="_blank" rel="noopener" href="${readUrl}">Read</a>` : "";
+    const readBtn = readUrl ? `<a class="btn sm" target="_blank" rel="noopener" href="${readUrl}">Read</a>` : "";
     const dlBtn   = dlUrl ?   `<a class="btn ghost sm" target="_blank" rel="noopener" href="${dlUrl}">Download</a>` : "";
 
     tr.innerHTML = `
@@ -219,7 +219,7 @@ function card(p){
   const target = locked && PRIVATE_NOTICE_ID ? PRIVATE_NOTICE_ID : p.driveId;
   const readUrl = target ? asPreviewUrl(target) : null;
   const dlUrl   = target ? asDownloadUrl(target) : null;
-  const readBtn = readUrl ? `<a class="btn ghost sm" target="_blank" rel="noopener" href="${readUrl}">Read</a>` : "";
+  const readBtn = readUrl ? `<a class="btn sm" target="_blank" rel="noopener" href="${readUrl}">Read</a>` : "";
   const dlBtn   = dlUrl ?   `<a class="btn ghost sm" target="_blank" rel="noopener" href="${dlUrl}">Download</a>` : "";
 
   el.innerHTML = `
