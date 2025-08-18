@@ -17,7 +17,7 @@
     ]
   },
   {
-    "label": "Eternity", 
+    "label": "Eternity",
     "any": [
       "eternity",
       "asimov",
@@ -271,6 +271,66 @@
       "scarred eigenstates",
       "many-body scars",
       "quantum many-body scars"
+    ]
+  },
+  {
+    "label": "QuantumLeap",
+    "any": [
+      "quantum leap",
+      "quantum-leap",
+      "project quantum leap",
+      "quantum-leap project",
+      "q-leap"
+    ]
+  },
+  {
+    "label": "TimeBCI",
+    "any": [
+      "time bci",
+      "time-bci",
+      "temporal bci",
+      "chrono-bci",
+      "chronobci",
+      "time brain interface",
+      "time brain-computer interface",
+      "temporal brain-computer interface"
+    ]
+  },
+  {
+    "label": "Wormholes",
+    "any": [
+      "wormhole",
+      "wormholes",
+      "einstein-rosen bridge",
+      "einstein rosen bridge",
+      "spacetime tunnel",
+      "space-time tunnel"
+    ]
+  },
+  {
+    "label": "FTL",
+    "any": [
+      "ftl",
+      "faster-than-light",
+      "faster than light",
+      "fasterthanlight",
+      "faster-than-light travel",
+      "faster than light travel",
+      "faster-than-light-travel",
+      "fasterthanlighttravel",
+      "superluminal",
+      "super-luminal"
+    ]
+  },
+  {
+    "label": "Asteroid Mining",
+    "any": [
+      "asteroid mining",
+      "asteroid-mining",
+      "space mining",
+      "in-situ resource utilization",
+      "in situ resource utilization",
+      "isru"
     ]
   }
 ]
