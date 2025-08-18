@@ -16,7 +16,6 @@
       "analytical-engine"
     ]
   },
-
   {
     "label": "Eternity", 
     "any": [
@@ -28,7 +27,15 @@
     ]
   },
   {
-    "label": "Oneiro Cybernetics (Dream)",
+    "label": "Starflight / Mars",
+    "any": [
+      "starflight",
+      "interstellar travel",
+      "mars"
+    ]
+  },
+  {
+    "label": "Oneiro Cybernetics",
     "any": [
       "oneiro",
       "oneiroi",
