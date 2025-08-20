@@ -139,13 +139,24 @@ function titleSortKey(s){
 function matchesQuery(p){
   const q = (state.q || "").trim().toLowerCase();
   if (!q) return true;
-  const h = haystack(p); // lower-cased text
-  // split on whitespace; strip leading/trailing punctuation from each term
+
+  const h = haystack(p);  // already lower-cased: title + abstract + tags + full/firstPage
+
+  // split on whitespace, strip surrounding punctuation
   const terms = q.split(/\s+/)
-    .map(t => t.replace(/^[^\w]+|[^\w]+$/g, ""))   // robust enough without unicode flags
+    .map(t => t.replace(/^[^\w]+|[^\w]+$/g, ""))  // trim punctuation
     .filter(Boolean);
-  // OR semantics across terms
-  return terms.length === 0 || terms.some(t => h.includes(t));
+
+  if (terms.length === 0) return true;
+
+  // AND semantics: every term must appear somewhere in the doc (any order, anywhere)
+  return terms.every(t => {
+    if (h.includes(t)) return true;
+    // also try simple hyphen/space variants (e.g., "a-waves" vs "a waves")
+    const tSpace = t.replace(/-/g, " ");
+    const tHyph  = t.replace(/ /g, "-");
+    return h.includes(tSpace) || h.includes(tHyph);
+  });
 }
 
 /* ---------- topic matching (AND across topics, OR inside) ---------- */
