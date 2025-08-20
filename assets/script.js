@@ -1,6 +1,6 @@
 /* Table/Cards UI with:
    - Topic buttons (AND across topics, OR inside topic via topics.json)
-   - Search over title+abstract+tags+fp/full
+   - Search over title+abstract+tags+fp/full (multi-word OR semantics)
    - Sortable TABLE with only: Title | Pages | Actions
    - Cards view optional
    - Locked items 🔒; redirect Read/Download to notice PDF
@@ -16,7 +16,7 @@ const state = {
   topics: [],
   selected: new Set(),
   blacklist: new Set(),
-  view: null,                  // "table" | "cards"
+  view: null,                          // "table" | "cards"
   sort: { key: "title", dir: "asc" },  // default: Title A→Z
   autoView: true
 };
@@ -26,7 +26,7 @@ const els = { q:null, topicBox:null, sections:null, grid:null, count:null, tbody
 const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
 const driveDownload = id => `https://drive.google.com/uc?export=download&id=${id}`;
 
-// Accept full URLs or bare IDs for the notice
+// Accept full URLs or bare IDs (for notice link or driveId)
 const asPreviewUrl = v => (String(v).startsWith("http") ? v : drivePreview(v));
 const asDownloadUrl = v => (String(v).startsWith("http") ? v : driveDownload(v));
 
@@ -135,16 +135,20 @@ function titleSortKey(s){
   return { bucket: startsWithLetter ? 0 : 1, norm, raw: t.toLowerCase() };
 }
 
-/* ---------- filter & render ---------- */
+/* ---------- query matching (multi-word OR) ---------- */
 function matchesQuery(p){
-  if (!state.q) return true;
-  const h = haystack(p);                   // already lower-cased inside haystack()
-  const terms = state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
-  // OR semantics: match if ANY term appears
+  const q = (state.q || "").trim().toLowerCase();
+  if (!q) return true;
+  const h = haystack(p); // lower-cased text
+  // split on whitespace; strip leading/trailing punctuation from each term
+  const terms = q.split(/\s+/)
+    .map(t => t.replace(/^[^\w]+|[^\w]+$/g, ""))   // robust enough without unicode flags
+    .filter(Boolean);
+  // OR semantics across terms
   return terms.length === 0 || terms.some(t => h.includes(t));
 }
 
-
+/* ---------- topic matching (AND across topics, OR inside) ---------- */
 function matchesTopics(p){
   if(state.selected.size===0) return true;
   const h = haystack(p);
@@ -162,6 +166,7 @@ function matchesTopics(p){
   return true;
 }
 
+/* ---------- filter & render ---------- */
 function applyFilters(){
   let items = state.data.filter(p => matchesQuery(p) && matchesTopics(p));
 
@@ -179,11 +184,9 @@ function applyFilters(){
       const cmp = A.norm.localeCompare(B.norm, undefined, {sensitivity:"base"});
       return dir * cmp;
     }
-
     if(state.sort.key==="pages"){
       return dir * ((a.pages||0)-(b.pages||0));
     }
-
     return 0;
   });
 
@@ -222,7 +225,7 @@ function renderTable(items){
     const readUrl = target ? asPreviewUrl(target) : null;
     const dlUrl   = target ? asDownloadUrl(target) : null;
 
-    // outline, smaller buttons (no “selected” look)
+    // outline, smaller buttons
     const readBtn = readUrl ? `<a class="btn sm" target="_blank" rel="noopener" href="${readUrl}">Read</a>` : "";
     const dlBtn   = dlUrl ?   `<a class="btn ghost sm" target="_blank" rel="noopener" href="${dlUrl}">Download</a>` : "";
 
