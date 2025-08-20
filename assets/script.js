@@ -126,6 +126,15 @@ function attachEvents(){
   });
 }
 
+/* ---------- custom title comparator: letters first, numbers/symbols last ---------- */
+function titleSortKey(s){
+  const t = String(s || "").trim();
+  const startsWithLetter = /^[A-Za-z]/.test(t);
+  // remove leading non-letters for comparison; compare case-insensitively
+  const norm = t.replace(/^[^A-Za-z]+/, "").toLowerCase();
+  return { bucket: startsWithLetter ? 0 : 1, norm, raw: t.toLowerCase() };
+}
+
 /* ---------- filter & render ---------- */
 function matchesQuery(p){ return !state.q || haystack(p).includes(state.q); }
 function matchesTopics(p){
@@ -153,9 +162,20 @@ function applyFilters(){
   items.sort((a,b)=>{
     const la=isLocked(a), lb=isLocked(b);
     if(la!==lb) return la? 1 : -1;
-    const sa = v=>String(v||"").toLowerCase();
-    if(state.sort.key==="title") return dir * sa(a.title).localeCompare(sa(b.title));
-    if(state.sort.key==="pages") return dir * ((a.pages||0)-(b.pages||0));
+
+    if(state.sort.key==="title"){
+      // Letters first (bucket 0), numbers/symbols last (bucket 1), then A→Z/Z→A inside bucket
+      const A = titleSortKey(a.title);
+      const B = titleSortKey(b.title);
+      if (A.bucket !== B.bucket) return A.bucket - B.bucket; // bucket rule ignores dir: letters always before numbers
+      const cmp = A.norm.localeCompare(B.norm, undefined, {sensitivity:"base"});
+      return dir * cmp;
+    }
+
+    if(state.sort.key==="pages"){
+      return dir * ((a.pages||0)-(b.pages||0));
+    }
+
     return 0;
   });
 
