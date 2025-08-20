@@ -136,7 +136,15 @@ function titleSortKey(s){
 }
 
 /* ---------- filter & render ---------- */
-function matchesQuery(p){ return !state.q || haystack(p).includes(state.q); }
+function matchesQuery(p){
+  if (!state.q) return true;
+  const h = haystack(p);                   // already lower-cased inside haystack()
+  const terms = state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  // OR semantics: match if ANY term appears
+  return terms.length === 0 || terms.some(t => h.includes(t));
+}
+
+
 function matchesTopics(p){
   if(state.selected.size===0) return true;
   const h = haystack(p);
