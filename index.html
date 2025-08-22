@@ -11,62 +11,58 @@
 <header class="hero">
   <h1>Research Portfolio</h1>
   <div class="lede">
-
-<p>Mesopotamia was as ‘ready’ for Apollo as we are for Alpha Centauri—brilliant enough to sketch the rocket, not yet fit to light it. Give Mars the 400 years America had; today’s red ‘woods’ will be neighborhoods, the asteroid belt our shipyard and launchpoint, with last year a waypoint crossed by the ship yet to be built.</p>    
-
-<p>Dreams reach knowledge fastest through the detour of madness.</p>
-
-<p>《 "That brain of mine is something more than merely mortal; as time will show" | “You loved me and your love made me – human.” 》 Impossibilia amori cedunt.</p>
-
-<p><strong>Jason Agamemnon Sokaris</strong></p>
-    
+    <p>Mesopotamia was as ‘ready’ for Apollo as we are for Alpha Centauri—brilliant enough to sketch the rocket, not yet fit to light it. Give Mars the 400 years America had; today’s red ‘woods’ will be neighborhoods, the asteroid belt our shipyard and launchpoint, with last year a waypoint crossed by the ship yet to be built.</p>
+    <p>Dreams reach knowledge fastest through the detour of madness.</p>
+    <p>《 "That brain of mine is something more than merely mortal; as time will show" | “You loved me and your love made me – human.” 》 </p>
+    <p>Impossibilia amori cedunt.</p>
+    <p><strong>Jason Agamemnon Sokaris</strong></p>
   </div>
 </header>
 
-  <div class="layout">
-    <aside id="sidebar">
-      <h3>Topics (click to toggle — AND)</h3>
-      <div id="topicButtons" class="topics"></div>
-    </aside>
+<div class="layout">
+  <aside id="sidebar">
+    <h3>Topics (click to toggle — AND)</h3>
+    <div id="topicButtons" class="topics"></div>
+  </aside>
 
-    <section class="content">
-      <div class="toolbar">
-        <input id="q" type="search" placeholder="Search title, abstract, tags, or first page…" aria-label="Search papers"/>
-        <div class="counts"><span id="countLabel"></span></div>
-        <div class="view-toggle">
-          View:
-          <button id="viewTable" class="chip" aria-pressed="true">Table</button>
-          <button id="viewCards" class="chip" aria-pressed="false">Cards</button>
-        </div>
+  <section class="content">
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Search title, abstract, tags, or first page…" aria-label="Search papers"/>
+      <div class="counts"><span id="countLabel"></span></div>
+      <div class="view-toggle">
+        View:
+        <button id="viewTable" class="chip" aria-pressed="true">Table</button>
+        <button id="viewCards" class="chip" aria-pressed="false">Cards</button>
       </div>
+    </div>
 
-      <!-- Grouped Cards (used when no filters and Cards view) -->
-      <div id="sections" style="display:none"></div>
+    <!-- Grouped Cards (used when no filters and Cards view) -->
+    <div id="sections" style="display:none"></div>
 
-      <!-- Cards Grid (used when Cards view + filters active) -->
-      <div id="grid" class="grid" style="display:none"></div>
+    <!-- Cards Grid (used when Cards view + filters active) -->
+    <div id="grid" class="grid" style="display:none"></div>
 
-      <!-- Compact Sortable Table (Title | Pages | Actions) -->
-      <div id="tablewrap">
-        <table id="tbl" class="data">
-          <thead>
-            <tr>
-              <th data-key="title">Title</th>
-              <th data-key="pages"><abbr title="Pages">Pages</abbr></th>
-              <th data-key="year"><abbr title="Year">Year</abbr></th>
-              <th data-key="actions">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
-      </div>
-    </section>
-  </div>
+    <!-- Compact Sortable Table (Title | Pages | Year | Actions) -->
+    <div id="tablewrap">
+      <table id="tbl" class="data">
+        <thead>
+          <tr>
+            <th data-key="title">Title</th>
+            <th data-key="pages"><abbr title="Pages">Pages</abbr></th>
+            <th data-key="year"><abbr title="Year">Year</abbr></th>
+            <th data-key="actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
 
-  <footer class="footer">
-    <p>© 2025 Jason Agamemnon Sokaris — All rights reserved. <a href="LICENSE.html">Licensing &amp; Use</a></p>
-  </footer>
+<footer class="footer">
+  <p>© 2025 Jason Agamemnon Sokaris — All rights reserved. <a href="LICENSE.html">Licensing &amp; Use</a></p>
+</footer>
 
-  <script src="assets/script.js?v=3"></script>
+<script src="assets/script.js?v=4"></script>
 </body>
 </html>
