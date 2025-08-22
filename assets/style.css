@@ -98,9 +98,9 @@ table.data th{
 table.data tr:hover{ background:rgba(255,255,255,.03) }
 td.nowrap{ white-space:nowrap }
 
-/* Column widths (match header order: Title | Pages | Year | Actions) */
+/* Column widths (match header order: Title | Pages | Date | Actions) */
 table.data th[data-key="pages"], table.data td:nth-child(2){ width:80px; text-align:center }
-table.data th[data-key="year"],  table.data td:nth-child(3){ width:80px; text-align:center }
+table.data th[data-key="date"],  table.data td:nth-child(3){ width:116px; text-align:center; white-space:nowrap }
 
 /* ---- WAIT-o-meter badges (optional colors) ---- */
 .badge-wait{
@@ -119,11 +119,6 @@ table.data th[data-key="year"],  table.data td:nth-child(3){ width:80px; text-al
 /* ---- Lock indicators in table ---- */
 .lock-ico{ opacity:.9 }
 .row-locked{ opacity:.6; filter:saturate(.75) }
-
-/* ---- Mobile tweaks ---- */
-@media (max-width:980px){
-  /* Keep table compact; we’re using Cards by default on mobile anyway */
-}
 
 /* ---- Footer ---- */
 .footer{
