@@ -2,7 +2,7 @@
    Topic buttons (AND across topics, OR inside a topic via topics.json).
    Search over title + abstract + tags + full/firstPage.
    Locked items greyed + 🔒 and redirect to your notice PDF.
-   Table columns order: Title | Pages | Year | Actions.
+   Table columns order: Title | Pages | Date | Actions.
 */
 
 const PRIVATE_NOTICE_ID = "https://drive.google.com/file/d/1iCLtsAIsN8Gu7BpH3owzZfIKBvntBh-_/view?usp=sharing"; // fixed as requested
@@ -14,7 +14,7 @@ const state = {
   topics: [],
   selected: new Set(),
   view: null,                        // "table" | "cards"
-  sort: { key: "year", dir: "desc" },
+  sort: { key: "date", dir: "desc" },// default: newest first
   autoView: true                     // auto until user clicks a view toggle
 };
 
@@ -169,7 +169,7 @@ function applyFilters(){
     const sa = v=>String(v||"").toLowerCase();
     if(key==="title") return dir * sa(a.title).localeCompare(sa(b.title));
     if(key==="pages") return dir * ((a.pages||0)-(b.pages||0));
-    if(key==="year")  return dir * ((a.year||0)-(b.year||0));
+    if(key==="date")  return dir * String(a.date||"").localeCompare(String(b.date||""));
     return 0;
   });
 
@@ -211,7 +211,7 @@ function renderTable(items){
     tr.innerHTML = `
       <td>${escapeHTML(p.title||"")}</td>
       <td class="nowrap">${p.pages ?? ""}</td>
-      <td class="nowrap">${p.year ?? ""}</td>
+      <td class="nowrap">${p.date ?? ""}</td>
       <td class="nowrap">${readBtn} ${dlBtn}</td>
     `;
     frag.appendChild(tr);
@@ -285,4 +285,3 @@ function adjustCardSize(n){
   if(n>=400) min=180; else if(n>=250) min=220; else if(n>=120) min=260; else if(n>=60) min=300; else if(n>=24) min=340;
   document.documentElement.style.setProperty("--card-min", min+"px");
 }
-
