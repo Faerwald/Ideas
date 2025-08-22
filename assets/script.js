@@ -1,13 +1,11 @@
-/* Table/Cards UI with:
-   - Topic buttons (AND across topics, OR inside topic via topics.json)
-   - Search over title+abstract+tags+fp/full (multi-word OR semantics)
-   - Sortable TABLE with only: Title | Pages | Actions
-   - Cards view optional
-   - Locked items 🔒; redirect Read/Download to notice PDF
-   - Auto-view: desktop=Table, mobile=Cards; manual toggle overrides
+/* Desktop = Table by default; Mobile = Cards by default (auto).
+   Topic buttons (AND across topics, OR inside a topic via topics.json).
+   Search over title + abstract + tags + full/firstPage.
+   Locked items greyed + 🔒 and redirect to your notice PDF.
+   Table columns order: Title | Pages | Year | Actions.
 */
 
-const PRIVATE_NOTICE_ID = "https://drive.google.com/file/d/1iCLtsAIsN8Gu7BpH3owzZfIKBvntBh-_/view?usp=sharing"; // keep exactly as requested
+const PRIVATE_NOTICE_ID = "https://drive.google.com/file/d/1iCLtsAIsN8Gu7BpH3owzZfIKBvntBh-_/view?usp=sharing"; // fixed as requested
 const MOBILE_BP = 979;
 
 const state = {
@@ -15,20 +13,12 @@ const state = {
   q: "",
   topics: [],
   selected: new Set(),
-  blacklist: new Set(),
-  view: null,                          // "table" | "cards"
-  sort: { key: "title", dir: "asc" },  // default: Title A→Z
-  autoView: true
+  view: null,                        // "table" | "cards"
+  sort: { key: "year", dir: "desc" },
+  autoView: true                     // auto until user clicks a view toggle
 };
 
 const els = { q:null, topicBox:null, sections:null, grid:null, count:null, tbody:null, viewTable:null, viewCards:null };
-
-const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
-const driveDownload = id => `https://drive.google.com/uc?export=download&id=${id}`;
-
-// Accept full URLs or bare IDs (for notice link or driveId)
-const asPreviewUrl = v => (String(v).startsWith("http") ? v : drivePreview(v));
-const asDownloadUrl = v => (String(v).startsWith("http") ? v : driveDownload(v));
 
 document.addEventListener("DOMContentLoaded", () => {
   els.q = document.getElementById("q");
@@ -42,12 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   Promise.all([
     fetch("papers.json?ts="+Date.now()).then(r=>r.json()),
-    fetch("topics.json?ts="+Date.now()).then(r=>r.json()).catch(_=>[]),
-    fetch("blacklist.json?ts="+Date.now()).then(r=>r.json()).catch(_=>[])
-  ]).then(([papers, topics, bl])=>{
+    fetch("topics.json?ts="+Date.now()).then(r=>r.json()).catch(_=>[])
+  ]).then(([papers, topics])=>{
     state.data = Array.isArray(papers)? papers : [];
     state.topics = Array.isArray(topics)? topics : [];
-    if (Array.isArray(bl)) state.blacklist = new Set(bl);
     renderTopicButtons();
     attachEvents();
     initAutoView();
@@ -55,39 +43,57 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* ---------- auto-view ---------- */
+/* ---------- auto view: desktop table / mobile cards ---------- */
 function initAutoView(){
   const mq = window.matchMedia(`(max-width: ${MOBILE_BP}px)`);
   setView(mq.matches ? "cards" : "table", "auto");
-  mq.addEventListener?.("change", e => { if (state.autoView) setView(e.matches ? "cards" : "table", "auto"); });
+  mq.addEventListener?.("change", e => {
+    if (state.autoView) setView(e.matches ? "cards" : "table", "auto");
+  });
 }
 function setView(v, source="manual"){
-  if (state.view === v && source!=="auto") return;
+  if (state.view === v && source !== "auto") return;
   state.view = v;
-  if (source==="manual") state.autoView = false;
-  els.viewTable?.setAttribute("aria-pressed", String(v==="table"));
-  els.viewCards?.setAttribute("aria-pressed", String(v==="cards"));
+  if (source === "manual") state.autoView = false;
+  if (els.viewTable && els.viewCards){
+    els.viewTable.setAttribute("aria-pressed", String(v==="table"));
+    els.viewCards.setAttribute("aria-pressed", String(v==="cards"));
+  }
   applyFilters();
 }
 
-/* ---------- topics & search ---------- */
+/* ---------- helpers ---------- */
+function escapeHTML(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
 function haystack(p){
   return [
     p.title || "",
     p.abstract || "",
-    (p.tags || []).join(" "),
-    p.full || p.firstPage || p.fp || ""
+    (Array.isArray(p.tags)? p.tags.join(" ") : ""),
+    p.full || p.firstPage || p.fp || ""   // prefer full -> firstPage -> fp
   ].join(" ").toLowerCase();
 }
-function isLocked(p){ return !!p.locked || (p.driveId && state.blacklist.has(p.driveId)); }
+function isLocked(p){ return !!p.locked; }
+function previewLink(idOrUrl){
+  if (!idOrUrl) return null;
+  if (String(idOrUrl).startsWith("http")) return idOrUrl;
+  return `https://drive.google.com/file/d/${idOrUrl}/preview`;
+}
+function downloadLink(idOrUrl){
+  if (!idOrUrl) return null;
+  if (String(idOrUrl).startsWith("http")) return idOrUrl;
+  return `https://drive.google.com/uc?export=download&id=${idOrUrl}`;
+}
 
+/* ---------- topics ---------- */
 function renderTopicButtons(){
   const box = document.getElementById("topicButtons");
   box.innerHTML = "";
   const frag = document.createDocumentFragment();
   state.topics.forEach(t=>{
     const b=document.createElement("button");
-    b.className="topic-chip"; b.type="button"; b.textContent=t.label;
+    b.className="topic-chip";
+    b.type="button";
+    b.textContent=t.label;
     b.setAttribute("aria-pressed","false");
     b.onclick=()=>{
       const on = state.selected.has(t.label);
@@ -98,7 +104,9 @@ function renderTopicButtons(){
     frag.appendChild(b);
   });
   const clr=document.createElement("button");
-  clr.className="btn ghost small"; clr.type="button"; clr.textContent="Clear";
+  clr.className="btn ghost small";
+  clr.type="button";
+  clr.textContent="Clear";
   clr.onclick=()=>{
     state.selected.clear();
     [...box.querySelectorAll(".topic-chip")].forEach(x=>x.setAttribute("aria-pressed","false"));
@@ -108,58 +116,29 @@ function renderTopicButtons(){
   box.appendChild(frag);
 }
 
+/* ---------- events ---------- */
 function attachEvents(){
   els.q.addEventListener("input", ()=>{ state.q=els.q.value.toLowerCase(); applyFilters(); });
-
   els.viewTable.onclick = ()=> setView("table","manual");
   els.viewCards.onclick = ()=> setView("cards","manual");
 
-  // Sortable headers (Title, Pages only)
+  // sortable headers
   document.querySelectorAll("#tbl thead th").forEach(th=>{
     const key = th.getAttribute("data-key");
     if(!key || key==="actions") return;
     th.addEventListener("click", ()=>{
       if(state.sort.key===key){ state.sort.dir = state.sort.dir==="asc" ? "desc":"asc"; }
-      else { state.sort.key = key; state.sort.dir = (key==="title") ? "asc" : "desc"; }
+      else {
+        state.sort.key = key;
+        state.sort.dir = (key==="title") ? "asc" : "desc";
+      }
       applyFilters();
     });
   });
 }
 
-/* ---------- custom title comparator: letters first, numbers/symbols last ---------- */
-function titleSortKey(s){
-  const t = String(s || "").trim();
-  const startsWithLetter = /^[A-Za-z]/.test(t);
-  // remove leading non-letters for comparison; compare case-insensitively
-  const norm = t.replace(/^[^A-Za-z]+/, "").toLowerCase();
-  return { bucket: startsWithLetter ? 0 : 1, norm, raw: t.toLowerCase() };
-}
-
-/* ---------- query matching (multi-word OR) ---------- */
-function matchesQuery(p){
-  const q = (state.q || "").trim().toLowerCase();
-  if (!q) return true;
-
-  const h = haystack(p);  // already lower-cased: title + abstract + tags + full/firstPage
-
-  // split on whitespace, strip surrounding punctuation
-  const terms = q.split(/\s+/)
-    .map(t => t.replace(/^[^\w]+|[^\w]+$/g, ""))  // trim punctuation
-    .filter(Boolean);
-
-  if (terms.length === 0) return true;
-
-  // AND semantics: every term must appear somewhere in the doc (any order, anywhere)
-  return terms.every(t => {
-    if (h.includes(t)) return true;
-    // also try simple hyphen/space variants (e.g., "a-waves" vs "a waves")
-    const tSpace = t.replace(/-/g, " ");
-    const tHyph  = t.replace(/ /g, "-");
-    return h.includes(tSpace) || h.includes(tHyph);
-  });
-}
-
-/* ---------- topic matching (AND across topics, OR inside) ---------- */
+/* ---------- filters ---------- */
+function matchesQuery(p){ return !state.q || haystack(p).includes(state.q); }
 function matchesTopics(p){
   if(state.selected.size===0) return true;
   const h = haystack(p);
@@ -177,27 +156,20 @@ function matchesTopics(p){
   return true;
 }
 
-/* ---------- filter & render ---------- */
+/* ---------- render pipeline ---------- */
 function applyFilters(){
   let items = state.data.filter(p => matchesQuery(p) && matchesTopics(p));
 
-  // sort: locked last, then selected column
+  // sort: locked last, then by selected column
   const dir = state.sort.dir==="asc" ? 1 : -1;
   items.sort((a,b)=>{
     const la=isLocked(a), lb=isLocked(b);
     if(la!==lb) return la? 1 : -1;
-
-    if(state.sort.key==="title"){
-      // Letters first (bucket 0), numbers/symbols last (bucket 1), then A→Z/Z→A inside bucket
-      const A = titleSortKey(a.title);
-      const B = titleSortKey(b.title);
-      if (A.bucket !== B.bucket) return A.bucket - B.bucket; // bucket rule ignores dir: letters always before numbers
-      const cmp = A.norm.localeCompare(B.norm, undefined, {sensitivity:"base"});
-      return dir * cmp;
-    }
-    if(state.sort.key==="pages"){
-      return dir * ((a.pages||0)-(b.pages||0));
-    }
+    const key = state.sort.key;
+    const sa = v=>String(v||"").toLowerCase();
+    if(key==="title") return dir * sa(a.title).localeCompare(sa(b.title));
+    if(key==="pages") return dir * ((a.pages||0)-(b.pages||0));
+    if(key==="year")  return dir * ((a.year||0)-(b.year||0));
     return 0;
   });
 
@@ -223,26 +195,23 @@ function applyFilters(){
   }
 }
 
+/* ---------- table ---------- */
 function renderTable(items){
   const tb = els.tbody;
   tb.innerHTML = "";
   const frag = document.createDocumentFragment();
   for(const p of items){
+    const locked = isLocked(p);
+    const target = locked ? PRIVATE_NOTICE_ID : p.driveId;
+    const readBtn = target ? `<a class="btn" target="_blank" rel="noopener" href="${previewLink(target)}">Read</a>` : "";
+    const dlBtn   = target ? `<a class="btn ghost" target="_blank" rel="noopener" href="${downloadLink(target)}">Download</a>` : "";
+
     const tr = document.createElement("tr");
-    if(isLocked(p)) tr.className="row-locked";
-
-    // target for locked vs unlocked
-    const target = (isLocked(p) && PRIVATE_NOTICE_ID) ? PRIVATE_NOTICE_ID : p.driveId;
-    const readUrl = target ? asPreviewUrl(target) : null;
-    const dlUrl   = target ? asDownloadUrl(target) : null;
-
-    // outline, smaller buttons
-    const readBtn = readUrl ? `<a class="btn sm" target="_blank" rel="noopener" href="${readUrl}">Read</a>` : "";
-    const dlBtn   = dlUrl ?   `<a class="btn ghost sm" target="_blank" rel="noopener" href="${dlUrl}">Download</a>` : "";
-
+    if(locked) tr.className = "row-locked";
     tr.innerHTML = `
       <td>${escapeHTML(p.title||"")}</td>
-      <td class="nowrap" style="text-align:center">${p.pages ?? ""}</td>
+      <td class="nowrap">${p.pages ?? ""}</td>
+      <td class="nowrap">${p.year ?? ""}</td>
       <td class="nowrap">${readBtn} ${dlBtn}</td>
     `;
     frag.appendChild(tr);
@@ -250,27 +219,30 @@ function renderTable(items){
   tb.appendChild(frag);
 }
 
-/* Cards view */
+/* ---------- cards ---------- */
 function card(p){
   const locked = isLocked(p);
-  const el=document.createElement("article");
-  el.className = "card" + (locked ? " locked" : "");
-  const sizeBadge = p.pages ? `<span class="tag">${p.pages} pp</span>` : "";
+  const target = locked ? PRIVATE_NOTICE_ID : p.driveId;
+  const readBtn = target ? `<a class="btn" target="_blank" rel="noopener" href="${previewLink(target)}">Read</a>` : "";
+  const dlBtn   = target ? `<a class="btn ghost" target="_blank" rel="noopener" href="${downloadLink(target)}">Download</a>` : "";
   const lockBadge = locked ? `<span class="lock-badge" title="Locked">🔒</span>` : "";
 
-  const target = locked && PRIVATE_NOTICE_ID ? PRIVATE_NOTICE_ID : p.driveId;
-  const readUrl = target ? asPreviewUrl(target) : null;
-  const dlUrl   = target ? asDownloadUrl(target) : null;
-  const readBtn = readUrl ? `<a class="btn sm" target="_blank" rel="noopener" href="${readUrl}">Read</a>` : "";
-  const dlBtn   = dlUrl ?   `<a class="btn ghost sm" target="_blank" rel="noopener" href="${dlUrl}">Download</a>` : "";
-
+  const el=document.createElement("article");
+  el.className = "card" + (locked ? " locked" : "");
   el.innerHTML = `
     <div class="card-head">
       <h2>${escapeHTML(p.title||"")}</h2>
       ${lockBadge}
     </div>
-    <div class="tagrow">${sizeBadge}</div>
-    <div class="actions">${readBtn} ${dlBtn}</div>`;
+    <p class="meta">${p.year || ''} ${p.venue ? '· ' + escapeHTML(p.venue) : ''}</p>
+    <p>${escapeHTML(p.abstract || '')}</p>
+    <div class="tagrow">
+      ${p.pages ? `<span class="tag">${p.pages} pp</span>` : ""}
+      ${p.category ? `<span class="tag">${escapeHTML(p.category)}</span>` : ""}
+      ${(Array.isArray(p.tags)? p.tags : []).map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join('')}
+    </div>
+    <div class="actions">${readBtn} ${dlBtn}</div>
+  `;
   return el;
 }
 function renderGrid(items){
@@ -280,7 +252,7 @@ function renderGrid(items){
   g.appendChild(frag);
 }
 
-/* Grouping for Cards/no-filters */
+/* ---------- grouping for cards (no filters) ---------- */
 function groupByCategory(items){
   const map=new Map();
   items.forEach(p=>{
@@ -303,15 +275,14 @@ function renderSections(groups){
   box.appendChild(frag);
 }
 
-/* Misc helpers */
-function updateCounts(shown,total){ const c=document.getElementById("countLabel"); if(c) c.textContent=`${shown} of ${total} shown`; }
+/* ---------- misc ---------- */
+function updateCounts(shown,total){
+  const c=document.getElementById("countLabel");
+  if(c) c.textContent = `${shown} of ${total} shown`;
+}
 function adjustCardSize(n){
   let min=360;
   if(n>=400) min=180; else if(n>=250) min=220; else if(n>=120) min=260; else if(n>=60) min=300; else if(n>=24) min=340;
   document.documentElement.style.setProperty("--card-min", min+"px");
 }
-function escapeHTML(s){
-  return String(s||"").replace(/[&<>"']/g, m => (
-    {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]
-  ));
-}
+
