@@ -126,3 +126,22 @@ table.data th[data-key="date"],  table.data td:nth-child(3){ width:116px; text-a
   max-width:1200px; margin:1rem auto; padding:1rem
 }
 .empty{ color:var(--muted); text-align:center; padding:2rem }
+
+/* === Site background image (root: /Aurora.jpg) === */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: url('../Aurora.jpg') center / cover no-repeat fixed; /* note the ../ because this CSS is in /assets/ */
+  z-index:-2;  /* sits behind everything */
+}
+
+/* Gentle dark overlay so text/cards stay readable */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: linear-gradient(180deg, rgba(11,13,18,.45), rgba(11,13,18,.7));
+  z-index:-1;
+  pointer-events:none;
+}
