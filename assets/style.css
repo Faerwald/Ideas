@@ -1,147 +1,157 @@
+/* =======================================================
+   Clean, image-first theme (no dark overlays)
+   - Expects Aurora.jpg at repo root (../Aurora.jpg from /assets/)
+   - Desktop: Table view (Title | Pages | Date | Actions)
+   - Mobile: Cards view (handled by your JS)
+   ======================================================= */
+
 :root{
-  --bg:#0b0d12;          /* page background (very dark) */
-  --fg:#e9eef2;          /* primary text (light) */
-  --muted:#a5b3c3;       /* secondary text */
-  --card:#131722;        /* card / chip background */
-  --line:#1d2230;        /* borders & separators */
-  --accent:#6aa0ff;      /* links & accents */
-  --card-min: 320px;     /* JS adjusts based on result count */
+  --fg:#ffffff;              /* primary text */
+  --muted:#e8ecf3;           /* secondary text */
+  --line:rgba(255,255,255,.35);
+  --accent:#6aa0ff;          /* links & accents */
+  --card-min:320px;          /* min card width in grid */
 }
 
 *{ box-sizing:border-box }
 
-/* ---- Base ---- */
-html,body{
+/* --- Background image, no overlays --- */
+html, body{
   margin:0;
-  background:var(--bg);
+  height:100%;
   color:var(--fg);
   font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;
+  background: url('../Aurora.jpg') center / cover no-repeat fixed;
 }
+
+/* Increase legibility on any background */
+body, h1, h2, h3, p, th, td, a, .chip, .topic-chip, .btn, #q {
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+
+/* Links / accents */
 a{ color:var(--accent); text-decoration:none }
 
-/* ---- Header ---- */
+/* --- Header --- */
 .hero{ padding:2rem 1rem; max-width:1200px; margin:0 auto }
 .hero h1{ font-size:2rem; margin:0 0 .5rem }
-.lede{ color:var(--muted); max-width:80ch }
+.lede{ color:var(--fg); max-width:80ch }
 
-/* ---- Layout: sidebar left on desktop, stacked on mobile ---- */
+/* --- Layout: sidebar left on desktop, stacked on mobile --- */
 .layout{ display:grid; gap:1rem; max-width:1200px; margin:0 auto; padding:0 1rem }
 @media (min-width:980px){ .layout{ grid-template-columns:260px 1fr } }
 
-/* ---- Sidebar (non-sticky on mobile to avoid overlay) ---- */
+/* --- Sidebar (non-sticky on mobile to avoid overlay) --- */
 #sidebar{ position:static; top:auto; align-self:start; z-index:0 }
 @media (min-width:1200px){ #sidebar{ position:sticky; top:.5rem; z-index:1 } }
 @media (max-width:1199px){
   #sidebar, #topicButtons, .topics{ position:static !important; top:auto !important; z-index:auto !important }
   #sidebar{ margin-bottom:.75rem }
 }
-#sidebar h3{ margin:.5rem 0; font-size:1rem; color:var(--muted) }
+#sidebar h3{ margin:.5rem 0; font-size:1rem; color:var(--fg) }
+
+/* --- Topic chips --- */
 .topics{ display:flex; flex-wrap:wrap; gap:.5rem }
 .topic-chip{
   padding:.45rem .7rem;
-  background:var(--card); color:var(--fg);
-  border:1px solid var(--line); border-radius:999px; cursor:pointer; font-size:.9rem
+  background:transparent;
+  color:var(--fg);
+  border:1px solid var(--line);
+  border-radius:999px;
+  cursor:pointer; font-size:.9rem;
 }
 .topic-chip[aria-pressed="true"]{ outline:2px solid var(--accent) }
 
-/* ---- Toolbar ---- */
+/* --- Toolbar --- */
 .toolbar{ display:grid; gap:.75rem; margin:.5rem 0 0 }
 #q{
   display:block; width:100%; min-height:44px; padding:.8rem 1rem;
-  border:1px solid var(--line); background:var(--card); color:var(--fg); border-radius:.75rem
+  border:1px solid var(--line); background:transparent; color:var(--fg); border-radius:.75rem;
 }
-.counts{ color:var(--muted); font-size:.9rem }
+#q::placeholder{ color:rgba(255,255,255,.8) }
+.counts{ color:var(--fg); font-size:.9rem }
 .view-toggle{ display:flex; gap:.5rem; align-items:center }
 .chip{
-  padding:.35rem .6rem; background:var(--card); color:var(--fg);
+  padding:.35rem .6rem; background:transparent; color:var(--fg);
   border:1px solid var(--line); border-radius:999px; cursor:pointer
 }
 .chip[aria-pressed="true"]{ outline:2px solid var(--accent) }
 
-/* ---- Cards/Grid ---- */
+/* --- Cards/Grid --- */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
   gap:1rem; padding:.5rem 0
 }
 .card{
-  background:var(--card); border:1px solid var(--line); border-radius:1rem;
+  background:transparent;                    /* show the image */
+  border:1px solid var(--line); border-radius:1rem;
   padding:1rem; display:grid; gap:.5rem
 }
 .card h2{ margin:0; font-size:1.05rem }
-.meta{ color:var(--muted); margin:0 }
+.meta{ color:var(--fg); margin:0 }
 .tagrow{ display:flex; flex-wrap:wrap; gap:.35rem }
-.tag{ font-size:.8rem; color:var(--muted); border:1px dashed var(--line); padding:.15rem .5rem; border-radius:999px }
+.tag{
+  font-size:.8rem; color:var(--fg);
+  border:1px dashed var(--line); padding:.15rem .5rem; border-radius:999px
+}
 .actions{ display:flex; gap:.5rem; margin-top:.5rem; flex-wrap:wrap }
-.btn{ display:inline-block; padding:.5rem .8rem; border-radius:.6rem; background:var(--accent); color:#081227; font-weight:600 }
+.btn{
+  display:inline-block; padding:.5rem .8rem; border-radius:.6rem;
+  background:transparent; color:var(--fg); border:1px solid var(--line); font-weight:600
+}
 .btn.ghost{ background:transparent; color:var(--fg); border:1px solid var(--line) }
-.card.locked{ opacity:.55; filter:saturate(.7) }
-.card .lock-badge{ float:right; font-size:1.1rem; margin-left:.4rem; opacity:.9 }
+.card.locked{ opacity:.7 }
+.card .lock-badge{ float:right; font-size:1.1rem; margin-left:.4rem; opacity:.95 }
 
-/* ---- Wrapping fixes (long tokens/underscores) ---- */
+/* --- Wrapping fixes (long tokens/underscores) --- */
 .card h2, .card p, .meta, .tag, td, th{
   overflow-wrap:anywhere; word-wrap:break-word; word-break:break-word; hyphens:auto
 }
 
-/* ---- Table view (dark, compact, non-squish headers) ---- */
+/* --- Table view (transparent, compact, non-squish headers) --- */
 #tablewrap{ overflow-x:auto; padding-top:.5rem }
 table.data{
   width:100%; border-collapse:collapse; font-size:14px; table-layout:fixed;
   background:transparent; color:var(--fg)
 }
-table.data th, table.data td{ border-bottom:1px solid var(--line); padding:.45rem .5rem; vertical-align:top }
-table.data th{
-  text-align:left; color:var(--muted); cursor:pointer; user-select:none;
-  position:sticky; top:0; background:var(--bg); z-index:1;
-  overflow-wrap:normal !important; word-break:normal !important; white-space:nowrap !important
+table.data th, table.data td{
+  border-bottom:1px solid var(--line);
+  padding:.45rem .5rem; vertical-align:top;
+  background:transparent; color:var(--fg)
 }
-table.data tr:hover{ background:rgba(255,255,255,.03) }
+table.data th{
+  text-align:left; cursor:pointer; user-select:none;
+  position:sticky; top:0; z-index:1;
+  overflow-wrap:normal !important; word-break:normal !important; white-space:nowrap !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);    /* keep text readable */
+}
+table.data tr:hover{ background:rgba(255,255,255,.06) }
 td.nowrap{ white-space:nowrap }
 
-/* Column widths (match header order: Title | Pages | Date | Actions) */
-table.data th[data-key="pages"], table.data td:nth-child(2){ width:80px; text-align:center }
+/* Column widths (Title | Pages | Date | Actions) */
+table.data th[data-key="pages"], table.data td:nth-child(2){ width:80px;  text-align:center }
 table.data th[data-key="date"],  table.data td:nth-child(3){ width:116px; text-align:center; white-space:nowrap }
 
-/* ---- WAIT-o-meter badges (optional colors) ---- */
+/* --- WAIT-o-meter (neutral look; no overlays) --- */
 .badge-wait{
   display:inline-block; min-width:1.8ch; text-align:center; font-weight:700;
   padding:.05rem .35rem; border-radius:.35rem; border:1px solid var(--line);
-  background:var(--card); font-variant-numeric:tabular-nums
+  background:transparent; color:var(--fg); font-variant-numeric:tabular-nums
 }
-.badge-wait.w1{ background:#2a2c35; color:#c8cbd2 }
-.badge-wait.w2{ background:#333644; color:#cfd3db }
-.badge-wait.w3{ background:#3b3f2f; color:#dfe7c5 }
-.badge-wait.w4{ background:#494d2b; color:#eef5c0 }
-.badge-wait.w5{ background:#2f5a37; color:#e3f7df }
-.badge-wait.w6{ background:#1e6a3f; color:#eafff0 }
-.badge-wait.w7{ background:#0f7a45; color:#edfff5; box-shadow:0 0 0 1px var(--accent) inset }
 
-/* ---- Lock indicators in table ---- */
-.lock-ico{ opacity:.9 }
-.row-locked{ opacity:.6; filter:saturate(.75) }
+/* --- Lock indicators in table --- */
+.lock-ico{ opacity:.95 }
+.row-locked{ opacity:.75 }
 
-/* ---- Footer ---- */
+/* --- Footer --- */
 .footer{
-  border-top:1px solid var(--line); color:var(--muted);
-  max-width:1200px; margin:1rem auto; padding:1rem
-}
-.empty{ color:var(--muted); text-align:center; padding:2rem }
-
-/* === Site background image (root: /Aurora.jpg) === */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background: url('../Aurora.jpg') center / cover no-repeat fixed; /* note the ../ because this CSS is in /assets/ */
-  z-index:-2;  /* sits behind everything */
+  border-top:1px solid var(--line); color:var(--fg);
+  max-width:1200px; margin:1rem auto; padding:1rem;
+  background:transparent
 }
 
-/* Gentle dark overlay so text/cards stay readable */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background: linear-gradient(180deg, rgba(11,13,18,.45), rgba(11,13,18,.7));
-  z-index:-1;
-  pointer-events:none;
+/* --- Mobile tweaks (Cards are default via JS) --- */
+@media (max-width:980px){
+  /* Nothing to hide; transparent layout adapts to the image */
 }
