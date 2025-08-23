@@ -1,47 +1,62 @@
-/* =======================================================
-   Clean, image-first theme (no dark overlays)
-   - Expects Aurora.jpg at repo root (../Aurora.jpg from /assets/)
-   - Desktop: Table view (Title | Pages | Date | Actions)
-   - Mobile: Cards view (handled by your JS)
-   ======================================================= */
+/* =========================================================
+   Pure transparent UI over Aurora.jpg (repo root)
+   This CSS assumes: Aurora.jpg is at /Aurora.jpg
+   (From /assets/style.css we reference it via ../Aurora.jpg)
+   ========================================================= */
 
 :root{
-  --fg:#ffffff;              /* primary text */
-  --muted:#e8ecf3;           /* secondary text */
-  --line:rgba(255,255,255,.35);
-  --accent:#6aa0ff;          /* links & accents */
-  --card-min:320px;          /* min card width in grid */
+  --fg:#ffffff;
+  --muted:#f0f3f8;
+  --line:rgba(255,255,255,.45);
+  --accent:#6aa0ff;
+  --card-min:320px;
 }
 
-*{ box-sizing:border-box }
-
-/* --- Background image, no overlays --- */
-html, body{
+/* Reset/base */
+*{box-sizing:border-box}
+html,body{
   margin:0;
   height:100%;
   color:var(--fg);
   font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;
-  background: url('../Aurora.jpg') center / cover no-repeat fixed;
+  background:transparent !important;
+  position:relative; z-index:0; /* stacking context for ::before */
 }
 
-/* Increase legibility on any background */
+/* Full-viewport image (no overlay, no tint) */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('../Aurora.jpg') center / cover no-repeat fixed;
+  z-index:-1;           /* sit behind everything */
+  pointer-events:none;
+}
+
+/* Make everything transparent by default */
+body, .hero, .layout, #sidebar, .content, .toolbar, .grid,
+.card, .topic-chip, .chip, .btn, .btn.ghost, #q,
+#tablewrap, table, thead, tbody, th, td, .footer {
+  background:transparent !important;
+}
+
+/* Subtle text shadow for legibility on bright areas */
 body, h1, h2, h3, p, th, td, a, .chip, .topic-chip, .btn, #q {
   text-shadow: 0 1px 2px rgba(0,0,0,.35);
 }
 
-/* Links / accents */
 a{ color:var(--accent); text-decoration:none }
 
-/* --- Header --- */
+/* Header */
 .hero{ padding:2rem 1rem; max-width:1200px; margin:0 auto }
 .hero h1{ font-size:2rem; margin:0 0 .5rem }
 .lede{ color:var(--fg); max-width:80ch }
 
-/* --- Layout: sidebar left on desktop, stacked on mobile --- */
+/* Layout (sidebar left on desktop) */
 .layout{ display:grid; gap:1rem; max-width:1200px; margin:0 auto; padding:0 1rem }
 @media (min-width:980px){ .layout{ grid-template-columns:260px 1fr } }
 
-/* --- Sidebar (non-sticky on mobile to avoid overlay) --- */
+/* Sidebar (non-sticky on mobile) */
 #sidebar{ position:static; top:auto; align-self:start; z-index:0 }
 @media (min-width:1200px){ #sidebar{ position:sticky; top:.5rem; z-index:1 } }
 @media (max-width:1199px){
@@ -50,108 +65,93 @@ a{ color:var(--accent); text-decoration:none }
 }
 #sidebar h3{ margin:.5rem 0; font-size:1rem; color:var(--fg) }
 
-/* --- Topic chips --- */
+/* Topic chips */
 .topics{ display:flex; flex-wrap:wrap; gap:.5rem }
 .topic-chip{
   padding:.45rem .7rem;
-  background:transparent;
   color:var(--fg);
   border:1px solid var(--line);
-  border-radius:999px;
-  cursor:pointer; font-size:.9rem;
+  border-radius:999px; cursor:pointer; font-size:.9rem
 }
 .topic-chip[aria-pressed="true"]{ outline:2px solid var(--accent) }
 
-/* --- Toolbar --- */
+/* Toolbar */
 .toolbar{ display:grid; gap:.75rem; margin:.5rem 0 0 }
 #q{
   display:block; width:100%; min-height:44px; padding:.8rem 1rem;
-  border:1px solid var(--line); background:transparent; color:var(--fg); border-radius:.75rem;
+  border:1px solid var(--line); color:var(--fg); border-radius:.75rem
 }
-#q::placeholder{ color:rgba(255,255,255,.8) }
+#q::placeholder{ color:rgba(255,255,255,.85) }
 .counts{ color:var(--fg); font-size:.9rem }
 .view-toggle{ display:flex; gap:.5rem; align-items:center }
 .chip{
-  padding:.35rem .6rem; background:transparent; color:var(--fg);
+  padding:.35rem .6rem; color:var(--fg);
   border:1px solid var(--line); border-radius:999px; cursor:pointer
 }
 .chip[aria-pressed="true"]{ outline:2px solid var(--accent) }
 
-/* --- Cards/Grid --- */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr));
-  gap:1rem; padding:.5rem 0
-}
+/* Cards/Grid */
+.grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr)); gap:1rem; padding:.5rem 0 }
 .card{
-  background:transparent;                    /* show the image */
   border:1px solid var(--line); border-radius:1rem;
   padding:1rem; display:grid; gap:.5rem
 }
 .card h2{ margin:0; font-size:1.05rem }
 .meta{ color:var(--fg); margin:0 }
 .tagrow{ display:flex; flex-wrap:wrap; gap:.35rem }
-.tag{
-  font-size:.8rem; color:var(--fg);
-  border:1px dashed var(--line); padding:.15rem .5rem; border-radius:999px
-}
+.tag{ font-size:.8rem; color:var(--fg); border:1px dashed var(--line); padding:.15rem .5rem; border-radius:999px }
 .actions{ display:flex; gap:.5rem; margin-top:.5rem; flex-wrap:wrap }
 .btn{
   display:inline-block; padding:.5rem .8rem; border-radius:.6rem;
-  background:transparent; color:var(--fg); border:1px solid var(--line); font-weight:600
+  color:var(--fg); border:1px solid var(--line); font-weight:600
 }
-.btn.ghost{ background:transparent; color:var(--fg); border:1px solid var(--line) }
-.card.locked{ opacity:.7 }
+.btn.ghost{ color:var(--fg); border:1px solid var(--line) }
+.card.locked{ opacity:.78 }
 .card .lock-badge{ float:right; font-size:1.1rem; margin-left:.4rem; opacity:.95 }
 
-/* --- Wrapping fixes (long tokens/underscores) --- */
+/* Wrapping fixes */
 .card h2, .card p, .meta, .tag, td, th{
   overflow-wrap:anywhere; word-wrap:break-word; word-break:break-word; hyphens:auto
 }
 
-/* --- Table view (transparent, compact, non-squish headers) --- */
+/* Table (transparent, compact, sticky headers with no bar) */
 #tablewrap{ overflow-x:auto; padding-top:.5rem }
 table.data{
   width:100%; border-collapse:collapse; font-size:14px; table-layout:fixed;
-  background:transparent; color:var(--fg)
+  color:var(--fg)
 }
 table.data th, table.data td{
   border-bottom:1px solid var(--line);
   padding:.45rem .5rem; vertical-align:top;
-  background:transparent; color:var(--fg)
 }
 table.data th{
   text-align:left; cursor:pointer; user-select:none;
   position:sticky; top:0; z-index:1;
   overflow-wrap:normal !important; word-break:normal !important; white-space:nowrap !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,.35);    /* keep text readable */
+  backdrop-filter:saturate(110%) blur(2px);           /* subtle readability without a solid color */
 }
-table.data tr:hover{ background:rgba(255,255,255,.06) }
+table.data tr:hover{ background:rgba(255,255,255,.08) } /* very light */
 td.nowrap{ white-space:nowrap }
 
-/* Column widths (Title | Pages | Date | Actions) */
+/* Column widths: Title | Pages | Date | Actions */
 table.data th[data-key="pages"], table.data td:nth-child(2){ width:80px;  text-align:center }
-table.data th[data-key="date"],  table.data td:nth-child(3){ width:116px; text-align:center; white-space:nowrap }
+table.data th[data-key="date"],  table.data td:nth-child(3){ width:116px; text-align:center }
 
-/* --- WAIT-o-meter (neutral look; no overlays) --- */
+/* WAIT badge (neutral) */
 .badge-wait{
   display:inline-block; min-width:1.8ch; text-align:center; font-weight:700;
   padding:.05rem .35rem; border-radius:.35rem; border:1px solid var(--line);
-  background:transparent; color:var(--fg); font-variant-numeric:tabular-nums
+  color:var(--fg); font-variant-numeric:tabular-nums
 }
 
-/* --- Lock indicators in table --- */
-.lock-ico{ opacity:.95 }
-.row-locked{ opacity:.75 }
-
-/* --- Footer --- */
+/* Footer */
 .footer{
-  border-top:1px solid var(--line); color:var(--fg);
+  color:var(--fg);
   max-width:1200px; margin:1rem auto; padding:1rem;
-  background:transparent
+  border-top:1px solid var(--line)
 }
 
-/* --- Mobile tweaks (Cards are default via JS) --- */
+/* Mobile (cards are default via JS) */
 @media (max-width:980px){
-  /* Nothing to hide; transparent layout adapts to the image */
+  /* nothing extra needed; fully transparent UI adapts to the image */
 }
