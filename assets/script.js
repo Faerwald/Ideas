@@ -1,12 +1,13 @@
 /* Desktop = Table by default; Mobile = Cards by default (auto).
    Topic buttons (AND across topics, OR inside a topic via topics.json).
    Search over title + abstract + tags + full/firstPage.
-   Locked items greyed + 🔒 and redirect to your notice PDF.
+   Locked items: password gate (Ada Lovelace). If wrong, redirect to notice PDF.
    Table columns order: Title | Pages | Date | Actions.
 */
 
-const PRIVATE_NOTICE_ID = "https://drive.google.com/file/d/1iCLtsAIsN8Gu7BpH3owzZfIKBvntBh-_/view?usp=sharing"; // fixed as requested
-const MOBILE_BP = 979;
+const PRIVATE_NOTICE_ID = "https://drive.google.com/file/d/1iCLtsAIsN8Gu7BpH3owzZfIKBvntBh-_/view?usp=sharing"; // your fixed notice URL
+const LOCK_PASSWORD    = "Ada Lovelace";      // not case-sensitive, as requested
+const MOBILE_BP        = 979;
 
 const state = {
   data: [],
@@ -83,6 +84,11 @@ function downloadLink(idOrUrl){
   if (String(idOrUrl).startsWith("http")) return idOrUrl;
   return `https://drive.google.com/uc?export=download&id=${idOrUrl}`;
 }
+function checkPassword(){
+  const ans = prompt("Enter password:");
+  if (ans == null) return null;                       // user cancelled
+  return ans.trim().toLowerCase() === LOCK_PASSWORD.toLowerCase();
+}
 
 /* ---------- topics ---------- */
 function renderTopicButtons(){
@@ -134,6 +140,31 @@ function attachEvents(){
       }
       applyFilters();
     });
+  });
+
+  // password gate: intercept clicks on locked links
+  document.addEventListener("click", (e)=>{
+    const a = e.target.closest("a");
+    if (!a) return;
+
+    // read/preview gate
+    if (a.classList.contains("unlock-read")){
+      e.preventDefault();
+      const real = a.getAttribute("data-real");
+      const ok = checkPassword();
+      const url = ok ? previewLink(real) : previewLink(PRIVATE_NOTICE_ID);
+      if (url) window.open(url, "_blank", "noopener");
+      return;
+    }
+    // download gate
+    if (a.classList.contains("unlock-dl")){
+      e.preventDefault();
+      const real = a.getAttribute("data-real");
+      const ok = checkPassword();
+      const url = ok ? downloadLink(real) : downloadLink(PRIVATE_NOTICE_ID);
+      if (url) window.open(url, "_blank", "noopener");
+      return;
+    }
   });
 }
 
@@ -202,9 +233,18 @@ function renderTable(items){
   const frag = document.createDocumentFragment();
   for(const p of items){
     const locked = isLocked(p);
-    const target = locked ? PRIVATE_NOTICE_ID : p.driveId;
-    const readBtn = target ? `<a class="btn" target="_blank" rel="noopener" href="${previewLink(target)}">Read</a>` : "";
-    const dlBtn   = target ? `<a class="btn ghost" target="_blank" rel="noopener" href="${downloadLink(target)}">Download</a>` : "";
+    const hasReal = !!p.driveId;
+    let readBtn, dlBtn;
+
+    if (locked && hasReal){
+      // gate via prompt
+      readBtn = `<a href="#unlock" class="btn unlock-read" data-real="${escapeHTML(p.driveId)}">Read</a>`;
+      dlBtn   = `<a href="#unlock" class="btn ghost unlock-dl" data-real="${escapeHTML(p.driveId)}">Download</a>`;
+    }else{
+      const target = locked ? PRIVATE_NOTICE_ID : p.driveId;
+      readBtn = target ? `<a class="btn" target="_blank" rel="noopener" href="${previewLink(target)}">Read</a>` : "";
+      dlBtn   = target ? `<a class="btn ghost" target="_blank" rel="noopener" href="${downloadLink(target)}">Download</a>` : "";
+    }
 
     const tr = document.createElement("tr");
     if(locked) tr.className = "row-locked";
@@ -222,10 +262,19 @@ function renderTable(items){
 /* ---------- cards ---------- */
 function card(p){
   const locked = isLocked(p);
-  const target = locked ? PRIVATE_NOTICE_ID : p.driveId;
-  const readBtn = target ? `<a class="btn" target="_blank" rel="noopener" href="${previewLink(target)}">Read</a>` : "";
-  const dlBtn   = target ? `<a class="btn ghost" target="_blank" rel="noopener" href="${downloadLink(target)}">Download</a>` : "";
-  const lockBadge = locked ? `<span class="lock-badge" title="Locked">🔒</span>` : "";
+  const hasReal = !!p.driveId;
+  let readBtn, dlBtn, lockBadge = "";
+
+  if (locked) lockBadge = `<span class="lock-badge" title="Locked">🔒</span>`;
+
+  if (locked && hasReal){
+    readBtn = `<a href="#unlock" class="btn unlock-read" data-real="${escapeHTML(p.driveId)}">Read</a>`;
+    dlBtn   = `<a href="#unlock" class="btn ghost unlock-dl" data-real="${escapeHTML(p.driveId)}">Download</a>`;
+  }else{
+    const target = locked ? PRIVATE_NOTICE_ID : p.driveId;
+    readBtn = target ? `<a class="btn" target="_blank" rel="noopener" href="${previewLink(target)}">Read</a>` : "";
+    dlBtn   = target ? `<a class="btn ghost" target="_blank" rel="noopener" href="${downloadLink(target)}">Download</a>` : "";
+  }
 
   const el=document.createElement("article");
   el.className = "card" + (locked ? " locked" : "");
@@ -234,7 +283,7 @@ function card(p){
       <h2>${escapeHTML(p.title||"")}</h2>
       ${lockBadge}
     </div>
-    <p class="meta">${p.year || ''} ${p.venue ? '· ' + escapeHTML(p.venue) : ''}</p>
+    <p class="meta">${p.date || ''} ${p.venue ? '· ' + escapeHTML(p.venue) : ''}</p>
     <p>${escapeHTML(p.abstract || '')}</p>
     <div class="tagrow">
       ${p.pages ? `<span class="tag">${p.pages} pp</span>` : ""}
