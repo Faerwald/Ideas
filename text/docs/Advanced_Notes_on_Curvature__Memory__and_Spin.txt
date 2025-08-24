@@ -1,0 +1,185 @@
+Title: Advanced Notes on Curvature  Memory  and Spin
+Date:  2025-08-20
+Source: Advanced_Notes_on_Curvature__Memory__and_Spin.pdf
+Advanced Notes on Curvature, Memory, and Spin
+    Conventions. Signature (−+++), c = G = 1. Covariant derivative ∇a , Riemann Ra bcd , Ricci
+Rab , Weyl C a bcd . Totally antisymmetric tensor ϵabcd with ϵ0123 = +1. Timelike unit ua , null k a .
+Symmetrization ( ), antisymmetrization [ ].
+1    Raychaudhuri and congruence focusing
+For a timelike geodesic congruence with 4–velocity ua (aa ≡ ub ∇b ua = 0), define expansion θ = ∇a ua ,
+shear σab = ∇(a ub) − 13 θhab − ωab , vorticity ωab = ∇[a ub] , hab = gab + ua ub . The Raychaudhuri equation is
+                                 dθ    1
+                                    = − θ2 − σab σ ab + ωab ω ab − Rab ua ub .                              (1)
+                                 dτ    3
+For irrotational flows (ωab = 0) and matter obeying the strong energy condition (Rab ua ub ≥ 0), initially
+converging congruences focus (θ → −∞) in finite proper time. For null congruences with tangent k a ,
+                                      dθ    1
+                                         = − θ2 − σab σ ab − Rab k a k b ,                                  (2)
+                                      dλ    2
+central to lensing, area theorems, and GW memory (Sec. 11).
+2    Geodesic deviation, geodetic precession, and “thrust”
+Relative acceleration of neighboring geodesics with separation η a :
+                                          D2 η α
+                                                 = −Rα βγδ uβ η γ uδ .                                      (3)
+                                          dτ 2
+This is the tidal strain measured by interferometers. A spinless gyroscope undergoing parallel transport
+along a geodesic in curved spacetime exhibits geodetic (de Sitter) precession:
+                                        3 v×g
+                                ΩdS =              (weak-field, slow-motion).                               (4)
+                                        2 c2
+Remark. In asymptotically flat GR, closed cyclic variations of internal configuration cannot yield net
+center-of-mass acceleration without exchanging momentum with fields or distant matter: any apparent
+“geodesic thrust” must be balanced by radiation or ambient momentum flux.
+3    Aharonov–Bohm, Aharonov–Casher, and HMW phases
+Topological EM phases are control knobs for matter-wave metrology:
+                                              I
+                                            q
+                                     ϕAB =       A · dx,                                                    (5)
+                                            ℏ
+                                                Z
+                                             1
+                                     ϕAC = 2 (E × µ) · dx,                                                  (6)
+                                            ℏc
+                                                Z
+                                             1
+                                   ϕHMW = 2 (d × B) · dx,                                                   (7)
+                                            ℏc
+with magnetic dipole µ and electric dipole d. They interlock cleanly with gravitational phases below.
+                                                       1
+4    Matter-wave gravity: the COW phase
+For a neutron (mass m) interferometer enclosing area A with arm-averaged vertical separation in uni-
+form g, the Colella–Overhauser–Werner phase is
+                                                        mgA
+                                           ∆ϕCOW =          ,                                        (8)
+                                                         ℏv
+with beam speed v. Rotation induces an independent Sagnac phase enabling separation of g and Ω
+contributions by symmetry flips.
+5    Spin-rotation (Mashhoon) coupling
+Intrinsic spin couples to rotation/gravitomagnetism. For an observer rotating with angular velocity Ω,
+a two-level spin system sees an energy shift
+                                            ∆E = −Ω · S ,                                            (9)
+and, for light/matter waves, an associated phase proportional to helicity or spin projection. This is the
+local, quantum counterpart of frame-dragging effects.
+6    Sagnac and gravitomagnetic clock effects
+For counter-propagating beams enclosing vector area A, the kinematic Sagnac time lag for light is
+∆t = 4 Ω · A/c2 . In GR, stationary axisymmetric metrics add a gravitomagnetic (Lense–Thirring)
+contribution. For a ring laser of perimeter P and wavelength λ,
+                                                    4Ω · A
+                                             ∆f =          ,                                        (10)
+                                                     λP
+with additional ppm-level terms from Earth’s geodetic and frame-dragging fields targeted by ultra-stable
+arrays.
+7    Frame dragging (Lense–Thirring)
+A spinning mass with angular momentum J drags local inertial frames. In the weak-field, far-zone
+limit,
+                                                G
+                                      ΩLT = 2 3 [3(J · r̂) r̂ − J] ,                        (11)
+                                              cr
+producing nodal precessions in satellite orbits and gyroscope drifts.
+8    Gravitational Magnus effect (spin–curvature lift)
+For an extended spinning body, the Mathisson–Papapetrou–Dixon (MPD) equations govern motion:
+                                         Dpa      1
+                                              = − Ra bcd ub S cd ,                                  (12)
+                                         dτ       2
+                                        DS ab
+                                              = pa ub − pb ua ,                                     (13)
+                                         dτ
+supplemented by S ab pb = 0 (Tulczyjew–Dixon) or S ab ub = 0 (Pirani). In backgrounds with mass–energy
+currents (gravitomagnetism or matter flow), the spin–curvature force admits a component orthogonal
+to the velocity and spin, a true GR analog of Magnus lift. Observable consequences include secular
+orbital-plane drifts in accretion flows and dark-matter halos.
+                                                    2
+9    Extended-body motion and Harte’s effective field
+For self-gravitating bodies, Harte’s framework defines physical momenta by integrating the stress–
+energy over hypersurfaces with appropriate Killing transport, yielding motion in an effective metric
+ eff
+gab  = gab + hR         R
+              ab where hab is the Detweiler–Whiting regular field. To leading order,
+                                Dpa    1
+                                    = − Ra bcd ub S cd + O(multipoles),                             (14)
+                                dτ     2
+                             eff
+i.e. motion is geodesic in gab   with renormalized multipole moments; the MiSaTaQuWa self-force is
+recovered in the small-body limit via
+                          F a = − g ab + ua ub ∇c hR           R
+                                                        1
+                                                                  c d
+                                                    bd − 2 ∇b hcd u u + · · · .              (15)
+10     Radiation reaction and dynamical friction
+GW reaction. At 2.5PN order, energy–angular momentum loss is governed by the quadrupole formula
+                                                 G ... ...
+                                          P =       Q ij Q ij ,                                     (16)
+                                                5c5
+driving inspiral; in extreme mass ratio, the self-force description above applies.
+Dynamical friction. A massive body of mass M moving with speed v through a collisionless back-
+ground of density ρ and dispersion σ experiences (Chandrasekhar)
+                                                   "          r                  #
+                                                v          v          2 v    2   2
+                        FDF = −4πG2 M 2 ρ ln Λ 3 erf √           −        e−v /2σ ,       (17)
+                                                v          2σ        π  σ
+with relativistic and non-Maxwellian generalizations relevant near compact objects or in dark-matter
+spikes.
+11     Gravitational waves: memory and symmetry triangle
+Displacement memory. A burst of radiation leaves a DC offset in the transverse-traceless strain,
+                                  4 +∞
+                                    Z
+                            TT
+                        ∆hij =           du Fij (u) (schematic),                              (18)
+                                  r −∞
+where Fij includes linear (source) and nonlinear (Christodoulou) fluxes. Test masses undergo a perma-
+                                           j
+nent relative displacement ∆η i = 21 ∆hTT
+                                       ij η0 .
+Spin memory. Angular-momentum flux produces a relative time delay for counter-propagating null
+rays along a loop C,                            I
+                                       ∆Tspin ∼ dℓA ϵAB ∆ΞB ,                                     (19)
+                                                  C
+      B
+with Ξ a (Bondi) shear-related potential. Both memories are facets of the infrared triangle: asymptotic
+symmetries (BMS), soft theorems, and memory observables.
+12     Propagation in curved backgrounds: Faraday and spin Hall
+Gravitational Faraday (Skrotskii) rotation. In stationary weak fields, light polarization         rotates
+                                                                                      1
+                                                                                        R
+by an angle set by the line integral of the gravitomagnetic field; schematically ∆χ ∝ 2 (∇ × Ag ) · dℓ/c,
+where Ag is the g0i potential.
+Spin Hall of light/GWs. Beyond geometric optics, Berry curvature of helicity-s waves produces
+transverse shifts δx⊥ ∝ s λ ∇×(· · · ), yielding polarization-dependent lensing/time delays near rotating
+lenses.
+                                                      3
+13     Gravitational Aharonov–Bohm
+Global geometry can imprint phases even where local curvature vanishes. Around a straight cosmic
+string with deficit angle ∆ = 8πGµ, the conical metric yields AB-like interference and characteristic
+scattering despite Rab = 0 off the core. This is the pure-gravity topological analog of AB.
+14     Quantum-clock interferometry
+Let an internal clock of frequency ω0 be delocalized along two paths with proper times τ1 , τ2 . The
+doubly-differential protocol isolates gravitational redshift:
+                                         ∆ϕclock = ω0 (τ1 − τ2 ),                                   (20)
+with path engineering (e.g. guided fountains) suppressing acceleration noise and common-mode phases
+(Sagnac/laser).
+15     Optical “lift” as an analog control
+In structured light, circular electric dipoles experience transverse forces (spin–orbit and Belinfante
+momentum contributions), a photonic analog of Magnus lift. Calibrated optical traps thus provide
+tabletop surrogates for gravitomagnetic lift parameter inference and signal-processing pipelines.
+16     Relativistic driver fields and apparent “antigravity”
+In linearized GR, a fast mass produces gravitoelectric Eg and gravitomagnetic Bg fields. For ultra-
+relativistic transit, Eg is strongly forward-collimated and v × Bg terms can yield coordinate acceler-
+ations that are locally repulsive along the axis for test particles in certain frames. This “hyperdrive”
+phenomenology is a time-dependent-field, geodesic effect—not negative mass. Physical 4-acceleration
+remains consistent with energy conditions; momentum exchange occurs with the gravitational field (and
+radiation).
+17     Energy conditions and warp metrics
+Alcubierre-type warp geometries with superluminal effective bubble speed require violations of the
+averaged null energy condition. Variants that reduce energy budgets engineer subluminal, compact
+support, or tailored lapse/shift profiles, but still demand exotic stress–energy. Any laboratory approach
+must target effective index analogs rather than genuine superluminal transport.
+18     Minimal experiment design patterns
+Phase-basis interferometer. Co-design a loop that supports AB/AC/HMW, COW, and Sagnac
+contributions. By flipping E/B, swapping arm heights, and reversing rotation, solve the linear system
+of phases to isolate gravitational, topological, and kinematic pieces with ppm accuracy.
+Spin-lift metrology. Use optically trapped, spinning microspheres to calibrate Magnus-type trans-
+verse responses, porting estimators to MPD templates for astrophysical environments.
+Chronometric baselines. Implement quantum-clock interferometry on tall guided paths to differen-
+tially read out redshift at the single-clock level.
+                                                        ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                    4

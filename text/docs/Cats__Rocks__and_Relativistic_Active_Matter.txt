@@ -1,0 +1,119 @@
+Title: Cats  Rocks  and Relativistic Active Matter
+Date:  2025-08-21
+Source: Cats__Rocks__and_Relativistic_Active_Matter.pdf
+Cats, Rocks, and Relativistic Active Matter
+                ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+Prelude: the parable of a fall
+A rock falls by decree. It offers no testimony besides initial data, then obeys the field like a well-trained
+equation. A cat, by contrast, refuses to be a mere solution. It looks, listens, twists, gathers itself into a
+geometry, then writes a different ending on the same page of spacetime. The difference is not mystical:
+the cat has sensors and actuators; it carries a policy. It responds rather than reacts. The rock is a
+boundary condition; the cat is a controller. This essay is a careful defense of that intuition, made
+quantitative in Newtonian and relativistic settings, and extended to many-body media that behave like
+programmable metamaterials woven into spacetime.
+Dust is destiny; policy is deviation
+In general relativity, a pressureless dust cloud is described by a stress–energy tensor
+                                                µν
+                                               Tdust = ρ uµ uν ,                                         (1)
+with rest density ρ and bulk four-velocity uµ . A dust element’s worldline is fixed once and forever by
+the metric and the initial Cauchy data; there is no internal dial to turn. Cats (and cat-like machines)
+insert such dials. To model this, augment the constitutive law by an active correction
+                            T µν = (ε + p)uµ uν + p g µν + q (µ uν) + π µν + Σµν
+                                                                              ctrl ,                     (2)
+where the familiar non-ideal terms q µ , π µν coexist with Σµνctrl , a policy-dependent stress that encodes
+                                                           µν
+sensing, communication, and actuation. The rock sets Σctrl = 0. The cat does not. It follows that the
+covariant balance law ∇µ T µν = 0 does not prescribe a unique trajectory field until one also specifies
+the policy: which internal degrees of freedom are being driven, and how they couple to curvature and
+gradients. A useful scalar diagnostic of “catness” is the mean-square deviation from passive acceleration,
+                                                                        1/2
+                                        κ =         µ
+                                                   ∥a −   aµpassive ∥2          ,                        (3)
+with aµ = uν ∇ν uµ . Dust has κ = 0. Actuated matter has κ > 0, and—crucially—can make κ coherent
+across many bodies via communication.
+A single agent: from rock to cat via a single eigenvalue
+There is a remarkably economical way to turn a falling rock into a falling cat without ever mentioning
+muscles: resolve the body by its mass quadrupole. In a spherically symmetric field, a spacecraft which
+keeps the radial direction as an eigenvector of its (trace-free) quadrupole Qij experiences a purely radial
+force with a tunable prefactor. Writing Qij ẑ j = q ẑi selects a single scalar control knob q(t). The net
+gravitational force becomes
+                                                       9 q
+                                                             
+                                         F = 1+                 m g,                                      (4)
+                                                       2 mr2
+so piecewise-constant programs q(t) ∈ {q− , q+ } produce a two-level family of effective potentials. Between
+switches, motion is Keplerian in the potential Ueff (r; q); at a switch, the mechanical energy jumps by the
+difference of the two potentials evaluated at the same radius. The cat-like content is now explicit: by
+choosing where to switch, one biases energy and angular geometry over many orbits without expelling
+reaction mass. The policy in a sentence: flip q at the apsides. At pericenter one choice of q amplifies
+energy; at apocenter the complementary choice locks in the gain. Over many cycles, the orbit “climbs
+the staircase” drawn by the two potentials. Because q enters the radial force but leaves the torque-free
+                                                        1
+condition intact, energy and eccentricity can be steered without spinning up the craft, and—with
+symmetric choices q+ = −q− —one can increase eccentricity while canceling precession. A rock could
+never do this. A cat can, because a cat is a quadrupole schedule.
+Geometric wit: cats, phases, and shape space
+Why can a cat reorient in free fall without external torque? Because orientation is not a state; it is
+a holonomy in shape space. A cyclic change of internal coordinates ξ A produces a net attitude shift
+through a geometric phase. In a mechanical analogue of a gauge loop,
+                                                         I
+                                      ∆(attitude) ∼          AA (ξ) dξ A ,                                (5)
+                                                         C
+with A a connection   induced by kinematic constraints. The mathematics rhymes with the Aharonov–
+Bohm line integral A · dℓ, but here the “flux” lives in the curvature of the configuration manifold, not
+                    H
+in electromagnetism. The single-eigenvalue control q(t) is the most spartan way to inject such geometric
+bias into an otherwise symmetric problem. The cat writes a loop integral on its own shape; gravity
+reads it as a small, actionable change in trajectory.
+Axisymmetry: carving a well on a hill
+Around an oblate primary, the point-particle effective potential can contain an unstable crest at a radius
+rcirc . A rock parked there quickly tumbles off. A cat modulates q across rcirc so that the crest splits into
+two close peaks with a cusp-like valley between them. The unstable fixed point is regularized into a
+narrow, usable well. This is station-keeping by constitution: the craft pumps no propellant; it pumps its
+quadrupole at the right place.
+Relativistic cats in a homogeneous cosmos
+The Newtonian parables scale up. In a spatially-flat FRW spacetime with scale factor a(t) and Hubble
+rate H = ȧ/a, one can define global momenta from the six Killing fields and relate them to local
+(center-of-mass) quantities along a preferred worldline. The surprises are twofold. First, there exists
+a temporal torque τ —a control vector assembled from internal motions—which couples to H and the
+angular momentum L to steer the center-of-mass even when the global spatial momentum vanishes. A
+representative evolution law (in the quadrupole approximation) for the center-of-mass coordinate γ(t)
+reads
+                    dγ              1
+                                                                               
+                  m      =                  m τ + H L × τ + (H/m)(L · τ ) L ,                     (6)
+                     dt     a 1 + |HL/m|2
+so programming τ (t) programs drift. Second, the inertial mass m itself can become a controlled state
+variable, with secular evolution governed by traces of the mass and stress quadrupoles. For example, if
+the mass quadrupole trace Qa a is approximately constant and stress-quadrupole effects are neglected,
+one finds in a matter-dominated epoch
+                                                              "        3     #
+                                             1                     af
+                                  mf − mi ≃ − Qa a Hf2                       −1 ,                         (7)
+                                             4                     ai
+revealing a gentle but cumulative mass shift keyed to cosmological expansion. These are purely relativistic
+effects: dust would ride the Hubble flow; a cat can bias itself against it by exploiting finite size and
+internal motion. In exact de Sitter, extra symmetry cancels the control channel—an honest boundary
+between what cats can and cannot do.
+                                                     2
+From one cat to a pride: the continuum of policies
+Now enlarge the cast from one agent to millions: a cloud of “rocket computers” that talk, sense, and
+actuate. Coarse-grain their policies into fields. Let q(x) be the local radial-quadrupole eigenvalue
+density; let P(x) encode the feedback law that maps observables to actuation schedules; let Θ(x) denote
+compute/communication bandwidth; and let G(x) summarize the consensus topology (the continuum
+limit of a graph Laplacian). The constitutive closure becomes a map
+                                  Σµν      µν
+                                   ctrl = K [u, ∇u, g, q; P, G, Θ] ,                                  (8)
+possibly nonlocal in space and time. The medium then acquires a catalogue of behaviors unavailable
+to passive matter: anisotropic, history-dependent stresses; programmable effective equations of state;
+lensing-like mechanical responses; and stabilization of otherwise unstable configurations. The difference
+between a nebula and a network is that the latter carries an opinion about tomorrow. In a phrase: dust
+is destiny, policy is deviation.
+Epilogue: what the cat knows
+A rock is a theorem: given, then proved. A cat is a proof strategy. In Newtonian gravity, the strategy
+is a quadrupole schedule; in relativistic cosmology, it is a temporal torque braided with the Hubble
+rate and a quiet redefinition of mass. In a swarm, it is a field of policies sewn into stress–energy. The
+mathematics changes with the background, but the lyric stays the same: matter that knows can bias its
+fall.
+                                                       ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                   3

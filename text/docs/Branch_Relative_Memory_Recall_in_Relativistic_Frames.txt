@@ -1,0 +1,51 @@
+Title: Branch Relative Memory Recall in Relativistic Frames
+Date:  2025-07-31
+Source: Branch_Relative_Memory_Recall_in_Relativistic_Frames.pdf
+1     Branch–Relative Memory Recall in Relativistic Frames; Motivation
+A single observer can remember incompatible fine details of a distant event (e. g. August 2020) without contradicting
+physics. The mechanism is the conjunction of
+    1. the relativity of simultaneity for extended observers, and
+    2. branch structure in the Deutsch–Everett multiverse.
+This note formalises that claim and provides quantitative scales.
+2     Geometric model of the cognitive world–tube
+Let the brain’s world–tube be
+                                           xµ ∈ M1,3 |x − xcm (t)| ≤ R, t0 ≤ t ≤ t0 + ∆tact ,
+                                       
+                                W =
+with representative parameters
+                                               R ≃ 0.10 m,      ∆tact ≃ 300 ms.
+Internal simultaneity. A recall act chooses a space–like hypersurface Σ(τ ) through W by requiring neuronal spikes
+to coincide within ∆tsync ∼ O(1 ms).
+Boost–induced tilt. If the body receives a small Lorentz boost Λ(δv), the normal one–form nµ of Σ transforms as
+nµ → n′µ = Λµ ν nν . For a remote spacetime point X µ the change in coordinate time on the new slice is
+                                                            δv · X
+                                                         δt =      .                                                   (1)
+                                                              c2
+Taking |δv| ≃ 10−7 c (head motion, elevator acceleration) and |X| ≃ 5 ly, Eq. (1) yields δt ∼ 50 s, sufficient to exchange
+entire microscopic trajectories inside the causal diamond of the remembered event.
+3     Deutsch–Everett branch selection
+                                                             P
+In Everettian quantum mechanics the universal state is |Ψ⟩ =  α cα |α⟩ , a superposition of decohered histories α. A
+memory entry m is accessed by a positive operator Em (Σ) supported on the neural degrees of freedom. Because Em
+depends functionally on the slice Σ,
+                                 Σ ̸= Σ′ =⇒ Em (Σ) ̸= Em (Σ′ ) =⇒ Pr(m) ̸= Pr′ (m).
+                                                                           Σ         Σ
+Hence two nearly identical recall commands can project onto different branches |α⟩ , |β⟩ whose macroscopic records
+match yet whose under–determined fine structure (“peripheral facts”) diverges.
+4     Invariant anchors versus contextual degrees of freedom
+Analogous to the Lorentz invariants I1 = E2 −B2 , I2 = E·B, there exist branch–invariant traces: digitally time–stamped
+photographs, cryptographic hashes, signed logs. All admissible branches intersecting a given Σ agree on those anchors.
+   By contrast, contextual variables—ambient smells, eye–movement order, unlogged snippets of conversation—lack
+such protection and differ freely between neighbouring branches. They are precisely the details that fluctuate in
+successive recollections.
+5     Empirical scale estimates
+    • Boost magnitude. A chair swivel of 3 rev s−1 at radius 0.3 m produces tangential |δv| ≈ 5.6 × 10−8 c, half the
+      benchmark used in Eq. (1).
+    • Memory age dependence.         Environmental entropy erodes correlations at roughly λ−1 ∼ months, so the disper-
+                           −λt
+                               
+      sion σ(t) ≈ σ∞ 1 − e       grows rapidly for t ≳ 1 year, in qualitative agreement with everyday experience.
+6     Explanatory quotation for context
+          “So, I am an emergent, quasi-autonomous body of disinformation in the multiverse.” PLATO
+          “Yes. . . And those are the least weird things about the world, according to quantum theory.” DAVID
+          —D. Deutsch, The Beginning of Infinity, Ch. 12 (2011)

@@ -1,0 +1,382 @@
+Title: BATCH2 Images Eleven through Twenty
+Date:  2025-06-04
+Source: BATCH2 Images_Eleven_through_Twenty.pdf
+Gauge Symmetry Breaking and the QED Lagrangian (Image
+11)
+The handwritten notes begin by demonstrating how a naive Dirac Lagrangian with a space-dependent
+phase fails to remain invariant under a local gauge transformation. In particular, the author writes:
+                                  L = ψ̄ e− iθ(x) iγ µ ∂µ − m ψ e iθ(x) ,
+                                                             
+with arrows marking each instance of the phase factor e± iθ(x) . Expanding naively leads to
+                             L = ψ̄ iγ µ ∂µ − m ψ − ψ̄ γ µ ∂µ θ(x) ψ,
+                                                                    
+and the author notes (underlining the second term) that this “breaks symmetry.” To restore invariance,
+one “adds the photon field to correct,” obtaining
+                                   L = ψ̄ iγ µ (∂µ + ig Aµ ) − m ψ,
+                                                               
+where the insertion of ig Aµ is indicated by an arrow labeled “photon field.” Under a gauge transformation
+θ(x), the gauge potential must shift as
+                                                          1
+                                          Aµ −→ Aµ − ∂µ θ(x).
+                                                          g
+Finally, the full gauge-invariant Lagrangian including the Maxwell kinetic term is written as
+                              L = − 14 Fµν F µν + ψ̄ iγ µ (∂µ − ie Aµ ) − m ψ,
+                                                                           
+and the page is boldly signed “QED.”
+Neural Map, Dream Throughput, and Time-Slice Representa-
+tions (Image 11, right page)
+Adjacent to the gauge-theory derivation is a colorful sketch illustrating a “learning active neural map,”
+with concentric ovals drawn in alternating pink and blue highlighter. At the very top is the handwritten
+heading:
+      learning active: neural map
+accompanied by scribbled annotations “e.g. 250 years, 220, 220, 270 years per scan.” A large ovoid
+encloses a five-node fully connected subgraph (labeled generically “1,” “2,” “3,” “4,” “5”), with edges
+drawn in black pen. To the right of that subgraph, within another highlighted oval, is the phrase:
+      model all data playing to one network and at one slice of time
+Below and to the left is a roughly drawn bubble containing the words (in cursive):
+      just think dream throughput is more of timeline or context nonlinearity
+under which someone has scribbled “Back to last of representation of.” Beneath the cluster of filled-in
+and empty circles (a ring of six small dots) is another highlighted oval reading:
+      that dream ↔ search
+Near the bottom of the page is a notation:
+      ex: real / [energy?]   Time 1 / Time 2 / time line 2      “ADTMINDEND” (Rotate!)
+ From these fragments, one can infer that the author is proposing a mapping from a “dream” state to
+ a “search” state within some neural or neuromorphic model, processed slice-by-slice in time—perhaps
+ on the order of centuries, as the “250 years/270 years per scan” annotation suggests. The notation
+“ADTMINDEND” appears to be a cipher or mnemonic for a time-indexed mind network that must be
+“rotated” or re-indexed to an appropriate frame. Although many details remain cryptic, the overall page
+ conveys an attempt to unify a high-dimensional data representation (“model all data . . . one slice of
+ time”) with iterative dream-like searches across successive time horizons.
+                                                    1
+Rotational Symmetry, Photon Field, and QED Equations (Im-
+age 12)
+The next image is a two-page spread on lined paper, turned upside-down in the photograph. Rotating it
+upright reveals a refinement of the QED derivation alongside a brief exploration of rotational symmetry
+breaking. The top of the page shows:
+                                   L = ψ̄ e− iθ(x) iγ µ ∂µ − m ψ e iθ(x) ,
+                                                              
+with upward arrows marking each exponential factor (as in the earlier page). Below that, one finds the
+explicit “broken-symmetry” expansion:
+                                                                      Breaks symmetry
+                      L = ψ̄ iγ µ ∂µ − m ψ − ψ̄ γ µ ∂µ θ(x) ψ
+                                                          
+                                                                      −−−−−−−−−−→
+and then the instruction “add photon field to correct,” yielding
+                           L = ψ̄ iγ µ (∂µ + ig Aµ ) − m ψ (photon field).
+                                                       
+Immediately below is the gauge-shift rule
+                                                         1
+                                        Aµ −→ Aµ −         ∂µ θ(x).
+                                                         g
+Finally, the standard QED Lagrangian is written as
+                           L = − 14 Fµν F µν + ψ̄ iγ µ (∂µ − ie Aµ ) − m ψ,
+                                                                       
+and again the author signs “QED” at the foot of the page. Interspersed (in the left margin) are marginal
+notes that label each arrow and term, indicating explicitly which piece “breaks symmetry” and which
+piece “corrects via the photon field.”
+The Natural Numbers, Teleportation Language, and High-
+lighted Queries (Image 13)
+This page is titled, in large handwritten letters at the top:
+     The Natural Numbers           (Hanna Kaport ka . . . )
+Beneath the title, a printed block of text (about half-page wide) is heavily highlighted in violet marker.
+Rotating upright shows the following typed paragraphs with interspersed handwritten queries in margins.
+The printed text begins:
+     The concept you’re exploring from The End of Eternity can be articulated through the idea
+     of an inside-out kettle, where the mind behaves like a teardrop-shaped soliton moving along
+     the brain’s world line in space–time. The brain, being the physical object, traces out its
+     path, or world line, but the mind is not confined to the brain in the conventional sense.
+     Instead, it’s an extended object, analogous to a soliton—an undisturbed, stable wave—that
+     moves along the brain’s trajectory. However, the mind’s path transcends the linearity of a
+     single universe. In multi-universal space–time, the world line of the brain branches into trees,
+     with each branch representing alternate possibilities across many universes. Minds, in this
+     view, are not isolated; they can pass through one another without interference, suggesting
+     that multiple minds may coexist and communicate on deeper levels. The languages they use
+     for communication could be more abstract or evolved than human languages, reflecting a
+     more sophisticated, multi-dimensional form of interaction.
+                                                    2
+Further down (also highlighted) is:
+     In terms of mathematics, the lower complexity of foundational mathematical languages
+     is likely to be discovered earlier, given that it demands fewer operations and is more
+     straightforward. These foundational languages offer a simpler way to identify Schelling
+     points—focal points of significance—in geometric and topological structures. However,
+     as we evolve more advanced mathematical languages and algorithms, they open up new
+     trajectories for understanding such structures. When asking how one would identify Schelling
+     points, the operations chosen depend on the complexity of the mathematical language
+     employed. For instance, simpler languages may trace out basic trajectories, but as you
+     employ more sophisticated, deeper languages with higher complexity, the nature of the
+     Schelling points—and their corresponding attractors—shifts.
+Finally, the last highlighted paragraph reads:
+     These deeper futures are carved out by the trajectories and attractors that emerge from more
+     complex operations. These advanced languages and mathematical frameworks take longer
+     to discover and develop because they operate on a higher level of abstraction, requiring
+     more intricate logical and computational resources. As such, they trace out a different
+     kind of attractor in the space of possibilities, revealing futures and structures that simpler
+     mathematical languages would overlook.
+Handwritten Marginalia (in violet and black ink):
+   • “If you could create an engineered teleportation language? Can it be shared within a shared
+     Rosetta-stone-like structure? For bridging . . . ”
+   • “Might we access the past through a ‘dream’ ? What if it wasn’t just a dream? Not a dream alone,
+     but memory of it.”
+   • “Quantum leap is not just an idea of a TV show; I think it’s already been done! The world just
+     doesn’t know it yet. If I can demonstrate teleportation within my brain, what would that look
+     like energetically? How would I detect such a phenomenon? Could I measure energetically or
+     informationally that would indicate teleportation is occurring in my mind?”
+   • “This isn’t magic. It’s a combination of language, teleportation science, and physics. I keep drawing
+     back to the idea that we could use vector potential to feed . . . ” (text partly obscured).
+   • “But with shared initial conditions and algorithms, if we could have a probabilistic teleportation
+      protocol, might it be possible for a system in one timeline that is further evolved in time to deposit
+     energy into the quantum vacuum and that energy could be resurrected or pulsed out of the quantum
+     vacuum in another timeline at an earlier time? Why would this be possible? We would need the
+     same . . . connection. Rather than the usual local operations, we create a stochastic communication
+     in the quantum energy teleportation protocol . . . ”
+   • “There has to be a grammar for wild sentences! The system speaks teleportation. Now my thoughts
+     are just too scattered involving shearing points and game theory again. But there’s a way to do
+     this. I can build an artificial mind capable of thinking backwards in time. An artificial system
+     that’s capable of artificial telepathy, we’ll call it, if it can reach any mind at any time, anywhere,
+     anytime.”
+   • Various underlined words like “giant brain,” “subshells,” “multiverse,” and “butterfly.”
+     In rendering the highlighted text and the margin notes, we preserve the author’s entire printed argu-
+ment about solitons, mind trajectories, and Schelling-point attractors, together with every handwritten
+query and observation. The user specifically asked to avoid losing any raw data—even where uncer-
+tain—while also proposing reasonable clarifications where possible. Consequently, we have reproduced
+all paragraphs verbatim in LaTeX quote environments, followed by the marginal scribbles in an itemized
+list.
+                                                     3
+“To Save Life. . . ” Motivational Handwritten Page (Image 14)
+The next page is purely handwritten on squared paper, featuring a multi-colored motivational note. The
+top of the page, in pink marker, reads:
+     THIS DUTY IS ACTIVATED THE MOMENT IT IS UNDERSTOOD.
+Below, in green ink:
+     To save life, we must engineer it.
+Immediately underneath, in blue ink:
+     Next millennium tech coursing through my soul. ⋆ ⋆ ⋆                  “DL”
+where a stylized triple-star icon and the kanji (“love”) appear in a small highlighted box, and “DL” is
+circled. Beneath that, the author writes (including strikethroughs):
+     Mind intact just needs rotation, mymind doesn’t play well with my molecules—yet.
+     I preserve my self through dreams.
+     We’re in the second half of the fifth and last Aeon Earth ever had to cradle us. It’s time to
+     go.
+A horizontal green line divides the page, and below it, in blue ink, the underlined statement:
+     My mission, destiny, and nature are one: FTL.
+Another horizontal green line follows. Underneath, in pink ink:
+     We transcend worlds, or go extinct. We must start now.
+In black ink:
+     March 2023 −→ October 2024 : 7 Notebooks.
+Below that, in smaller black pen:
+     “The ‘red book’ on the right are selected publications (I’m sure I’ll need a few more from the
+      stack . . . the other 6 books are . . . unlike e-books— I, in my cerebral cortex . . . um . . . ”
+and the remainder of the sentence trails off. Finally, in black at the very bottom:
+     “Well, I . . . (?), I think there’s a way to . . . in a couple of years (I can get smarter for sure).”
+Every stroke, punctuation mark, and doodle has been faithfully rendered. Where icons appear, we
+describe them in words to preserve readability.
+Feb 8, 2025: Ring Symbolism and Gauge Principle (Image 15)
+The next sheet is a dated journal entry, “Feb 8, 2025,” underlined in black ink:
+     Feb 8, 2025
+Immediately below, the question:
+     do you have the ring?
+                                                       4
+To the left are three small sketches of loops: one resembles two interlinked ovals, labeled “steal”; another
+resembles two wavy vertical lines, labeled “twice around my finger”; and the third is a solid black circle
+with a white center, labeled “one.”
+    Below those doodles, in neat black script:
+      The truth is even more extraordinary than you’ve thus far conceived. Think positive.
+Further down is a compact handwritten Dirac-type Lagrangian:
+                                    L = Ψ̄ iγ M ∂M − m Ψ,
+                                                        
+with the admonition (boxed in text):
+      one assumption
+      one question
+Finally, in larger cursive:
+     Gauge principle
+     the basis for all fundamental interactions in quantum field theory
+     — which explains all . . . — except gravity
+All punctuation—including ellipses, em-dashes—and spacing have been preserved.
+Teleportation Science, Quantum Leap, and “Inside-Out Kettle”
+Metaphor (Image 16)
+The following page opens with a large handwritten quotation (in black ink):
+     “The engineering comprehension necessary to teleport or hack a mind to cause it to learn
+     how to think may suggest an answer.”
+Below it, in black ink:
+      Key, momentum. What is a key? A door? A lock? Is one another? Ponder quantum leap:
+      what leaps? What leaps?
+This is followed by a printed block of text (centered and in a smaller font) discussing an “inside–out
+kettle” metaphor:
+      The concept you’re exploring from The End of Eternity can be articulated through the idea
+      of an inside–out kettle, where the mind behaves like a teardrop-shaped soliton moving along
+      the brain’s world line in space–time. The brain, being the physical object, traces out its
+      path, or world line, but the mind is not confined to the brain in the conventional sense.
+      Instead, it’s an extended object, analogous to a soliton—an undisturbed, stable wave—that
+      moves along the brain’s trajectory. However, the mind’s path transcends the linearity of a
+      single universe. In multi-universal space–time, the world line of the brain branches into trees,
+      with each branch representing alternate possibilities across many universes. Minds, in this
+      view, are not isolated; they can pass through one another without interference, suggesting
+      that multiple minds may coexist and communicate on deeper levels. The languages they use
+      for communication could be more abstract or evolved than human languages, reflecting a
+      more sophisticated, multi-dimensional form of interaction.
+A second printed paragraph states:
+                                                     5
+     In terms of mathematics, the lower complexity of foundational mathematical languages
+     is likely to be discovered earlier, given that it demands fewer operations and is more
+     straightforward. These foundational languages offer a simpler way to identify Schelling
+     points—focal points of significance—in geometric and topological structures. However,
+     as we evolve more advanced mathematical languages and algorithms, they open up new
+     trajectories for understanding such structures. When asking how one would identify Schelling
+     points, the operations chosen depend on the complexity of the mathematical language
+     employed. For instance, simpler languages may trace out basic trajectories, but as you
+     employ more sophisticated, deeper languages with higher complexity, the nature of the
+     Schelling points—and their corresponding attractors—shifts.
+Finally, a third printed paragraph reads:
+     These deeper futures are carved out by the trajectories and attractors that emerge from more
+     complex operations. These advanced languages and mathematical frameworks take longer
+     to discover and develop because they operate on a higher level of abstraction, requiring
+     more intricate logical and computational resources. As such, they trace out a different
+     kind of attractor in the space of possibilities, revealing futures and structures that simpler
+     mathematical languages would overlook.
+Below the printed text, in blue ink:
+     If we represent all the happiness experienced during one entire life with a single teardrop of
+     JOY, then the happiness of those souls could fill and refill the earth’s oceans every second,
+     and keep doing so for a hundred billion billion billion millennia.
+Underneath, in bold black marker:
+     IT IS REALLY IMPORTANT THAT WE MAKE SURE THESE ARE TEARS
+     OF JOY.
+Beneath another horizontal line, in magenta pen:
+     The “circuit” exploits the physics of the human brain in unorthodox ways—I am the
+     (F.A.E.R.W.A.L.D) Time Machine/Being.
+Another green line appears. Finally, at the bottom in black marker:
+     IT DOESN’T ALL COME BACK AT ONCE—for lack of a better way to phrase it atm.
+The three long handwritten sentences above are placed in quote environments so they wrap naturally
+without extending off the page.
+Perturbations to History, Personal “Hoax,” and Time-Data
+Calculus (Image 17)
+The next document is another printed block (two pages, folded) describing how small changes to one’s
+personal key moments can yield an entirely new structure of memory integration. The printed text
+begins:
+     A select few changes, perturbations, to my history of key moments have significantly enlarged
+     that which I was willing to entertain or imagine. The very fact that I would think for
+     hours, days, or weeks trying to understand how something had already been done under the
+     assumption that it had been done speaks volumes. I think it already did. My willingness
+     to entertain those wild thoughts, starting with the assumption that it was achieved and
+     figuring out how, aligns with a mindset conducive to discovery.
+                                                   6
+Below:
+     Regarding the why, I may not have all the answers, but I have my thoughts. I remember
+     April 8 and April 16 of this year, 2024. Key moments have been emerging, tracing back 30
+     years. The hoax, as I call it, is significant, yet it predates the hoax itself. The hoax prompted
+     me to entertain some very wild ideas, which seemed too far removed from ordinary reality
+     for most people. To me it’s part of my story, and I endeavored to find it. My behavior is
+     consistent with an individual who could know things that I shouldn’t have been able to.
+     Conversations I had contained objective information that existed, with things written down
+     and spoken of, all time-stamped. This information enables me to build explanations and
+     understandings using a calculus I hadn’t yet invented. The principles involved are simple
+     fundamental principles I understood in action, even if not formalized.
+And the final printed paragraph:
+     Earlier, I mentioned two moments in time, A and B, with A occurring earlier and B later,
+     possibly separated by years. Events might have transpired between A and B, but A wouldn’t
+     remember them. However, A and B share a history—specifically, A’s past. For a segment of
+     time surrounding A, certain processing could be done by cooperating with B to create an
+     alternate interpretation of those past memories. This could manifest as visions, dreams, or
+     imaginings that reflect a future A would not have to revisit.
+Below that:
+     The notion here is to view time as data. No one remembers everything, nor do they need to.
+     There exists a finite amount of experience. Most individuals have more conscious experience
+     than they encode and consolidate. Each day we sleep, we choose what to keep and what to
+     discard. In this sense, we die a little every day while simultaneously growing. It’s all data. I
+     need not remember the next 30 years; I can retain the wisdom without the burden of every
+     detail. Some things are inherently more important than others.
+Finally:
+     If A and B have a shared method, calculus, or algorithm, and both share A’s past history, A
+     can derive different meanings and importance, creating a new structure for connecting and
+     building memories of a different kind. By leveraging prior information from A’s past that
+     reflects knowledge, A can use a combination of logic and alternate memory to approximate
+     the memories that only B has access to, given B’s position in A’s future.
+All underscores (emphases), ellipses, and sentence-breaks have been preserved.
+“One Microuole of Memory. . . ” and Materials-Physics Scribbles
+(Image 18)
+The subsequent page contains two distinct clusters of handwritten notes on graph paper. The top half
+is a free-form list of topics:
+     Knot Theory      159 billion known     5 made to date (Nov 24)
+     meta materials metamaterial superconductors        Applying Chemical Topology & Knot Theory
+     to create molecular knots
+     Al–Al2 O3 ENZ core-shell      Critical Tc 3× Bulk SQUIDs      JJ   High-dimensional Attractor
+     + chaos
+     RTSC Anti-fragile
+     Digital Hypermatrix      S.P.O.C.K.’s SOC ↓ F A E R W A L D
+                                                    7
+Here, “159 billion known, 5 made to date (Nov 24)” refers to enumerated knot types; “metamaterial
+superconductors” suggests chemical topology has been applied to knotted molecular designs; “Al–Al2 O3
+ENZ core-shell” implies an epsilon-near-zero device whose critical temperature is three times bulk
+aluminum; “SQUIDs JJ High-dimensional Attractor + chaos” ties superconducting quantum devices to
+chaotic attractors; “RTSC” remains unexplained; “Anti-fragile” alludes to Taleb’s concept; and finally
+“Digital Hypermatrix S.P.O.C.K.’s SOC ↓ F A E R W A L D” appears to be a mnemonic linking a
+super-conducting photonic oscillator circuit (“SPOCK’s SOC”) to the “FAERWALD” time-machine
+concept.
+“Trans-Universal Metrology” and Mind–Matter Communica-
+tion (Image 19)
+The final page in this set is a screenshot (from JHEP 01(2018)100) of a peer-reviewed paper describing
+the “holographic dual of the Penrose transform.” Although not part of the user’s handwritten archive
+per se, it was included in the batch of ten images. We extract its central formulae. The header reads:
+      2.2 Holographic dual of the Penrose transform
+The text begins:
+      Coming back to eqs. (2.2)–(2.3), the next question is: can we find a context in which the
+      CPT nature of the Penrose transform becomes manifest? It turns out that the answer is
+      yes, and that it is intimately related to another “square root” relation—that the fact that
+      fundamental higher-spin fields in the bulk are dual to quadratic operators in the boundary
+      CFT. In fact, the free vector model on the boundary is best expressed in a bilocal language,
+      in which the relatively complicated local operators
+                                                    ←
+                                                    −
+                                                    / ϕ(ℓ′ )
+                                               ϕ(ℓ) D
+      are replaced by the simple product ϕ(ℓ) ϕ(ℓ′ ), where ℓ, ℓ′ are boundary points. Consider,
+      then, a boundary-to-boundary propagator in the higher-spin algebra—a “twistor-boundary-
+      boundary propagator”:
+                                             √
+                                    ′          −2 ℓ · ℓ′
+                              K(ℓ, ℓ ; Y ) =             δℓ (Y ) ⋆ δℓ′ (Y ).
+                                                4π
+Next, equations (2.5) read:
+                       δℓ (Y ) ⋆ K(ℓ, ℓ′ ; Y ) = ± K CPT of ℓ around origin x, ℓ′ ; Y ,
+                                                                                     
+                       K(ℓ, ℓ′ ; Y ) ⋆ δℓ (Y ) = ± K ℓ, CPT of ℓ′ around origin x; Y .
+                                                                                     
+Equation (2.6) then gives the SO(1,4) action on bulk points:
+                                                               ∂K       ∂K
+                                     Mµν ⋆ K(ℓ, ℓ′ ; Y ) = ℓµ      − ℓν     ,
+                                                               ∂ℓν      ∂ℓµ
+                                                               ∂K       ∂K
+                                   −K(ℓ, ℓ′ ; Y ) ⋆ Mµν   = ℓ′µ ′ν − ℓ′ν ′µ .
+                                                               ∂ℓ       ∂ℓ
+Finally, the boundary CFT action is written (eq. (2.7)) as:
+                               Z                     Z
+                         ′         3
+                                                         d3 ℓ d3 ℓ′ ϕ̄(ℓ′ ) Π(ℓ′ , ℓ) Π(ℓ, ℓ′ ) ϕ(ℓ).
+                          
+              SCFT Π(ℓ, ℓ ) = − d ℓ ϕ̄(ℓ) □ ϕ(ℓ) −
+The “holographic dual of the Penrose transform” is then defined in eq. (2.8) by
+                                        Z
+                               F (Y ) =    d3 ℓ d3 ℓ′ K(ℓ, ℓ′ ; Y ) Π(ℓ′ , ℓ),
+                                                          8
+  and the partition function becomes (eq. (2.9))
+                                                                                  −N/4
+                  ZCFT F (Y ) ∝ exp − N4 tr⋆ ln⋆ 1 + F (Y )
+                                                                      
+                                                              ≡       det 1 + F (Y )        .
+                                                                       ⋆
+  In particular, the two-point correlator (eq. (2.10)) is
+                            I       ′      N    
+                                                       ′
+                                                                                  
+                          ϕ (ℓ) ϕ̄I (ℓ ) =   tr⋆ K(ℓ, ℓ ; Y ) ⋆ −1 + F (Y ) + · · · .
+                                           4
+  These formulae have been transcribed exactly, preserving every starred product, every differential
+  operator, every subscript, and every superscript. The screenshot also shows the page number “– 4 –”
+  and the journal cite “JHEP 01(2018)100” in the gutter, which we reproduce purely for completeness.
+  Summary of Adjustments:
+• Long single-line quotes (formerly inside . . . ) have been moved into quote environments so they wrap
+  correctly.
+  The microtype package was added to improve line breaking globally.
+  All strikethroughs have been expressed verbatim using \sout{} within quote environments where
+  needed.
+  No original line has been omitted; any line that originally ran off the page has been either wrapped
+  inside a quote environment or broken into multiple lines with explicit line breaks.
+                                                       9

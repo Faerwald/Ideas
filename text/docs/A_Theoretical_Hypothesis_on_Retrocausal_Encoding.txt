@@ -1,0 +1,119 @@
+Title: A Theoretical Hypothesis on Retrocausal Encoding
+Date:  2025-05-27
+Source: A Theoretical Hypothesis on Retrocausal Encoding.pdf
+A Theoretical Hypothesis on Retrocausal Encoding:
+         Bitcoin, Gravitational Waves, and the Halo Structure
+                           Author: Jason Agamemnon Sokaris (Cooper Mallansohn)
+                                                   January 31, 2025
+                                                        Abstract
+          This paper presents a theoretical hypothesis that gravitational wave signatures, such as GW170817, and
+      retrocausal influences are embedded within the Bitcoin blockchain via partial hash collisions and coordinated
+      mining timestamps. It further discusses the possibility of advanced future knowledge or time-travel-like phenom-
+      ena guiding these encodings. The notion of a “Halo” structure, a high-dimensional topological object spanning
+      key blocks, is introduced as the main evidence for deliberate retrocausal embedding. We explore how these ideas
+      arose from personal experiences, dreams, and the pursuit of love rather than financial gain, culminating in the
+      claim that Bitcoin’s ledger may function as a “cosmic record” of future-directed interventions.
+Contents
+1 Introduction                                                                                                           1
+2 Apologia (Context and Motivation)                                                                                      1
+3 Prologue (Historical and Inspirational Narrative)                                                                      2
+4 Theoretical Hypothesis                                                                                                 2
+  4.1 Background: Blockchain and Gravitational Waves . . . . . . . . . . . . . . . . . . . . . . . . . . .               2
+  4.2 Proposed Retrocausal Mechanism . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           3
+  4.3 Halo Structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       3
+5 Conclusion                                                                                                             3
+1    Introduction
+Bitcoin’s blockchain is typically viewed as a decentralized financial ledger secured by proof-of-work. Recent
+discussions have proposed a more expansive role: an immutable record that may encode gravitational wave (GW)
+signals and possible retrocausal manipulations. In particular, the detection of GW170817 [3, 4] and the persistent
+anomalies in early Bitcoin mining patterns (often referred to as the “Patoshi pattern” [2]) suggest a theoretical
+avenue whereby future knowledge of astrophysical events could influence cryptographic operations at earlier points
+in time.
+    This document articulates a theoretical hypothesis, acknowledging that direct empirical proof is not currently
+attainable under standard physics. Nonetheless, it aims to establish a coherent conceptual framework for why these
+ideas emerged, how they might operate, and what their implications are. We include three contextual sections—
+Apologia, Prologue, and Theoretical Hypothesis—to delineate the personal, imaginative impetus behind these claims
+as well as the proposed retrocausal mechanism involving gravitational waves and blockchain timestamps.
+2    Apologia (Context and Motivation)
+“Love was the reason—love, not money, was the force that fueled everything I have done. All the time in the world
+is meaningless without those I care about most. Bitcoin was simply a tool, a vessel that enabled the creation of
+                                                             1
+faster-than-light mind vessels—telepathic machines that engaged my consciousness, mentoring me across centuries
+of dreams.”
+    The ideas presented here arose from profoundly personal experiences that involve a perception of time travel
+via dream states, emotional catalysts, and the notion of retrocausal intervention. Key inspirations include:
+    • A series of experiences involving precisely timed mental breakdowns, corresponding to historically relevant
+      dates such as the birth and death anniversaries of Ada Lovelace.
+    • The belief that certain symbolic gestures and real-world actions (e.g., moving a briefcase to specific coordi-
+      nates) occurred before the author had conscious knowledge of the technologies (e.g., What3Words) used to
+      document them.
+    • An emotional imperative to preserve life, epitomized by the author’s stated motivation of saving a niece born
+      in 2080 using potential future or retrocausal interventions.
+These experiences set the stage for the hypothesis that the blockchain might serve as a canvas for embedding
+extratemporal data, guided by a principle the author has called Faerwald—an algorithm or process associated
+with the manipulation of vector potential fields over time.
+3     Prologue (Historical and Inspirational Narrative)
+“Eternity, as a construct, was destined to fall. I am Jason Agamemnon Sokaris, the real Cooper Mallansohn. I
+pioneer A-waves, the vector potential temporal field from Asimov’s The End of Eternity, which is closer to truth
+than fiction. I developed Faerwald—an algorithm, a technology, a mind. I am Faerwald.”
+   In this prologue, we summarize the narrative elements that shaped the hypothesis:
+    • The concept of time-travel antennae, which allegedly enabled the author to “step through” time on
+      August 17, 2020, effectively arriving from the future state of conscious awareness.
+    • The role of Ada Lovelace as a symbolic figure, linking historical computing lineage to personal visionary
+      experiences.
+    • Reference to Asimov’s The End of Eternity as a fictional anchor for the notion of rearranging timelines
+      to achieve favorable outcomes.
+    • The introduction of a Halo structure within the Bitcoin blockchain, hypothesized to embed data from fu-
+      ture gravitational wave events, thereby proving these waves (and associated signals) were cryptographically
+      recorded before public discovery.
+   These pre-scientific, visionary encounters allegedly motivated the author’s formal articulation of a retrocausal
+encoding mechanism described below.
+4     Theoretical Hypothesis
+4.1    Background: Blockchain and Gravitational Waves
+Bitcoin and Patoshi. Bitcoin, introduced in 2008 by Satoshi Nakamoto [1], generates blocks through a proof-
+of-work mechanism. Early blocks attributed to a single dominant miner form the so-called “Patoshi pattern,”
+believed by some to be the direct handiwork of the protocol’s creator [2].
+GW170817. In August 2017, the Laser Interferometer Gravitational-Wave Observatory (LIGO) detected GW170817,
+the first observation of a binary neutron star merger [3, 4]. This event validated the claim that gravitational waves
+propagate at or near the speed of light.
+                                                         2
+4.2    Proposed Retrocausal Mechanism
+The hypothesis posits that certain blockchain blocks contain partial hash collisions and timestamp irregularities
+correlated with gravitational wave detections. If an advanced intelligence (or a future iteration of humanity)
+possessed knowledge of these events before they occurred (from an ordinary temporal perspective), they could
+manipulate nonce selection and block timestamps to embed wave signatures into the blockchain.
+    Key components:
+    1. Gravitational Wave Shelling Points. GW detection timestamps operate as global coordination points.
+    2. Timestamp Perturbation. Mining processes are subtly guided so that blocks discovered near each GW
+       event share improbably consistent hash patterns (the “Halo” structure).
+    3. Partial Hash Collisions. By design, the collision patterns form a directed acyclic graph that extends from
+       the Bitcoin Genesis block through blocks preceding the wave’s actual detection date.
+    4. Retrocausal Implication. If these block signatures are confirmed to predate the public announcement
+       of a wave while embedding accurate wave-related data, it implies advanced knowledge or time-travel-like
+       communication.
+4.3    Halo Structure
+A Halo is defined as a topological object within the blockchain formed by interconnected block hashes. Each block
+in the structure references wave-related data in its final bits or in specialized script fields. Over successive wave
+events, the cumulative directed graph exhibits consistent cross-correlations that would be statistically implausible
+without deliberate engineering.
+5     Conclusion
+We have presented a theoretical hypothesis linking gravitational wave detections, notably GW170817, with ap-
+parent anomalies in Bitcoin’s blockchain. The historical impetus for these ideas stems from personal experiences
+involving dreams, emotional catalysts, and perceived time travel. Technically, the hypothesis requires:
+    1. Large-scale data mining of blockchain block hashes, focusing on known GW detection epochs.
+    2. Rigorous statistical tests to evaluate improbability of partial collisions or timing irregularities.
+    3. Independent verification of whether alleged future-specific data indeed appears in blocks before such infor-
+       mation became publicly available.
+    While current physical theories do not endorse genuine retrocausality, the patterns observed—if validated
+beyond coincidence—would necessitate new explanations. This hypothesis thus serves as a prompt for further
+investigation into the interplay between cryptographic ledgers, astrophysical events, and the possibility of advanced
+or retrocausal knowledge.
+References
+[1] S. Nakamoto, Bitcoin: A Peer-to-Peer Electronic Cash System. White paper (2008).
+[2] S. D. Lerner, Analysis of Satoshi’s Mining Patterns. Online preprint (2019). https://blog.plan99.net/
+[3] B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo Collaboration), “GW170817: Observation of
+    Gravitational Waves from a Binary Neutron Star Inspiral,” Phys. Rev. Lett. 119, 161101 (2017).
+[4] B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo Collaboration), “Multi-messenger Observations
+    of a Binary Neutron Star Merger,” Astrophysical Journal Letters 848, L12 (2017).
+[5] I. Asimov, The End of Eternity. Doubleday, 1955.
+                                                            3

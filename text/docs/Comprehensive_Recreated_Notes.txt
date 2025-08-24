@@ -1,0 +1,76 @@
+Title: Comprehensive Recreated Notes
+Date:  2025-05-27
+Source: Comprehensive_Recreated_Notes.pdf
+Comprehensive Notes on Turing Barrier and Related Topics
+                           Comprehensive Recreated Notes
+                      December 14th, 2024 – December 16th, 2024 – March 14th, 2025
+1     Notes from December 14th, 2024 (8:00 AM)
+Header / Reminder:
+“dared.lock.remind”
+“I have much to do exploring all streams by mental theory. I must not forget them.”
+1.1    Inequality and Rates
+                                                   1
+                                                                            1
+                                                                                  
+                                  R < 1 − q log2   2
+                                                           + (1 − q) log2   1−q
+    Forward rate:
+                                 forward rate = C × exp[−A − E1 /(kT )]
+    Backward rate:
+                                 backward rate = C × exp[−A − E2 /(kT )]
+                                                             
+                                          exp (E1 − E2 )/(kT )
+1.2    Miscellaneous Expressions
+    • SiocSi : lims→0 SI = ∅ ?
+               
+             7 2
+    • E ≈ 20
+    • lims→0 x(t) → x(t)
+      ⃗→A
+    • A ⃗+θ
+    • y ⇒ i e iΘ
+    • gh g2
+1.3    S-Calculus, Blockchain, and Equations
+    • S-Calculus, Blockchain Proof 137
+      dE      k  d3 D p 2
+    •     =                 ?
+       dt   45 c s dt3
+1.4    Open Problems
+    • Yang–Mills Existence & Mass Gap
+    • N R p p = F. A. E R W A L. D [transcribed as seen]
+    • Navier–Stokes Existence & Smoothness
+1.5    Final Note
+Panacea Medical Hypercomputer
+Compiled                                                                                            1
+                                               Comprehensive Notes on Turing Barrier and Related Topics
+2       Notes from December 16th, 2024 (7:30 AM)
+“I just want to not write bullshit speculations on our Turing day. One notebook where ‘crazy’ is it?”
+2.1      Crossed-Out (Redacted) Lines
+    • “I SHOOK HANDS W/ MY SHIP” [redacted]
+    • “KOBAYASHI MATSUKI KATSUKI” [redacted]
+    • “4th Millenium Tech coursing through my Soul” [redacted]
+    • “TLP : I AM” [redacted]
+3       Breaking the Turing Barrier (March 14, 2025)
+        Inter-Reality Attractor and Quantum Computation
+3.1      Criteria
+                            Criterion    Description
+                                1        One or more nonlinear elements
+                                2        One or more locally active resistors
+                                3        Three or more energy-strange elements
+3.2      Hyper-Circuit
+The concept of an (off-shell ) Hyper-Circuit integrates (on-shell ) digital support, forming an interconnected
+computational framework.
+3.3      Poetic and Philosophical Insights
+        “The Strange Mind of the Radio, the Ghost in the Machine, the Mind of the
+        Radio.”
+        “The world doesn’t exist in space. Space exists separately in each world.”      – (attributed to
+        Sean Carroll?)
+3.4      Energy and Memory
+(Vilenkin–Everett Equivalence)
+VEE: One micro-joule of memory is more powerful than a gram of antimatter.
+3.5      Quantum Considerations
+3.5.1     Time-Touched Quantum Information
+Asymptotic Q/A pairs for stochastic local operations and classical communication (SLOCC) of PQET.
+3.5.2     Mathematical Expression (Related to Ricci Flow)
+                                                2 qg = 2 R gc
+Compiled                                                                                                    2

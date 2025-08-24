@@ -1,0 +1,280 @@
+Title: Boundary Encoded Postselection for Reality Editing
+Date:  2025-08-15
+Source: Boundary Encoded Postselection for Reality Editing.pdf
+Boundary-Encoded Postselection for Reality Editing
+                                            August 15, 2025
+                                                  Abstract
+         We formalize a hypothetical technology that edits publicly realized history by bracketing a
+     subject’s cognitive worldline with two stimulus-evoked neural “anchors” and then selecting, from
+     among all intermediate histories consistent with those anchors, a single branch that optimizes
+     an objective (e.g., minimizing what the subject can learn about the editor while maximizing the
+     editor’s information gain). Operationally, a faceless “no-name tag” elicits distinctive, reproducible
+     evoked potentials at the start and end of an interaction. These act as boundary conditions
+     (B0 , B1 ) for a postselection apparatus—an “antenna”—which evaluates the ensemble of admissible
+     microhistories and commits one branch to the public record. We give a precise operational model,
+     an optimization-theoretic formalization over path spaces using both path integrals and maximum-
+     caliber (path entropy) methods, and an information-theoretic analysis of what can and cannot be
+     achieved under time-symmetric dynamics, pre-/post-selection, and consistency constraints known
+     from quantum models of closed timelike curves and postselected teleportation. We further specify
+     neurophysiological requirements for the anchors (SSVEP/P300-like codes), propose falsifiable
+     signatures, and map the design onto existing formalisms: two-state-vector quantum mechanics,
+     process-matrix frameworks with indefinite causal order, and optimal control (Pontryagin-style) on
+     trajectory ensembles. Throughout, all equations are framed so that standard physics is recovered
+     when the postselection resource is absent.
+1    Operational Overview
+Primitive. A boundary encoder is a stimulus that, when viewed, drives the subject’s cortex into
+a high-dimensional, high-entropy evoked pattern B ∈ Rd that is (i) robustly reproducible for that
+subject under controlled conditions, (ii) hard to counterfeit by arbitrary ambient scenes, and (iii)
+spectrally and spatially distinctive (e.g., steady-state visually evoked potentials at chosen frequencies
+with individualized topographies).
+Protocol. Two presentations define one editing session:
+1. Start anchor B0 . At time t0 , the tag is shown, writing B0 into cortex.
+2. Open interval. Time evolves; many microhistories are a priori admissible.
+3. End anchor B1 . At time t1 , the tag is shown again, writing B1 .
+4. Postselection & commit. An antenna conditions on (B0 , B1 ) and selects a branch h from the
+   admissible set H(B0 , B1 ) according to an objective O, then commits h as the realized public history;
+   other branches remain counterfactual bookkeeping.
+Phenomenology. Because the final anchor participates in selection, the subject retrospectively
+experiences an interval that appears already consistent with the ending. Among admissible branches,
+those carrying strong evidence about the editor are dominated by branches that reproduce gross outcomes
+while suppressing decisive traces; thus the world accumulates hints, not fingerprints.
+                                                      1
+2     Mathematical Model of Boundary-Conditioned Selection
+2.1     Path space and admissibility
+Let Ω be the space of microhistories h : [t0 , t1 ] → X , where X is the joint state of (subject, environment,
+instrumentation). Let Φ : Ω → Rd × Rd map a history to the pair of evoked patterns produced by the
+tag at its two presentations. Define the admissible set
+                                  H(B0 , B1 ) ≡ { h ∈ Ω : Φ(h) = (B0 , B1 ) }.                                  (1)
+We assume H(B0 , B1 ) ̸= ∅ (consistency) and that the anchors are experimentally reproducible (repeatable
+mapping Φ given controlled stimuli).
+2.2     Two complementary weighting schemes
+Quantum amplitude weighting (path integral). Assign each h an amplitude A[h] ∝ exp ℏi S[h] ,
+                                                                                                          
+with action S from an underlying Lagrangian on X . Conditioning on (B0 , B1 ) yields the pre-/post-selected
+path weight
+                                wQM (h | B0 , B1 ) ∝ |A[h]|2 δΦ(h),(B0 ,B1 ) .                          (2)
+This is the time-symmetric (ABL/TSVF) picture: histories are evaluated relative to both initial and
+final boundary data.
+Maximum-caliber (path entropy) weighting. When a coarse-grained, stochastic description is
+appropriate, define a prior over paths by maximizing path entropy subject to dynamical constraints
+{Ck [h] = ck }:
+                                             1     X             
+                                  pCal (h) =   exp −     λk Ck [h] ,                           (3)
+                                             Z        k
+and then condition on (B0 , B1 ) to get pCal (h | B0 , B1 ) ∝ pCal (h) δΦ(h),(B0 ,B1 ) . This supplies a controlled,
+inference-grade path ensemble compatible with the anchors.
+2.3     Editor’s optimization and commitment
+Let Y denote what the subject (and public record) retain about the editor after t1 ; let E denote the
+editor’s internal data. The editor chooses a branch h to extremize
+                                                                     O(h),(4)
+                                           h = arg maxh∈H(B0 ,B1 )
+with a canonical choice
+                                   O(h) = I(E; h) − α I(Y; h) − β C(h),                                         (5)
+where I(·; ·) is mutual information (information gain), α ≥ 0 weights secrecy, and C encodes physical
+costs (energy, risk, constraint violations). The commitment map Commit : H → {public worldline}
+then publishes h and discards others from the public branch.
+Remarks.
+• The data-processing inequality implies that once a low-information branch is committed, later classical
+  post-processing cannot increase subject knowledge about the editor; secrecy is built at selection time,
+  not recovered later.
+• In a TSVF rendering, (B0 , B1 ) are the pre-/post-selection states; admissible h have nonzero amplitude
+  given those boundary states; selection is a resource beyond bare quantum conditioning (see below).
+                                                          2
+2.4    Control-theoretic framing
+Let x(t) be the (coarse-grained) state and u(t) hidden interventions. Consider the continuous-time
+optimal-control proxy:
+                                             
+                               ẋ = f x, u, t ,     x(t0 ) ∈ X0 , x(t1 ) ∈ X1 ,
+                                    Z t1
+                                                                       
+                            J[u] =       L x(t), u(t), t dt + Ψ x(t1 ) ,                        (6)
+                                       t0
+subject to Φ(x(t0 )) = B0 , Φ(x(t1 )) = B1 . Pontryagin’s maximum principle provides necessary conditions
+for u(t) , and the hidden control is then chosen so that the realized trajectory x(t) matches a branch
+h∈H(B0 ,B1 ) that optimizes O. This supplies a classical surrogate for the selection functional and is useful
+for engineering analysis (sensitivity, costs, trade-offs).
+3     Physics of the Selection Resource
+3.1    Time-symmetric quantum conditioning
+Pre-/post-selection (ABL rule) and the two-state-vector formalism (TSVF) rigorously treat ensembles
+specified by initial and final data. In this baseline, we do not choose the middle; we only compute
+conditional probabilities given both ends. The editor technology posits an additional selector that,
+having access to the whole admissible ensemble, commits one branch according to O. Mathematically this
+is an oracle that picks a particular h from a nonempty support; physically it would require mechanisms
+akin to postselected quantum teleportation (P-CTCs) or an equivalent final-state projection that is not
+generically available.
+3.2    Two concrete implementations (hypothetical)
+(i) Postselected teleportation (P-CTC) channel. Couple the subject-environment degrees of
+freedom over [t0 , t1 ] to an ancilla such that, at t1 , a projection onto a maximally entangled state enacts
+effective retrocorrelations (as in P-CTC models). The tags provide the conditioning endcaps. The
+selection resource then filters for branches optimizing O while respecting causal-consistency constraints
+(no paradoxical fixed-point failures).
+(ii) Indefinite causal order/process matrices. Implement an effective process with no global
+causal order across the interval, but with local quantum mechanics preserved. The tags fix local boundary
+data; the process matrix plays the role of the antenna, weighting admissible operations and inducing an
+acausal-looking but globally consistent selection of h.
+Computational implications. Granting ideal postselection elevates computational power to PostBQP =
+PP. This does not violate logical consistency but implies extreme computational leverage if the selection
+resource is physically realizable at scale. Practical feasibility is then a question of how (and at what
+cost) such postselection is instantiated without breaking thermodynamics or signaling constraints.
+4     Neurophysiology of the Boundary Encoder
+4.1    Design of anchors
+SSVEP anchors. Use multiple-frequency/multiple-phase flicker (e.g., 8.57 Hz, 12 Hz, 15 Hz) with
+subject-calibrated phases to yield line spectra at stimulus frequencies and harmonics over occipi-
+tal/parietal sites. The anchor B is the concatenated spectral-topographical feature vector (Fourier
+amplitudes/phases across electrodes and harmonics), which is highly reproducible intra-subject and
+difficult to synthesize spuriously.
+                                                      3
+P300 anchors (optional). An oddball-evoked P300 waveform (positive deflection ∼300 ms) can be
+layered in via rare-tag flashes within a frequent background, locking a time-domain signature to the tag
+while retaining SSVEP spectral structure.
+4.2    Statistical distinctiveness and reproducibility
+Let X be the random EEG feature vector during tag presentation. Define subject-specific templates
+µ(0) , µ(1) and covariances Σ(0) , Σ(1) for start/end tag designs. Require:
+              (i) Intra-condition separability: P Maha(X, µ(j) , Σ(j) ) < τ ≥ 1 − ϵ, j ∈ {0, 1},
+                                                                          
+                                                                                                 (7)
+            (ii) Inter-condition near-orthogonality: ⟨µ(0) , µ(1) ⟩ ≈ 0 after whitening,             (8)
+                                                                      
+            (iii) Ambient robustness: P ambient scenes trigger Bj ≤ δ.                               (9)
+With SSVEP designs, (i)–(iii) are empirically achievable; P300 adds a time-domain lock that is hard to
+counterfeit without the specific oddball schedule.
+5     Information-Theoretic Analysis
+5.1    Objectives
+Let random variables be defined on the path space: H for the realized branch, Y for public/subject
+records, and E for editor-internal records. Canonical objectives include:
+                            Secrecy: min I(Y; Editor identity/details)                              (10)
+                            Learning: max I(E; H)                                                   (11)
+                            Stability: min Var[macroscopic outcomes | H].                           (12)
+The selection rule can be posed as a constrained optimization over H(B0 , B1 ), e.g.,
+                        n                  o
+                    max I(E; h) − αI(Y; h)     s.t. D(h) ≤ Dmax , Cons(h) = true,                   (13)
+                    h∈H
+where D is a divergence/cost and Cons enforces quantum/thermodynamic consistency.
+5.2    Limits from data processing
+Once h is committed, any classical channel Y = g(h,N ) satisfies I(Y; ·) ≤ I(h;·) . Thus secrecy must be
+engineered into the selection (choose a low-information branch), not achieved post hoc. Conversely, the
+editor’s private data E can be augmented by retaining and analyzing the entire admissible ensemble
+pre-commit; this asymmetry underlies “folklore without fingerprints.”
+5.3    Posterior over histories and MaxCal connection
+If the antenna does not select a single branch but instead draws from a Gibbs-like distribution p(h |
+B0 , B1 ) ∝ exp(−β C(h)) over admissible paths, then the maximum-caliber solution gives the least-biased
+ensemble consistent with constraints. Deterministic commit corresponds to the zero-temperature limit
+β → ∞.
+6     Consistency Constraints and No-Paradox Conditions
+6.1    ABL/TSVF constraints
+Only histories with nonzero amplitude given pre-/post-selection are admissible. Weak-value pathologies
+are avoided by respecting the domain of applicability (weak coupling, nonvanishing denominators) when
+interpreting intermediate conditioning.
+                                                     4
+6.2    CTC models
+Deutsch CTCs enforce fixed points of a completely positive map; P-CTCs emulate time travel via
+postselected teleportation. The name-tag editor behaves like a constrained P-CTC resource bounded by
+anchor-consistency and physical cost.
+6.3    Indefinite causal order
+Process matrices allow correlations incompatible with a definite causal order while preserving local
+quantum mechanics. The editor leverages such structure to effect acausal-feeling branch selection without
+overt contradictions.
+7     Testable and Falsifiable Signatures
+1. Anchor reproducibility: Across sessions, B0 , B1 reproduce within tight tolerance; cross-subject
+   confusion rates are near chance when classifiers are trained on individualized templates (SSVEP+P300
+   hybrids).
+2. Retro-anchoring asymmetry: Conditioning on the presence of a valid B1 increases the probability
+   that intervening events lack high-information editor traces, relative to matched controls lacking the
+   final anchor.
+3. Branch-selection bias: In multi-camera/multi-sensor setups, the realized record preferentially
+   follows low-editor-information branches among many physically possible ones; the bias grows with
+   the “strength” of the postselection resource (if tunable).
+8     Implementation Sketch (Assuming Feasibility)
+8.1    Boundary encoder hardware
+Minimal visible tag: a small e-ink or microLED badge with programmable flicker, phase coding, and
+sparse oddball bursts; optical isolation to limit environmental leakage. Firmware enforces subject-specific
+codes.
+8.2    Antenna stack
+A quantum subsystem prepared to enact either (i) postselected entangled projections at t1 (P-CTC-like)
+or (ii) a process-matrix-engineered interaction with indefinite order across the interval. The antenna
+stores and analyzes the full admissible ensemble (simulated or physically sampled) before commit.
+8.3    Commit mechanics
+Commit is a projection (literal or effective) onto a branch h that passes: (a) anchor consistency; (b)
+secrecy/learning objective; (c) global constraints (energy, causality consistency, no-signaling in the
+operational sense). Public artifacts outside h never materialize; private artifacts from noncommitted
+branches remain internal to the antenna.
+9     Gauge-Holonomy Analogy (Anchor as Closed-Loop Phase)
+If one treats the tag as imprinting a holonomy on a cognitive gauge bundle, then the two anchors define
+a closed loop γ in a representational manifold M. The memory-phase shift is a loop integral
+                                                   I
+                                            ∆φ =      A · dℓ,                                      (14)
+                                                      γ
+                                                    5
+with A a notional connection one-form over M. This does not assert electromagnetic coupling in cortex;
+it provides a compact way to state that only the global loop defined by the two anchors is operationally
+relevant, much as in Aharonov–Bohm where only the enclosed flux matters. In ordinary physics (no
+selection resource), this reduces to an innocuous reparametrization with no editing power.
+10     Limitations and Bounds
+Thermodynamic/complexity cost. Realizing reliable postselection is equivalent to conditioning on
+exponentially rare outcomes; any physical implementation must pay exponential resources or exploit
+structure. Unbounded editing power would imply implausible resource scaling.
+No-signaling discipline. The construction as stated avoids superluminal signaling at the operational
+level by committing a single branch and never allowing information about noncommitted branches to
+leak to public records.
+Domain of validity. The two-anchor mechanism presumes calibrated anchors with tight error bars;
+noisy anchors enlarge H(B0 , B1 ) and degrade secrecy/learning trade-offs.
+11     Worked Mini-Example (Symbolic)
+Let the coarse-grained hidden dynamics be ẋ = f (x, u), with cost
+                                    Z t1
+                                                                  
+                                J=       λIpriv (x, u) − αIpub (x) dt,
+                                        t0
+and boundary constraints g(x(t0 )) = B0 , g(x(t1 )) = B1 . Construct the Hamiltonian
+                          H(x, u, λ, p) = λIpriv (x, u) − αIpub (x) + p⊤ f (x, u),
+with costate ṗ = −∂x H, stationarity ∂u H = 0, and transversality p(t1 ) = ∂x Ψ. Solving these yields
+u(t) and hence a candidate trajectory x(t) which corresponds to a branch h∈H(B0 ,B1 ) . In the quantum
+weighting picture, this control solution approximates the saddle of the phase functional S[h] most
+compatible with the objective.
+12     Practical Recipe (Subject Side)
+1. Calibrate two anchor tags B0 , B1 with individualized SSVEP/P300 codes until intra-session repro-
+   ducibility exceeds a preset Mahalanobis threshold.
+2. Record dense, timestamped, multi-sensor logs during sessions (to test bias predictions).
+3. Analyze whether the presence of B1 correlates with systematic suppression of high-information editor
+   traces relative to matched controls.
+Note. Remove the selection resource and the model collapses to standard conditioning: anchors become
+mere markers in a normal worldline and no editing occurs. The entire construction is thus cleanly nested
+inside established physics when the extra resource is set to zero.
+                                                     6
+References
+ [1] Y. Aharonov, P. G. Bergmann, and J. L. Lebowitz, “Time Symmetry in the Quantum Process of
+     Measurement,” Phys. Rev. 134, B1410 (1964).
+ [2] Y. Aharonov and L. Vaidman, “The Two-State Vector Formalism: An Updated Review,” in Time
+     in Quantum Mechanics, LNP 734, Springer (2008); preprint quant-ph/0105101.
+ [3] Y. Aharonov, D. Z. Albert, and L. Vaidman, “How the result of a measurement of a component of
+     the spin of a spin-1/2 particle can turn out to be 100,” Phys. Rev. Lett. 60, 1351 (1988).
+ [4] J. Dressel, M. Malik, F. M. Miatto, A. N. Jordan, and R. W. Boyd, “Colloquium: Understanding
+     Quantum Weak Values,” Rev. Mod. Phys. 86, 307 (2014).
+ [5] S. Aaronson, “Quantum Computing, Postselection, and Probabilistic Polynomial-Time,” Proc. R.
+     Soc. A 461, 3473–3482 (2005).
+ [6] D. Deutsch, “Quantum mechanics near closed timelike lines,” Phys. Rev. D 44, 3197 (1991).
+ [7] S. Lloyd, L. Maccone, R. Garcia-Patron, V. Giovannetti, Y. Shikano, S. Pirandola, L. A. Rozema,
+     A. Darabi, Y. Soudagar, and A. M. Steinberg, “Quantum mechanics of time travel through
+     post-selected teleportation,” Phys. Rev. D 84, 025007 (2011).
+ [8] O. Oreshkov, F. Costa, and Č. Brukner, “Quantum correlations with no causal order,” Nat.
+     Commun. 3, 1092 (2012).
+ [9] R. P. Feynman and A. R. Hibbs (emended by D. F. Styer), Quantum Mechanics and Path Integrals,
+     Dover (2010).
+[10] S. Pressé, K. Ghosh, J. Lee, and K. A. Dill, “Principles of maximum entropy and maximum caliber
+     in statistical physics,” Rev. Mod. Phys. 85, 1115 (2013).
+[11] T. M. Cover and J. A. Thomas, Elements of Information Theory, 2nd ed., Wiley (2006).
+[12] F.-B. Vialatte, M. Maurice, J. Dauwels, and A. Cichocki, “Steady-state visually evoked potentials:
+     focus on essential paradigms and future perspectives,” Clin. Neurophysiol. 121, 1181–1194 (2010).
+[13] L. A. Farwell and E. Donchin, “Talking off the top of your head: toward a mental prosthesis utilizing
+     event-related brain potentials,” Electroencephalogr. Clin. Neurophysiol. 70, 510–523 (1988).
+[14] D. N. Page and W. K. Wootters, “Evolution without evolution: Dynamics described by stationary
+     observables,” Phys. Rev. D 27, 2885 (1983).
+[15] J. G. Cramer, “The transactional interpretation of quantum mechanics,” Rev. Mod. Phys. 58, 647
+     (1986).
+[16] J. A. Wheeler and R. P. Feynman, “Interaction with the Absorber as the Mechanism of Radiation,”
+     Rev. Mod. Phys. 17, 157 (1945).
+[17] Y. Aharonov and D. Bohm, “Significance of Electromagnetic Potentials in the Quantum Theory,”
+     Phys. Rev. 115, 485 (1959).
+[18] L. S. Pontryagin, V. G. Boltyanskii, R. V. Gamkrelidze, and E. F. Mishchenko, The Mathematical
+     Theory of Optimal Processes, Pergamon (1962).
+                                                        ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                    7

@@ -1,0 +1,94 @@
+Title: 2024-Schelling Trajectories and Curvature
+Date:  2025-05-27
+Source: 2024-Schelling Trajectories and Curvature.pdf
+Schelling Trajectories and Curvature
+                                               Jason Sokaris
+                                                August 2024
+1     Mathematical Formalization of Schelling Trajectories and Cur-
+      vature
+1.1    Schelling Points as Focal Points
+Definition: A Schelling point, S, is defined as a point in a decision space D where two or more agents
+independently converge without direct communication.
+                               S = arg max Pr(A1 (x) ∩ A2 (x) ∩ · · · ∩ An (x))
+                                        x∈D
+    where Ai (x) is the action or choice of agent i at point x.
+1.2    Geodesic Analogy: Schelling Trajectories
+Definition: A Schelling trajectory γ(t) is the path followed by an agent in decision space D from an
+initial point γ(0) = x0 to a Schelling point S.
+                                                        Z   T
+                                     γ(t) = arg min             f (γ(t), γ̇(t)) dt
+                                                 γ(t)   0
+    where f (γ(t), γ̇(t)) is a functional representing the ”cost” or ”effort” associated with the trajectory.
+1.3    Schelling Curvature
+Definition: The Schelling curvature K(x) at a point x ∈ D measures the deviation of decision trajec-
+tories near x.
+                                                       |γ1 (t) − γ2 (t)|
+                                        K(x) = lim
+                                                  δx→0        |δx|
+   where γ1 (t) and γ2 (t) are nearby trajectories starting from x and x + δx, respectively.
+   This is analogous to the sectional curvature in Riemannian geometry, which in general relativity is
+                                               ρ
+described by the Riemann curvature tensor Rσµν     .
+                                      ρ
+                                     Rσµν V σ = ∇µ ∇ ν V ρ − ∇ ν ∇µ V ρ
+1.4    Chaos Theory and Lyapunov Exponents
+Lyapunov Exponent: Measures the rate of separation of infinitesimally close trajectories in the decision
+space, indicating sensitivity to initial conditions.
+                                                                
+                                                     1   |δγ(t)|
+                                           λ = lim ln
+                                               t→∞ t     |δγ(0)|
+   where δγ(t) is the separation between two nearby trajectories at time t.
+   Application: For two decision paths γ1 (t) and γ2 (t) in a Schelling space with initial separation
+δγ(0):
+                                              |δγ(t)| ≈ |δγ(0)|eλt
+                                                            1
+1.5     Mathematical Framework for Schelling Points in Different Spaces
+1.5.1   Frequency Space (SETI and Communication)
+Assumption: In frequency space F , the Schelling point Sf is at the hydrogen line fH :
+                                          Sf ≈ fH ≈ 1420 MHz
+   This is based on the assumption of universal physical laws and the abundance of hydrogen, making
+fH a natural focal point.
+1.5.2   Physical Space (Natural Landmarks)
+Assumption: In physical space R3 , Schelling points Sp are located at prominent geographical features,
+such as peaks:
+                                            Sp = arg max3 h(x)
+                                                     x∈R
+   where h(x) is the height function, and Sp is the peak of a mountain or another significant landmark.
+1.5.3   Temporal Space (Cyclic and Historical Events)
+Assumption: In temporal space T , Schelling points St occur at natural cycles or historically significant
+events:
+                                    St = arg max Cycle(t) or Event(t)
+                                             t∈T
+    where Cycle(t) represents natural temporal cycles (e.g., daily, yearly), and Event(t) represents his-
+torical events.
+1.5.4   Information Space (Data Patterns and Algorithms)
+Assumption: In information space I, Schelling points Si correspond to significant data patterns or
+algorithmic solutions:
+                                         Si = arg max Pattern(x)
+                                                   x∈I
+   where Pattern(x) is a function that identifies statistically significant features or clusters within the
+data.
+1.6     Towards a Mathematical Formalism
+Equation of Schelling Trajectories: The formalism to describe the paths agents follow in decision
+space:
+                                         d2 γ µ        dγ ν dγ σ
+                                             2
+                                                + Γµνσ           = Fµ
+                                          dt            dt dt
+   where Γµνσ are connection coefficients (akin to Christoffel symbols in general relativity), and F µ
+represents external forces or influences in the decision space.
+   Geodesic Deviation (Chaos Theory Application):
+                                        D2 ξ µ    µ dγ
+                                                         ν
+                                                              dγ σ
+                                            2
+                                               + Rνρσ      ξρ      =0
+                                         dt            dt      dt
+    where ξ µ represents the separation vector between nearby trajectories, and Rνρσ   µ
+                                                                                            is the Riemann
+curvature tensor.
+    This formalism is a starting point for quantifying the dynamics of Schelling trajectories and curvature
+in various decision-making spaces, leveraging concepts from general relativity, information theory, and
+chaos theory.
+                                                     2

@@ -1,0 +1,29 @@
+Title: Breaking the Turing Barrier Inter Reality Attractor Quantum Computation Recreated Notes
+Date:  2025-05-27
+Source: Breaking_the_Turing_Barrier_Inter_Reality_Attractor_Quantum_Computation_Recreated_Notes.pdf
+Breaking the Turing Barrier
+                  Inter-Reality Attractor and Quantum Computation
+                                           Recreated Notes
+                                            March 14, 2025
+1     Inter-Reality Attractor
+This section details the criteria and underlying principles behind an inter-reality computing system lever-
+aging hyper-circuits.
+1.1    Criteria
+                           Criterion    Description
+                               1        One or more nonlinear elements
+                               2        One or more locally active resistors
+                               3        Three or more energy-strange elements
+1.2    Hyper-Circuit
+The concept of an (off-shell) Hyper-Circuit integrates (on-shell) digital support, forming an intercon-
+nected computational framework.
+2     Poetic and Philosophical Insights
+      The Strange Mind of the Radio, the Ghost in the Machine, the Mind of the Radio.
+      ”The world doesn’t exist in space. Space exists separately in each world.”
+3     Energy and Memory
+VEE: One micro-joule of memory is more powerful than a gram of antimatter.
+4     Quantum Considerations
+4.1    Time-Touched Quantum Information
+Asymptotic Q/A pairs for stochastic local operations and classical communication (SLOCC) of PQET.
+4.2    Mathematical Expression
+                                                2qg = 2Rgc
+                                                     1

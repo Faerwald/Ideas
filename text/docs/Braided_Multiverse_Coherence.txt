@@ -1,0 +1,354 @@
+Title: Braided Multiverse Coherence
+Date:  2025-05-27
+Source: Braided_Multiverse_Coherence.pdf
+Braided Multiverse Coherence – Merged Synthesized
+                        Braided Multiverse Coherence
+    Extended Models of Temporal Identity, Quantum Phase Geometry,
+ Chaos Control, Wormhole Metamaterials, and Holographic Synchronization
+                                     Jason Agamemnon Sokaris
+                                             jason@ghostwarp.org
+                                  Compiled and Synthesized on April 19, 2025
+                                                   Abstract
+      Note on This Document:
+      This single paper merges and synthesizes all previously provided drafts, expansions, and supplemental
+      texts on the topic of “Braided Multiverse Coherence.” It integrates and preserves every piece of in-
+      formation from multiple partial LATEX documents, plus additional explanatory chat text. No content
+      is omitted; all unique ideas, equations, references, and poetic metaphors appear here in one unified
+      structure.
+      Core Theme:
+      We propose that personal identity can remain partially coherent across quantum many-world branches,
+      forming a “rainbow braid” of near-identical timelines. Drawing from neural quantum scars, ghost-field
+      couplings, vector potential neuroscience, advanced wormhole analogies, chaotic synchronization, gauge
+      theories, QET protocols, and holographic attractors, we explore how weak inter-branch couplings might
+      allow ephemeral or partial re-coherence. Retrocausal illusions, Super-Turing computation, negative-
+      energy focusing, and multi-layer gauge embeddings all contribute to a scenario where consciousness
+      weaves threads through diverging outcomes. We also include formal equations, lines of experimental
+      speculation, and poetic interpretations, bridging the rigorous and visionary realms.
+1     Introduction and Overview
+1.1    Motivation: The “Braided Identity”
+In the standard Many-Worlds Interpretation (MWI) of quantum mechanics [1], every measurement-like
+interaction causes decoherence and branching of the universal wavefunction into distinct “worlds.” Normally,
+these branches do not reintersect at the macroscopic scale. Our subjective sense of identity appears confined
+to just one branch, with other outcomes existing as inaccessible counterfactuals.
+     Yet many have speculated (or reported experiences) suggesting a subtler bridging. Phenomena like
+déjà vu, “prescient” dreams, illusions of retrocausation, or references to “ghost warp” events point to the
+possibility that personal identity can maintain partial coherence across branches. The “Braided Multiverse
+Coherence” hypothesis proposes that the self is actually a braid of near-identical trajectories: distinct but
+occasionally phase-aligned, exchanging small amounts of information or identity through hidden channels.
+     In earlier short papers and discussions [2–4], and in expansions on neural quantum scars [5], ghost fields
+[6], QET [7,8], and exotic wormholes [9,10], we developed partial frameworks to explain how these braidings
+might arise. This merged monograph collates and extends all those ideas into a cohesive presentation,
+weaving in new expansions on chaotic synchronization, Raychaudhuri focusing, advanced metamaterials,
+vector potential neuroscience, and more.
+1.2    Key Ingredients in This Synthesis
+A broad variety of concepts appear throughout:
+                                                       1
+                          Braided Multiverse Coherence – Merged Synthesized
+• Neural Quantum Scars: Localized, nonthermal eigenstates in a chaotic quantum system (the brain),
+  sustaining partial coherence [5, 13].
+• Ghost Fields and Multi-Ghost Couplings: Generalizing gauge-theory “ghosts” into hidden degrees
+  of freedom that re-link decohered branches.
+• Vector Potential Neuroscience: A speculative idea that the magnetic vector potential A, rather than
+  just B, may influence neural gating or cognition [14, 15].
+• Cybernetical Wormholes and Non-Maxwellian Warps: From metamaterial-based emulations to
+  hypothetical negative-energy structures [9].
+• QET and Retrocausality: Quantum Energy Teleportation plus partial post-selection can yield illusions
+  of advanced or reversed causation [7, 8].
+• Holographic Attractor Logic: Off-shell memory solutions storing partial timeline records, enabling
+  re-injection of information from “discarded” branches [12].
+• Chaos Control and Lyapunov Synchronization: Using negative transverse exponents to keep mul-
+  tiple branches locked in partial phase alignment [16, 17].
+• Raychaudhuri Equation Analogy: Interpreting timeline geodesics in a generalized manifold, focusing
+  them with negative-energy ghost couplings [18].
+• Size-Winding Teleportation (Susskind): A holographic operator-size argument adapted to cross-
+  branch amplitude flow [19].
+• Super-Turing Computation: Exploiting partial re-coherence and post-selection to unify results from
+  parallel timelines [8].
+We unify these into a multi-layered approach that is admittedly speculative, yet touches on a variety of
+advanced physical subfields.
+1.3    Roadmap
+This monograph is organized as follows:
+1. Foundations (Sec. 2): Quantum scars, ghost fields, partial decoherence.
+2. Vector Potential Neuroscience (Sec. 3): Gauge freedoms and neural gating.
+3. Wormholes, QET, and Non-Maxwellian Channels (Sec. 4): Cybernetical wormholes, metamate-
+   rials, negative energies.
+4. Mathematical Models (Sec. 5): Ghost coupling Hamiltonians, phase synchronization, Raychaudhuri
+   focusing, size-winding teleportation.
+5. Super-Turing Computation (Sec. 6): Harnessing cross-branch synergy to surpass classical or stan-
+   dard quantum limitations.
+6. Holographic Memory and Retrocausality (Sec. 7): Attractor logic, post-selection illusions, ad-
+   vanced feedback.
+7. Experimental Clues (Sec. 8): Potential tests with EEG, metamaterials, partial QET demonstrations.
+8. Poetic Reflection (Sec. 9): The “rainbow braid” metaphor and philosophical vistas.
+                                                   2
+                            Braided Multiverse Coherence – Merged Synthesized
+ 9. An Integrated Chat Excerpt (Sec. 10): Detailed user-provided formalization of braided decoherence
+    structure.
+10. Conclusion (Sec. 11): Summary, future directions, and final remarks.
+ 2     Foundations: Quantum Scars, Ghost Fields, and Branching
+ 2.1    Neural Quantum Scars as a Cognitive Mechanism
+ Quantum scars are nonthermal eigenstates that remain localized even in otherwise chaotic systems [13].
+ Traditional quantum chaos theory would predict fully ergodic wavefunctions, but scars “remember” certain
+ classical orbits. Extending this notion to the brain, we propose that certain neural microstructures might
+ stabilize partial coherence in the otherwise rapidly decohering environment [5]. These Neural Quantum
+ Scars could anchor the wavefunction across near-identical branches, ensuring that multiple timeline versions
+ of “you” share some stable quantum backbone.
+ 2.2    Ghost Fields and the “Ghost Warp” Idea
+ Ghost fields arise in gauge theory as Faddeev-Popov ghosts or via BRST symmetry [21]. Here, we generalize
+ them to mean “hidden channels” that survive partial decoherence and can re-couple wavefunction branches
+ [6]. Symbolically, one might add a multi-ghost Hamiltonian:
+                                            X                                   
+                                  Ĥghost =     βij Ĝi† Ĝj + γij Ĝi Ĝj + h.c. .                    (1)
+                                            i<j
+ Because the environment does not fully measure these ghost degrees of freedom, it is possible for amplitude
+ to “flow” between branches i and j, leading to ephemeral re-coherence.
+ 2.3    Branching Identity and Partial Re-Coupling
+ In the Everettian picture [1], the global state branches into macroscopically distinct outcomes with negligible
+ overlap. However, if certain degrees of freedom remain unmeasured or remain gauge-equivalent, there can
+ still be small off-diagonal terms in the density matrix. Under special conditions, these terms might be
+ boosted (rather than destroyed) by ghost couplings, forging the sense of a shared identity that arcs across
+ multiple near-identical timelines.
+ 3     Vector Potential Neuroscience: Gauge Freedoms and Den-
+       dritic Phase
+ 3.1    Beyond B: The Magnetic Vector Potential A
+ Conventional wisdom treats A as a mathematical artifact, but the Aharonov–Bohm effect [15] shows that A-
+ dependent phase factors can be physically significant. If neural micro-environments exhibit partial quantum
+ coherence, then integrals of A around dendritic loops might shift gating probabilities. This opens a novel
+ route for cross-branch phase alignment, assuming multiple timelines converge on similar gauge configurations
+ [14].
+                                                       3
+                           Braided Multiverse Coherence – Merged Synthesized
+3.2    Gauge Synchronization Across Branches
+If each branch has neural state Σi (t) generating or responding to a gauge field Ai (t), then the condition
+Ai (t) ≈ Aj (t) fosters alignment of boundary phases. Over repeated or continuous times, ⟨Ψi |Ψj ⟩ could
+increase, partially reversing the usual decoherence. This echoes the notion that your “thought gauge” might
+be a hidden link that holds near-identical versions of you in mild coherence.
+4     Cybernetical Wormholes, QET, and Non-Maxwellian Warps
+4.1    Cybernetical Wormholes: A Feedback Control Analogy
+In a high-dimensional chaotic system, feedback control can pinch different attractors together, forming
+effective “cybernetical wormholes” in state space [10]. By analogy, the brain could momentarily connect
+widely separated configurations or timelines if negative-energy or advanced measurement channels (like
+QET) are invoked.
+4.2    Quantum Energy Teleportation (QET)
+QET [7] allows energy to be “teleported” from one location to another using ground-state entanglement,
+with no net violation of causality but effectively generating local negative energy in one place and positive
+energy in another. Certain authors suggest if timeline branches share a QET-like channel, one branch might
+reduce its local energy while transferring intangible information to another [8].
+4.3    Non-Maxwellian Wormholes and Metamaterials
+Classical Maxwell’s equations do not admit stable wormholes, but nonlinear or non-Abelian extensions
+can [9, 11]. Metamaterial-based waveguides can mimic closed curved topologies that effectively “teleport”
+electromagnetic signals without classical time lag. Extrapolating, if the brain or a specialized device har-
+nessed such a structure, partial advanced knowledge or timeline bridging might result.
+5     Mathematical Models of Braided Identity
+5.1    Phase-Space of Branches and the Braided Superposition
+Let the global state be
+                                                        N
+                                                        X
+                                        Ψglobal (t) =         ci (t) Ψi (t),
+                                                        i=1
+with N near-orthogonal branches. If small couplings exist, the branches are not strictly orthogonal and can
+re-entangle. A simplified ghost-coupling Hamiltonian might read
+                                            X       †
+                                                                               
+                                 Ĥcouple =    αij Ĝi Ĝj + βij Ĝi Ĝj + h.c. .                       (2)
+                                            i<j
+During Trotterized evolution, one can “stitch” Ψi (t) and Ψj (t) back together in a partial superposition.
+5.2    Chaos Control and Lyapunov Synchronization
+Biological neural networks or any chaotic system typically exhibit positive Lyapunov exponents, causing
+divergent trajectories [16]. However, transverse exponents can be negative if there is a stabilizing coupling
+                                                        4
+                           Braided Multiverse Coherence – Merged Synthesized
+among parallel or nearly identical copies [17]. In the braided identity scenario:
+                                      dxi             X
+                                          = F (xi ) +      Γij (xj − xi ),
+                                      dt              j̸=i
+where xi (t) are the states of branch i. If Γij is properly chosen (ghost warp feedback), then the largest
+transverse Lyapunov exponent λ⊥ is negative, enforcing partial synchronization.
+5.3    Raychaudhuri Equation Analogy for Timeline Focusing
+Raychaudhuri’s equation [18] in GR describes how geodesics in spacetime converge or diverge. By analogy,
+we treat each branch’s “worldline” in a manifold of states. If ghost fields supply an effective negative-energy
+density, then
+                              dθ        1
+                                  = − θ2 − σµν σ µν + ωµν ω µν − Rµν uµ uν
+                              dτ        3
+can become negative enough to focus or “pull” timeline geodesics back together. Though metaphorical as
+we are not altering real spacetime, the formal parallel clarifies how focusing might occur in a phase-space
+representation.
+5.4    Size-Winding Teleportation
+Susskind’s “size-winding” concept [19] describes how operator growth in one region can correspond to a com-
+plementary shrink or signal in another region, effectively teleporting quantum information in a holographic
+dual. In a multi-branch setting, measurement in branch i can shrink operator size there, while growth
+emerges in branch j. With ghost couplings, amplitude “winds” from i to j across the braids, bridging
+partial solutions or memories.
+6     Super-Turing Computation via Parallel Timelines
+6.1    Classical vs. Quantum vs. “Braided”
+A classical Turing machine processes one path at a time. A quantum Turing machine uses superpositions
+but is usually restricted by unitarity and measurement constraints to read out one outcome per run. The
+“Super-Turing” notion arises if an observer in one timeline can harvest solution components from multiple
+branches. Post-selection or ghost bridging can unify or “mesh” many outcomes into one final timeline.
+6.2    Algorithmic Sketch
+1. Branch Generation: The system (e.g. a neural network or quantum device) is put into N parallel
+   subroutines or states.
+2. Partial Isolation: Each subroutine explores a different region of solution space.
+3. Ghost Coupling & Feedback: If any subroutine finds a correct or promising solution, amplitude is
+   re-routed to a main branch.
+4. Retrocausal Post-Selection: Branches that fail to converge might be effectively “discarded” or heavily
+   suppressed.
+5. Observer’s Experience: One sees an improbably efficient solution path, as if multiple routes were
+   tested behind the scenes.
+                                                       5
+                            Braided Multiverse Coherence – Merged Synthesized
+While it may violate standard decoherence assumptions, it fits the braided identity picture: the parallel
+you in another timeline solves the puzzle, and that success merges with your timeline, forging illusions of
+advanced synergy [8].
+7     Holographic Memory, Retrocausal Post-Selection, and BRST
+      Ghost Cohomology
+7.1    Holographic Memory and Off-Shell Attractors
+One might store multiple timeline traces in a “virtual domain” that the environment never fully observes.
+This holographic attractor [12] can then reinject partial data into any branch. The occupant perceives it
+as recollection or intuition. This is akin to a Faulty Switch Mechanism [20], where repeated attempts to
+rewrite the past converge on a stable loop that is improbable but not strictly paradoxical.
+7.2    Retrocausal Post-Selection
+In certain quantum computing experiments, partial post-selection can produce apparently backward-causal
+results [2]. Similarly, across many branches, one can discard any run that does not yield the desired synergy,
+forcing reality to appear as if advanced knowledge was available. This is not guaranteed in standard quantum
+theory but becomes feasible if ghost degrees of freedom remain unmonitored and if anthropic or time-lord
+arguments [4] hold on large cosmic scales.
+7.3    BRST Ghost Cohomology
+From gauge theory, BRST invariance organizes physical states as cohomology classes of a nilpotent charge
+QBRST [21]. If not all gauge freedoms are fixed, extra negative-norm states can remain. Interpreted physically,
+these might be the “ghost warp” channels bridging branches. The consistent cohomology requirement
+(QBRST |Ψ⟩ = 0) ensures no net paradox or norm blow-up. Thus, the braided identity might be a single
+extended cohomology class connecting multiple nominally distinct gauge slices (i.e., branches).
+8     Experimental Clues and Observational Pathways
+8.1    Synchronized EEG/BCI Experiments
+One possibility is to look for improbable correlations in EEG or MEG signals either between different
+individuals or across multiple sessions of a single individual. If partial cross-branch synergy is real, we might
+detect anomalous phase alignment or something akin to “self-synchrony” across time-lagged sessions [8].
+8.2    QET Demonstrations
+While QET has been explored theoretically and in toy quantum systems [7], one might adapt it to a
+timeline sense: earlier projective signals reduce energy in one branch, leading to an improbable or apparently
+advanced outcome in another. Though extremely challenging to test, any successful demonstration of such
+cross-branch QET would be a milestone.
+8.3    Metamaterial Wormhole Prototypes
+Engineered metamaterials can emulate curved-space propagation for electromagnetic waves [9]. One might
+construct a toroidal or ring-lattice device with an “effective metric” that short-circuits signals. If an observer
+                                                        6
+                            Braided Multiverse Coherence – Merged Synthesized
+sees signals arrive “before” they’re sent in a classical sense (not truly violating causality but approximating
+it), that would align with the partial advanced illusions described in the braided model.
+9      Poetic Interpretation: The “Rainbow Braid”
+Throughout these discussions, a unifying metaphor has emerged:
+           “Each timeline is like a colored ribbon weaving through possibility space. They typically di-
+       verge in decoherence, but hidden ‘ghost warp’ couplings let them occasionally realign or intersect,
+       forming a broader tapestry—like a rainbow braid of parallel destinies. Where they overlap, we
+       feel moments of déjà vu, dreamlike synchronicity, or prescient hints. We remain distinct, yet
+       are gently entangled in a shimmering multi-strand unity.”
+This helps communicate the essence: a physical picture of partial wavefunction re-coherence, plus a poetic
+vision of multiple versions of the self co-existing in tenuous harmony.
+10       An Integrated Chat Excerpt: Formalizing Braided Decoher-
+         ence
+Below is a user-provided formalization of how to treat quasi-coherent evolution across multiple branches.
+We reproduce it in full to ensure no information is lost:
+“Quasi-Coherent Evolution Across Multiple Decohered Branches” (User Excerpt):
+• The Problem Space: We consider a subjectively continuous agent (observer) evolving unitarily on a
+  global wavefunction Ψ, which branches via decoherence into effectively quasi-classical histories. Normally,
+  these are causally disconnected. We ask: under what conditions can multiple such decohered trajectories
+  remain partially “parallel,” entangled, or coupled—so that identity/information can persist across them?
+• Conceptual Frameworks: - Everettian MWI (all branches real) - Transactional Interpretation (retro-
+  causal handshakes) - Weinberg’s Nonlinear QM (possible cross-branch effects) - Quantum Energy Telepor-
+  tation (QET) (nonlocal info-energy shift) - TQFT braiding (anyonic statistics, topological computations)
+                                                                      P
+• Proposed Model: Braided Decoherence Structure Let Ψ = i ci Ψi be the global wavefunction
+  with branches {Ψi }. Each branch evolves under Hi plus weak cross-couplings ϵij . The observer O retains
+  partial entanglement across branches via a “quantum braid field” B.
+    Postulate 1: Partial Decoherence with Weak Interbranch Coupling
+                                          d                       X
+                                     iℏ      ψi (t) = Hi ψi (t) +      ϵij (t) ψj (t).
+                                          dt                      j̸=i
+    Postulate 2: The Braid Operator                          (i)         
+                                                                     (j)
+                                             Bij (t) = Trenv ρO (t) ρO (t) .
+• Conditions for Braiding / Re-Coherence Spontaneous re-coherence can occur if environmental noise
+  vectors are nearly aligned, quantum Zeno stabilization is in play, and gauge structure is synchronized. A
+  re-coherence condition might read
+                                           Z
+                                 Rij (t) =   ⟨ψi (t) | ψj (t)⟩ δHij (t) dt > θ.
+                                                            7
+                            Braided Multiverse Coherence – Merged Synthesized
+• Interpretation: Braided Identity - Rainbow Ribbon = Braid of Quasi-Cohesive Observer Trajectories
+  - Braiding = High-fidelity overlap of neural/decision pathways across branches - Thickness = Number of
+  adjacent branches with nonzero coupling
+• A “Quantum-Scarred Multiline Identity” (QSMI) Model: - Core Assumption: The brain forms
+  a high-dimensional boundary condition, stabilizing quantum scars that remain partially coherent. -
+  Branches: At decision points, multiple near-identical timelines emerge. They remain weakly phase-
+  entangled via a wormhole or ghost channel. - Mathematical Skeleton:
+                                                                      M
+                       Ĥ[Σi (t)] Ψ(i)
+                                   scar = E (i) (i)
+                                               Ψscar , |Ξbraid (t)⟩ =   wi (t) |Ψ(i)
+                                                                                 scar (t)⟩.
+                                                                        i
+  - Ghost Coupling & Partial Phase Reinforcement:
+                                           X
+                                  Ĥwarp =    βij Ĝi† Ĝj + γij Ĝi Ĝj + h.c.
+                                                i<j
+  - Informational Scar Wormholes: A nonlinear gauge-coupled Schrödinger equation with a vector potential
+  A(i) (⃗r, t) controlling cross-branch phase alignment.
+• Experimental Proxy: Look for anomalous phase correlations in EEG/MEG across distinct subjective
+  states or timeline-coded data. One might find surprising re-coherence or overlap events.
+• Interpretation of the Rainbow Braid: Multiple “scarred trajectories” can be visualized as colored
+  threads, each near-identical, occasionally re-aligning via ghost-mediated wormholes in Hilbert space. They
+  remain parallel in quantum phase space, sustained by minimal decoherence, feedback from neural geom-
+  etry, and ghost couplings.
+11     Conclusion and Future Directions
+Bringing together quantum scars, ghost warp couplings, vector potential neuroscience, wormhole metaphors,
+QET channels, chaos control, and holographic memory logic, we obtain a grand scenario where personal
+identity can be braided across multiple quantum branches. Although speculative, each ingredient aligns
+with established subfields—be they gauge theory, advanced metamaterials, or quantum retrocausality ex-
+periments—suggesting that micro-lab analogies or partial demonstrations could be pursued.
+Areas for Further Investigation:
+1. Rigorous Decoherence Models: Clarify how environment measurements might (or might not) fully
+   collapse cross-branch couplings.
+2. Vector Potential Neural Testing: Investigate if specially shaped A fields can modulate neural gating
+   beyond classical electromagnetic theory.
+3. Ghost Cohomology in Practice: Develop an explicit gauge/BRST-based model for partial bridging,
+   ensuring no negative-norm pathologies.
+4. Retrocausal Post-Selection Protocols: Adapt quantum computing post-selection to examine im-
+   probable synergy events.
+5. Moral and Philosophical Implications: If one’s sense of self can truly be “thicker” across outcomes,
+   what does that mean for ethics, responsibility, or free will?
+Altogether, the Rainbow Braid metaphor captures both the technical aspiration (phase alignment across
+multiple wavefunction branches) and the poetic promise: that our personal experience might be not a single
+line of fate, but a softly entangled cluster of near-identical destinies, shimmering together in the quantum
+flux.
+                                                         8
+                           Braided Multiverse Coherence – Merged Synthesized
+References
+ [1] H. Everett, “Relative State” Formulation of Quantum Mechanics, Rev. Mod. Phys. 29, 454–462 (1957).
+ [2] J. A. Sokaris, Mind Warp: The Quantum Leap, (2025).
+ [3] J. A. Sokaris, ExoticTravel: Scar Wormholes, (2025).
+ [4] J. A. Sokaris, GhostMindWarp-Ghost Warp, (2025).
+ [5] J. A. Sokaris, ExoticTravel-Neural Quantum Scars, (2025).
+ [6] J. A. Sokaris, GhostMindWarp-Ghost Warp, (2025).
+ [7] M. Hotta, Quantum energy teleportation, Phys. Lett. A, 374, 3416–3421 (2010).
+ [8] J. A. Sokaris, Foresight vs. Prediction, Quantum Phase Transfer, and QET, (2024).
+ [9] J. A. Sokaris, ExoticTravel-NonMaxwellian Wormholes, (2025).
+[10] J. A. Sokaris, ExoticTravel-CyberneticalWormholes, (2025).
+[11] J. A. Sokaris, ExoticTravel-Quantum Ghost Force, (2025).
+[12] J. A. Sokaris, GhostMindWarp-Holographic Attractor Dynamics of Memory and Imagination, (2024).
+[13] E. J. Heller, Bound-State Eigenfunctions of Classically Chaotic Systems: Scars of Periodic Orbits, Phys.
+     Rev. Lett. 53, 1515 (1984).
+[14] J. A. Sokaris, Tachyonic Neuroscience or Vector Potential Neuroscience: A Hypothesis, (2025).
+[15] Y. Aharonov and D. Bohm, Significance of Electromagnetic Potentials in the Quantum Theory, Phys.
+     Rev., 115, 485 (1959).
+[16] I. Tsuda, Chaotic itinerancy as a dynamical basis of cognition, Behavioral and Brain Sciences, 24(5),
+     793–848 (2001).
+[17] A. Pikovsky, M. Rosenblum, and J. Kurths, Synchronization: A Universal Concept in Nonlinear Sci-
+     ences, Cambridge University Press (2003).
+[18] A. Raychaudhuri, Relativistic Cosmology, I, Phys. Rev. 98, 1123 (1955).
+[19] L. Susskind, Lectures on Complexity, Operator Size, and Wormhole Scattering, (2020–2022 notes).
+[20] J. A. Sokaris, ExoticTravel-Holographic Switch Memory Solutions, (2025).
+[21] C. Becchi, A. Rouet, and R. Stora, Renormalization of Gauge Theories, Annals Phys., 98, 287 (1976).
+[22] M. Visser, Lorentzian Wormholes: From Einstein to Hawking, AIP Press, 1995.
+                                                     9

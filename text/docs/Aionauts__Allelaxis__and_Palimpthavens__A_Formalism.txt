@@ -1,0 +1,276 @@
+Title: Aionauts  Allelaxis  and Palimpthavens  A Formalism
+Date:  2025-08-18
+Source: Aionauts__Allelaxis__and_Palimpthavens__A_Formalism.pdf
+Aionauts, Allelaxis, and Palimpthavens: A Formalism
+           ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                    Abstract
+          We develop a mathematically explicit framework for entities and infrastructures that navigate
+     isotemporal possibility, synthesizing a lexicon—centaurian, aionaut, allonaut, allelaxis, weavepoint,
+     palimpthaven, ruleflux, monochthon, poly-chthon, terrabound, centaur-lock, decentauration—with
+     first principles from geometry, probability, control theory, information theory, and gauge physics.
+     The aim is neither pure fiction nor unfalsifiable metaphysics: we isolate precise objects, morphisms,
+     invariants, and measurement procedures that render the concepts testable in principle and interop-
+     erable with ongoing work in gauge-irreducible vector potentials (“A-waves”), cybernetical physics,
+     chaos control, and Schelling-point calculus. We formalize: (i) a category of worlds indexed by
+     time and possibility; (ii) a fiber-bundle view of the Aionline as a supratemporal transport layer;
+     (iii) weavepoints as coincidence loci defined by phase and code invariants; (iv) palimpthavens as
+     address-stable but state-rewriting attractors; (v) ruleflux as local generator drift measured by
+     operator distances; (vi) centauriancy and decentrauration as learnable operators on belief-state
+     geometry; and (vii) control protocols that use closed-loop phase integrals of the electromagnetic
+     vector potential to realize stable allelaxial alignment. The result is a compact but extensible
+     calculus suitable for both narrative design and laboratory prototyping.
+1    Preliminaries: State Spaces and Indices
+Let T ⊂ R denote physical time and let Ω denote an allelaxial index set of possibilities at fixed clock
+time. A world is a pair (t, ω) ∈ T × Ω with physical state X(t, ω) ∈ X , where X is a measurable state
+space (e.g., a manifold with σ-algebra).
+Isotemporal allelaxis. An allelax move is a morphism at constant time:
+                                     αt : (t, ω) → (t, ω ′ ),        ω ̸= ω ′ .
+A chronax move is a morphism that advances time:
+                                  χω : (t, ω) → (t′ , ω),       t′ < t or t′ > t.
+We collect worlds as objects and allelax/chronax moves as arrows in a small category
+                                                                       
+                            Worlds = Obj = T × Ω, Arr = {αt } ∪ {χω } .
+Aion layer. We adjoin an external object E (“Aion”) with arrows ι : (t, ω) ⇆ E : π representing
+entry/egress to an extratemporal coordination layer. Agents leveraging these maps are aionauts; agents
+performing purely allelax moves are allonauts.
+Schelling information. Let Σ be a finite or countable set of salient symbols (focal coordinates;
+hypotheses; motifs). Define a symbolization map S : X → ∆(Σ) into distributions on Σ. A Schelling
+point is a maximizer σ ⋆ ∈ Σ of a shared utility or mutual information functional across separated agents
+or worlds.
+2    Bundles, Sheaves, and the Aionline
+Define the Aionline as a principal fiber bundle
+                                       π : E → B,          B = T × M,
+where M is a base manifold of operational contexts (e.g., spatial loci, network addresses, cognitive
+charts). Fibers encode allelaxial degrees of freedom, with structure group G acting transitively on Ω.
+Local trivializations U ⊂ B admit π −1 (U ) ∼
+                                            = U × G.
+                                                       1
+Weavepoints. A weavepoint is a point b ∈ B admitting a G-equivariant section s : U → E whose
+induced holonomy around any small loop γ ⊂ U stabilizes a designated invariant I:
+                                         Holγ (s) ∈ StabG (I),
+with StabG (I) = {g ∈ G : g · I = I}. Operationally, weavepoints are ingress coordinates where
+code/phase invariants persist across allelaxis.
+Palimpthavens. A palimpthaven is an address b ∈ B with a stable identifier id(b) and a Markov
+kernel Kb that rewrites internal state upon each visit:
+                                   µn+1 = µn Kb ,         µn ∈ ∆(Xb ).
+The address persists (id(b) stable), while the realization µn evolves. Convergence to an invariant
+distribution µ⋆ or to a limit cycle defines degrees of palimpthicity.
+Sheaf view. Let U be an open cover of B. A presheaf F assigns to U ∈ U the set of admissible world-
+sections X|U subject to gluing axioms. Weavepoints correspond to stalks with nontrivial automorphism
+groups preserving I.
+3    Gauge Phases, A-Waves, and Allelax Invariants
+Let A denote the electromagnetic vector potential. For a closed loop C rooted at b ∈ B, define the
+AB-phase                                        I
+                                              q
+                                        ΦC =       A · dl.
+                                              ℏ C
+Axiom (Weave invariance). A weavepoint b is certified by a set of loops {Ck } for which ΦCk takes
+a quantized value set Q independent of ω ∈ Ω:
+                                   ∀ω ∈ Ω, ∀k :         ΦCk (b, ω) ∈ Q.
+This renders allelaxial alignment phase-labeled : an allonaut maintaining ΦCk ∈ Q navigates laterally
+without losing the ingress reference.
+A-waves. Suppose a gauge-irreducible component of A (not removable by single-valued χ) propagates
+through B with dispersion ω(k). Let A(b) denote a local functional of A (e.g., Wilson loops). We model
+A-wave beacons as fields b 7→ A(b) whose level sets define weavepoint basins.
+4    Ruleflux: Measuring Local Law Drift
+Let dynamics near b be generated by a Markov semigroup {Pt }t≥0 with generator L acting on observables
+f ∈ D(L):
+                                        d
+                                          E[f (Xt )] = E[Lf (Xt )].
+                                       dt
+Between allelaxial neighbors (t, ω) and (t, ω ′ ), define ruleflux as operator distance
+                                RuleFlux(t; ω, ω ′ ) := ∥Lt,ω − Lt,ω′ ∥op ,
+with ∥·∥op induced by a chosen Banach space of observables (e.g., bounded Lipschitz). Small ruleflux
+implies near-isodynamics; large ruleflux signals regime change despite equal clock time. Invariant
+weavepoints satisfy
+                          RuleFlux(t; ω, ω ′ ) ≤ ϵ within a certified basin.
+                                                    2
+5    Centauriancy and Decentauration as Operators on Belief
+     Geometry
+Let H be a statistical manifold of agent beliefs (e.g., an exponential family) equipped with Fisher–Rao
+metric g. A centaurian is an agent whose belief support is concentrated on one century’s regularities;
+formalize with a projector Πcent : H → H onto a century-restricted submanifold Hcent .
+Centaur-lock. A fixed point h⋆ ∈ Hcent is a centaur-lock if for any update operator U drawn from
+a family of cross-century evidence transformations, U (h⋆ ) ∈ Hcent . Lock strength can be quantified by
+the smallest λ such that
+                                 d U (h⋆ ), Hcent ≤ λ d h⋆ , H \ Hcent
+                                                                      
+for all admissible U , where d is the geodesic distance under g.
+Decentauration. A decentauration operator D is a controlled flow on H (e.g., mirror descent with
+cross-century priors) that monotonically decreases the projection error
+                                         E(h) := ∥h − Πcent h∥g
+while increasing mutual information with a multiera corpus. One class uses schedule-controlled noise
+injections and curriculum over ruleflux levels, forming a homotopy Hτ from Hcent to a trans-era manifold
+Hinter .
+6    Monochthons, Poly-chthons, and Cross-Well Generaliza-
+     tion
+Let G index gravity wells (planets, stations). An agent’s embodiment induces sensory-action channels
+with channel laws p(y|x, g). A monochthon is adapted to a single g ∈ G; a poly-chthon generalizes
+across a subset GS .
+   Define a transfer risk for task family T :
+                                                          h                   i
+                                               ′                   ⋆
+                              Rtrans (θ; GS → g ) := Eτ ∼T lossg (θ (GS ; τ )) ,
+                                                                ′
+where θ⋆ (GS ; τ ) is the parameter learned on environments GS . Poly-chthony corresponds to uniformly
+bounded Rtrans across g ′ ∈ / GS .
+7    Allonautics: Isotemporal Transport and Coding
+We model allelaxis as transport along fibers at constant t. Let ω carry a codeword c(ω) ∈ C ⊂ {0, 1}n
+with a metric dC . A lateral hop selects ω ′ with dC (c(ω), c(ω ′ )) ≤ r. A palimpthaven-compatible hop
+requires preservation of invariants:
+                                      I X(t, ω) = I X(t, ω ′ ) .
+                                                                  
+The resulting isotemporal navigator solves
+                     min RuleFlux(t; ω, ω ′ ) s.t. dC (c(ω), c(ω ′ )) ≤ r, ΦCk ∈ Q.
+                     ω ′ ∈Ω
+                                                    3
+8     Weavewalking via Gauge-Aware Control of Chaos
+Let zk+1 = F (zk , uk ) + ηk be a discrete chaotic system (e.g., logistic, Hénon) embedded in the agent-
+environment loop, with control uk and noise ηk . Define a phase-locked cost combining AB-phase
+deviation and ruleflux:
+               K−1
+               X        X                     2                                                     
+          J=         α         ΦC (zk ) − qC        + β RuleFlux tk ; ωk , ωk+1 + γ dC c(ωk ), c(ωk+1 ) .
+               k=0       C∈C
+Weavewalking chooses u0:K−1 to minimize J subject to state constraints. Under OGY-type chaos
+control, small perturbations stabilize otherwise unstable allelaxial orbits satisfying the phase constraints.
+9     Palimpthaven Dynamics and Verification
+Let visits occur at {tn } with internal states ξn ∈ Xb . The palimpthaven kernel induces
+                                         ξn+1 ∼ Kb (ξn , ·),         ξ0 ∼ µ0 .
+Identifiability. If there exists a set of loop functionals {ΦCk } and probes fj such that
+                                            
+                       {Eµn [fj ]}j , {ΦCk }k determine the conjugacy class of Kb ,
+then the palimpthaven is experimentally characterizable despite allelaxial rewrites.
+Attractor typing. Define the empirical spectral gap γ emp from return-time statistics; classify palimpthavens
+by (γ emp , dim Xb , |Q|).
+10      Schelling-Point Calculus for Inter-World Coordination
+Let agents Ai in worlds (t, ωi ) share a focal prior over Σ. Define a coordination functional
+                                X                                                 
+                                     λ1 I σ; S(X(t, ωi )) − λ2 RuleFlux t; ωi , ω σ ,
+                                                         
+                      U(σ) =
+                                   i
+where ω σ is the allelax neighbor maximizing alignment with symbol σ. A Schelling weave is a selection
+σ ⋆ maximizing U(σ) such that the induced multi-agent hop preserves weave-invariants.
+11      Centaurian Diagnostics and Training
+Centauriancy index. Given a feature map ϕ : X → Rd and a multi-era reference Dmulti , define
+                                                ∥Eh [ϕ] − EDcent [ϕ]∥
+                                   CI(h) =                                ∈ [0, ∞).
+                                               ∥EDmulti [ϕ] − EDcent [ϕ]∥
+High CI indicates centaurian lock-in.
+Decentauration curriculum. Increase ruleflux exposure gradually: present environments with RuleFlux ∈
+[0, ϵ1 ], then [ϵ1 , ϵ2 ], etc., while reinforcing weave invariants. Train on palimpthaven revisit tasks requiring
+invariance under Kb across allelaxis.
+                                                             4
+12     Aionauts and External Orchestration
+An aionaut accesses E to compute global weave plans. Model E as a supervisory optimization over
+plans P with constraints:       X              X               2 
+                            min      Ji (p) + λ    ΦCk (p) − qk      ,
+                                p∈P
+                                      i             k
+subject to causality-respecting write limits on (t, ω). External write limits implement “faceless/no-
+trace” policies by bounding KL-divergence in local observation channels.
+13     Addressing and Codes for Stable Ingress
+Let C be a linear block code with parity-check H. A weavepoint address is a coset a + C. An ingress
+attempt uses a probe sequence s; successful ingress if
+                                      Hs⊤ = Ha⊤     and ΦCk ∈ Q.
+Palimpthavens use time-varying syndromes Hn drawn from a stationary ergodic process with invariant
+coset class.
+14     Measurement of Anomalous Speedup (Allonautic Regime)
+Define a problem family {Πm } with verifier V . Baseline expected time Tbase (m) (classical search under
+local rules). Observed time Tobs (m) under weavewalking. Evidence for allelax leverage:
+                        Tbase (m)
+               ∆(m) =             ≫ 1,    with matched energy and information budgets.
+                        Tobs (m)
+Control experiments hold AB-phase off-invariant to test that speedup collapses when weave constraints
+are violated.
+15     Minimal Laboratory Sketches
+(1) AB-Phase Gated Navigation
+Construct two interferometers sharing spatial coordinates but differing internal contexts (two ω-variants
+via boundary condition contrast). Encode weave-invariant Q by flux quantization. Implement a chaotic
+controller on a reconfigurable photonic or electronic map; penalize phase deviations and observe stabi-
+lization of lateral hops that preserve interference signatures.
+(2) Palimpthaven Identification
+Implement a physical memory whose write kernel Kb is nontrivial but address-stable (e.g., memristive
+crossbar with hidden adaptation). Demonstrate invariant ingress (syndrome match + phase) while
+content evolves; estimate γ emp and reconstruct Kb up to conjugacy from probe/response data.
+(3) Decentauration Training
+Train human or synthetic agents on multi-era tasks with increasing ruleflux. Measure CI reduction,
+weavepoint retention under perturbations, and transfer to cross-well simulators (altered gravity priors).
+                                                   5
+16     Taxonomy and Formal Definitions
+[Centaurian / Inter-centaurian / A-centaurian] Given Hcent ⊂ H, an agent h is centaurian if h ∈ Hcent ;
+inter-centaurian if h lies in a union of century-conditioned charts with bounded transition distortion;
+a-centaurian if h admits a representation invariant under century reparameterizations.
+    [Allonaut] An allonaut is a policy π over Ω at fixed tthat minimizes expected ruleflux under weave
+constraints. Formally, π ∈ arg minπ E RuleFlux(t; ω, ω ′ ) subject to ΦCk ∈ Q.
+    [Aionaut] An aionaut is a two-stage policy (ΠE , π) where ΠE computes global plans in E respecting
+write limits, and π executes local allelax steps consistent with the plan and weave invariants.
+    [Weavepoint] A base point b ∈ B with (i) an invariant I, (ii) a neighborhood U admitting a section
+with holonomy in StabG (I), and (iii) a certified AB-phase set Q independent of ω ∈ Ω.
+    [Palimpthaven] An addressable locus b with stable identifier and a nontrivial kernel Kb producing
+address-stable, content-evolving returns. Its type is the triple (γ emp , dim Xb , |Q|).
+    [Ruleflux] Operator distance between local generators across allelaxis at fixed t, measured in a chosen
+observable norm.
+    [Monochthon / Poly-chthon / Terrabound] Let G index gravity wells. A monochthon is adapted to
+a single g ∈ G; a poly-chthon generalizes to multiple g with bounded transfer risk; terrabound is the
+Earth-specific monochthon.
+17     Compositionality and Category-Theoretic View
+Let W be the category above. Define subcategories:
+             A = isotemporal allelax morphisms,       C = chronax morphisms,       E = {ι, π}.
+A weave functor F : W → Inv maps worlds to invariant sets and arrows to invariant-preserving maps;
+palimpthavens then appear as endomorphisms with nontrivial internal Markov structure. A monoidal
+product ⊗ on invariants models multi-agent composition; compatibility with holonomy yields coherence
+conditions for team weavewalking.
+18     Risk and Identifiability Bounds
+Let Φ
+    b be a noisy estimator of Φ. If Φb ∼ N (Φ, σ 2 ) i.i.d., then distinguishing Φ ∈ Q from Φ ∈
+                                                                                              / Q with
+type-I error α and type-II error β requires
+                                      2σ 2  −1               −1
+                                                                       2
+                                 N ≳ 2 Φ (1 − α) + Φ (1 − β) ,
+                                      ∆
+where ∆ is the minimal separation between Q and its complement, and Φ−1 denotes the Gaussian
+quantile.
+    Similarly, estimating RuleFlux within ε (in operator norm) using empirical generators from time
+series of length T requires T scaling with the inverse spectral gap and mixing coefficients of the processes
+at (t, ω) and (t, ω ′ ).
+19     From Lexicon to Engineering Interfaces
+ • Ingress API. (b, Q, H) triple: certify location, phase invariants, and code syndrome.
+ • Navigator. Solve constrained optimal control minimizing phase deviation and ruleflux subject to
+   code-radius.
+ • Palimpthaven driver. Estimate Kb online; maintain address while learning rewrite dynamics.
+ • Decentauration trainer. Curriculum over ruleflux and cross-well simulators; monitor CI reduc-
+   tion.
+                                                     6
+20     Worked Micro-Example (Symbolic)
+Consider two allelax neighbors ω0 , ω1 at time t. Let local linear generators on features f ∈ Rd be
+L0 f = A0 f and L1 f = A1 f , with Ai ∈ Rd×d . Then
+                                 RuleFlux(t; ω0 , ω1 ) = ∥A0 − A1 ∥2 .
+Let C be a loop whose AB-phase is ΦC = ℏq A · dl = 2πm for m ∈ Z (quantized set Q). A simple
+                                           H
+weavewalk step chooses ω1 such that ∥A0 − A1 ∥2 is minimal subject to ΦC ∈ Q and a code radius r in
+dC .
+21     Discussion: Plausibility and Program
+The formalism separates address invariants (phase and code) from content dynamics (palimpthaven
+kernels) and local law drift (ruleflux), enabling principled navigation across isotemporal possibilities.
+The AB-phase role is standard physics (closed-loop line integral of A); its use as an address stabilizer
+is novel but consistent with gauge-invariant labeling. Chaos control provides minimal-energy pertur-
+bations to hold a system on allelax-compatible orbits. The decentauration program reframes cross-era
+cognition as geometric optimization on belief manifolds with curriculum over ruleflux. Each construct
+admits empirical signatures and falsification routes, aligning speculative navigation with laboratory-
+grade measurement.
+References
+[R1] I. Asimov, The End of Eternity, Doubleday, 1955.
+[R2] C. Aharonov and D. Bohm, “Significance of Electromagnetic Potentials in the Quantum Theory,”
+     Phys. Rev. 115, 485–491 (1959).
+[R3] D. Deutsch, The Beginning of Infinity, Viking, 2011.
+[R4] E. T. Jaynes, Probability Theory: The Logic of Science, Cambridge University Press, 2003.
+[R5] S. Amari, Information Geometry and Its Applications, Springer, 2016.
+[R6] V. Ivancevic and T. Ivancevic, Applied Differential Geometry: A Modern Introduction, World
+     Scientific, 2007.
+[R7] E. Ott, C. Grebogi, and J. A. Yorke, “Controlling Chaos,” Phys. Rev. Lett. 64, 1196–1199
+     (1990).
+                                                       ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                   7

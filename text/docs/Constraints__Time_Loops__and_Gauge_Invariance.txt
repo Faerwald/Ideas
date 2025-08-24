@@ -1,0 +1,113 @@
+Title: Constraints  Time Loops  and Gauge Invariance
+Date:  2025-08-20
+Source: Constraints__Time_Loops__and_Gauge_Invariance.pdf
+Constraints, Time Loops, and Gauge Invariance
+                                       Jason Agamemnon Sokaris
+                                                    Abstract
+          We formalize the intuition that in retrocausal/looped dynamics the controllable aspects of real-
+      ity are those not logically tethered to self-referential memories of the intervention itself. Variables
+      that are functionally coupled to their own recollection across a closed temporal computation are
+      fixed by self-consistency, while peripheral degrees of freedom—those outside the invariant “code”
+      of constraints—can fluctuate. We cast this as a fixed-point problem on histories, identify a gauge
+      structure that separates invariants from periphery, state a no-target theorem for memory-coupled
+      interventions, and define a Schelling-Point Calculus for coordination across multiple loops of dif-
+      ferent temporal lengths but identical constraint structure. Connections to gauge-field holonomy
+      and computational complexity are provided, together with operational protocols and empirical
+      signatures.
+1. Setup and objects
+State space. Let X be a finite- or infinite-dimensional state space. A history is h : R → X .
+Memory. A memory extractor M produces a (possibly lossy) record m = M (h).
+Policy. An agent implements u = π(m, ξ) with private randomness ξ.
+Loop operator. A closed-temporal-computation (CTC) map L transforms histories, h′ = L(h), typi-
+  cally acting nontrivially on an interval [t0 , t1 ] and feeding outputs at t1 back into inputs at t0 .
+A self-consistent history is a fixed point h⋆ of L:
+                                                  h⋆ = L(h⋆ ).                                                  (1)
+We assume existence of at least one fixed point (Novikov-style self-consistency).
+   Partition the state as x = (z, y) with z ∈ Z the target variables (those the agent aims to change)
+and y ∈ Y the periphery.
+2. Constraints as “code” and a gauge viewpoint
+Let C = {Ci (h) = 0}i∈I denote algebraic/dynamical constraints induced by physics, memories, and
+policies inside the loop. The code of the loop is the equivalence class
+                                      [h]C = { h̃ : Ci (h̃) = 0 ∀i ∈ I }.                                       (2)
+Two histories h, h̃ are gauge-equivalent (h ∼ h̃) when they satisfy the same constraint set C. Observables
+O that depend only on [h]C are gauge-invariant. Intuitively, the code captures the invariant structure
+preserved by the loop; the periphery are directions within the gauge orbit.
+                                                        1
+Gauge-field analogy. Let A denote an abstract connection on a configuration bundle over time,
+with holonomy along a closed temporal path γ given by the Wilson operator
+                                                    Z 
+                                     W [γ] = P exp      A .                               (3)
+                                                                   γ
+W [γ] is gauge-invariant and represents the loop’s structural content (“what survives closure”). Mi-
+crostate choices that correspond to gauge transformations alter local descriptions but leave W [γ] un-
+changed; these are the periphery.
+3. Memory-target coupling and the no-target theorem
+Let the attempted intervention on z be z + = Φ(z − , m), where z − is the pre-intervention target and
+m = M (h) includes a record of z (directly or via correlates). After closing the loop, the memory itself
+depends on the realized z + , i.e., m = M(z + , . . .), so self-consistency enforces an implicit equation
+                                      z ⋆ = F (z ⋆ ) := Φ z ⋆ , M(z ⋆ , . . .) .
+                                                                              
+                                                                                                          (4)
+    [No-target change under memory coupling] Suppose F : Z → Z is a contraction on a complete
+metric space, or more generally has a unique fixed point under (4). Then any self-consistent history h⋆
+satisfying (1) realizes z ⋆ uniquely; attempts to set z to a distinct value z ̸= z ⋆ are incompatible with
+self-consistency and are pruned by the loop. Only variables y in the gauge orbit (periphery) can differ
+across fixed points without violating C.
+Interpretation. If the target z is entangled with the agent’s own later memory of z, the loop solves
+for a fixed point of that self-referential equation. One does not “choose” z; one chooses (at best) a
+gauge within [h]C , i.e., periphery y.
+4. What can change: the periphery channel
+Let Fix(L) be the set of fixed-point histories and define the projection to periphery πY : Fix(L) → Y.
+The periphery channel is the (possibly stochastic) map from intentions ι to realized y:
+                      ι 7→ p(y | [h]C , ι) ,      with I(h) fixed for all I gauge-invariant.             (5)
+Its Shannon capacity (for fixed invariants) upper-bounds retrocausal coordination:
+                               Cperi = sup I(ι; Y ) subject to Ci (h) = 0 ∀i.                            (6)
+                                           p(ι)
+Practically, signals ride on variables orthogonal to the invariants; the code pins structure, not micro-
+details.
+5. Multiple loops and Schelling-Point Calculus
+Consider a family {Lα }α∈A of loops with distinct durations τα but common constraint structure, encoded
+by a dependency graph G and invariant set I = {Ik }. Write (G, I) for the structure type. [Structural
+isomorphism] Loops Lα , Lβ are structurally isomorphic if there exists a bijection φ on nodes/edges of
+G preserving the invariant set I (including the values of gauge-invariant holonomies). Agents inside
+each loop choose an action aα = f (I1 , . . . , IK ) depending only on invariants (common knowledge across
+structurally isomorphic loops). Let the Schelling functional be
+                                                      X              
+                                     S[f ] = E            1{aα = aβ } ,                                (7)
+                                                          α̸=β
+with expectation over exogenous periphery fluctuations consistent with C. A Schelling equilibrium is
+an f ⋆ maximizing S. This yields coordinated focal choices across loops of different temporal lengths
+without violating invariants or triggering paradoxes.
+                                                            2
+Temporal homotopy. If loop duration deforms continuously while (G, I) remains unchanged, the
+class of equilibria f ⋆ is invariant. Thus, time extent can fluctuate while structure persists.
+6. Complexity and existence
+Computing a fixed point of a general self-referential L is PSPACE-hard in broad models of CTC
+computation; uniqueness is regained under contractivity/monotonicity (e.g., Banach/Tarski–Knaster
+frameworks). Practically: (i) identify an invariant subproblem with contraction to guarantee z ⋆ ; (ii)
+treat the remaining periphery as free variables or sampled from an induced Gibbs-like measure consistent
+with C.
+7. Operational protocol
+1. Identify invariants (the code). Empirically probe interventions; those aspects that revert under
+   loop closure define I1 , . . . , IK .
+2. Factor variables. Decompose x = (z, y) with z inside, y outside the invariant algebra.
+3. Prove contractivity on targets. Establish conditions under which (4) has a unique z ⋆ (e.g.,
+   Lipschitz constants < 1).
+4. Exploit the periphery channel. Encode coordination in y while holding Ik fixed; upper-bound
+   throughput via Cperi in (6).
+5. Schelling selection. Choose f (I) that is simplest, symmetry-respecting, and salient under common
+   knowledge to align across structurally isomorphic loops.
+8. Empirical signatures
+When acting on z:
+• z exhibits reversion to a fixed value z ⋆ across attempts (low variance, sharp fixed point).
+• Correlated shifts appear in y (high variance in periphery) without breaking gauge-invariants Ik .
+• Across loops of differing durations, actions depending only on I align more reliably than actions
+  depending on microstate features.
+9. Summary schema
+                                     Loop closure : h⋆ = L(h⋆ )
+                                Code/invariants : I(h⋆ ) = I(L(h⋆ ))
+                             No-target theorem : z ⋆ = F (z ⋆ ) (unique)
+                                  Periphery channel : ι → p(y | C)
+                    Schelling calculus : a = f (I) maximizes mutual predictability
+                                                       ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                   3
