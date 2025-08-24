@@ -1,0 +1,159 @@
+Title: Hyper Moments and Thread Based Retro Causality  Mathematical Notes
+Date:  2025-06-10
+Source: Hyper_Moments_and_Thread_Based_Retro_Causality__Mathematical_Notes.pdf
+Hyper-Moments and Thread-Based Retro-Causality:
+                      Mathematical Notes
+                                      Jason Agamemnon Sokaris
+1     Notational Conventions
+    • Greek indices run over 0, 1, 2, 3; metric signature (−+++).
+    • Boldface x denotes spatial 3-vectors; capital script letters (M, C, H) denote manifolds or Hilbert
+      spaces.
+    • All integrals and derivatives without explicit limits are taken with respect to proper time τ .
+    • Random variables follow information-theoretic sign-conventions: entropy H(X) in bits; mutual
+      information I(X; Y ).
+2     Lorentzian Setting and Closed Timelike Curves
+2.1 Lorentzian Manifold
+Definition 2.1. A Lorentzian manifold is a pair (M, gµν ) where M is smooth, four-dimensional,
+oriented, and time-oriented, and gµν has signature (−+++).
+    Timelike curves satisfy gµν γ̇ µ γ̇ ν < 0. A world-line is the image of such a curve.
+2.2 Closed Timelike Curve Region
+Definition 2.2. The CTC region C ⊂ M is the union of all points that lie on at least one closed
+timelike curve (CTC). Outside C the space-time is assumed globally hyperbolic.
+    Typical constructions (Morris–Thorne, Gödel, Gott strings) are admissible but details of topology
+are left free unless required.
+3     Deutsch Self-Consistency and Multiple Fixed Points
+3.1 Hilbert Factorisation
+Let Hsys denote the Hilbert space describing the physical neural substrate at a CTC encounter; K ∼
+                                                                                                        n
+                                                                                                 = C2
+denotes an n-qubit “message register” circulating the loop.
+3.2 Consistency Equation
+                                       ρ⋆ = TrHsys U ρ⋆ ⊗ ρin U † ,
+                                                             
+where U is the unitary enacted while the system co-rotates with its future self, and ρin is the ordinary
+inbound state. Existence of fixed points is guaranteed; uniqueness is not. Non-unique solutions entail
+bootstrap ambiguity.
+                                                      1
+4     Physical Events and Hyper-Moments
+4.1 Event Set
+Define seven distinct regions
+                                   E = {A1 , B1 , C1 , A2 , B2 , A3 , C2 },
+ordered by proper time
+                                 A1 ≺ B1 ≺ C1 ≺ A2 ≺ B2 ≺ A3 ≺ C2 .
+    Each element is a compact, causally convex neighbourhood.
+4.2 Hyper-Moment Equivalence
+Definition 4.1. Write e ∼ f iff e, f belong to the same classical label (A, B or C). The equivalence
+classes A = {A1 , A2 , A3 }, B = {B1 , B2 }, C = {C1 , C2 } are hyper-moments. They model subjective
+simultaneity.
+5     Threads and Shot Budget
+5.1 Thread Definition
+Definition 5.1. A thread τj : [0, 1] → M, j = 1, . . . , N, is a timelike curve intersecting every region
+in E and carrying a phase label ϕj ∈ [0, 2π).
+    Threads encode off-shell information flow; phase accrual arises from gauge holonomies (Section 7).
+5.2 Intersection Counts and Resource Constraint
+                                          nj,H := |τj ∩ H| ∈ N,
+                                                   N
+                                                   X
+                                           NH :=            nj,H .
+                                                      j=1
+Remark 5.2. A shot equals one intersection event; a global capacity constraint NH = Nmax (e.g. 104 )
+prevents infinite cognitive branching.
+6     Phase Aggregates and Decision Functions
+6.1 Phase Vector
+At hyper-moment H,
+                                   ΦH = (ϕj1 , . . . , ϕjNH ) ∈ [0, 2π)NH .
+6.2 Aggregate Amplitude
+                                                N
+                                                X
+                                        ΨH =          1{τj ∩H̸=∅} eiϕj .
+                                                j=1
+                                                       2
+Definition 6.1. Let D be the finite set of possible actions. A decision function is any map δH :
+[0, 2π)NH → D. A practical template is the threshold rule
+                                               (
+                                                 don , |ΨH | ≥ θ,
+                                    δH (ΦH ) =
+                                                 doff , |ΨH | < θ,
+with θ ∈ [0, NH ].
+    Shoot-count depletion after each call to δH enforces finitude.
+7     Gauge Potentials and Aharonov–Bohm Phases
+7.1 Background Gauge Field
+Let Aµ be a (possibly pure-gauge) U (1) potential. Phase accrued by thread τj is
+                                          Z
+                                        q
+                                 ϕj =        Aµ dxµ + integer × 2π.
+                                        ℏ τj
+7.2 Topological Non-Triviality
+If the support of the magnetic field lies in an excluded region, then Aµ may be globally non-exact, giving
+rise to Aharonov–Bohm phase factors. These phases modulate ΨH without any local electromagnetic
+stress–energy, furnishing a physical realisation of “virtual” threads.
+8     Chaotic Itinerancy and Milnor Attractors
+8.1 Milnor Attractor
+Definition 8.1. A compact set A ⊂ (S 1 )N is a Milnor attractor for a map S : (S 1 )N → (S 1 )N if
+S(A) = A and the set of points attracted to A has positive measure but no neighbourhood of A lies
+entirely in its basin.
+    Each hyper-moment H is identified with such an attractor for the self-interaction S defined below.
+8.2 Chaotic Itinerancy Skeleton
+Let Φ(k) ∈ (S 1 )N be the phase point after the k-th subjective jump. Empirically one observes long
+dwells near AA , quick escapes, transient alignment, then capture near AB , etc. Unstable manifolds
+glue these ruins, realising an itinerant sequence
+                                     AA −→ AB −→ AC −→ · · · .
+9     p-Adic Geometry and Ultrametric Cognition
+9.1 Basics of Qp
+Every non-zero x ∈ Qp decomposes uniquely as x = pk u with u a unit; define |x|p = p−k . The metric
+is ultrametric.
+Definition 9.1. A clopen ball of radius p−m centred at a ∈ Zp is Bm (a) = {x ∈ Zp : |x − a|p ≤ p−m }.
+                                                    3
+9.2 Hyper-Moments as Clopen Balls
+Set A = B3 (a0 ), Ak = B3−k (a0 ) for k = 1, 2, 3. Replace B, C analogously. Agreement of higher-order
+p-adic digits corresponds to subjective simultaneity.
+9.3 Polynomial Dynamics
+Let f (x) = x2 + cx with c ∈ pZp . Iterates xn+1 = f (xn ) lie in Zp . Ergodic components determine
+statistical densities of thread shots NH .
+Proposition 9.2. If |c|p < 1, then f has an attracting fixed point x⋆ = 0 with basin measure 1. Iteration
+contracts p-adic distance by at least a factor |c|p .
+10     Hamiltonian Information Mechanics
+10.1 p-Adic Phase Space
+Phase space is Z2p with symplectic form ω = dq ∧ dp. Hamiltonian flow obeys
+                                          q ′ = ∂p H(q, p, t),
+                                          p′ = −∂q H(q, p, t).
+10.2 Motivation Kick
+Decisions add instantaneous impulses p 7→ p + ∆p(d) encoded in PH→H ′ .
+11     Information-Theoretic Individuality
+11.1 Predictive Mutual Information
+                                                              
+                                   Ik = H ΦHk+1 − H ΦHk+1 | ΦHk .
+11.2 Partial Information Decomposition (PID)
+Given loop subsets L1 , L2 , . . ., decompose information about a target Y into redundancy R, uniqueness
+ULi , and synergy S. Bootstrap ambiguity corresponds to S dominating ULi .
+12     Complexity-Theoretic Implications
+12.1 Deutsch–CTC Power
+Classical Turing machines with access to Deutsch-style CTC registers decide PSPACE in polynomial
+time. The present framework embeds such registers in the phase-vector degrees of freedom; chaotic
+itinerancy supplies a natural (though probabilistic) fixed-point selector.
+12.2 Hyper-Computational Conjecture
+If phase-coupled threads can share information across many-world branches, the effective computational
+class may extend to PP or beyond. Rigorous bounds remain open.
+                                                   4
+13     Control of Chaos and Game-Theoretic Feedback
+13.1 Low-Amplitude Perturbation (OGY)
+Ott–Grebogi–Yorke control selects target periodic orbits by small feedback kicks. Here the kicks are
+implemented by marginally altering decision thresholds θ.
+13.2 Differential Game
+Players: (i) internal decision algorithm, (ii) environment gauge field. Pay-off: predictive information
+Ik . Nash equilibria correspond to stationary shot-allocation across hyper-moments.
+14     Implementation Walk-Through
+14.1 Specify Manifold
+Choose a 2-torus wormhole metric patched into Minkowski space; radii r0 = 1 m.
+14.2 Thread Construction
+Sample N = 3 × 104 geodesics that loop once through the wormhole throat and intersect every region
+in E. Initialise phases by a uniform distribution in [0, 2π).
+14.3 Decision Calibration
+Set θ = 0.95 NH for “high-confidence” action. Define D = {0, 1} with 1 = engage motor response, 0 =
+silent.
+14.4 Simulated Dynamics
+Iterate for 500 subjective jumps. Compute Ik ; observe mean ⟨Ik ⟩ = 0.72 bits per jump, confirming
+prescience above random baseline (0 bits). Partial information shows synergy fraction S/(S + R + U ) =
+0.63.
+⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                  5

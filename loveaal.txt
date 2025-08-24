@@ -1,0 +1,47 @@
+Title: loveaal
+Date:  2025-08-12
+Source: loveaal.pdf
+I Love AAL
+                                            Jason Sokaris
+                                             August 2024
+Ada Lovelace’s Algorithm for Bernoulli Numbers
+Historical Context
+Ada Lovelace, often credited as the ﬁrst computer programmer, developed an algorithm to calculate
+Bernoulli numbers using Charles Babbage’s Analytical Engine. This early example of an algorithm
+demonstrates the foundational ideas in programming and computational mathematics.
+Algorithm Overview
+Ada Lovelace’s approach to calculating Bernoulli numbers was innovative because it applied a methodical
+and recursive process suited to the capabilities of the Analytical Engine. Her work demonstrated the
+application of loops and conditional operations, fundamental concepts in computer programming.
+Mathematical Foundation
+The Bernoulli numbers Bn are a sequence of rational numbers important in number theory, and they
+appear in the Taylor series expansions of certain trigonometric functions. They are deﬁned recursively
+by:
+                                             X n       
+                                                   n+1
+                             B0 = 1, and                  Bk = 0 for n > 0
+                                                      k
+                                              k=0
+Algorithmic Steps
+Ada’s algorithm involved the following steps, structured to be executed by the mechanical operations of
+the Analytical Engine:
+  1. Initialize the ﬁrst Bernoulli number B0 = 1.
+  2. For each subsequent n, calculate Bn using the recursive formula:
+                                             X n + 1 
+                                            n−1
+                                                                 1
+                                     Bn = −              Bk
+                                                    k       n+1−k
+                                               k=0
+  3. Store each Bn in the machine’s memory for use in subsequent calculations.
+Signiﬁcance and Impact
+The method Ada Lovelace devised was signiﬁcant not only for its immediate application but also for
+its demonstration of the capabilities of algorithmic logic and mechanical computation. Her work with
+Bernoulli numbers exempliﬁed how complex mathematical calculations could be automated, paving the
+way for modern computing systems.
+Legacy
+Ada Lovelace’s contributions to computing are often highlighted by her work on the Bernoulli numbers,
+which stands as a testament to her foresight in the potential of computers to go beyond simple calculation
+tasks and handle sophisticated, recursive algorithms. This work underscores her legacy as a pioneer in
+the ﬁeld of computer science.
+                                                     1

@@ -1,0 +1,200 @@
+Title: HOPE FOR HYPERLIGHT Breaking the Light Barrier (NO PIX)
+Date:  2025-05-27
+Source: HOPE FOR HYPERLIGHT Breaking the Light Barrier (NO PIX).pdf
+HOPE FOR HYPERLIGHT: Breaking the Light Barrier
+    medium.com/@spacetimecurvature9/hyperlight-f2aab0735ccf
+Jason Sokaris                                                                                             February 3, 2020
+For millions of years, the human race has been looking up at little specks of light in the heavens. Over millennia,
+stories were created and passed from generation to generation on the explanation of these tiny points of light. But it
+was merely a few short centuries ago, that we came to realize that these tiny pinpoints of light were stars.
+Now, in only the last couple decades, collaborative scientific efforts have revealed that virtually all of these stars in
+our night sky have worlds circling them.
+Our Sun is just one of about 200 billion stars in our galaxy, and planets are more numerous than stars. Hundreds of
+billions of Earth-sized worlds, not only exoplanets, but exomoons, orbit in the habitable zones of sun-like and dwarf
+stars in our Milky Way galaxy alone. And, there are at least one hundred billion galaxies within the fraction of the
+universe that we can observe.
+Recently, in 2016, it was confirmed that an earth-like rocky world is indeed orbiting our closest exosolar star,
+Proxima Centauri, just over 4 lightyears distant in the Alpha Centauri triple star system. Then, in 2017, seven
+exoplanets were detected 40 light-years away orbiting Trappist-1.
+One day, we may call these worlds home.
+Transcending Rockets
+We live in the era of rocket propulsion. Currently, our space propulsion technology is facilitated by and limited to
+Newton’s third law, and a factor of 10,000 separates the earth’s distance from our moon, Pluto, and our nearest star.
+With the lack of an obvious reaction medium in space, current space propulsion systems have emerged that carry
+and expel their own propellants to produce motion through space.
+Pushing rocketry to its maximal limits, a properly engineered rocket engine could convert all its propellant mass into
+propulsive energy in the form of electromagnetic radiation; the highest possible change in velocity (Delta-V) that
+could be achieved would theoretically use antimatter and photons, respectively constituting the theoretical ultimate
+on-board fuel and mass expellant.
+However, the stars are unthinkably far, and since propellant and fuel mass grow exponentially with Delta-V
+capability, interstellar rockets become prohibitively massive, making them no more practical than space warps.
+As a comparison, our fastest space probes have yet to reach 0.001% lightspeed — a speed that would still require
+many thousands of years to reach our nearest exosolar star.
+Although our ingenuity and hard work has enabled robotic exploration of our solar system and manned missions to
+our moon, rocket propulsion is insufficient to take us to the distant stars. We are, unfortunately, currently incapable
+of starflight on the scale of modern human lifespans.
+Making matters more challenging, according to Einstein’s theories, point-like objects moving through space never
+locally exceed the speed of light. This means that even lightspeed rendezvous missions would be limited to the
+“nearby stars” — or about 8 star systems within 10 lightyears of our sun.
+                                                 Our Stellar Neighborhood
+                                                                                                                             1/6
+Ultimately, the vast distances between stars, coupled with an inability to travel faster than light, precludes practical
+starflight.
+Timely return from the distant stars will demand physics breakthroughs to enable new propulsion methods that can
+“break the light barrier”. This is the hard problem.
+It can not be achieved by even the most refined technological applications of accrued physics.
+We need breakthroughs in physics.
+There is no guarantee that such breakthroughs are possible, but progress is not made by conceding defeat.
+Aerospace & Astrophysics
+A peculiar and elegant theory not yet part of the core curriculum for physics or aerospace engineering students is
+Einstein’s general theory of relativity, or Einstein gravity for short. Einstein gravity is, essentially, classical mechanics
+extended to account for the local invariance of light, and the equivalence of gravitational and inertial mass. It is our
+best theoretical framework describing spacetime and gravitation.
+Within the confines of space propulsion science, an unawareness and consequent lack of understanding of the
+consequences of Einstein’s general relativity theory has made gravity a burden to overcome rather than a science to
+embrace.
+This is unfortunate because the ‘hard problem’ of interstellar travel is one fundamentally linked to our understanding
+of the nature of spacetime, and according to Einstein, the force we know as gravity is a manifestation of the
+curvature of spacetime.
+In the spaceflight context, exotic possibilities open up with an Einsteinian view of gravitation. For example, in
+Einstein’s universe, there are no restrictions on how fast two patches of space can separate from one another, and
+we do observe distant galaxies accelerating away from us “faster than light”. This apparent violation is due to the
+expansion of the intervening space.
+A dual perspective and hybrid expertise, built upon the solid foundations of astroparticle physics and aerospace
+engineering, will significantly increase one’s chances of discovering the “key” to space drives and warp drives. The
+desired breakthroughs, should they exist to be found, will likely be uncovered sooner if actively searched for as
+opposed to being left to chance.
+Aerospace engineering students equipped and experienced with the Einsteinian perspective of the Universe may
+foresee a way to engineer spacetime to circumvent the lightspeed barrier. A propulsion-driven focus will motivate
+alternate lines of reasoning, provide new perspectives to old science, and aid us in unlocking mysteries at
+cosmological and quantum scales that may be overlooked with a fundamental curiosity-driven approach alone.
+Space Drives & Warp Drives
+Space drives and warp drives are idealized forms of propulsion with the respective key capabilities of propellantless
+and superluminal motion. They are examples of “field drives”, which interact with surrounding fields, such as
+electromagnetic and gravitational fields, vacuum fluctuations, or spacetime itself, to achieve motion.
+Essentially, space drives exploit the fundamental properties of matter and spacetime to produce motion through
+space without having to carry and expel a reaction mass, whereas warp drives manipulate spacetime to achieve
+superluminal motion as inferred by distant observers while remaining at rest in their local reference frame.
+                                                                                                                                2/6
+Space drives could enable human voyages to nearby star systems, but are lightspeed limited; thus round-trips to
+distant star systems could not be achieved in a time less than twice the intervening distance divided by the speed of
+light.
+Warp drives, however, allow for timely starflight. Interstellar rendezvous missions may be completed in arbitrarily
+short times.
+The ability to circumvent the speed of light barrier grants access to the Galaxy and our Universe.
+Nevertheless, exotic star travel methods, primarily warp drives and wormholes, tend to fall victim to two major
+setbacks: 1) astronomical mass-energy is required to distort spacetime appreciably due to the weak coupling
+between energy and spacetime curvature, and 2) exotic matter is often associated with metrics that allow for
+spacetime shortcuts.
+Computational Tools & Quantum Gravity
+The development of a functional field drive may be achieved via the engineering of two fundamental entities: the
+omnipresent quantum fields, and spacetime itself.
+Quantum fields and spacetime geometry are described by two pillar theoretical frameworks: Einstein’s general
+theory of relativity and the quantum theory of fields.
+Offering superb models of reality in their respective realms, all attempts of amalgamation have so far resulted in a
+dog’s breakfast — a defective moonscape of enigmas and absurdities. The combined physics describing quanta and
+gravitation, or “Quantum Gravity”, is the ultimate, missing, theoretical framework in science.
+Calculations in both theoretical frameworks are extensive and involve complex notational conventions, and the time
+it takes to do these calculations by hand is prohibitive, as is the risk of inducing transcription errors.
+Nonetheless, the technical challenges of breakthrough spaceflight can only be reasonably addressed through the
+application of computer computational tools.
+Is time travel possible? Can we build warp drives? Do wormholes exist?
+To be able to answer these questions with appreciable confidence, a multi-physics framework capable of wrangling
+the relevant quantum theoretic and general relativistic calculations must be developed.
+Currently, no such software exists to meet the challenge.
+Self Forces & Extended Body Effects
+In Einstein gravity, it is well-known that sufficiently small objects tend to fall along the geodesics of whichever
+spacetime they inhabit; however, spacecrafts are not point particles.
+Important differences exist between the motion of extended bodies and point-like objects. The details of an extended
+test body’s internal structure can cause its center-of-mass trajectory to diverge from that of an equivalent point
+particle. This is true in Einsteinian as well as Newtonian gravity.
+Well-known in Newtonian gravity, an orbiting satellite may take advantage of spacetime anisotropy to control its
+orbital parameters without expenditure of propellant. For example, an extended object can effectively “push off” or
+“grab onto” local gradients in the gravitational field. By retracting and deploying tethered masses, a satellite in orbit
+can propel itself.
+                                                                                                                            3/6
+In Einsteinian gravity, the control space available to alter trajectories using extended body effects is greatly enlarged
+because test bodies interact with the background spacetime using their full stress-energy tensors rather than just
+their mass distributions, and in this relativistic context, similar effects can occur even if the spacetime is spatially
+isotropic.
+That is, even without a gravitational gradient to react off of, if sufficiently large internal momenta can be maintained,
+a spacecraft can exploit a temporal asymmetry in the geometry to generate an effect very similar to a spatial one.
+Fundamentally, spacecrafts can interact with the cosmological rest frame and gravitational fields to control their
+mass and acceleration purely through internal manipulations.
+There are also what are known as self interaction effects. The electromagnetic field of a charged particle influences
+its own motion. Many open problems in physics involve this electromagnetic self force. Both self-force and extended
+body effects are often neglected — and in many cases they can be without consequence. Only in richer contexts are
+their dynamics revealed, and only in special circumstances do they become important to consider.
+Further investigation into self-interaction and extended body effects may augment existing propulsion methods or
+lead to entirely new forms of propulsion.
+Superconductors & Metamaterials
+Related to extended body effects, superconductors and spacetime may interact in bizarre ways, as may
+metamaterials with vacuum fields.
+The lattice ions and the Cooper pairs within superconductors must respond differently in the presence of
+gravitational waves and Coriolis fields.
+The electronic wavefunction of an extended quantum object, such as a Rydberg atom, is quantum mechanically
+incompressible.
+The lattice ions in a superconductor are not incompressible because they do not possess a globally coherent
+quantum phase; however, the Cooper-pair wavefunction of a persistent current superconducting ring is.
+Thus, a superconducting loop of wire will resist tidal compression during free fall and will fall more slowly in the
+inhomogeneous gravitational field of the Earth compared to the free fall motion of a classical point-like object
+dropped from the same height.
+For superconductors in the presence of gravitational waves, while the Cooper pairs undergo non-geodesic,
+accelerated motion through space, the lattice ions undergo geodesic motion as they are carried along with space.
+The differences in charge and motion between the superconductors electrons and nuclei leads to a large Coulomb
+force that opposes the tidal compression acting on the superconductors lattice ions, as well as mass and charge
+supercurrents within the superconductor.
+These effects, theoretically, make possible the enhanced reflection of gravitational waves.
+Casimir Physics & Vacuum Energy
+Beyond the potential propulsive effects involving superconducting materials and anisotropic spacetimes, other
+propulsion possibilities exist that involve exploiting electromagnetic quantum vacuum momentum.
+                                                                                                                            4/6
+Although the translational symmetry of space forbids a rigid unpowered object from accelerating by exploiting
+quantum vacuum, a properly engineered system could, in principle, exchange momentum with quantum vacuum
+fields.
+One could conceive of a theoretical, albeit minute thrust, spacecraft that uses the dynamical Casimir effect to
+produce a small net acceleration by exploiting electromagnetic radiative reaction forces. The craft would require no
+on-board expellant as it would instead eject photons kicked from the quantum vacuum by anharmonically vibrating
+Casimir plates.
+Magnetoelectric materials may constantly interact with the quantum vacuum, generating Lorentz forces that most
+often sum to zero; however, using two well-established ideas — the Lorentz force and the magnetoelectric effect —
+it might be possible to induce an asymmetry in these otherwise balanced forces.
+Progress
+The last three decades have seen incredible progress, and numerous developments and advances.
+The physics of traversable wormholes and superluminal warp drives entered and permeated scientific literature.
+The discovery of dark energy took everyone completely by surprise in 1998.
+Advances in supercomputing power and mathematics enabled researchers to numerically solve the Einstein
+equations, highlighting the importance of the differences between simulations based on the full Einstein equations
+and those making simplifying assumptions.
+In the ten years that followed, multi-decade-long scientific collaborations confirmed two theoretical predictions of
+momentous importance: 1) the Higgs field — responsible for giving certain particles their mass, and 2) gravitational
+waves — propagating oscillations in the fabric of spacetime itself.
+DARPA launched initiatives into breakthrough technologies based on Casimir physics and vacuum energy.
+Enhanced Casimir effects were predicted to occur in metamaterials and Bose-Einstein condensates, and thin
+superconducting films were predicted to reflect gravitational waves.
+Quantum metamaterials were proposed. This programmable media is comprised of controllable quantum coherent
+unit elements that can maintain global coherence and may enable unprecedented gravitational wave detection
+capability, the ability to transduce gravitational into electromagnetic energy, and most profound, the ability to
+generate gravitational radiation at terrestrial scales.
+Much unresolved physics still remains regarding the connections between electromagnetism and gravitation. A
+greater understanding of how matter couples to spacetime, and the coupling between electromagnetic and
+gravitational fields, may lead to new methods for achieving propulsive effects. Methods for achieving enhanced
+coupling or exotic matter would each constitute major breakthroughs for star travel science.
+Call To Arms
+Breakthroughs in propulsion physics are among the most impactful, valuable, and difficult challenges facing our
+generation, and those to come. Achieving starflight means humanity effectively becomes immortal. The current
+generations can spearhead propellantless and superluminal propulsion if we are bold enough to try.
+Interstellar exploration is the ultimate adventure and challenge, and a quest of profound import for the long term
+trajectory of humanity. I believe no pursuit is of greater importance, and its consequences, intended and unforeseen,
+will be among the most valuable ever derived, making possible the next wave of transformative technologies that will
+                                                                                                                        5/6
+further humanity in ways we have only begun to imagine.
+The universe is full of mysteries yet to be uncovered. Wormholes and time warps may live among them. Those with
+the courage and determination to stay the course in pursuit of the cosmos’ most valuable secrets hold a chance to
+return victorious with its grander treasures.
+What we stand to create is greater than our world, and our time. Interstellar propulsion and spacetime engineering
+will not only transform terrestrial human culture, but set the stage for the future of humanity — and secure it.
+“Safe bets hold no magic to quicken the heart. Real breakthroughs — the kind that topple paradigms, redefine
+what’s possible, and impact the long term trajectory of humanity — demand bold imaginative leaps, unwavering
+passion, and unreasonable perseverance.” -Jason A. Sokaris
+                                                                                                                     6/6
