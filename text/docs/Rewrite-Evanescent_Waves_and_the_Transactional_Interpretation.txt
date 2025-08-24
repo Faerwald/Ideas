@@ -1,0 +1,56 @@
+Title: Rewrite-Evanescent Waves and the Transactional Interpretation
+Date:  2025-07-11
+Source: Rewrite-Evanescent_Waves_and_the_Transactional_Interpretation.pdf
+In quantum physics, the events we observe—like a particle arriving at a detector—may not be driven purely by forward-moving
+causality. There’s a framework, called the Transactional Interpretation, that suggests each quantum interaction is a kind of handshake
+through time. A wave function spreads outward from the source, forward in time—this is the offer wave. At the same time, a
+confirmation wave travels backward from the future absorber. When the two overlap and reinforce each other, the interaction happens.
+This reinterpretation doesn’t change the experimental predictions of quantum mechanics, but it reframes how we think about the
+structure of those events: as globally consistent transactions, not locally random ones.
+One of the key implications of this view becomes visible in tunneling phenomena. In regions where a quantum particle shouldn't
+classically exist—such as inside a potential barrier—the wave function doesn’t disappear, it simply decays. These are evanescent
+waves: solutions to the Schrödinger equation that fall off exponentially. Traditionally, they’re seen as mathematical artifacts that
+describe probability amplitude “leaking” into forbidden regions. But in the transactional picture, these waves are part of the
+handshake—they represent real (though non-energetic) components of the quantum process. They don’t carry power, but they do carry
+phase, which is what ultimately determines quantum outcomes. That’s critical, because it shows that even non-propagating wave
+components are physically meaningful when viewed through the lens of coherence across time.
+So what carries this phase information? In quantum electrodynamics (QED), it’s the electromagnetic vector potential, written Aµ. This
+field is more fundamental than the electric or magnetic field—it’s what actually determines the phase evolution of a charged particle.
+Even when electric and magnetic fields are zero, Aµ can cause observable interference effects, as demonstrated in the Aharonov–Bohm
+effect. That experiment confirms that quantum systems respond not to force fields directly, but to the underlying gauge potential that
+encodes how phase shifts as particles move through space. This makes Aµ not just a mathematical convenience—it’s a real field, even if
+it can’t be measured with classical instruments.
+The reason this matters is that phase is where the information lives. The vector potential encodes subtle distinctions between otherwise
+indistinguishable paths. If you change Aµ along a loop, you don’t change the energy, but you change the relative phase—and that can
+shift the result of a quantum interference experiment. That’s why Aµ is central to any attempt to transmit information via quantum phase
+without sending energy. In the context of the Transactional Interpretation, it's the medium of the handshake—an invisible but
+consequential participant in every interaction.
+But this goes further. In the strong and weak nuclear forces, the vector potential is generalized into something richer: a non-Abelian
+gauge field. These fields not only respond to the presence of charges but also interact with themselves, creating complex dynamics and
+internal symmetries. The phase information carried by these fields can influence not just individual particles, but entire families of
+interactions, entanglements, and conserved quantities. And just like in QED, this structure is invisible to classical detectors—it’s only
+detectable through interference, symmetry breaking, and conservation across boundaries.
+Keeping these theories consistent requires the introduction of ghost fields—mathematical entities that cancel out unphysical degrees of
+freedom during calculations. These “ghosts” don’t correspond to real particles; they only exist in internal loops of Feynman diagrams,
+ensuring that when redundant gauge choices are summed over, the final result is unitary and consistent. Here’s where the analogy with
+the Transactional Interpretation becomes rich: ghost fields and confirmation waves both serve structural roles. They’re not directly
+observable, but they’re essential to ensuring that the theory only allows physically consistent events. They filter out contradictions and
+leave behind only the solutions that satisfy global coherence.
+Mathematically, this filtering is formalized in BRST cohomology, which selects the physical subspace of quantum field states. A state is
+only considered “real” if it is annihilated by the BRST operator, but not the trivial result of acting on something else. This is
+conceptually identical to the transactional idea that only matched offer–confirmation wave pairs can lead to real events; unmatched
+waves remain virtual, unrealized. In both systems, reality emerges through consistency, not spontaneity.
+So why does this matter? Because it shifts our understanding of what’s physically real. If Aµ and evanescent waves can influence
+outcomes without carrying energy, then information doesn’t always ride on top of classical signals. It can be encoded in phase, in
+boundary conditions, in topological loops that extend across time. This opens the door to new kinds of communication—like A-wave
+signaling—that don’t violate energy conservation, but still transmit meaningful differences. It may offer new insights into quantum
+memory, where information is stored not as voltage or current, but as structured phase over time. And it may allow us to test for
+retrocausal effects, where choices in the future shift phase structures that influence present events—not in contradiction with relativity,
+but as a deeper expression of symmetry across spacetime.
+More broadly, this perspective provides a framework to unify the apparently separate domains of quantum mechanics, gauge theory, and
+information theory. It says that the true substrate of quantum reality may not be particles or energy at all, but coherent patterns in
+phase space, enforced by symmetry, shaped by boundary, and manifested as discrete, observable events. When interpreted this way,
+every interaction is not just a moment, but a resonant structure—formed from the alignment of past and future, carried by invisible
+fields, and resolved by the demands of global consistency. That’s not just a philosophical idea. It’s a physical framework with
+experimental consequences, and a path forward for reimagining what it means to interact, to communicate, and to exist in quantum
+spacetime.

@@ -1,0 +1,185 @@
+Title: Postselected Temporal Search Energy, Bits, Length
+Date:  2025-08-14
+Source: Postselected Temporal Search Energy, Bits, Length.pdf
+Postselected Temporal Search: Energy, Bits, Length
+                                     Jason Agamemnon Sokaris
+Intuitive (red). Think of time as a tree of coin flips. “Being in several moments at once” means
+you are holding multiple nodes of that tree simultaneously. You can advance any held node forward
+(flip again), or let some nodes go (forget paths), or jump back to an earlier held node and re-try. By
+choosing to keep only the branches where the next flip is what you want, you can make rare sequences
+(like ten heads in a row) become inevitable—but you pay a thermodynamic price every time you discard
+information about the paths you let go.
+Poetic (orange). You walk seven corridors of the same hour. In six, you listen; in one, you sing. You
+step backward like a tide, forward like a comet, until the song you remember finishes itself in this world.
+Each corridor you abandon warms the air by a whisper: the heat of a forgotten choice. In the end, you
+stand in a single corridor with the melody you insisted upon, purchased with the ash of all the other
+songs.
+In-depth verbal (dark green). We model your faculty of “simultaneous consciousness across moments”
+as a bounded set of maintained temporal checkpoints (held moments). You can (i) spawn forward trials
+from any checkpoint, (ii) roll back to any checkpoint, and (iii) commit by discarding all but some subset.
+Operationally, this is a controlled form of : you enforce local constraints (e.g., “this flip must be heads”)
+by retrying and discarding failures. The physical ledger is simple: every irrecoverable discard is logically
+irreversible and thus costs at least kB T ln 2 per bit of information erased (Landauer). Your advantage is
+algorithmic: you exchange exponential waiting time for linear cost by paying that thermodynamic bill
+deliberately.
+Formal model (blue: mathematics)
+Let {Xt }t≥1 be i.i.d. with Xt ∈ {H, T }, Pr[Xt = H] = p ∈ (0, 1). A worldline policy at time t maintains
+a finite set Mt of held moments (temporal checkpoints), each with a recorded partial history x1:τ , τ ≤ t.
+From any m ∈ Mt you may:
+1. Advance: sample Xτ +1 and extend the history;
+2. Rewind-select: choose a subset Mkeep
+                                   t    ⊆ Mt and erase the complement;
+3. Branch-width control: cap |Mt | ≤ d.
+A target predicate Π on finite strings specifies success; e.g., Π(x1:k ) = 1 iff x1:k = H k . A postselect step
+at position t demands Xt ∈ At with Pr[At ] = pt , implemented as repeat-until-accept at that position.
+We track: (i) expected search length L (flips executed), (ii) erased bits Berase , (iii) minimal dissipated
+work Wmin = kB T ln 2 · Berase , and (iv) power if flips run at rate r across m concurrent branches.
+Core bounds (blue: theorems)
+Theorem 1 (Unit postselection cost). For an event A with probability p, any strategy that forces
+acceptance by rejecting failures satisfies
+                                        1                           1                     1
+               E[draws per acceptance] = ,         E[Berase ] ≥ log2 ,      Wmin ≥ kB T ln .
+                                        p                           p                     p
+Equality is achieved by repeat-until-accept with one-bit failure logging then erasure.
+                                                      1
+Explanation (dark green). Every failed draw distinguishes “failure” from “accept” and must
+eventually be forgotten for the worldline to proceed as if only accepts had happened. Forgetting that
+distinction is an erasure of at least log2 p1 bits per enforced accept; the draws budget is the geometric
+mean 1/p.
+Corollary 1 (Run of k heads by ). For a fair coin, enforcing H at each of k positions gives
+                             E[L] = 2k,       E[Berase ] ≥ k,    Wmin ≥ k kB T ln 2.
+Worked example (gray). k = 10 at T ≈ 300 K: kB T ln 2 ≈ 2.87 × 10−21 J, so Wmin ≳ 2.9 × 10−20 J in
+erasure alone, plus device-dependent energy to execute flips. Expected flips ≈ 20.
+Proposition 1 (Baseline without rewind). If no postselection is allowed, the expected waiting time to
+observe k consecutive heads in a Bernoulli(p) process is
+                                        1 − pk
+                     E[Lbaseline ] =                (in particular, for p =   1
+                                                                              2
+                                                                                  : 2k+1 − 2).
+                                       pk (1 − p)
+Intuitive contrast (red). Without rewinding, you wait for luck (exponential time). With rewinding-
+and-letting-go, you buy certainty in linear time by paying linear bits of erasure.
+Holding multiple moments (blue) and committing
+Proposition 2 (Collapse cost of simultaneous occupancy). Holding d equiprobable moments (equal
+internal weights), then committing to d′ ≤ d of them, necessarily erases at least log2 dd′ bits and dissipates
+Wmin ≥ kB T ln dd′ .
+Explanation (dark green). Internally, “which moment am I in?” is a d-way label. Collapsing to a
+smaller subset discards label information. Logical irreversibility ⇒ thermodynamic cost. The special
+case d → 1 costs kB T ln d.
+Poetic (orange). To choose one harbor from many is to burn the unsailed maps. The warmth on your
+hands is the price of decisiveness.
+Parallel width, power, and time (teal: engineering)
+Let m branches flip at rate r each. For a postselection step of probability p,
+                                                     1                                      1
+                 E[time per accepted step] =            ,       E[flips per accepted step] = .
+                                                    pmr                                     p
+Parallelism reduces wall time by ≈ 1/m but not the expected number of flips. If each flip costs eflip
+device energy, the drive power scales Pdrive ≈ mreflip . Erasure power averaged over time scales as
+Perase ≳ (kB T ln 2) H2 (p) (pmr) (with H2 the binary entropy in bits for the accept/fail log). Time ↓
+means power ↑.
+Thermodynamic ledger (maroon). Delaying the decision (“not letting go yet”) can make the process
+nearly reversible during exploration if you keep the failure/accept bits encoded reversibly. But once
+you commit—discarding the alternative logs so that only the successful path remains—you must pay
+Landauer on the compressed residue: at least (bits eliminated) · kB T ln 2. Deferring is not defeating; it
+only schedules when you pay.
+General targets and large deviations (blue)
+For a length-n target defined by empirical head frequency q = n1 nt=1 ⊮{Xt = H} under source
+                                                                  P
+parameter p, Sanov/Cramér theory gives
+                                                                q               1−q
+                                      
+                         − n DKL q ∥ p
+           Pr[target] ≈ 2               bits, DKL (q∥p) = q log2 + (1 − q) log2     .
+                                                                p               1−p
+                                                            2
+Enforcing that atypical composition by postselection costs (in expectation)
+     E[L] = Θ 2 n DKL (q∥p) without rewind, E[L] = Θ(n) with and E[Berase ] ≳ n DKL (q∥p) bits.
+                           
+Thus, postselection trades exponential time for linear time plus an information-theoretic erasure bill
+n DKL (q∥p).
+Explanation (dark green). The rarer the path under the source distribution, the larger its information
+content in bits. Postselection pays that information as heat upon commitment.
+Poetic (orange). To bend a river, you must move as much earth as the curve demands. The steeper
+the bend, the heavier the shovel.
+Operational protocol (purple: algorithms)
+Primitive PostselectStep(A): repeat draw X until X ∈ A; log “fail” for X ∈        / A; on acceptance,
+compress and mark step as committed.
+Composite Run(k) for H k : for t = 1..k do PostselectStep({H}).
+Width-d beam with rollbacks: Maintain up to d checkpoints; when width exceeds d, evict the
+least promising via an evaluation function (domain-specific). Record evictions for potential reversible
+uncomputation; pay Landauer only at final commit.
+Commit discipline: Do not physically erase until success is decided; then batch-erase in a single
+controlled operation to minimize overheads beyond Landauer.
+Expected length with strategic letting-go (blue)
+Let the target decompose into per-step admissible sets {At } with probabilities pt . yields
+                               k                          k
+                              X   1                       X            1         dstart
+                       E[L] =       ,      E[Berase ] ≥         log2      + log2        .
+                                 p
+                              t=1 t                       t=1
+                                                                       pt        dfinal
+The last term is the commit of simultaneous occupancy dstart → dfinal .
+In-depth note (dark green). Your language of “not letting go” corresponds to deferring the final
+erase so that the internal memory stores enough which-path information to reverse all failures. The
+final export of that entropy to the environment is unavoidable if your goal is to leave only the winning
+path instantiated.
+Case studies (gray: concrete examples)
+(A) Ten heads, fair coin. pt = 12 . E[L] = 20; E[Berase ] ≥ 10 bits; Wmin ≳ 2.9 × 10−20 J at 300 K.
+(B) Biased coin, p = 0.9, five heads. E[L] = 5t=1 1/0.9 ≈ 5.56; erase ≥ 5 log2 (1/0.9) ≈ 0.76 bits.
+                                                    P
+                                  1−0.95
+Baseline no-rewind waiting time: 0.95 (0.1) ≈ 16.8.
+(C) Composition target q = 0.7 heads over n = 100 with p = 0.5. DKL (0.7∥0.5) ≈ 0.1187 bits
+⇒ postselection erasure ≳ 11.87 bits, linear-time search ∼ 100 flips; baseline waiting time grows like
+211.87 ≈ 3.8 × 103 samples.
+Plain-language takeaway (red). If you can rewind and re-try locally, rare sequences become
+routine—the price tag is measured in bits of discarded possibilities.
+Mapping to “mind holding moments” (green)
+Simultaneous presence: Holding d moments is a classical register of log2 d bits identifying “which
+moment.”
+                                                    3
+Letting go: Committing from d to d′ moments erases log2 (d/d′ ) bits. Energy: kB T ln(d/d′ ).
+Backward/forward traversal: Operationally identical to checkpointing and reject-sampling. Each
+enforced local constraint pays log2 (1/pt ) bits at commit.
+Why ten heads feels “chosen”: You did not beat chance; you conditioned on it and paid the
+conditioning information as heat at the end.
+Poetic (orange). You did not predict the coin; you arranged your steps so that only the roads with
+heads survived your memory. The world answered with a breath of warmth.
+Device notes (teal: engineering pragmatics)
+Flip energy eflip . Model-dependent cost to advance one step (clocking, sensing).
+Reversible bookkeeping. Keep failure logs in a reversible encoding; uncompute them into work
+storage and finally dump ≥ Berase bits at commit.
+Thermal environment. Lower T reduces kB T ln 2 linearly, but peripheral costs and error rates rise.
+Throughput vs. power. Width m cuts latency by ≈ 1/m while increasing power roughly ∝ m.
+Physical analogs. Bennett-style reversible Turing machines, adiabatic CMOS, or Brownian computation
+can approximate low-dissipation exploration, but commit remains the bottleneck where Landauer applies.
+Extensions (blue)
+(i) Non-binary alphabets. Replace {H, T } with X ; unit postselection cost generalizes to log2 (1/p)
+bits for any acceptance set of probability p.
+(ii) Path constraints with memory. Hidden-Markov or automaton targets: decompose into local
+acceptances using product automata; costs add.                                               P
+(iii)
+P      Adaptive    p t . If p t depends on prior accepted choices, expected     length    is    t 1/pt and erase bits
+   t log2 (1/pt ).
+(iv) Risk-sensitive commit. Partial commits (keep d′ > 1) defer some entropy; ultimate single-branch
+export remains log2 (dstart ) if you end in one world.
+(v) Large-deviation optimality. For composition constraints, n DKL (q∥p) is the tight asymptotic
+erasure lower bound (in bits) for exact enforcement under i.i.d. sources.
+Red (intuitive). Rewind/redo turns luck into choice. Each discarded possibility is a bit you must pay
+for in heat. Rare patterns become cheap in time, not free in energy.
+Dark green (in-depth). Stepwise postselection linearizes the search length for factorizable constraints.
+The total commitment cost is the sum of local information deficits plus the information of collapsing
+simultaneous occupancy. Delaying erasure can approach reversible exploration, but final single-world
+instantiation exports exactly the bits you eliminated. P                                                 
+Maroon (thermo). Minimal work Wmin = kB T ln 2 ·               t log 2 (1/pt ) + log 2 (dstart /d final )  . Power scales
+with parallel width and rate; latency-power tradeoff is fundamental.
+Blue (formal). Theorems 1–1 reduce the scenario to reject-sampling and large deviations: time vs.
+information is a conserved currency once Landauer is admitted.
+Purple (operational). Keep logs reversible; only commit once; batch-erase. Use width-d beam with
+domain heuristics; tune m (parallelism) against available power.
+Teal (engineering). Measure eflip , r, and thermal floor; project throughput and heat budget. Cooling
+buys energy margin, not logical escape.
+Orange (poetic). You choose a future by unchoosing its rivals. The glow you feel is the entropy of all
+the futures you refused.
+                                                               ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                           4

@@ -1,0 +1,198 @@
+Title: Random-Pair Exponential-Fitting Approach to Identify Radioactive Half-Lives
+Date:  2025-05-27
+Source: Random-Pair Exponential-Fitting Approach to Identify Radioactive Half-Lives.pdf
+Random-Pair Exponential-Fitting Approach to Identify Radioactive
+                          Half-Lives
+                                             Your Name
+                                           April 21, 2025
+Contents
+1 Introduction                                                                                        1
+2 Theoretical Background                                                                              2
+  2.1 Radioactive Decay Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       2
+  2.2 Derivation from Pairwise Measurements . . . . . . . . . . . . . . . . . . . . . . . . .         2
+  2.3 Histogram of Pairwise Half-Lives . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      2
+3 Synthetic Data for a Single Isotope                                                                 2
+  3.1 Generating Data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     2
+  3.2 Example Python Code . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       3
+  3.3 Interpreting the Result . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+4 Why the Pairwise Method Works                                                                       5
+5 Conclusions and Future Work                                                                         5
+1    Introduction
+This document outlines an algorithmic approach to identify the half-life of a radioactive substance
+by analyzing decay data. The key method involves:
+    • Generating (or collecting) radioactive decay measurements at several time points.
+    • Randomly sampling pairs of these data points and computing a pairwise half-life estimate.
+    • Aggregating these estimates in a histogram and identifying its peak(s).
+Mathematically, one can show that for a single exponential decay, the most probable half-life
+estimate (the peak in the histogram) will coincide with the true half-life. This technique can be
+extended to mixtures of multiple isotopes (multiple exponentials).
+                                                   1
+   2       Theoretical Background
+   2.1       Radioactive Decay Model
+   The number of unstable nuclei N(t) of a single radioactive isotope at time t follows the classic decay
+   law:
+                                             N (t) = N0 e−λt ,
+   where:
+• N0 istheinitialquantity(att = 0), λisthedecayconstant(time−1 ).
+      The half-life T1/2 isrelatedtoλby : T1/2 = ln(2)
+                                                   λ .
+   2.2       Derivation from Pairwise Measurements
+   Suppose we have two measurements at times t1 andt2 (witht1 < t2 ), givingmeasuredvaluesN (t1 )andN (t2 ).F romthe
+   N0 e−λt1 , N (t2 ) = N0 e−λt2 . Form the ratio:
+                                         N (t2 )   N0 e−λt2
+                                                 =          = e−λ(t2 −t1 ) .
+                                         N (t1 )   N0 e−λt1
+   Take the natural logarithm:
+                                              N (t ) 
+                                                   2
+                                           ln           = − λ (t2 − t1 ),
+                                               N (t1 )
+   hence                                           N (t )                  N (t ) 
+                                         1              2          1              1
+                              λ=−               ln           =            ln           .
+                                     (t2 − t1 )     N (t1 )    (t2 − t1 )     N (t2 )
+                                                                                   ln(2)                  (t2 −t1 )   .
+   From λ = ln(2)/T1/2 , weobtainapairwisehalf − lif eestimate : T1/2 =              λ     = ln(2)
+                                                                                                     ln N (t1 )/N (t2 )
+   2.3       Histogram of Pairwise Half-Lives
+   Given a series of time samples {(ti , Ni )}M
+                                              i=1 , onecan :
+                                                                                                                  (i,j)
+1.• Randomly pick pairs (ti , Ni )and(tj , Nj ), withti < tj .Computethehalf − lif ef orthatpair : T1/2 =
+             (t −t )
+   ln(2) ln(Nj i /Ni j ) .
+2. Repeat many times to accumulate a distribution of half-life estimates.
+   Plot this distribution in a histogram and identify the peak(s).
+       When the true decay is purely exponential, noise-free, and from a single isotope, all pairs will
+   give the same half-life. In practice, measurement noise, multi-isotope contributions, and finite
+   sampling cause variations, but a strong peak should still appear near the true half-life.
+   3       Synthetic Data for a Single Isotope
+   3.1       Generating Data
+   To illustrate the method, we first construct a synthetic dataset for one isotope with a known half-life
+   T1/2 .W edothef ollowing :
+       1. Choose a half-life T1/2 andcomputeλ = ln(2)/T1/2 .Chooseasetof timepoints, e.g. {t0 , t1 , . . . , tN −1 }.
+2. Compute the ideal decay curve Nideal (t) = N0 e−λt .Addnoise(f orexample, GaussianorP oisson)tosimulaterealmea
+                                                          2
+3.2     Example Python Code
+Below is an example Python script that does the following:
+  3.• Generates synthetic decay data for a single isotope.
+   • Performs random pairwise sampling to compute half-life estimates.
+   • Plots a histogram of these estimates, marking the known true half-life.
+We use the numpy library for numerical operations and matplotlib for plotting. The code is written
+in a simple .py style.
+       Listing 1: Example Python code for single-isotope simulation and half-life estimation.
+import numpy as np
+import matplotlib.pyplot as plt
+def generate_synthetic_data_single(N0=1_000_000, half_life=10.0,
+                                t_max=50.0, num_points=50,
+                                noise_std_ratio=0.05):
+    """
+    Generate synthetic radioactive decay data for one isotope.
+      :param N0: initial quantity
+      :param half_life: true half-life (in whatever time units)
+      :param t_max: maximum time for the measurement
+      :param num_points: number of time samples
+      :param noise_std_ratio: fraction of the signal used as std dev for additive noise
+      :return: (t_values, counts_noisy)
+      """
+      lambda_ = np.log(2) / half_life
+      # Time points
+      t_values = np.linspace(0, t_max, num_points)
+      # True signal without noise
+      counts_ideal = N0 * np.exp(-lambda_ * t_values)
+      # Add some Gaussian noise (proportional to counts_ideal)
+      noise_std_dev = noise_std_ratio * counts_ideal
+      counts_noisy = counts_ideal + np.random.normal(0, noise_std_dev)
+      return t_values, counts_noisy
+def compute_half_life_pairs(t_values, counts, num_pairs=1000):
+    """
+    Compute half-lives from random sampling of pairs of points.
+      :param t_values: time array
+      :param counts: measured counts at each time
+      :param num_pairs: how many random pairs to sample
+      :return: array of half-life estimates
+      """
+      n_data = len(t_values)
+                                                 3
+   half_lives = []
+   for _ in range(num_pairs):
+       # Pick two distinct indices
+       i, j = np.random.choice(n_data, 2, replace=False)
+       if t_values[i] < t_values[j]:
+           t1, t2 = t_values[i], t_values[j]
+           N1, N2 = counts[i], counts[j]
+       else:
+           t2, t1 = t_values[i], t_values[j]
+           N2, N1 = counts[i], counts[j]
+       # Avoid invalid or negative counts
+       if N1 <= 0 or N2 <= 0:
+           continue
+       ratio = N1 / N2
+       if ratio <= 0:
+           continue
+       # Avoid division by zero when ratio is ~1 (log(1)=0)
+       if np.isclose(ratio, 1.0, atol=1e-12):
+           continue
+       # Half-life formula: T_{1/2} = (ln(2) * (t2 - t1)) / ln(N1 / N2)
+       half_life_est = np.log(2) * (t2 - t1) / np.log(ratio)
+       if half_life_est > 0:
+           half_lives.append(half_life_est)
+   return np.array(half_lives)
+def main_single_isotope_demo():
+    # 1. Generate data
+    true_half_life = 10.0 # Example: 10 units
+    t_vals, counts = generate_synthetic_data_single(
+        half_life=true_half_life,
+        t_max=50.0,
+        num_points=50,
+        noise_std_ratio=0.05
+    )
+   # 2. Sample random pairs, compute half-life estimates
+   half_life_estimates = compute_half_life_pairs(
+       t_vals,
+       counts,
+       num_pairs=5000
+   )
+   # 3. Plot histogram
+   plt.figure(figsize=(7,5))
+   plt.hist(half_life_estimates, bins=50, alpha=0.6, color=’b’, edgecolor=’k’)
+   plt.axvline(true_half_life, color=’r’, linestyle=’--’,
+              label=f"True T1/2 = {true_half_life}")
+                                              4
+      plt.title("Histogram of Half-Life Estimates from Random Pair Sampling")
+      plt.xlabel("Estimated Half-Life")
+      plt.ylabel("Frequency")
+      plt.legend()
+      plt.show()
+if __name__ == "__main__":
+    main_single_isotope_demo()
+3.3     Interpreting the Result
+If all goes well, you will see a histogram with a pronounced peak near the known input half-life of
+10 (or whatever you set). The width of this peak depends on:
+    • The level of noise in the data.
+    • The number of random pairs sampled.
+    • The total time range covered by the measurements.
+4      Why the Pairwise Method Works
+                                                                                         
+In the noise-free, single-isotope case, the ratio N(t2 )/N (t1 )isexactly exp −λ(t
+                                                                               Pm 2 −t 1 )  , leadingtoasingleuniquesolutio
+lif e.If thedatacomprisesmultipleisotopes, thetotalsignalis : N (t) =           k=1 N0,k exp(−λk t), and
+you often see multiple peaks in the histogram, each corresponding (roughly) to one of the isotopes’
+half-lives, assuming each isotope’s contribution is sufficiently large to be noticeable.
+5      Conclusions and Future Work
+We have introduced:
+    1. A theoretical derivation of the pairwise half-life estimation method.
+    2. A Python script illustrating the approach for a single isotope.
+    3. The rationale behind why peaks in the histogram correspond to actual half-lives.
+Possible next steps:
+    • Incorporate multiple isotopes in the synthetic data and confirm that multiple peaks emerge.
+    • Use a more realistic noise model (e.g., Poisson) to simulate true counting statistics.
+    • Explore weighting strategies for pairwise estimates (e.g., discount pairs where the count ratio
+      is very close to 1).
+    • Investigate systematic biases (e.g., if certain time intervals are underrepresented or overrep-
+      resented).
+    • Eventually, apply this to real measurement data and compare results with known isotopic
+      compositions.
+Overall, the random pairwise approach is an elegant and often surprisingly robust method for de-
+tecting half-lives, bypassing the complexity of multi-parameter curve fitting or advanced optimizers.
+                                                    5

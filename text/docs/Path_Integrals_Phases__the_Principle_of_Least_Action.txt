@@ -1,0 +1,132 @@
+Title: Path Integrals, Phases, & the Principle of Least Action
+Date:  2025-05-27
+Source: Path Integrals, Phases, & the Principle of Least Action.pdf
+Lecture Notes: Path Integrals, Phases, & the Principle of Least
+                           Action
+1. Introduction
+Quantum theory, as famously described by Richard Feynman, teaches us that a particle (or photon, or
+any quantum object) traveling from point 1 to point 2 does not simply follow a single path. Instead, it
+“explores” all possible paths, each contributing an amplitude to the final outcome. The probability of
+detecting the particle at point 2 is then determined by summing (adding) all of these complex amplitudes,
+and only after that summation do we square the magnitude of the result to obtain a probability.
+   In classical physics, we say objects follow the path of least action. But from the quantum perspective,
+that is really just a consequence of how these complex amplitudes interfere: all the weird, loopy, detoured
+paths usually cancel out, leaving the dominant contribution from the path(s) near the classical trajectory.
+The reason for this cancellation is linked to the phase spinning around, which depends on the action of
+the path.
+2. Phase, Action, and the “Stopwatch” Metaphor
+Phase as a “stopwatch.” A very helpful way to visualize these amplitudes is to imagine a little
+“stopwatch hand” (or vector) that spins as the wave travels along each path.
+   • When the wave starts at point 1, set the stopwatch hand to some reference direction.
+   • As the wave moves along a path, the hand rotates in a circle (in the complex plane).
+   • When the wave arrives at point 2, we stop the watch and record the final direction of the hand.
+   Mathematically, that “stopwatch hand” (or rotating vector) is captured by a factor of
+                                                   e iϕ ,
+where ϕistheaccumulatedphase.W ewillseebelowthatϕisdirectlyproportionaltotheaction, S, dividedbythe(verysma
+ϕ = Sℏ .
+3. The Phase Accumulation Along a Path
+Breaking the path into tiny segments. To understand where the phase comes from, consider splitting
+any path into many small segments of length ∆x, eachtakeninasmalltimeinterval∆t.Duringeachsmallstep :
+phase increment ∆ϕ ∝ k ∆x − ω ∆t, where k is the wavenumber (related to wavelength λ), andωistheangularf re
+   More precisely, recall that for a matter wave (de Broglie wave):
+                                                   h   h
+                                             λ =     =    ,
+                                                   p   mv
+                                                     2πE
+                                           ω = 2πf =       .
+                                                        h
+                                                                p
+Since h/(2π)istypicallydenotedℏ, werewritetheseask = 2π
+                                                      λ
+                                                          =     ℏ
+                                                                  ,   and ω =    E
+                                                                                 ℏ
+                                                                                   .
+   Hence, for each small segment,
+                                                            p      E
+                                ∆ϕ = k ∆x − ω ∆t =            ∆x −   ∆t.
+                                                            ℏ      ℏ
+Summing (integrating) all these increments along the path gives the total phase.
+                                                     1
+  4. Expressing Phase in Terms of Action
+  Step-by-step derivation. Let us show how the classical action S emerges.
+       1. Combine momentum and velocity: Since p = mv, then
+                                p      mv      m (∆x/∆t)      mv 2
+                                  ∆x =    ∆x =           ∆x =      ∆t.
+                                ℏ      ℏ           ℏ           ℏ
+         Notice how we used ∆x/∆t = v, soweintroduced∆t.
+2. Energy term: The energy E in the simplest case is:
+                                                                      1 2
+                               E = Kinetic + Potential =                mv + V (x).
+                                                                      2
+  So
+                                                         1
+                                           E             2
+                                                           mv 2   + V (x)
+                                             ∆t =                         ∆t.
+                                           ℏ                      ℏ
+3. Phase increment: Putting these together,
+                                                                          1
+                              p     E      mv 2                           2
+                                                                            mv 2   + V (x)
+                          ∆ϕ = ∆x −   ∆t =      ∆t −                                       ∆t.
+                              ℏ     ℏ       ℏ                                      ℏ
+  Simplify within the parentheses:
+                             1                                1 1 2          
+                     ∆ϕ =      mv 2 −      1
+                                             mv 2
+                                               − V (x) ∆t =        mv − V (x)   ∆t.
+                             ℏ             2
+                                                               ℏ 2
+                                                             
+  Recall 21 mv 2 isthekineticenergyT.Hence, ∆ϕ = ℏ1 T − V (x) ∆t.
+                                                                                                 P
+  Sum to an integral: In the limit
+  R t2 T −V (x)      1
+                       R t2            of ∆t → 0, thetotalphasealongthepathf romt1 tot2 isϕ =       ∆ϕ →
+   t1     ℏ
+                dt = ℏ t1
+                            T − V (x)  dt.
+       But the quantity                       Z t2
+                                                            
+                                                   T − V (x) dt
+                                                    t1
+  is precisely the classical action, which we usually write as
+                                Z t2
+                           S =       L dt where L = T − V (x) (the Lagrangian).
+                                t1
+  Amplitude factor: Therefore, for a path with action S,
+                                           S                                       S
+                                     ϕ =            =⇒     Amplitude ∼ e i ℏ .
+                                           ℏ
+  5. Why Only the “Least Action” Path Survives (Classical Limit)
+  When ℏisverysmallcomparedtotypicalactionsinthemacroscopicworld, thephase Sℏ becomes enormous. For
+  two nearby paths (say they differ in action by ∆S), therelativephasedif f erenceis∆ϕ = ∆Sℏ
+                                                                                             . Even if
+  ∆Sisjustatinyf ractionof ajoule·second, once you divide by ℏ ≈ 1.054×10 J·s, yougetanenormousnumberof add
+                                                                         −34
+     Consequently, most paths will have phases pointing almost randomly when they reach the endpoint.
+  When you sum a large number of random directions (vectors) in the complex plane, they tend to cancel
+  out (destructive interference).
+                                                            2
+  Stationary Action → ConstructiveInterf erence
+  By contrast, at the path of least action (sometimes more precisely called a stationary action path because it
+  is a minimum or extremum with respect to small variations), small deviations in the path do not change the
+  action S much, at least to first order in those small changes. That means the phases of those neighboring
+  paths will all be almost the same:
+                               ∆ϕ ≈ 0      =⇒     the vectors point the same way.
+  Hence, these paths constructively interfere, building up a significant total amplitude. This is why, on a
+  macroscopic level, we appear to see objects taking only the classical (least action) path.
+  6. Conclusion and Key Takeaways
+     • Quantum objects explore all paths. Each path contributes an amplitude eiS/ℏ .Macroscopic limit:F orl
+• Classical path: The path (or set of paths) with stationary action (i.e. least or extremal action) has nearly
+  the same phase as its neighboring paths, producing constructive interference. Thus, it dominates.
+• Unified picture: This reproduces the principle of least action in classical physics and unifies wave-like
+  interference with the idea of definite trajectories. In truth, every path is still there in the quantum sense,
+  but we observe mainly the ones that survive the interference process.
+  Historical Note. Richard Feynman developed the path integral formulation of quantum mechanics in
+  the 1940s, showing that the amplitude to go from one point to another can be written as a sum (integral)
+  over all possible paths. This method reproduces all of standard quantum mechanics (e.g. the Schrödinger
+  equation) but also provides profound insights, including a direct connection to the classical principle of
+  least action in the limit ℏ → 0.
+                                                        3

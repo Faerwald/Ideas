@@ -1,0 +1,674 @@
+Title: Radioactive Decay Explorer
+Date:  2025-05-27
+Source: Radioactive_Decay_Explorer.pdf
+Radioactive-Decay Explorer
+                                  Technical & Functional Report
+ Single-script release – radioactive decay explorer.py, build 2025-05-25 16:30 EDT
+                                                May 25, 2025
+1     Why this software exists
+Physics and nuclear-chemistry classes often teach radioactive decay with a single “textbook” curve or a
+canned spreadsheet. Real detectors, though, measure mixtures of isotopes plus counting noise. Students
+rarely see the complete workflow:
+    • Design a synthetic decay experiment
+    • Add realistic Poisson shot noise
+    • Recover every half-life automatically
+    • Match the results to real nuclides
+   This project was built to close that gap. It provides an interactive, all-Python playground that lets
+you:
+      Goal                                                   Delivered feature
+      Design arbitrary isotope cocktails — any num- Tick-box “Active isotopes” list driven by a
+      ber, any half-lives                           built-in mini database
+      Generate data quickly, noise on/off, control-          generate data() simulator + Total-time /
+      lable time span                                        Time-step widgets
+      Recover half-lives    without   fitting   multi-       Adaptive random-pairs histogram algorithm
+      exponential sums
+      Visualise everything live — decay curve + his-         Embedded Matplotlib in the same Tk
+      togram                                                 window
+      Guide the learner toward good settings                 Suggest params button derives sane defaults
+                                                             from the checked isotopes
+      Stay crash-friendly                                    Any un-handled traceback is printed inside
+                                                             the GUI, never lost
+2     What the program does end-to-end
+    1. Choose isotopes with the tick boxes (default is Na-24 only).
+                                                         1
+    2. Hit “Suggest params” (optional):
+         • calculates a run length of six half-lives of the slowest isotope;
+         • picks a time step so the trace stays ≤ 300 k points;
+         • sets a ∆t filter ≈ 20% of the fastest half-life.
+    3. Hit “Generate data”:
+         • sums the selected exponentials;
+         • injects Poisson noise if the box is checked;
+         • plots the curve (dots when noisy, line when clean).
+    4. Hit “Analyze”:
+         • draws one million random point pairs;
+         • converts each pair to a half-life;
+         • histograms the results;
+         • detects every peak ≥ min peak % of the tallest bin;
+         • labels each peak with matching nuclides from the table.
+    5. Results, diagnostics, and any caught traceback flow into the scrolling Results pane; the histogram
+       appears under the decay curve in the same window.
+3     Walk-through of every code section
+Below is a compact tree of how the single script is organized:
+radioactive_decay_explorer.py
+ imports (std-lib, numpy, matplotlib, tkinter)
+ ONE Tk root (created before TkAgg is imported)
+ isotope database          → ISOTOPE_DB[]
+    • list of dicts {Symbol, Mass, HalfLife}
+    • helper iso_label(), match_half_life()
+ generate_data()           → simulator
+    • builds time array 0 ... total_time at given t
+    • sums n exponentials with equal amplitudes
+    • scales to 1×10 counts at t=0
+    • Poisson-randomises if noise=True
+ analyze_random_pairs()    → core algorithm
+    1. adaptive search window (0.3×fastest ... 3×slowest)
+    2. adaptive t filter ( max(min_dt_fracT_run, 0.2×T_fast))
+    3. vectorised NumPy pair sampling
+    4. safe → T½ conversion with overflow guards
+    5. histogram + simple peak prominence
+    6. returns human string; also stores _last_hist for GUI
+ dataclass AlgoConfig           →    bundles tunables for analysis
+                                                       2
+ App(ttk.Frame)            → GUI class
+     build_gui() creates
+      • left column (controls & results)
+         { Simulation box
+             º Total-time (s)
+             º Time-step (s)
+             º Poisson noise toggle
+             º Clear-log toggle
+             º \Suggest params" button
+             º \Generate data" button
+         { Analysis box
+             º Random pairs, bins, min t %, min peak %, max peaks
+             º \Analyze" button
+         { Results scrolled-text
+         { Isotope tick list (auto-scrolling Canvas)
+      • right column (plots)
+         { Matplotlib figure with upper decay-curve axis
+           and lower histogram axis
+     _safe() wrapper catches ANY callback crash,
+      dumps traceback to results pane.
+     suggest() fills time, step, t% from ticked isotopes.
+     generate()
+       { calls simulator
+       { draws curve (dots if noise)
+       { logs \Generated ..."
+     analyze()
+        { builds AlgoConfig
+        { calls algorithm
+        { logs report
+        { draws histogram from _last_hist
+ App(root); root.mainloop() → start event loop
+4     Algorithm logic in plain words
+Two points on a pure exponential share exactly one unknown: the decay constant,
+                              y2                               ln(y1 /y2 )              ln 2
+                                 = e−λ (t2 −t1 )   =⇒    λ=                ,   T1/2 =        .
+                              y1                                 t2 − t1                 λ
+   Pick million-plus random pairs → same-isotope pairs pile up on the true half-life; mixed pairs smear
+out. Histogram peaks therefore reveal each isotope even when amplitudes differ. Filters:
+    • ignore pairs closer than a fraction of run length or 0.2 × T1/2,fastest ,
+    • ignore λ estimates whose half-life falls outside [0.3 × T1/2,fastest , 3 × T1/2,slowest ],
+    • ignore histogram bins below min peak % of the tallest.
+    The routine is O(Npairs ), but fully vectorised so one million pairs run in ∼ 50 ms on a mid-2020 laptop.
+5     Why the UI is robust
+    • Single Tk root created before Matplotlib → prevents the grey “tk” ghost window.
+                                                           3
+    • PanedWindow gives a draggable divider.
+    • Crash guard prints tracebacks to the in-window log so you never lose diagnostics.
+    • Dots when noisy avoid vertical smear on log-Y plots.
+    • Parameter suggestion makes the app usable without prior knowledge.
+6     Typical workflow recipes
+    Scenario                                    Steps
+    One isotope, no noise                       Tick Na-24 → Suggest params → Generate →
+                                                Analyze → get single 54 000 s peak
+    Three isotopes, clean                       Tick Na-24, I-131, Co-60 → Suggest params (≈30 yr
+                                                run, 6 h step) → Generate → Analyze
+    Two isotopes, Poisson noise                 Tick Na-24, I-131 → Suggest params → min peak %
+                                                = 2% → noise ON → Generate → Analyze
+7     Extending the single script
+    • Add more nuclides – append rows to ISOTOPE DB.
+    • Connect real hardware – replace generate data() with a reader that streams detector counts
+      into the same (times, counts) tuple.
+    • Export CSV – write np.column stack((t,c)) to disk inside generate().
+    • Different peak pick – drop in any SciPy peak-finder; just write to last hist.
+8     Limitations & future ideas
+    • Histogram peak detection is intentionally simple; closely-spaced half-lives need better deconvolution
+      (kernel density or EM on a mixture).
+    • Isotope table is tiny—expand with ENSDF data for real labs.
+    • GUI currently enforces equal starting activities; allow user-set amplitudes.
+    • Long half-lives + 1 s step can overrun memory despite the step heuristic—future version could stream
+      pairs instead of storing the whole trace.
+9     Running the program
+pip install matplotlib numpy
+python radioactive_decay_explorer.py
+   No other files or modules required. One press of Suggest params, Generate, then Analyze shows the
+complete synthetic experiment and its automated interpretation.
+                                                     4
+10       Screenshot Example
+Below is a placeholder reference to the screenshot:
+11       radioactive decay explorer.py
+Here is the complete Python code for reference. Just place it in a single file and run:
+#   radioactive_decay_explorer.py
+#   2025-05-25 16-30 EDT
+#
+#   A SINGLE self-contained script that:
+#     • simulates multi-isotope decay curves (optional Poisson noise)
+#     • extracts half-lives with an adaptive random-pairs algorithm
+#     • matches peaks to a built-in isotope table
+#     • shows an interactive tkinter + matplotlib GUI
+#     • offers \Suggest params", \Generate", and \Analyze" buttons
+#     • prints any crash traceback into a scrolling Results pane
+#
+#   Tested on Python 3.8 + Matplotlib 3.6. Run with:
+#       python radioactive_decay_explorer.py
+#   ---------------------------------------------------------------------
+from __future__ import annotations
+import sys, math, traceback, random, itertools
+import tkinter as tk
+from tkinter import ttk, scrolledtext
+from dataclasses import dataclass
+from typing import List, Dict, Tuple
+import numpy as np
+import matplotlib
+# ---- create SINGLE root before importing TkAgg ----------------------
+root = tk.Tk()
+root.title("Radioactive-Decay Explorer")
+root.geometry("1400x800")
+# --------------------------------------------------------------------
+matplotlib.use("TkAgg")
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
+                                                      5
+# ====================================================================
+# 0) Database of isotopes (few examples; extend at will)              #
+# ====================================================================
+ISOTOPE_DB: List[Dict] = [
+    {"Symbol": "Na", "Mass": 24, "HalfLife": 5.4e4},        # 15 h
+    {"Symbol": "I", "Mass": 131, "HalfLife": 6.95e5},       # 8 d
+    {"Symbol": "Co", "Mass": 60, "HalfLife": 1.65e8},       # 5.27 y
+    {"Symbol": "K", "Mass": 40, "HalfLife": 3.94e16},       # 1.25 Gy
+    {"Symbol": "U", "Mass": 238, "HalfLife": 1.41e17},      # 4.468 Gy
+]
+# helper: pretty label
+def iso_label(rec):
+    return f"{ rec['Symbol']} -{ rec['Mass']} "
+# quick lookup by half-life
+def match_half_life(T_est: float, tol: float = 0.05) -> List[Dict]:
+    hits = []
+    for rec in ISOTOPE_DB:
+        if abs(T_est - rec["HalfLife"]) <= tol * T_est:
+            hits.append(rec)
+    return sorted(hits, key=lambda r: abs(T_est - r["HalfLife"]))
+# ====================================================================
+# 1) Simulation                                                        #
+# ====================================================================
+def generate_data(*, n_iso: int, half_lives: List[float], total_time: float,
+                   time_step: float = 1.0, noise: bool = False) -> Tuple[np.ndarray, np.ndarray]:
+    """Return times, counts arrays."""
+    times = np.arange(0, total_time + time_step, time_step, dtype=float)
+    counts = np.zeros_like(times)
+    amps    = np.full(n_iso, 1.0 / n_iso)          # equal amplitudes
+    lam     = np.log(2.0) / np.asarray(half_lives)
+    for A, l in zip(amps, lam):
+         counts += A * np.exp(-l * times)
+    # scale to arbitrary detector counts (1e5 at t=0)
+    counts *= 1e5
+    if noise:
+         rng = np.random.default_rng()
+         counts = rng.poisson(counts)
+    return times, counts
+# ====================================================================
+# 2) Adaptive random-pairs algorithm                                 #
+# ====================================================================
+@dataclass
+class AlgoConfig:
+    N_pairs: int = 1_000_000
+    N_bins: int = 160
+    min_dt_frac: float = 0.005       # 0.5 %
+    min_peak_frac: float = 0.05
+    max_peaks: int | None = None
+    active_half_lives: List[float] | None = None
+_last_hist: Tuple[np.ndarray, np.ndarray] | None = None   # for GUI
+def analyze_random_pairs(dataset: Tuple[np.ndarray, np.ndarray], cfg: AlgoConfig) -> str:
+    global _last_hist
+    times, counts = dataset
+                                                   6
+mask = counts > 0
+times, counts = times[mask], counts[mask]
+if len(times) < 2:
+    return "Dataset too small."
+total_time = times[-1] - times[0]
+fast = min(cfg.active_half_lives) if cfg.active_half_lives else total_time/10
+slow = max(cfg.active_half_lives) if cfg.active_half_lives else total_time
+# search window
+min_T = max(1.0, 0.3 * fast)
+max_T = min(1e9, 3.0 * slow)
+min_dt = max(cfg.min_dt_frac * total_time, 0.2 * fast)
+# random pairs
+rng   = np.random.default_rng()
+N     = len(times)
+idx1 = rng.integers(0, N, size=cfg.N_pairs)
+idx2 = rng.integers(0, N, size=cfg.N_pairs)
+good = idx1 != idx2
+dt    = np.abs(times[idx2] - times[idx1])
+good &= dt >= min_dt
+# ensure monotone
+hi_mask = counts[idx1] >= counts[idx2]
+c_hi = np.where(hi_mask, counts[idx1], counts[idx2])
+c_lo = np.where(hi_mask, counts[idx2], counts[idx1])
+good &= (c_lo > 0) & (c_hi > c_lo)
+if not np.any(good):
+    return "All random pairs rejected.   Try smaller min t or longer run."
+dt    = dt[good]
+c_hi = c_hi[good]
+c_lo = c_lo[good]
+with np.errstate(divide='ignore', over='ignore'):
+    lam = np.log(c_hi / c_lo) / dt
+    T_est = np.log(2.0) / lam
+T_est = T_est[np.isfinite(T_est)]
+T_est = T_est[(T_est >= min_T) & (T_est <= max_T)]
+if T_est.size == 0:
+    return "No estimates in search window. Adjust parameters."
+hist, edges = np.histogram(T_est, bins=cfg.N_bins)
+_last_hist = (hist, edges)
+# peak pick
+tallest = hist.max()
+peaks = [i for i,h in enumerate(hist) if h >= cfg.min_peak_frac*tallest
+         and (i==0 or hist[i]>hist[i-1]) and (i==len(hist)-1 or hist[i]>hist[i+1])]
+peaks.sort(key=lambda k: hist[k], reverse=True)
+if cfg.max_peaks:
+    peaks = peaks[:cfg.max_peaks]
+if not peaks:
+    return "Histogram contained no significant peaks."
+lines=[]
+for j,k in enumerate(peaks,1):
+    T_mid = 0.5*(edges[k]+edges[k+1])
+                                                7
+       hits = int(hist[k])
+       tag   = "; ".join(iso_label(r) for r in match_half_life(T_mid)) or "no DB match"
+       lines.append(f"T{ j} : { T_mid: 10.3g} s ({ hits} hits) → { tag} ")
+   lines.append(f"[min_T={ min_T: .3g} s, max_T={ max_T: .3g} s, "
+                f"t{ min_dt: .3g} s, pairs={ T_est.size} /{ cfg.N_pairs} ]")
+   return "\n".join(lines)
+# ====================================================================
+# 3) GUI                                                              #
+# ====================================================================
+class App(ttk.Frame):
+    def __init__(self, master: tk.Tk):
+        super().__init__(master, padding=8)
+        self.pack(fill="both", expand=True)
+        self.isotope_rows = ISOTOPE_DB
+        self.isotope_vars = [tk.BooleanVar(value=(rec["Symbol"]=="Na"
+                                                  and rec["Mass"]==24))
+                             for rec in self.isotope_rows]
+        self.dataset: Tuple[np.ndarray,np.ndarray] | None = None
+        self._build_gui()
+   # ---------- build ----------
+   def _build_gui(self):
+       paned = tk.PanedWindow(self, orient="horizontal", sashrelief="raised")
+       paned.pack(fill="both", expand=True)
+        left = ttk.Frame(paned); paned.add(left, stretch="never")
+        right = ttk.Frame(paned); paned.add(right, stretch="always")
+        # simulation box
+        sim = ttk.LabelFrame(left, text="Simulation")
+        sim.pack(fill="x", pady=6)
+        ttk.Label(sim, text="Total time (s)").grid(row=0, column=0, sticky="w")
+        self.total_time = tk.DoubleVar(value=300_000.0)
+        ttk.Entry(sim, textvariable=self.total_time, width=14)\
+            .grid(row=0, column=1, sticky="w")
+        ttk.Label(sim, text="Time-step (s)").grid(row=1, column=0, sticky="w")
+        self.time_step = tk.DoubleVar(value=1.0)
+        ttk.Entry(sim, textvariable=self.time_step, width=14)\
+            .grid(row=1, column=1, sticky="w")
+       self.noise_on = tk.BooleanVar()
+       ttk.Checkbutton(sim, text="Poisson noise",
+                       variable=self.noise_on).grid(row=2, column=0, columnspan=2, sticky="w")
+        ttk.Button(sim, text="Suggest params",
+                   command=lambda:self._safe(self.suggest)).grid(row=3, column=0, columnspan=2, pady=4,
+                   ֒→  sticky="ew")
+        ttk.Button(sim, text="Generate data",
+                   command=lambda:self._safe(self.generate)).grid(row=4, column=0, columnspan=2,
+                   ֒→  pady=4, sticky="ew")
+        # analysis box
+        ana = ttk.LabelFrame(left, text="Analysis")
+        ana.pack(fill="x", pady=6)
+        self.pairs = tk.IntVar(value=1_000_000)
+                                                      8
+    self.bins = tk.IntVar(value=160)
+    self.min_dt = tk.DoubleVar(value=0.5)
+    self.peak_cut= tk.DoubleVar(value=5.0)
+    ttk.Label(ana,text="Random pairs").grid(row=0,column=0,sticky="w")
+    ttk.Entry(ana,textvariable=self.pairs,width=14).grid(row=0,column=1)
+    ttk.Label(ana,text="Histogram bins").grid(row=1,column=0,sticky="w")
+    ttk.Entry(ana,textvariable=self.bins,width=14).grid(row=1,column=1)
+    ttk.Label(ana,text="min t [%]").grid(row=2,column=0,sticky="w")
+    ttk.Entry(ana,textvariable=self.min_dt,width=14).grid(row=2,column=1)
+    ttk.Label(ana,text="min peak [%]").grid(row=3,column=0,sticky="w")
+    ttk.Entry(ana,textvariable=self.peak_cut,width=14).grid(row=3,column=1)
+    ttk.Button(ana,text="Analyze",
+               command=lambda:self._safe(self.analyze))\
+        .grid(row=4,column=0,columnspan=2,pady=6,sticky="ew")
+    # results pane
+    self.log = scrolledtext.ScrolledText(left,width=42,height=12,
+                                         font=("TkDefaultFont",11),wrap="word")
+    self.log.pack(fill="both", expand=True, pady=6)
+    self._write("Welcome. Tick isotopes, suggest params, generate, analyze.\n")
+    # isotope checklist
+    iso_box=ttk.LabelFrame(left,text="Active isotopes"); iso_box.pack(fill="both",expand=True)
+    for r,(rec,var) in enumerate(zip(self.isotope_rows,self.isotope_vars)):
+        ttk.Checkbutton(iso_box,text=iso_label(rec),variable=var).grid(row=r,column=0,sticky="w")
+    # matplotlib figure
+    fig=Figure(figsize=(6,4),dpi=100,layout="constrained")
+    self.ax_curve=fig.add_subplot(2,1,1)
+    self.ax_hist =fig.add_subplot(2,1,2)
+    self.canvas = FigureCanvasTkAgg(fig,master=right)
+    self.canvas.draw()
+    self.canvas.get_tk_widget().pack(fill="both",expand=True)
+# ---------- utilities ----------
+def _write(self,msg,clear=False):
+    self.log.configure(state="normal")
+    if clear:
+        self.log.delete("1.0","end")
+    self.log.insert("end",msg)
+    self.log.configure(state="disabled")
+    self.log.see("end")
+def _safe(self,func,*a,**kw):
+    try:
+        func(*a,**kw)
+    except Exception:
+        self._write(" "+traceback.format_exc()+"\n")
+# ---------- callbacks ----------
+def suggest(self):
+    sel=[rec for rec,var in zip(self.isotope_rows,self.isotope_vars) if var.get()]
+    if not sel:
+        self._write(" No isotopes selected.\n");
+        return
+    fast=min(r["HalfLife"] for r in sel)
+    slow=max(r["HalfLife"] for r in sel)
+    T    =6*slow
+    step =max(T/300_000,1.0)
+    dtpct=max(0.2*fast/T*100,0.05)
+                                               9
+        self.total_time.set(f"{ T: .0f} ")
+        self.time_step.set(f"{ step: .3g} ")
+        self.min_dt.set(round(dtpct,3))
+        self._write(f" total_time={ T: .0f} s, step={ step: .3g} s, mint={ dtpct: .3g} %\n")
+   def generate(self):
+       sel=[rec for rec,var in zip(self.isotope_rows,self.isotope_vars) if var.get()]
+       if not sel:
+           self._write(" No isotopes selected.\n");
+           return
+       hl=[rec["HalfLife"] for rec in sel]
+       t,c=generate_data(n_iso=len(hl),half_lives=hl,
+                          total_time=self.total_time.get(),
+                          time_step=self.time_step.get(),
+                          noise=self.noise_on.get())
+       self.dataset=(t,c)
+       self.ax_curve.clear()
+       ms=2 if self.noise_on.get() else None
+       self.ax_curve.plot(t,c,'.' if ms else '-',ms=ms,lw=1.2,alpha=0.7)
+       self.ax_curve.set_yscale("log")
+       self.ax_curve.set_title("Decay curve")
+       self.ax_hist.clear(); self.ax_hist.set_title("Histogram (run Analyze)")
+       self.canvas.draw()
+       self._write(f" Generated { len(t): ,} points for "
+                   f"{ ', '.join(iso_label(r) for r in sel)} \n",clear=False)
+   def analyze(self):
+       if not self.dataset:
+           self._write(" Generate first.\n");
+           return
+       cfg=AlgoConfig(N_pairs=self.pairs.get(),N_bins=self.bins.get(),
+                      min_dt_frac=self.min_dt.get()/100,
+                      min_peak_frac=self.peak_cut.get()/100,
+                      active_half_lives=[rec["HalfLife"]
+                                         for rec,var in zip(self.isotope_rows,
+                                                             self.isotope_vars)
+                                         if var.get()])
+       report=analyze_random_pairs(self.dataset,cfg)
+       self._write(report+"\n")
+       if _last_hist:
+           hist,edges=_last_hist
+           self.ax_hist.clear()
+           self.ax_hist.bar(0.5*(edges[:-1]+edges[1:]),hist,
+                            width=np.diff(edges),color='tab:purple')
+           self.ax_hist.set_yscale("log" if hist.max()/max(hist.min(initial=1),1)>100 else "linear")
+           self.ax_hist.set_xlabel("half-life (s)")
+           self.ax_hist.set_title("Half-life histogram")
+           self.canvas.draw()
+# --------------------------------------------------------------------
+App(root)
+root.mainloop()
+Highlights of this single-file version:
+   • Suggest params: calculates run length, time-step, and ∆t filter from the fastest/slowest half-lives
+     you tick.
+   • Crash reporting: any exception in a button callback is caught and printed into the Results pane
+                                                     10
+      with a full traceback — no silent quits.
+   • RAM-friendly: suggestion logic chooses a time-step so the generated array stays ≤ 300 k points.
+   • Dotted noise plots: clear visibility when Poisson noise is enabled.
+   • One root window: never spawns the grey dummy “tk” popup.
+   • Self-contained: isotope table, simulator, algorithm, GUI all live in one script — just run it anywhere
+     Python + Matplotlib are available.
+12     Inverse Reconstruction of Multi–Isotopic Decay
+The project begins with a deceptively simple thought experiment: a small pellet contains many distinct
+radioactive nuclides, each isotope decaying at its own characteristic rate. In an actual laboratory one
+observes only the total activity
+                                             k
+                                             X                           ln 2
+                                    A(t) =         Ai e−λi t ,   λi =          ,
+                                             i=1
+                                                                        T1/2,i
+corrupted by Poisson shot noise. From that blended signal we wish to infer both the half–life and the initial
+abundance of every constituent without being told the value of k. The work therefore has two inseparable
+components. First, a forward model must generate realistic data for testing and benchmarking. Second, an
+inverse algorithm must transform the noisy, mixed curve into accurate parameter estimates. Demonstrating
+reliability in synthetic space is a prerequisite for later deployment in genuine faster–than–light information-
+processing hardware or any device that embeds radionuclides for computation or storage.
+Forward simulation. A set of half–lives spanning seconds to hours is selected, amplitudes Ai are as-
+signed, and the summed exponential is evaluated on a log–spaced time grid. Pseudo–random Poisson
+variates P(A(t)) emulate counting statistics. The script then stores {tj }, the noisy counts, and the exact
+parameter list {(λi , Ai )} so that the recovery step can quantify its accuracy. All hyperparameters—grid
+density, time span, isotope count, noise seed—are exposed via a configuration block or command–line flags.
+Pair–slope histogram seeding. Direct global non-linear fitting of many exponentials is notoriously ill-
+conditioned. The code therefore precedes any optimiser with a probabilistic pre–analysis. It draws O(105 )
+random pairs of indices (i, j) and, treating each pair as if a single exponential were present, estimates a
+local slope
+                                                          A(t ) 
+                                                      ln A(tji )
+                                             λ̂ij = −             .
+                                                       tj − ti
+Whenever one nuclide dominates both times, λ̂ij is a noisy sample of that nuclide’s true decay constant.
+The resulting cloud clusters around the genuine λi values; a simple histogram (or KDE) of λ̂ij shows
+pronounced peaks at those locations. Detecting the peaks with a prominence filter provides initial guesses
+for the decay constants without solving a high-order nonlinear system.
+Non-linear
+        P refinement. Each peak furnishes an initial λi ; naive but positive amplitudes are assigned
+so that i Ai ≈ A(0). A bounded Levenberg–Marquardt least-squares fit then refines both λi and Ai .
+Because the starting point is already close to the truth, convergence is rapid even for k ≳ 10. The script
+reports the fitted parameters and their root–mean–square errors (RMSE) against the ground truth.
+                                                          11
+Diagnostics and failure modes. If no peaks appear, the histogram is over-smoothed or the log–ratio
+clipping is too strict; relaxing either produces clusters. Too many peaks indicate an overly fine bin width
+or a low prominence threshold. Non-convergent optimisation usually signals poor initial amplitudes; re-
+placing the equal-split guess by a quick linear least-squares solution remedies the issue. All such tun-
+ables—bandwidth, prominence, pair count, histogram bins, random seed—are adjustable from the com-
+mand line.
+Physical terminology. Throughout, precise language anchors the mathematics in reality. The simulated
+pellet is a heterogeneous composite of radionuclide grains, not a high–entropy alloy, because its isotopes
+do not share a common lattice. Clarity in nomenclature prevents conceptual drift when translating code
+abstractions into laboratory practice. Coupled with an exact definition of the inverse problem and a lean,
+debuggable reference implementation, the method converts raw count data into an accurate catalogue
+of half-lives—an essential first step toward integrating radioactive mixtures into future faster-than-light
+information systems.
+13      Synthetic Data Generation Framework
+A reliable inverse algorithm is meaningful only when benchmarked against data whose ground-truth param-
+eters are known exactly. The forward model therefore synthesises time-series activity curves by drawing a
+set of half-lives {T1/2,i } from a log-uniform distribution spanning the operational window (seconds to hours)
+and amplitudes {Ai } from a Dirichlet-scaled prior that enforces non-negativity while avoiding patholog-
+ical imbalance. Times {tj } are placed on a logarithmic grid so that each temporal decade carries equal
+numerical weight. The ideal signal
+                                                     k
+                                                     X                           ln 2
+                                    Aideal (t) =           Ai e−λi t ,   λi =          ,
+                                                     i=1
+                                                                                T1/2,i
+                                                                                                 
+is converted to counts by passing each point through a Poisson random generator P Aideal (tj ) , thereby re-
+producing the shot noise intrinsic to radiation measurements. The script stores the tuple ({tj }, {Nj }, {Ai , λi })
+in an NPZ or JSON container so that subsequent recovery runs can compute absolute error metrics.
+14      Statistical Rationale for the Pair–Slope Histogram
+                                                               
+For a single exponential, any two samples obey λ = − ln Nb /Na /(tb − ta ). In a mixture, the numerator
+and denominator are typically dominated by the same radionuclide whenever (ta , tb ) lie inside a time band
+where one λi eclipses the others. Consequently, the Monte-Carlo map
+                                                            ln(Nb /Na )
+                                        (ta , tb ) 7−→ λ̂ab = −
+                                                              tb − ta
+yields an empirical distribution that clusters around the true λi . The superposition of many such estimates
+is therefore a noisy mixture of Dirac deltas broadened by counting statistics. A histogram (or kernel density
+estimate) sharpens with the square root of the sample count, turning peak detection into a low-dimensional
+problem that sidesteps the Vandermonde ill-conditioning afflicting classical Prony–Laplace inversion.
+15      Numerical Stability and Regularisation Strategies
+Once peak positions supply initial {λi }, the nonlinear refinement
+                                              X                   2
+                                                 Nj − i Ai e−λi tj
+                                                       P
+                                        min
+                                         {Ai ,λi }
+                                                      j
+                                                               12
+is solved under bound constraints Ai , λi ≥ 0. Two hazards must be mitigated:
+                                                                                                   P
+  1. Parameter degeneracy — neighbouring λi values can swap or merge. A Tikhonov term α                i<i′ (λi −
+     λi′ )−2 discourages coalescence without biasing absolute positions.
+  2. Amplitude collapse — tiny Ai migrate to zero and destabilise the Jacobian. Enforcing a floor Ai ≥
+     10−12 coupled with log-parameterisation (Ai = exp ai ) preserves positivity and smooth gradients.
+   The regularisation weight α is selected via an L-curve criterion, balancing residual norm against pa-
+rameter roughness. Empirically, a single α suffices across k ≤ 20.
+16     Implementation Outline and Command-Line Usage
+The entire pipeline resides in a single self-documenting Python file cocktail_simplified.py depending
+only on numpy and scipy.
+simulate --k n     Generates an NPZ file data.npz with a mixture of n radionuclides.
+recover --infile file --outfile json Performs pair-slope histogramming, peak detection, and nonlinear
+     least-squares refinement; writes recovered parameters as JSON.
+   Every hyper-parameter (pair count, histogram bins, log-ratio clip, prominence threshold, regularisation
+weight) is exposed as a flag, enabling rapid sweeps or automated optimisation scripts.
+17     Diagnostic Workflow and Failure Modes
+A recovery run emits (i) the raw λ̂ histogram, (ii) the list of detected peaks, (iii) convergence statistics,
+and (iv) RMSE values when truth is available. Typical signatures:
+   • Flat histogram, no peaks — KDE bandwidth or bin width too large; reduce smoothing or increase
+     sample count.
+   • Excess peaks — prominence threshold too low; neighbouring lobes of the same radionuclide counted
+     separately.
+   • Non-convergence — initial amplitudes pathological; replace equal-split with ordinary least squares
+     on fixed {λi }.
+   Plotting λ̂ against ∆t additionally confirms that the sample cloud occupies the theoretically allowed
+wedge λmin ≤ λ̂ ≤ λmax ; points outside indicate numerical overflow or log-ratio clipping that is too liberal.
+18     Path to Hardware Integration
+When interfaced with an actual detector, the synthetic forward model is replaced by digitised pulse-height
+or scaler data; every subsequent step remains unchanged. The reconstructed half-life spectrum enables:
+  1. Passive multi-clock registers in radiation-hard logic, where each decay channel serves as an
+     asynchronous tick generator.
+  2. Stochastic resonance computing that exploits mutually incommensurate decay trains to sample
+     high-dimensional phase space, advancing research on faster-than-light information transfer hypothe-
+     ses.
+                                                     13
+    3. Ultra-dense archival storage whose bits are encoded in activity ratios immune to charge leakage
+       and electromagnetic interference.
+    In every scenario the deconvolution algorithm is the enabling layer that translates aggregate ionisation
+signals into usable logical or numerical states.
+19        Glossary of Symbols
+N (t)           Total count rate measured at time t (s−1 ).
+Ai              Initial activity of radionuclide i at t = 0 (s−1 ).
+λi              Decay constant of radionuclide i (s−1 ).
+T1/2,i          Half-life of radionuclide i (λi = ln 2/T1/2,i ).
+λ̂ab            Pair-wise slope estimate from samples (ta , Na ) and
+                (tb , Nb ).
+k               Number of distinct radionuclides present in the
+                mixture.
+20        Vocabulary & Taxonomy
+         Purpose              Preferred         Minimal definition                    Typical context
+                              term
+         General     solid    Alloy             Single- or multi-phase metallic Metallurgy, solid-
+         made from ≥ 2                          solid solution; isotopic composi- state physics
+         metallic      ele-                     tion immaterial to lattice
+         ments
+         Alloy with 4–6       High-entropy al- Usually single-phase fcc, bcc, or      Advanced      struc-
+         principal      el-   loy (HEA)        hcp; radioactivity incidental          tural materials
+         ements       each
+         ≥ 5 at% and
+         ∆Smix ≳ 1.5R
+         Chemically           Compound          Composition defined by valence        Inorganic    chem-
+         bonded, fixed-                         chemistry                             istry
+         stoichiometry
+         solid
+         Solid built from     Composite         Properties derive from con- Materials engineer-
+         macroscopic                            stituent geometry as well as ing
+         distinguishable                        chemistry
+         constituents
+         Spatially    uni-    Homogeneous       Alloy solid solutions, single-phase   —
+         form mixture on                        glasses
+         length-scale of
+         interest
+         Spatially vary-      Heterogeneous     Precipitation-hardened      alloys,   —
+         ing composition                        particulate composites
+         or multi-phase
+         structure
+                                                       14
+   A mixture containing many radionuclides of different half-lives is best labelled a multi-radionuclide
+mixture or radionuclide cocktail. Whether it is an alloy, compound, or composite depends on bonding and
+microstructure.
+21     Physical Model of the Decay Signal
+Let the recorded activity be
+                                              k
+                                              X                             T1/2,i
+                                    N (t) =         Ai e−t/τi ,      τi =          ,
+                                              i=1
+                                                                             ln 2
+with k radionuclides (k ≤ 20 in the ultimate test), initial activities Ai , and mean-lifetimes τi . The inverse
+problem is to recover {Ai , τi } from noisy N (t) samples.
+22     Pair-Sampling Algorithm
+  1. Random-pair sampling — draw many pairs (ta , Na ), (tb , Nb ) with tb > ta from the measured curve.
+  2. Slope → decay constant — for a single exponential
+                                                     ln(Nb /Na )                1
+                                           λ̂ = −                ,      λ=        .
+                                                       tb − ta                  τ
+      Each pair yields an estimate λ̂.
+  3. Histogram / KDE — build a density of λ̂; peaks cluster near the true λi .
+  4. Peak picking — convert λi → T1/2,i to seed parameters.
+  5. Refined fit — perform nonlinear least-squares on the full sum-of-exponentials model to update
+     (Ai , τi ).
+   This Monte-Carlo “pair-spectrum” method trades efficiency for robustness versus classical Prony or
+Laplace-inversion techniques.
+23     Development Roadmap
+24     Relevance to Faster-than-Light Information Processing
+Accurate in-situ deconvolution of densely populated decay spectra enables a passive, parallel readout
+channel whose temporal degrees of freedom encode data at atomic density. Each radionuclide’s decay acts
+as a clock tick; the superposition of 20 clocks in one lattice voxel forms a 20-dimensional state. Decoding
+this under background noise is the prerequisite for:
+   • Ultra-high-density data storage — information mapped onto activity ratios rather than charge
+     states.
+   • Virtual causal processing — leveraging known half-lives as a time base for asynchronous logic or
+     stochastic resonance computation in radiation-hard or faster-than-light informational architectures.
+                                                          15
+                   Stage    k (half-lives)    Tasks & deliverables
+                      0            1          Simulate one exponential; recover T1/2 within
+                                              < 1% error.
+                      1           2–3         Separate half-lives differing by ≤ factor 2;
+                                              tune sampling density and bandwidth.
+                      2            5          Add overlapping amplitudes and Poisson
+                                              noise; benchmark against matrix-pencil &
+                                              nonlinear-LSQ.
+                      3            10         Address ill conditioning; apply Tikhonov or
+                                              L-curve regularisation.
+                      4            20         Full cocktail;      evaluate identifiability
+                                              (Cramér–Rao) and runtime scaling.
+25      Concise Algorithm Statement
+Given a time-series of aggregate radioactive counts N (t) from a multi-radionuclide mixture, repeatedly
+sample point pairs, transform each pair into an apparent decay constant, histogram these constants to
+reveal discrete peaks at the true λi , and use those peak locations as initial seeds for a global nonlinear fit of
+the multi-exponential model, thereby recovering the half-life spectrum and relative activities without prior
+composition knowledge.
+                                                            ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                       16

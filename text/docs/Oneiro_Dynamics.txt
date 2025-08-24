@@ -1,0 +1,70 @@
+Title: Oneiro Dynamics
+Date:  2025-06-07
+Source: Oneiro_Dynamics.pdf
+Oneiro Dynamics
+              A Physics of Thought–Driven Phase Control Across Spacetime
+1. Fundamental Mathematical Objects
+Symbol      Meaning                                        Nature
+Φ(x, t)     Phase field of the distributed mind      C 2 scalar field
+ϵ(x, t)     Stochastic vacuum fluctuation            Gaussian white noise
+δΦ(x, t)    Intentional phase bias (thought)         Control function (small)
+p(x, t)     Induced momentum density                 Conjugate to Φ
+B           Branching operator (worldline splitting) Probabilistic operator
+S(x, t)     Scar amplitude density                   Unstable–orbit amplitude
+Aµ (x, t)   Inter–timeline gauge field               Cosmic–string connection
+T [Γ]       Timeline flux (Wilson loop)              Topological invariant
+2. Primary Evolution Equation
+The phase field obeys a stochastic diffusion with coherent bias,
+                                   ∂Φ
+                                      = D ∇2 Φ + ϵ(x, t) + δΦ(x, t),                    (1)
+                                   ∂t
+where
+                                ⟨ϵ(x, t) ϵ(x′ , t′ )⟩ = 2γ δ(x − x′ ) δ(t − t′ ),
+and δΦ is the low–amplitude thought–injection.
+3. Branch Selection Functional
+Small coherent biases exponentially amplify rare macro–outcomes:
+                                                       Z                            !
+                          P[target branch] ∝ exp           Φ(x, t) δΦ(x, t) dx dt .     (2)
+4. Momentum Induction (Percepto–Drive)
+Perception–driven phase gradients produce mechanical thrust,
+                                           p(x, t) = ℏ ∇Φ(x, t).                        (3)
+5. Scar Amplification Dynamics
+Unstable periodic orbits leave “quantum scars.” Biasing increases their weight:
+                                        S(t) = S0 e−λt + Ascar (t),                     (4)
+where λ is the Lyapunov exponent and Ascar (t) encodes bias.
+                                                       1
+6. Inter–Timeline Cosmic String Formalism
+Topological coupling across decohered branches is captured by a gauge–flux:
+                                              I
+                                       T [Γ] = Aµ (x, t) dxµ .                                        (5)
+                                                     Γ
+7. Oneiro Master Lagrangian
+A unifying Lagrangian density is
+                      L = 21 (∂t Φ)2 −   D
+                                             (∇Φ)2 + Φ ϵ(x, t) + δΦ(x, t) + α T [Γ].
+                                                                        
+                                         2
+                                                                                                      (6)
+8. Euler–Lagrange Equation
+From (6),
+                             ∂ 2Φ       2                            δT
+                                  − D ∇   Φ = ϵ(x, t) + δΦ(x, t) + α    .                             (7)
+                             ∂t2                                     δΦ
+9. Summary of Physical Effects
+Effect                               Governing Term
+Phase–driven movement             (3)
+Lightning–strike targeting        (4)
+Weather manipulation              (2)
+AI–dialogue information siphoning (2)
+Cosmic timeline anchoring         (5)
+10. Engineering Prototype Equations
+Implementable on a Oneiro chip with discrete time–step ∆t:
+                     Φ(x, t + ∆t) = Φ(x, t) + ∆t D ∇2 Φ + ϵ(x, t) + δΦ(x, t) ,
+                                                                           
+                                                                                                      (8)
+                            p(x, t) = ℏ ∇Φ(x, t),                                                     (9)
+                         δΦ(x, t) ← arg max P[target].                                               (10)
+Next steps: design the Oneiro chip block diagram, simulate (1) numerically, and prototype controlled
+bias experiments.
+                                                             ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                         2

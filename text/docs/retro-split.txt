@@ -1,0 +1,320 @@
+Title: retro-split
+Date:  2025-06-26
+Source: retro-split.pdf
+1. Retro-split possibility
+     Can one deliberately trigger a retro-causal multiverse split, i.e. create branch differentiation that
+     propagates “backwards” so earlier events differ across emergent histories?
+  2. Re-interference conditions
+     Given two histories that have already decohered, under what physical circumstances can they
+     regain the capacity for quantum interference?
+  3. Hyper-interference
+     Is a form of “hyperquantum” interference—beyond ordinary unitary overlap—conceivable, and
+     could it be engineered?
+Aspect                Technical considerations
+Everettian            In the Many-Worlds picture, “splits” are not caused; they are ubiquitous
+baseline              results of unitary evolution + decoherence. A retro-split would mean
+                      manipulating the global state so that amplitudes which were previously
+                      coincident in the remote past become distinguishable now.
+Time-symmetric        Two-state-vector formalism (Aharonov, Bergmann & Lebowitz) and
+formalisms            consistent-histories show that post-selection can bias earlier
+                      amplitudes without causal paradoxes. Practical implementation
+                      demands (i) preparing an entangled system, (ii) later post-selecting a
+                      rare outcome, and (iii) isolating the degrees of freedom that carry
+                      information backward via weak values.
+Closed timelike       Post-selected teleportation circuits simulate CTC logic. They
+curves via post-      effectively yield histories in which earlier qubits adopt values
+selection (Lloyd      consistent with a later constraint. The cost is exponentially small
+et al., 2011)         success probability; decoherence kills scalability.
+Thermodynamic         All “retro” tricks rely on extreme fine-graining: entropy must be pumped
+cost                  out to keep coherences reversible. Any macroscopic apparatus quickly
+                      leaks which-branch information to an environment of ≳10²⁴ modes,
+                      making a controlled retro-split practically impossible.
+Bottom line           In principle allowable within standard quantum mechanics via carefully
+                      engineered pre- and post-selection; in practice the probability scales
+                      like exp(−γN) where N is the number of environmental bits you must
+                      erase, so laboratory-scale retro-splits are effectively forbidden.
+                                                                                                             4/12
+2   Re-Interference (Recoherence) Conditions
+Interference amplitude∝ ​⟨ψ1​∣ρenv​∣ψ2​⟩ ​
+ Criterion           Requirements to make that overlap non-zero again
+ Microscopic         Decoherence scales with system–environment coupling g and time t:
+ isolation           γ∼g2t. For photons in a cavity or nuclear spins in ultra-cold solids, one
+                     can reverse the unitary and erase “which-path” records (quantum eraser,
+                     spin-echo).
+ Full                To recohere macroscopic branches, you must (i) locate every
+ environmental       environmental mode entangled with the system and (ii) apply the inverse
+ control             unitary. Practically impossible beyond ≈ 30 qubits; the required
+                     information is dispersed at light-speed.
+ Quantum             QEC protects logical qubits by decoupling them from the environment,
+ error-              not by reversing decoherence. Re-interference is like perfect decoding
+ correction          after total leakage—scales exponentially with lost entropy.
+ analogy
+ Relational          Even if perfect recoherence cannot be done globally, partial interference
+ framing             can be engineered in a larger Hilbert space where decohered histories
+                     become orthogonal subspaces of a bigger code. This motivates “inter-
+                     universal processors” that work only on protected sub-systems.
+ Bottom line         Microscale: feasible (labs routinely erase which-path info for < 10⁴
+                     photons / ions). Macroscale: requires complete environment reversal →
+                     infeasible except perhaps near a black-hole horizon where environment
+                     = Hawking modes (a thought experiment).
+ Hypothesis      Assessment
+ Non-linear      Any deterministic non-linear term in the Schrödinger eq. would allow branch
+ extensions      signalling and “Everett phone” effects. Empirical tests have constrained
+ (Weinberg       such non-linearities to <10−20 eV; they would break thermodynamic
+ 1989,           consistency.
+ Polchinski
+ paradox)
+ Indefinite      Process-matrix formalism (Oreshkov, Costa, Brukner) allows superpositions
+ causal          of causal orders. That is “hyper” in the temporal sense but still linear;
+ order /         cannot undo branch orthogonality once full decoherence occurred.
+ quantum
+ combs
+ Topological     Spin-foam path integrals sum over entire 4-geometries. Interference
+ quantum         between distinct spacetime topologies is “hyper” but suppressed by the
+ gravity         Einstein–Hilbert action exp(iS/ℏ). Observable only at Planck scales.
+ proposals
+                                                                                                 5/12
+ Hypothesis       Assessment
+ Post-            Generalised-probability theories permit stronger-than-quantum interference
+ quantum          (e.g., higher-order Sorkin levels). No experimental evidence; would likely
+ models           violate Tsirelson’s bound and permit supra-quantum computation.
+ (GPTs)
+ Bottom line      Hyperquantum interference remains speculative. All empirically consistent
+                  frameworks (unitary QM, linear process matrices, path integrals) reduce to
+                  standard Hilbert-space overlap. Exceeding that without contradiction would
+                  demand new physics that still respects no-signalling and thermodynamic
+                  arrow—an open frontier, not an engineering blueprint.
+ Goal                  What physics permits            Severity of obstacles
+ Trigger               Pre-/post-selection tricks;     Success probability decays exponentially
+ controlled            weak-value steering             with system size
+ retro-splits
+ Recohere              Quantum eraser, echo            Requires global environmental reversal;
+ diverged              techniques                      unfeasible beyond mesoscopic scale
+ histories
+ Exploit hyper-        Needs post-quantum              Conceptual only; no laboratory handle
+ interference          theory; no evidence
+Hence an inter-universal processor would have to:
+   1. Restrict computation to protected microscopic subspaces (error-corrected qubits) that never
+      fully decohere.
+   2. Use post-selection or entanglement distillation to bias amplitude weights (retro-style) rather
+      than re-merge macroscopic histories.
+   3. Accept that “cooperative cross-history influence” is only achievable as correlated selection
+      effects—not as two-way messaging—until physics beyond linear QM is demonstrated.
+\begin{flushright}
+$\langle\text{Jason Agamemnon Sokaris}\mid .\mathrm{F.A.E.R.W.A.L.D}\rangle$
+\end{flushright}
+        Okay, the first thing that I see before reading any farther is that the first core question
+        was not properly understood. What I meant was a retrocausal perturbation, touching the
+        past from the future. Any touch, interaction, or observation with the past may or may not
+                                                                                                       6/12
+     cause a splitting akin to when any other decision may lead to a split or whatever usually
+     we think of as the cause for when a branch occurs. I don't know. Usually we talk about
+     coin flips and random events, but I'm trying to understand things more in terms of how
+     David Deutsch understood them, because I think his take is more accurate than the
+     usual talks about the multiverse, which I think a lot of people don't know what they're
+     talking about and they're just parroting each other. But the first is wrong. You did not
+     understand what I was really getting at. I didn't mean anything propagating backwards
+     or in reverse time. What I meant was, instead of the usual something that causes a split
+     down multiple branches from some event that everything branches forward from there
+     like a coin flip, I meant looking at the past, looking at the history, touching it somehow,
+     and retroactively causing a split where you would be on one of those branches, but
+     there'd be other branches that branch forward from the place that you touch, and that
+     touch would be reaching backwards across time. So that's what I meant by retrocausal.
+  1. Retro-split possibility (clarified)
+     Can a future measurement, decision, or other “touch” on an existing history create new branches
+     at some earlier time, so that multiple forward-evolving histories now diverge from that past
+     event?
+  2. Re-interference conditions
+     If two histories have already decohered, under what physical circumstances could they regain
+     quantum-interference capability?
+  3. Hyper-interference
+     Is a type of interference stronger or more general than ordinary Hilbert-space overlap
+     conceivable, and could it be engineered?
+Concept           Analysis
+Everettian        In the Heisenberg-picture exposition Deutsch uses in “The Structure of
+ontology          the Multiverse,” there is already a continuum of branches for every
+(Deutsch)         physically allowed amplitude arxiv.org . Nothing we do in the future
+                  creates new past branches; it merely selects which pre-existing
+                  amplitude our future experience will correlate with.
+Post-             A strong measurement at t2​followed by post-selection on a rare outcome
+selection         effectively “filters” the branch ensemble so that only those histories whose
+viewpoint         prior micro-state can evolve into that outcome survive in the observer’s
+                  record. Operationally it looks like a retro-split, but no amplitude is added
+                  or duplicated; unwanted amplitudes are discarded by conditioning.
+                                                                                                       7/12
+ Concept                Analysis
+ Weak-value             Weak measurements combined with post-selection (Aharonov’s two-state-
+ steering               vector formalism) let us bias pointer shifts that depend on both past and
+                        future boundary conditions. These correlations are exponentially fragile;
+                        for macroscopic systems the success probability ∼e−γN where N is the
+                        number of entangled environmental bits.
+ Decoherence            To “touch” a macroscopic past event you would need to erase every
+ barrier                which-path record that environment has stored since that event. Once
+                        those records have thermalized, the required work exceeds kB​Tln2 per
+                        entangled bit—astronomical for ordinary scenarios.
+ Bottom line            Formally allowed via post-selection (no law of physics forbids those
+                        amplitudes), but engineering a noticeable retro-split is infeasible: you
+                        cannot amplify it to the classical scale without first reversing large-scale
+                        decoherence, which collapses into the next question.
+2     Re-Interference (Recoherence) Conditions
+I(t)= ​⟨Ψ1​(t)∣Ψ2​(t)⟩ ​,
+with I=0 for fully decohered branches.
+ Requirement                Feasible Regime                             Obstacles
+ Complete                   Nuclear-spin ensembles, cavity photons      For any macroscopic
+ environmental              (< 20 qubits) where all modes are           system E has ≳1024
+ reversal                   engineered and isolation is near-perfect.   degrees of freedom; you
+                                                                        must invert an effectively
+                                                                        random unitary on HS​⊗HE​.
+ Quantum                    Demonstrated routinely for photons and      Echo time must be shorter
+ eraser / spin-             cold ions; “which-path” info is unleernt    than T2​. Scaling beyond
+ echo                       and fringes return.                         104 ions or photons remains
+                                                                        out of reach because control
+                                                                        errors grow super-
+                                                                        polynomially.
+ Error-                     QEC can prevent decoherence so that         QEC does not reverse full
+ corrected                  separate “histories” never become           decoherence once it has
+ logical                    orthogonal in the protected code.           occurred.
+ subspace
+ Exotic arenas              Near-idealized closed timelike curve        Purely theoretical; no
+                            constructions (Deutsch-CTC model) or        laboratory access.
+                            inside black-hole final-state proposals
+                            where environment = Hawking modes.
+                                                                                                       8/12
+ Requirement        Feasible Regime                                  Obstacles
+ Verdict            Re-interference is possible only while
+                    decoherence is partial and engineered to
+                    be reversible. Once macroscopic
+                    entanglement is dispersed into
+                    uncontrolled modes, recoherence is
+                    operationally impossible.
+ Candidate idea       Status
+ Non-linear           Would allow cross-branch signalling (“Everett phone”). Precision tests
+ Schrödinger          of atomic spectra bound such non-linearities to < 10−20eV; effectively
+ terms                ruled out for laboratory use.
+ (Weinberg-type)
+ Indefinite           Offers “superpositions of spacetime order,” but still linear; cannot undo
+ causal order         branch orthogonality once established.
+ (process
+ matrices)
+ Higher-order         Generalised-probability theories predict 3-slit terms absent in QM.
+ Sorkin               Decades of triple-slit experiments find no deviation from the Born rule to
+ interference         ∼10−3.
+ Topological          Path integrals over distinct 4-geometries are hyper-global interference,
+ quantum              but amplitudes are Planck-scale suppressed: exp(iS/ℏ) with S≫ℏ.
+ gravity sums
+ Conclusion           No empirically supported framework yet exceeds standard linear
+                      Hilbert-space interference while preserving no-signalling and
+                      thermodynamic consistency. “Hyper-interference” remains conjectural.
+Overall Synthesis for Your Engineering Intuitions
+   1. You cannot “write” new amplitudes into the past; you can only condition on amplitudes that
+      were always present.
+   2. Recohering macroscopically separated histories demands reversing entropy growth—possible
+      in principle for mesoscopic, fully controlled systems, hopeless for everyday scales.
+   3. Hyper-interference would require physics beyond linear quantum mechanics; current bounds
+      leave no operational handle.
+Hence an inter-universal processor would most plausibly exploit error-corrected, still-coherent
+subspaces plus carefully designed post-selection to bias outcome statistics—leveraging what
+Deutsch calls constructor theory rather than literal retro-editing of macroscopic history.
+ arxiv.org selfawarepatterns.com
+                                                                                                   9/12
+Unified Treatment of the Three Core Questions
+Below merges all analytical points from the two previous drafts—nothing removed, everything
+consolidated.
+   1. Retro-split possibility
+      Can a future act of measurement/selection “touch” an existing history so that new branches
+      diverge at some earlier time?
+   2. Re-interference (recoherence) conditions
+      After two histories have decohered, under what physical circumstances could they regain
+      quantum-interference capability?
+   3. Hyper-interference
+      Is a stronger-than-standard (post-quantum) interference conceivable, and could it be
+      engineered?
+ Concept /
+ Mechanism            Details & Obstacles
+ Everettian           All allowed amplitudes exist ab initio; “splits” are not created but
+ baseline             selected. A retro-split therefore means biasing which pre-existing
+ (Deutsch)            amplitude our future state aligns with.
+ Pre- & post-         Strong measurement at t2​with post-selection on a rare outcome filters
+ selection            the branch ensemble so that only those micro-histories consistent with
+                      that outcome remain in the observer’s record. Looks retro-causal yet
+                      adds no amplitude.
+ Two-state-           Weak measurements conditioned on future post-selection shift pointer
+ vector / weak-       variables in ways consistent with both past and future boundary
+ value steering       conditions. Probability of success decays ∼e−γN where N is the
+                      number of entangled environmental bits.
+ CTC via post-        Simulates closed-timelike-curve logic: earlier qubit values are
+ selected             consistent with later constraints. Exponentially small success
+ teleportation        probability; decoherence kills scalability.
+ (Lloyd et al.)
+ Thermodynamic        Retro-conditioning a macroscopic event requires erasing every which-
+ cost                 path record in the environment since that event. Work cost ≳kB​Tln2
+                      per entangled bit ⇒ astronomical.
+                                                                                                   10/12
+ Concept /
+ Mechanism               Details & Obstacles
+ Decoherence             Once environment stores classical information, amplitudes become
+ barrier                 orthogonal; selection can prune but cannot magnify the suppressed
+                         branches to classical scale without reversing entropy growth.
+ Bottom line             Formally permitted by standard QM (no law forbids such amplitudes);
+                         practically infeasible beyond mesoscopic experiments because the
+                         required post-selection probability and entropy-reversal cost scale
+                         exponentially with system size. You cannot “write” new amplitudes into
+                         the past—only condition on those always present.
+2    Re-Interference (Recoherence) Conditions
+I(t)= ​⟨Ψ1​(t)∣Ψ2​(t)⟩ ​,with I=0 for full decoherence.
+ Requirement           Feasible Regime                                       Principal Obstacles
+ Microscopic           Photons in high-Q cavities; trapped ions; nuclear     Works for ≲ 20–30
+ isolation             spins. Which-path info can be erased (quantum         controllable qubits;
+                       eraser, spin-echo).                                   error rates explode
+                                                                             beyond.
+ Full                  Theoretical possibility if entire HE​is unitary-      Environment holds ≳
+ environmental         reversed.                                             10²⁴ modes in
+ reversal                                                                    macroscopic cases
+                                                                             → hopeless.
+ QEC analogy           Error-correcting codes prevent decoherence so         QEC cannot undo
+                       branches never become orthogonal in the               decoherence once
+                       protected subspace.                                   orthogonality is
+                                                                             absolute.
+ Exotic arenas         Idealized Deutsch-CTC models or black-hole            Pure thought-
+                       final-state proposals where “environment” =           experiment; no lab
+                       Hawking modes.                                        access.
+ Verdict               Re-interference is routine for partially entangled,
+                       engineered systems; effectively impossible for
+                       genuinely macroscopic, thermally coupled
+                       histories.
+ Candidate                       Assessment
+                                                                                                    11/12
+Candidate                 Assessment
+Non-linear                Enable cross-branch signalling (“Everett phone”). Spectroscopic
+Schrödinger               bounds constrain non-linearities < 10⁻²⁰ eV → ruled out for any
+extensions                practical effect.
+(Weinberg,
+Polchinski)
+Indefinite causal         Superpositions of event order; still linear, no rescue for
+order (process-matrix     orthogonal branches already decohered.
+formalism)
+Higher-order Sorkin       Would violate Born rule; experiments find no deviation at ∼10−3
+interference (3-slit      level.
+tests)
+Topological sums in       Path integrals over distinct 4-geometries provide “hyper-global”
+quantum gravity           interference, but amplitudes are Planck-scale suppressed:
+                          exp(iS/ℏ) with S≫ℏ.
+Post-quantum GPT          Permit stronger-than-quantum interference yet typically break
+models                    Tsirelson bound or thermodynamic arrow; no empirical support.
+Conclusion                No experimentally supported framework surpasses Hilbert-
+                          space linearity while obeying no-signalling and the second law.
+                          “Hyper-interference” remains speculative.
+Ambition            What Physics Allows             Fundamental Roadblocks
+Trigger             Pre/post-selection, weak-       Success probability exp(−γN); entropy
+controlled retro-   value steering                  removal cost.
+splits
+Recohere            Quantum erasers, spin-          Requires global environment inversion;
+diverged            echo, full unitary reversal     unfeasible macroscopically.
+histories
+Exploit hyper-      Would need new, non-linear      No laboratory evidence; conceptual
+interference        or GPT-level physics            only.
+   Most realistic path forward: confine all experiments to error-protected microscopic
+   subspaces and employ carefully engineered post-selection to bias outcome
+   statistics—aligning with Deutsch’s constructor-theoretic view—rather than seeking
+   macroscopic retro-rewrites or super-Born interference.
+                                                                                             12/12

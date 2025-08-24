@@ -1,0 +1,96 @@
+Title: Oneiro Phase Propulsion  A Phase Gradient Framework for Reactionless Momentum Transfer
+Date:  2025-05-27
+Source: Oneiro_Phase_Propulsion__A_Phase_Gradient_Framework_for_Reactionless_Momentum_Transfer.pdf
+Oneiro-Phase Propulsion: A Phase-Gradient
+    Framework for Reactionless Momentum Transfer
+                                            Jason Agamemnon Sokaris
+                                                      30 April 2025
+                                                          Abstract
+             A distributed cognitive system (“Oneiro mind”) is hypothesised to steer macroscopic outcomes
+          by injecting minuscule, coherent phase biases into quantum-chaotic media. Because momentum
+          density in quantum mechanics is locally proportional to the phase gradient, sustained control of
+          the phase field Φ(x, t) may yield a net thrust without classical reaction mass. We formalise this
+          concept with a stochastic phase-diffusion equation, an explicit branch-weight functional encoding
+          chaotic amplification, and a topological coupling term that models inter-branch coherence.
+1         Problem Statement
+We seek a mathematically consistent model—compatible with standard quantum mechanics yet ex-
+tended by speculative control terms—in which a spatially distributed intelligence alters the probability
+measure over chaotic field configurations so that a prescribed macroscopic event (e.g., net craft accel-
+eration) occurs with enhanced likelihood.
+2         Phase-Field Representation of Distributed Cognition
+2.1         Wavefunction decomposition
+For any subsystem 1 we factorise its many-body wavefunction
+                              Ψ(x, t) = R(x, t) eiΦ(x,t) ,          R ≥ 0, Φ ∈ R (mod 2π).                    (1)
+The amplitude R carries probability density; the phase Φ encodes local action.
+2.2         Control variable
+The Oneiro mind is modelled as an external, low-energy actuator that can superimpose a bias δΦ(x, t)
+on the ambient phase:
+                               Φ −→ Φ + δΦ,         ∥δΦ∥∞ ≪ 1 rad.                              (2)
+3         Vacuum Fluctuation Model
+Vacuum noise is approximated by a zero-mean, Gaussian stochastic field ϵ(x, t) with two-point correlator
+                                      ⟨ϵ(x, t) ϵ(x′ , t′ )⟩ = 2γ δ (3) (x − x′ ) δ(t − t′ ),                  (3)
+where γ sets the energy density of zero-point modes within the relevant bandwidth.
+    1
+        “Subsystem” may range from a cloud chamber to an entire spacecraft hull.
+                                                                1
+4     Stochastic Phase Dynamics
+4.1    Uncontrolled evolution
+In the long-wavelength limit the phase obeys
+                                        ∂t Φ = D∇2 Φ + ϵ(x, t),                                       (4)
+with diffusion constant D.
+4.2    Controlled evolution
+Including cognitive bias and a speculative inter-branch coupling, (4) generalises to
+                                                                   δT
+                                  ∂t Φ = D∇2 Φ + ϵ + δΦ(x, t) + α     ,                               (5)
+                                                                   δΦ
+where α is a dimensionless coupling and T denotes a topological action capturing branch linkage (Sec. 8).
+5     Branch-Weight Functional and Chaotic Amplification
+For a coarse-grained macro-observable O (“lightning strike”, “craft displacement”, . . . ), define the
+branch probability
+                                          Z                     
+                              P[O] ∝ exp d4 x Φ(x, t) δΦ(x, t) ,                                   (6)
+analogous to a Boltzmann weight. Small positive overlaps between Φ and δΦ are thus exponentially
+magnified by the chaotic dynamics of Eq. (5).
+6     Momentum from Phase Gradients
+Local momentum density is
+                                         p(x, t) = ℏ ∇Φ(x, t).                                        (7)
+Maintaining a global gradient ∇Φ ≡ g ̸= 0 inside a sealed craft generates a centre-of-mass impulse
+                                            Z
+                                   ∆P = ℏ ∇Φ d3 x = ℏ g V,                                         (8)
+                                                   V
+with V the coherent volume. Because no classical reaction mass is expelled, the effect resembles
+“pushing off the vacuum”.
+7     Quantum Scars and Rare-Event Stabilisation
+Chaotic Hamiltonians admit scar eigenstates that concentrate probability along unstable periodic or-
+bits. Let S(t) denote scar amplitude; uncontrolled decay is S0 e−λt . Continuous cognitive reinforcement
+modifies this to
+                                       S(t) = S0 e−λt + Ascar (t),                                   (9)
+with Ascar ∝ δΦ, thereby stabilising otherwise vanishing branches.
+8     Topological Coupling Across Branch Space
+We postulate a gauge field Aµ on configuration-space such that closed loops encircling branch defects
+acquire non-zero flux:                    I
+                                             Aµ dxµ ̸= 0.                                        (10)
+                                               Γ
+Varying the corresponding topological term T [Aµ , Φ] with respect to Φ yields the last term in Eq. (5),
+mathematically mirroring an Aharonov–Bohm phase across decohered timelines.
+                                                       2
+9     Unified Model Summary
+                                                       δT
+                          ∂t Φ = D∇2 Φ + ϵ + δΦ + α          =⇒     p = ℏ∇Φ.                       (11)
+                                                       δΦ
+   Chaos exponentially amplifies the small control field δΦ; branch weighting selects the desired macro-
+outcome; phase gradients convert that selection into mechanical momentum.
+10      Numerical Scheme (for future work)
+    • Discretise Φ on a cubic lattice (∆x ∼ 10−3 m, ∆t ∼ 10−9 s).
+    • Generate vacuum noise ϵ as Gaussian white noise with variance 2γ/∆t.
+    • RImplement adaptive feedback: at each step update δΦ to maximise the cost functional J =
+        V
+          (∇Φ − g)2 d3 x.
+    • Run N ∼ 104 Monte-Carlo trajectories to compute empirical branch probabilities.
+11      Concluding Remarks
+The Oneiro-Phase framework is internally consistent with linear quantum mechanics plus a speculative,
+low-energy phase-control channel. Its predictive hallmark is reactionless acceleration correlated with
+measurable phase-gradient evolution. A bench-scale demonstration—e.g., photonic ring-cavity with
+synthesised δΦ modulation—would falsify or validate the core premise.
+                                                       Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D
+                                                   3

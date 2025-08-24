@@ -1,0 +1,24 @@
+Title: retro attractor diagram
+Date:  2025-08-14
+Source: retro_attractor_diagram.pdf
+Retro-selected Attractor: code at t0 with off-shell constraints
+                                                                                                       Phase-space attractor AC
+                 worldline (t)
+                 light cone
+         8       on-shell (causal)
+                 off-shell (constraint)
+                 ECC window [t0, t0 + t]
+         6
+         4
+                                                                                  (t)
+Time t
+         2
+                                                                                                                 Message M
+                                                                                        DC (decoder)
+         0
+                                                                                E0: code C                 Constraint graph
+         2                                                                                        R1        R2          R3        C
+                                                                                                                                  D
+         4
+             6                   4                     2                 0                    2                     4                 6
+                                                               Space / State-index x

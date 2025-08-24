@@ -1,0 +1,3 @@
+Title: panacea-genesis
+Date:  2025-08-12
+Source: panacea-genesis.pdf

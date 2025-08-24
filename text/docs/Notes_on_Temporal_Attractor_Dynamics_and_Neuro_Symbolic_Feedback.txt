@@ -1,0 +1,77 @@
+Title: Notes on Temporal Attractor Dynamics and Neuro Symbolic Feedback
+Date:  2025-06-07
+Source: Notes_on_Temporal_Attractor_Dynamics_and_Neuro_Symbolic_Feedback.pdf
+Notes on Temporal Attractor Dynamics
+                      and Neuro-Symbolic Feedback
+                                  Jason Agamemnon Sokaris
+Abstract
+These notes consolidate the physical, mathematical, and neuro-technical ideas underlying a closed-
+loop attractor model of consciousness. The framework combines nonlinear dynamical systems, control
+theory, symbolic compression, and dream-state feedback. A concise set of equations formalises how
+phase-locked trajectories can retro-correct memory while remaining self-consistent with physical law.
+1    Dynamical Preliminaries
+Let M(t) ∈ Rn denote an n-dimensional cognitive state at time t. Assume the autonomous flow
+                                              Ṁ = F (M),
+with F : Rn → Rn smooth. A compact, asymptotically stable invariant set A ⊂ Rn is called the global
+attractor. Define the phase error
+                                                         
+                                    δ(t) = dist M(t), A .
+2    Symbolic Gateways
+Let D = {Di } be a finite alphabet of symbolic states (“doors”). Each Di induces a perturbative map
+                                            ΨDi : Rn −→ Rn ,
+encoding discrete cognitive events (e.g. dream motifs, memories, sensory novelties). For a sequence
+Σ = (Di1 , . . . , Dik ) define the composition
+                                      ΦΣ = ΨDik ◦ · · · ◦ ΨDi1 .
+3    Phase-Locking Condition
+Definition
+A trajectory M(t) is phase-locked to A if
+                                              lim δ(t) = 0.
+                                              t→∞
+                                                    1
+Symbolically-Driven Flow
+Between discrete events, M evolves continuously under F . At event times {tj } a symbolic jump occurs:
+                                                            −
+                                           M(t+
+                                                               
+                                              j ) = ΨDij M(tj ) .
+The combined hybrid system is thus
+                           Ṁ = F (M) (continuous),               M 7→ ΨDi (discrete).
+Closure Criterion
+A sequence Σ closes the loop if ΦΣ acts as a contraction toward A, i.e.
+                                   ΦΣ (x) − A   ≤ κ ∥x − A∥,             0 < κ < 1, ∀x.
+4     Neuro-Symbolic Feedback
+4.1    Dream-State Perturbations
+REM-like states are modelled as high-entropy symbolic batches ΣREM injected stochastically. Their
+purpose is to explore phase space and select contraction-dominant sequences probabilistically.
+4.2    Adaptive Control Law
+Define the control functional
+                                         
+                                                Z     T                 X
+                                       J Σ =              δ(t) dt + λ           c(Di ),
+                                                  0                     Di ∈Σ
+where c(Di ) penalises cognitive cost and λ > 0 weights parsimony. The brain minimises J via gradient-
+free search (e.g. evolutionary or reservoir-computing heuristics).
+5     Physical Consistency
+5.1    Energy Bounds
+Perturbations obey a metabolic constraint
+                                                Etot (Σ) ≤ Emax ,
+ensuring biological feasibility.
+5.2    Causal Integrity
+All discrete jumps act within the local light-cone of each neural subsystem, preserving relativistic
+causality. Retro-corrections are epistemic (memory-state updates) rather than ontic violations.
+                                                             2
+6     Implications and Applications
+    • Memory Reconsolidation: Loop closure predicts sharp qualitative transitions in autobiograph-
+      ical coherence.
+    • Lucid Dream Training: By biasing ΣREM toward contraction motifs, dream practice can ac-
+      celerate attractor convergence.
+    • Mental Health Metrics: Diverging δ(t) profile signals dynamical disorder; therapies aim to
+      restore contraction.
+    • Synthetic BCIs: External symbolic injections (e.g. neuro-stimulation, mixed-reality cues) may
+      guide trajectories toward desired attractors.
+Conclusion
+A rigorous dynamical formulation unifies symbolic cognition, dream-state perturbation, and attractor
+theory. The resulting hybrid system offers testable predictions for neuroscience, control engineering,
+and cognitive rehabilitation.
+                          ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                  3

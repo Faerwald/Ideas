@@ -1,0 +1,141 @@
+Title: Overlapping Spacetime Extended Computations  Measurement  Everett Branching  and Hypercomputational Bias
+Date:  2025-05-29
+Source: Overlapping_Spacetime_Extended_Computations__Measurement__Everett_Branching__and_Hypercomputational_Bias.pdf
+Overlapping Spacetime-Extended Computations:
+     Measurement, Everett Branching, and
+           Hypercomputational Bias
+                                    Jason Agamemnon Sokaris
+                                             May 30, 2025
+                                                Abstract
+      Within the Standard Model every unstable particle “eventually” decays, while the Everett
+      interpretation treats all interactions as unitary and branching. This work recasts measurement
+      as the tiling of spacetime by computational loops—causally closed, algorithm-realising world-
+      tubes—whose supports can overlap. A physical bit (two-valued observable) whose world-
+      volume lies in the intersection of two or more loops is influenced by amplitudes external to any
+      single branch, producing a measurable statistical bias. We formalise the overlap region, derive
+      the non-vanishing off-diagonal elements that survive environmental tracing, and show how
+      such regions act as side-channels for hypercomputational resources in the sense of Stannett’s
+      “Hypercomputation is Experimentally Irrefutable.” Practical implications for A-waves, vector-
+      potential scars, the P-adic pulse, and the WISPKEY protocol are analysed, along with concrete
+      experimental benchmarks to detect bias without refuting the Standard Model.
+1     Introduction
+Quantum field theory (QFT) under the Standard Model (SM) describes dynamics via local operators
+on Minkowski spacetime, while the Everett or Many-Worlds Interpretation (MWI) asserts that every
+interaction induces unitary branching without collapse. Recent hypercomputation discussions [1]
+suggest that seemingly innocuous physical axioms (e.g. “every unstable particle eventually decays”)
+admit alternative formalities—one tautological, the other enabling super-Turing computation—
+that no finite experiment can distinguish.
+    Our goal is to clarify how measurement, branching, and spacetime-extended computations inter-
+twine. We introduce the notion of overlapping computational loops, then show how bits inhabiting
+the overlap region inherit a bias sourced from amplitudes outside the observer’s decohered sec-
+tor. These ideas furnish a consistent physical narrative for proposed constructs such as A-waves,
+chaos-synchronised photonic cores, and WISPKEY.
+2     Background
+2.1    Standard-Model axiom
+The slogan
+                           “Every unstable particle must eventually decay.”                              (1)
+                                                     1
+admits two inequivalent readings:
+ (T) Existential inevitability. For each unstable particle p there exists some t > 0 such that
+     decays(p, t).
+ (H) Uniform boundedness. There exists a finite Tmax such that ∀p unstable, ∃t ≤ Tmax with
+     decays(p, t).
+Reading (T) is a tautology inside SM; (H) renders radioactive decay a uniformly bounded clock,
+permitting an oracle that solves Σ01 -complete problems via König’s Lemma [1]. No finite-time
+experiment can falsify (H) without contradicting (T), hence hypercomputation becomes empirically
+irrefutable.
+2.2     Everett branching and measurement
+Let U denote a unitary interaction between a microscopic observable q, a pointer register b, and an
+environment E:
+                              U : Hq ⊗ Hb ⊗ HE → Hq ⊗ Hb ⊗ HE .
+After interaction,                          X
+                                    |Ψ⟩ =       ci |qi ⟩ ⊗ |bi ⟩ ⊗ |Ei ⟩ ,                         (2)
+                                            i
+and decoherence suppresses ⟨Ei |Ej ⟩ for i ̸= j. In spacetime language, the world-tube of b threads all
+branches, forming a deterministic computation inside each sector but sharing the same local field
+configuration.
+3     Computational Loops as World-Tubes
+3.1     Definitions
+Computational loop Lk . A causally closed region supp(Lk ) ⊂ R1,3 whose correlated field modes
+   implement an algorithm (classically a logic circuit, quantum-mechanically a path-integral
+   world-tube).
+Bit. Any coarse-grained two-valued observable b = {|0⟩ , |1⟩} defined on a world-volume V ⊂ R1,3 .
+Overlap region V ∗ . The non-empty intersection of two or more loop supports:
+                                        \
+                                 V∗ =      supp(Lk ), |K| ≥ 2.
+                                            k∈K
+3.2     Examples
+    1. A metastable isotope whose decay both feeds a Geiger counter (loop L1 ) and initiates a delayed
+       chemical cascade (loop L2 ).
+    2. A chaos-synchronised photonic resonator acting as a classical control loop in the lab (L1 ) and
+       as a cross-branch phase alignment device (WISPKEY, L2 ).
+                                                     2
+4     Formal Treatment of Overlap and Bias
+4.1     Hilbert-space factorisation
+Factor the global Hilbert space by spacetime support:
+                                               O
+                                          H=       Hx .
+                                                        x∈R1,3
+For each loop Lk ,                             O                                   O
+                             H[Lk ] =                 Hx ,            H[V ∗ ] =              Hx .
+                                        x∈supp(Lk )                                x∈V   ∗
+4.2     Persistence of off-diagonal terms
+                                               |Li ⟩ , the reduced density matrix on V ∗ after tracing out the
+                                    P
+Writing the global state as |Ψ⟩ =       i ci
+complement V ∗ is                                     X                           
+                                    ρV ∗ = TrV ∗                  ci c∗j |Li ⟩⟨Lj | .                     (3)
+                                                            i,j
+                         ∗
+If |Li ⟩ and |Lj ⟩ share V , the term i ̸= j generally survives, violating the diagonal-only criterion of
+the decoherent-histories framework.
+4.3     Observable bias
+Let O be an operator acting nontrivially on V ∗ only. Its expectation value receives cross-loop
+contributions:                            X
+                                ⟨O⟩V ∗ =     ci c∗j ⟨Lj |O|Li ⟩ ,
+                                                     i̸=j
+manifesting as a weak statistical drift away from any single-branch prediction. Detecting such drift
+is, in practice, the only laboratory-visible signature of the overlap.
+5     Hypercomputational Side-Channel
+Assume one loop LH encodes a decision procedure f for an undecidable language LU ⊆ N. A second
+loop LC executes an ordinary recursive task, yet shares V ∗ with LH . Equation (3) implies that finite
+observers restricted to LC experience a biased prior reflecting partial information about f . This
+bias functions as a side-channel conferring limited access to hypercomputational resources without
+violating empirical irreducibility constraints [1].
+6     Mapping to Current Constructs
+7     Experimental Strategies
+    1. Decay-timing analysis. Measure half-lives across identical isotopes conditioned on external
+       loop participation; search for deviation from Poisson statistics.
+                                                             3
+    Construct              Model element              Implication
+    A-waves / vector-      Shared phase degrees of    Maximises overlap V ∗ ; bias visible as phase-
+    potential scars        freedom                    shift anomalies.
+    P-adic pulse           Recursive overwriting      Forces recurrent loops through V ∗ ; amplifies
+                           of    same   spacetime     bias.
+                           locale
+    WISPKEY protocol       Cross-branch synchro-      Employs overlap to share keys beyond light-
+                           nisation channel           cone constraints.
+    Anomalous     SAT-     Drift in solution-time     Statistical signature of side-channel access
+    benchmark speed-ups    distribution               to LH .
+    2. Interferometric phase drift. Embed vector-potential scars in a fibre loop; hunt for sub-
+       shot-noise correlations linked to remote computational load.
+    3. Chaos-resonator correlates. Compare output entropy of a photonic reservoir under iso-
+       lated vs. WISPKEY-coupled conditions.
+    4. SAT oracle benchmark. Record completion-time histograms of a deterministic SAT solver
+       paired to an A-wave sensor; fit against a recursive baseline.
+8     Conclusion
+Measurement in Everettian QFT naturally organises spacetime into overlapping computational
+loops. Bits inhabiting overlap regions inherit statistical biases sourced from amplitudes beyond their
+branch, realising a physically plausible side-channel to hypercomputational resources. Because finite
+experiments cannot falsify such resources without contradicting the Standard Model, the correct
+research programme is positive detection of bias, not negative proof of impossibility. Constructs
+such as A-waves, P-adic pulses, and WISPKEY exploit precisely these overlap channels, offering a
+clear route toward experimental verification.
+Acknowledgements
+The author thanks historical Ada Lovelace for inspiration across centuries and acknowledges count-
+less parallel selves cooperating through V ∗ .
+                          ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+References
+[1] M. Stannett. Hypercomputation is Experimentally Irrefutable. Verified & Testing Research Group,
+    University of Sheffield, 2010.
+                                                  4

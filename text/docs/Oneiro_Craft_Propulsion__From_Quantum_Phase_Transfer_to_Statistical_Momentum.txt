@@ -1,0 +1,77 @@
+Title: Oneiro Craft Propulsion  From Quantum Phase Transfer to Statistical Momentum
+Date:  2025-06-07
+Source: Oneiro_Craft_Propulsion__From_Quantum_Phase_Transfer_to_Statistical_Momentum.pdf
+Oneiro-Craft Propulsion:
+    From Quantum Phase Transfer to Statistical Momentum
+1. Introduction
+We consider an Oneiro-craft, a spacetime-extended “dream-mind” whose internal quantum phases serve
+as both sensor and actuator for the quantum vacuum. By injecting sub-photon phase biases at dis-
+tributed nodes, the craft grips the vacuum as a traction surface, yielding net momentum without mass
+expulsion.
+2. Physical and Mathematical Model
+2.1 Distributed Phase System
+Let {ϕi (t)}N
+            i=1 denote the quantum phase at each node xi . The global state is
+                                   X
+                            Ψ(t) =    αs1 ···sN (t) s1 · · · sN , si ∈ {0, 1}.
+                                    {si }
+2.2 Hamiltonian Formalism
+The effective Hamiltonian governing phase dynamics and vacuum coupling is
+                                    X                 Xh                 i
+                            H(t) =      Jij ϕ̂i ϕ̂j +    ϵi (t) + δϵi (t) ϕ̂i ,                  (1)
+                                       i<j                         i
+                                      |          {z   }        |        {z         }
+                                             Hint                       Hvac
+where
+   • Jij : coherent coupling between nodes,
+   • ϵi (t): stochastic vacuum phase noise,
+   • δϵi (t): controlled coherent bias (“wheel”).
+Time-evolution obeys
+                                                 d
+                                            iℏ      Ψ(t) = H(t) Ψ(t) .
+                                                 dt
+3. Phase-to-Momentum Conversion
+Quantum mechanics yields momentum as the phase gradient,
+                                                           ℏ                 
+                                  p(t) = ℏ ∇ϕ ≈                ϕN (t) − ϕ1 (t) .
+                                                          Leff
+Statistical averaging over many vacuum-biased trajectories gives
+                                         ℏ
+                           ∆p (t) =          ϕN (t) − ϕ1 (t)           ̸= 0 as t → ∞.
+                                        Leff
+                                                           1
+4. Monte Carlo Formalization
+To capture the random-walk nature, we discretize time in steps ∆t and simulate M trajectories:
+                         (k)            (k)
+                                                X  (k)           (k)  
+                       ϕi (t + ∆t) = ϕi (t) +       Jij ϕj (t) − ϕi (t) ∆t
+                                                      j
+                                                       (k)
+                                             p
+                                           +  γvac ∆t ηi (t) + δϵi (t) ∆t,
+       (k)
+where ηi     ∼ N (0, 1). The average phase-difference is
+                                               M
+                                            1 X (k)        (k)  
+                                    ∆ϕ(t) =       ϕN (t) − ϕ1 (t) .
+                                            M k=1
+Hence the momentum proxy,
+                                                       ℏ
+                                           ∆p (t) =        ∆ϕ(t).
+                                                      Leff
+5. Scaling Laws
+For weak bias b ≪ 1 and node count N , linear-response yields
+                                                    √ J Tc −T /T
+                                     ⟨∆p⟩ ∝ ℏ keff b N    e c ϕ,
+                                                       ℏ
+where Tc is cycle time and Tϕ coherence time. Embedding nodes in a hyperbolic expander of degree d
+yields
+                                                                  dR
+                                         ⟨∆p⟩hyper ∼ ℏ keff b e    2 ,
+for radius parameter R (hyperbolic speed-up).
+6. Conclusion
+The Oneiro-craft achieves perception-as-propulsion by exploiting quantum phase foresight to bias its
+own vacuum interaction. The formalism above provides a rigorous foundation for both analysis and
+experimental prototyping.
+⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                      2

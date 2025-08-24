@@ -1,0 +1,61 @@
+Title: Polysemantic Kanji Squares
+Date:  2025-05-29
+Source: Polysemantic_Kanji_Squares.pdf
+Polysemantic Kanji Squares:
+       A Redundancy-Rich Encoding Scheme for Ada Lovelace
+Abstract
+A polysemantic kanji matrix embeds a small set of semantically loaded characters in an N × N grid
+so that many traversal orders (row, column, diagonal, spiral, boustrophedon, . . . ) yield strings that
+all collapse—directly or by light paraphrase—onto the same target meaning. This note formalises the
+idea, outlines design heuristics, and supplies a fully worked 4 × 4 example encoding Augusta Ada
+King, Countess of Lovelace. Semantic redundancy ensures that even readers who choose different
+paths, or who treat the grid as ambiguous Japanese/Chinese, converge on the intended referent.
+1     Concept Re-Stated
+Given an alphabet C of kanji glyphs and an N × N layout M ∈ C N ×N , let P(M ) be the set of path
+functions π : {1, . . . , N 2 } → {1, . . . , N }2 that are simple (no cell revisited) and linguistically plausible.
+We want a surjective map
+                                             f : P(M ) −→ {Ada Lovelace},
+i.e. high path entropy yet a single decoded meaning.
+2     Design Heuristics (Japanese Kanji Focus)
+    1. Orthogonal morphemes. Re-use glyphs whose meanings independently cue the figure: 愛
+       “love”, 王 “king”, 数/機 “numbers/engine”, 女 or 全 “woman / ALL (1843 misprint A.L.L.)”.
+    2. Symmetric placement. Mirroring or rotation lets opposite traversals remain coherent.
+    3. Small glyph set, repeated. Fewer distinct characters minimise noise while permitting many
+       permutations.
+3     The 4 × 4 Lovelace Square
+                                                愛 王 数           機
+                                                女 全 機           王
+                                                数 女 愛           全
+                                                機 王 女           愛
+3.1     Canonical (Keyed) Traversal: Spiral-In
+Indices 1 → 16 follow an inward spiral. The extracted string:
+                                               愛王数機 全女 . . .
+The first four morphemes already identify Ada Lovelace unambiguously.
+3.2     Unkeyed Traversals Converge
+Every plausible path surfaces at least two of {愛, 王, 数/機, 女/全}, so the identity is recoverable even
+under traversal uncertainty.
+                                                         1
+Traversal                        Raw output                                     Collapse
+Row-major (L→R, T→B)             愛王数機女全機王数女愛全機王女愛                               Love King Numbers
+                                                                                Engine ( Woman, All)
+Column-major (T→B, L→R) 愛女数機王全女王数機愛女機王全愛                                        same multiset of
+                                                                                morphemes
+Main diagonal                    愛全愛愛                                           Love + All →
+                                                                                Lov-ALL-ace
+Anti-diagonal                    機機愛機                                           Engine + Love
+4    Information-Theoretic View
+Counting simple paths of length 16 inside a 4 × 4 grid gives roughly 106 options, i.e. H(P ) ≈ 20 bits.
+Yet H(Message | P ) = 0: every path decodes to Ada Lovelace, achieving “many-to-one” compression
+by semantic redundancy.
+5    Extensions
+    • Bilingual blur: replace 数數, 機机 to mix Sino-Japanese.
+    • Larger squares: 5 × 5 layouts can hide acrostics or version bits.
+    • Error tolerance: dropping any row or column still leaves three core morphemes, akin to
+      minimum-distance coding.
+Ultra-Concise Description
+      Embed six theme kanji {愛, 王, 数, 機, 女, 全} in a mirrored 4 × 4 grid. Every natural traver-
+      sal—row, column, diagonal, spiral—reads as a permutation of 愛王数機全女, collapsing to Love –
+      King – Numbers – Woman/All → Ada Lovelace.
+            Compiled on May 30, 2025. XeLaTeX / LuaLaTeX recommended for best CJK rendering.
+                            ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                   2
