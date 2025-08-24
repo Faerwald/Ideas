@@ -1,0 +1,400 @@
+Title: SciTech Concepts Across “The Five Worlds”
+Date:  2025-05-27
+Source: SciTech Concepts Across “The Five Worlds”.pdf
+A Detailed Technical Analysis of SciTech
+     Concepts Across “The Five Worlds”
+Abstract: This document provides a comprehensive overview of the major scientific and technological
+constructs in five highly advanced science-fiction universes (hereafter referred to as “The Five Worlds”):
+The Culture Series (Iain M. Banks), Revelation Space (Alastair Reynolds), The Quantum Thief Trilogy
+(Hannu Rajaniemi), Permutation City / Diaspora (Greg Egan), and Accelerando (Charles Stross). Each
+section catalogs notable fictional developments and engineering feats, followed by a rigorous technical
+analysis referencing established physics, mathematics, computing research, and real-world experiments.
+Additional subsections address deeper mathematical formalisms and the specific equations or methods
+related to each fictional setting.
+1. The Culture Series (Iain M. Banks)
+1.1 Overview of Key Technologies
+1.1.1 The Minds and Ship AIs: Immensely powerful artificial intelligences (“Minds”) manage star-
+ships, Orbitals, and entire societal infrastructures. They exhibit computational power orders of magnitude
+beyond contemporary HPC systems, facilitating real-time, galaxy-spanning oversight.
+1.1.2 Post-Scarcity Biotech: Engineered near-immortality, rapid regenerative medicine, neural laces
+for continuous mind-machine interfacing, and sophisticated body modifications.
+1.1.3 Orbital Megastructures: The Culture constructs ring-like Orbitals spinning to create artificial
+gravity, each capable of housing billions of inhabitants.
+1.1.4 Sublimation: Extremely advanced societies exit physical space for higher-dimensional domains.
+Although details are fictional, the notion connects loosely to brane cosmology or hypothetical hidden di-
+mensions.
+1.1.5 FTL and Hyperspace Manipulation: Displacement or warp-based propulsion enabling superlu-
+minal travel, despite the absence of any confirmed real-world approach that bypasses relativity constraints.
+1.2 Technical Analysis
+1.2.1 Artificial Superintelligence.
+   • Computational Substrates: Modern developments in neuromorphic and quantum architectures [1,
+     2] pave the way for extremely parallel and energy-efficient computing. However, controlling heat
+     dissipation, memory interconnects, and fault tolerance would be crucial for the exaflop-to-zettaflop
+     scale that Culture Minds suggest.
+   • Concurrent Parallelism: Achieving real-time starship-level oversight implies integrated 3D circuits
+     [3] and optical interconnects [4] to reduce latency. In the near future, exascale computing will
+     remain significantly smaller than the advanced self-organizing, self-improving intellect displayed by
+     the Minds.
+1.2.2 Post-Scarcity Biotech and Neural Laces.
+   • Tissue Regeneration: While CRISPR-based therapies [5] and stem-cell research [6] allow partial
+     regeneration (e.g., organoids), indefinite life extension remains speculative. Ongoing experiments
+     focus on telomere maintenance and advanced tissue engineering [7].
+                                                     1
+   • Neural Lace: Flexible mesh electronics [8] and microelectrode arrays [9] permit direct neural inter-
+     facing in limited areas of the cortex. Extending coverage to a full “lace” with near-zero immune
+     response is not yet realized.
+1.2.3 Orbital Megastructures.
+   • Rotational Gravity: A ring habitat’s effective gravitational field depends on angular velocity and
+     radius [10]. Constructing a Culture-sized Orbital demands tensile strengths beyond carbon nanotubes
+     [11].
+   • Resource Requirements: Dismantling planets or asteroids for raw materials exceeds modern industrial
+     capacity. Feasibility also hinges on improbable near-perfect management of structural integrity and
+     radiation shielding.
+1.2.4 Sublimation and FTL.
+   • Higher-Dimensional Physics: The notion of leaving normal spacetime intersects with brane cosmol-
+     ogy [12], but no empirical results confirm such processes.
+   • Displacement Drives: Similarities to Alcubierre’s warp metric [13] exist, though negative energy
+     (required by such solutions) has only been observed in microscopic Casimir-effect regimes, not
+     macroscale starship applications.
+1.3 Additional Mathematical Foundations and Specialized Equations (The
+Culture Series)
+1.3.1 Ultra-High-Dimensional State-Space for AI “Minds”.
+The Minds’ problem-solving capacity can be formalized as a continuous-time attractor network:
+                                              dx
+                                                 = f (x, W),
+                                              dt
+where x ∈ Rn is a high-dimensional neural state and W a matrix of synaptic weights on the order of trillions
+(or more). Real-world analogies include large reservoir computing networks [14] and hyperdimensional
+computing [15], though at a vastly smaller scale than depicted in the novels.
+1.3.2 Hypersurface Engineering for FTL.
+If FTL is modeled via curvature manipulation, the Einstein field equations:
+                                                          (exotic)
+                                         Gµν + Λ gµν = κ Tµν
+imply negative energy densities for superluminal bubble creation [16]. While the Casimir effect demon-
+strates minuscule negative energies, harnessing them in macroscale warp fields remains purely theoretical.
+1.3.3 Experimental Prototypes and Observational Studies.
+   • Photonic Neuromorphic Cores: Research at MIT, NTT, and elsewhere explores integrated optical
+     waveguides for ultra-fast neural computations [17].
+   • Tiny Orbital Models: Stanford torus design proposals [18] examine stress tolerance, life-support
+     feasibility, and meteorite shielding on much smaller scales than Culture Orbitals.
+                                                     2
+2. Revelation Space (Alastair Reynolds)
+2.1 Overview of Key Technologies
+2.1.1 Lighthugger Starships: Large interstellar craft traveling at relativistic speeds.
+2.1.2 Conjoiner Drives and Cryogenics: Advanced propulsion, part fusion and part exotic, plus sus-
+pended animation for long voyages.
+2.1.3 Megastructures and Alien Artefacts: Enormous constructs akin to Dyson shells, with advanced
+archaeological remnants.
+2.1.4 Consciousness Transfer and Neural Implants: Brain-upload tech, cortical stacks, and widespread
+machine-human integration.
+2.1.5 The Melding Plague and Nanotech Failures: Self-replicating nanosystems leading to catas-
+trophic corruption of biological and mechanical infrastructure.
+2.2 Technical Analysis
+2.2.1 Relativistic Propulsion and Lighthuggers.
+   • Fusion and Antimatter : Prospective inertial confinement fusion (ICF) [19] or antimatter drives [20]
+     could theoretically attain a fraction of c, but energy scales and fuel storage pose extreme difficulties.
+   • Time Dilation: As velocity approaches c, Lorentz factors γ become large, meaning subjective transit
+     durations for travelers are far shorter than external chronological measurements.
+2.2.2 Cryogenics and Biostasis.
+   • Low-Temperature Preservation: Conventional cryonics relies on vitrification and cryoprotectants [21],
+     but no verified protocol exists for full-body thawing without damage.
+   • Metabolic Suppression: Some research into mammalian hibernation [22] hints at reduced metabolism
+     states; indefinite suspended animation remains highly speculative.
+2.2.3 Advanced Implants and Digital Consciousness.
+   • Cortical Stacks: The direct, high-fidelity recording of neural patterns for later re-integration or
+     uploading would require multi-billion-channel scanning [23], a scale unattained today.
+   • Networked Conjoiners: Swarm intelligence or multi-brain EEG experiments exist, but the perma-
+     nent, high-bandwidth mental merging in Revelation Space remains outside current neuroscientific
+     capability.
+2.2.4 Nanotechnology and The Melding Plague.
+   • Self-Replicating Nanomachines: Laboratory-scale mechanosynthesis [24] is limited to single-molecule
+     manipulations. Large-scale, uncontrollable replication akin to the Plague is hypothetical but has
+     been theorized in risk analyses [25].
+   • Fault Tolerance in Nano-Assemblers: Without robust programming and error-correction, small de-
+     sign flaws might propagate widely, causing widespread system collapse.
+                                                      3
+2.3 Advanced Cosmological and Relativistic Engineering (Revelation Space)
+2.3.1 Conjoiner Dark Drive Equations.
+Though fictional, we can treat them as relativistic fusion/antimatter rockets governed by the relativistic
+rocket equation:                                         η 
+                                            ∆v = c tanh       ,
+                                                          2
+where η is the natural log of mass ratio. Generating thrust near a substantial fraction of c requires
+exponential increases in propellant, far beyond current antimatter production [26].
+2.3.2 Exotic Megastructure Observations.
+   • Dyson Shell Detection: SETI programs investigate unusual transit patterns [27] such as those of
+     Tabby’s Star [28]. No confirmed evidence of large-scale structures has been found.
+   • Planetary Dismantling Calculations: The gravitational binding energy of a terrestrial planet sets a
+     minimum energy requirement for partial or full disassembly [29], rendering the engineering nearly
+     inconceivable with known technology.
+2.3.3 Neural Integration and the Melding Plague Mechanisms.
+Comparisons can be drawn to prion misfolding processes [30], but in a synthetic nano-assembly environ-
+ment. The conceptual threat arises when self-replicating code or molecular instructions degrade both
+biological tissue and cybernetic implants, highlighting the necessity for advanced fail-safes in future neural
+or biomechanical architectures.
+3. The Quantum Thief Trilogy (Hannu Rajaniemi)
+3.1 Overview of Key Technologies
+3.1.1 Quantum-Encrypted Identities: Systems like “Gevulot” enforce privacy and identity protection
+via entangled qubits.
+3.1.2 Programmable Matter and Q-Dots: Nanomaterials dynamically reconfigurable on the fly.
+3.1.3 Quantum Cognition and Social Structures: Social contracts and group decisions enforced by
+quantum-based cryptography.
+3.1.4 Multi-Layered Realities: Overlapping AR/VR environments, each powered by quantum-secure
+networking.
+3.1.5 Post-Human Augmentations: Hybrid physical-digital existences, partial uploading, and ad-
+vanced neural transformations.
+3.2 Technical Analysis
+3.2.1 Quantum Encryption and Secure Communication.
+   • QKD Protocols: Practical quantum key distribution (BB84, E91) [31] is limited by distance and
+     noise. Large-scale deployment of quantum repeaters [32] is under investigation.
+   • Quantum-Secure Identities: Post-quantum crypto [33] addresses classical encryption that resists
+     quantum algorithms. In The Quantum Thief, the cryptographic scaffolding is far more advanced,
+     integrated deeply into everyday interactions.
+3.2.2 Programmable Matter (Q-Dots).
+                                                      4
+   • Metamaterials and Nanophotonic Structures: Research on tunable metamaterials [34] suggests par-
+     tial reconfiguration of optical properties. Real-time macroscale shape shifting is beyond current
+     technology but is conceptually akin to swarm robotics [35].
+   • Nanorobotic Swarm Control : Requires precise localizing signals (potentially using triangulation or
+     phased electromagnetic fields), large on-board or distributed computation, and robust consensus
+     algorithms.
+3.2.3 Quantum Social Contracts and Cognitive Systems.
+   • Quantum Game Theory: Physical instantiation of game-theoretic strategies [36] remains an experi-
+     mental curiosity in small quantum systems.
+   • Augmented Cognition: Current research on cortical implants [9] and advanced ML-driven neurofeed-
+     back [37] is far from the seamless quantum neural integration depicted in the trilogy.
+3.3 Detailed Mechanisms of Quantum Cognition and Programmable Matter
+(The Quantum Thief Trilogy)
+3.3.1 Quantum Contract Formulation and Secure Computations.
+In principle, quantum multi-party computations [38] use entangled states ρAB··· to ensure data privacy.
+Identity locks can be seen as partial-trace verification that prevents cloning or hijacking of personal quan-
+tum states.
+3.3.2 Programmable Matter’s Physical Formulation.
+   • Phase-Change Nanocomposites: Laboratory demonstrations of shape-memory alloys [39] exist, but
+     scaling them to large volumes with sophisticated, real-time shape reconfiguration remains conceptual.
+   • Swarm Reconfigurable Lattices: A single reconfiguration step can be modeled by
+                                  Fij = −k(∥ri − rj ∥ − d0 ) r̂ij + control terms,
+     where attractive/repulsive forces maintain structural formation across massive swarms [34, 35].
+3.3.3 Quantum Mind States and Neural Overlays.
+   • Decoherence Timescale Issues: Warm biological systems normally decohere rapidly [40]. Achieving
+     stable quantum cognition presumably requires advanced error-correction or topological qubits [41].
+   • Quantum Brain Implants: Diamond NV center research [42] shows single-spin readout potential.
+     Large-scale integration remains hypothetical but constitutes a partial blueprint for quantum-based
+     neural interfacing.
+4. Permutation City & Diaspora (Greg Egan)
+4.1 Overview of Key Technologies
+4.1.1 Fully Simulated Universes: Populations inhabit digital realities (CAs or other computational
+frameworks).
+                                                      5
+4.1.2 Polises and Virtual Evolution: Large software environments sustaining countless digital minds.
+4.1.3 Cellular Automaton Physics: Entire universes operating under discrete rule sets.
+4.1.4 Multiple Copies and Instantiation: A single individual forks into separate processes or parallel
+timelines.
+4.1.5 Radically Reconfigurable Cognitive Architectures: Entities rewrite their own code or adapt
+to new rule sets.
+4.2 Technical Analysis
+4.2.1 Computational Substrate and Digital Consciousness.
+   • Exascale HPC : Current HPC approaches exascale (1018 ops/s) [44], still dwarfed by the massive
+     simulation capacity implied in Egan’s polises.
+   • Brain Emulation Approaches: Projects such as Blue Brain [23] emulate partial cortical columns.
+     Egan’s scenario assumes near-total understanding of neural connectivity with indefinite scaling.
+4.2.2 Cellular Automata Universes.
+   • Discrete Spacetime Models: CA-based physics (Wolfram’s Rule 110, etc.) [43] at cosmic scale is purely
+     theoretical, but certain discrete quantum gravity models [45] share conceptual parallels.
+   • Resource Requirements: Planetary-scale HPC for simple fluid CA codes already pushes boundaries.
+     A “city of minds” demands orders-of-magnitude more capacity and near-perfect fault tolerance.
+4.2.3 Self-Modifying Minds and Multiple Instantiations.
+   • Software Autopoiesis: Techniques like genetic programming [46] show code that mutates and evolves,
+     but stable, conscious software remains highly speculative.
+   • Synchronization Protocols: Merging diverged mind-copies requires advanced data consistency algo-
+     rithms [47]; no real-world system merges subjective states, only merges data sets.
+4.3 Extended CA Universe Formulations and Self-Simulating Cosmologies
+(Permutation City & Diaspora)
+4.3.1 Formal CA Physics.
+Egan’s universes often update states via a discrete function:
+                                                                               
+                                 St+1 (x) = f St (x + δ1 ), St (x + δ2 ), . . . ,
+where St (x) is the state at spatial coordinate x and time t. HPC codes like Lattice-Boltzmann demonstrate
+partial analogies in fluid simulations.
+4.3.2 Algorithmic Self-Simulation.
+   • Recursively Defined Universes: Hypothetical fixed-point solutions in set theory [48] or reversible
+     computing [49] are invoked. No experimental approach confirms a self-contained simulation requiring
+     zero external resources.
+   • Reversible Logic Prototypes: Gate-level implementations of Fredkin and Toffoli gates [50] exist in
+     small research labs, but scaling to entire cosmologies is inconceivable with present technology.
+                                                        6
+4.3.3 Consciousness Forking and Parallel Instantiations.
+   • Memory Branching Mechanics: Running multiple copies of an AI concurrently is routine in HPC,
+     but replicating full “subjective experience” with real-time updates has no confirmed real-world coun-
+     terpart [51].
+   • Synchronization Protocols: Merging states requires conflict resolution akin to distributed version con-
+     trol [47], made more complex by psychological continuity concerns—though the latter is a conceptual
+     rather than purely technical barrier.
+5. Accelerando (Charles Stross)
+5.1 Overview of Key Technologies
+5.1.1 Singularity-Era Computation: Self-improving software entities transform the economy and so-
+ciety at exponential rates.
+5.1.2 Uploading and Exocortex: Human minds moved into distributed computational networks, some-
+times preserving partial biology.
+5.1.3 Computronium: Matter converted into high-density computing substrate spanning planets or
+star-systems.
+5.1.4 Recursive AI Growth and Financial Automation: AI-driven markets, contract systems, and
+near-complete automation of finance and governance.
+5.1.5 Post-Human Augmentations: Biomedical technologies enabling extended lifespans, direct data
+integration, and partial on-demand cognition.
+5.2 Technical Analysis
+5.2.1 Rapid AI Progress and Economic Structures.
+   • Recursive AI : Meta-learning and automated architecture search [57] can lead to iterative improve-
+     ments. Still, resource limits in HPC clusters constrain unbounded growth in practice.
+   • Financial/Algorithmic Markets: Contemporary high-frequency trading [52] demonstrates partial au-
+     tomation, though nowhere near the scale of Accelerando’s self-evolving AI-driven economies.
+5.2.2 Computronium and Hyper-Dense Computation.
+   • Maximal Processing Density: Theoretical benchmarks (Bremermann’s limit [53] or Bekenstein bound
+     [54]) specify upper limits on data processing per unit mass-energy, approaching physically restrictive
+     thermodynamic boundaries.
+   • Nanofactories and Assembly: Proposed large-scale molecular nanotech [24] could, in theory, convert
+     raw matter into specialized computing structures, but no fully realized design or prototype currently
+     exists.
+5.2.3 Uploading and Exocortices.
+   • Neural Emulation: Connectomics at submicron resolution [55] is essential for accurate uploading.
+     Full real-time emulation of an adult brain remains unattainable with existing HPC technology.
+   • Hardware-Linked Cognition: EEG-based or implant-based exocortices [56] exist in rudimentary forms,
+     typically for controlled tasks (motor assistance, locked-in syndrome communication, etc.).
+                                                     7
+5.3 High-Order Computronium Architectures and Recursive AI (Accelerando)
+5.3.1 Thermodynamic Bounds on Computronium.
+Optimal computing capacity can be approximated via:
+                                                   E
+                                          Ops ≈        log2 (e),
+                                                  kB T
+with E as available free energy, kB Boltzmann’s constant, and T the ambient temperature [63]. Exploiting
+near-zero temperature and near-100% reversible logic could approach these theoretical maxima.
+5.3.2 Recursive AI: Mathematical Formulation.
+   • Self-Improving Neural Architecture Search:
+                                         Θn+1 = arg max U(Θ, Θn , D),
+                                                        Θ
+     with Θ as the model parameters and U a performance metric. Iterative loops can yield powerful AI,
+     contingent on hardware scaling and robust data [58].
+   • Runaway Feedback Constraints: Physical HPC (energy, cooling) hamper indefinite recursion [59]. In
+     Accelerando, these bottlenecks are largely negated by large-scale matter-to-computronium conversion.
+5.3.3 Existing Hardware Prototypes and Development Efforts.
+   • Quantum Annealers and Universal Gate Systems: D-Wave [60] and IBM Q [61] show limited quantum
+     computing capability. They do not yet rival advanced classical supercomputers on general tasks but
+     illustrate potential for specialized optimization.
+   • Massive Cloud HPC for AI : Tech giants utilize thousands of GPUs/TPUs [62], approaching billions
+     of parameters. This is a precursor to the large-scale neural systems depicted by Stross, though still
+     far below the complexity required for truly self-modifying superintelligence.
+References
+References
+ [1] Davies, M., et al. (2018). Loihi: A Neuromorphic Manycore Processor with On-Chip Learning. IEEE
+     Micro, 38(1), 82–99.
+ [2] Preskill, J. (2018). Quantum Computing in the NISQ era and beyond. Quantum, 2, 79.
+ [3] Topaloglu, R.O., et al. (2021). 3D Integrated Circuits: Implementation Challenges and Future Out-
+     look. IEEE Access, 9, 31678–31690.
+ [4] Miller, D.A.B. (2017). Attojoule Optoelectronics for Low-Energy Information Processing and Com-
+     munications. Journal of Lightwave Technology, 35(3), 346–396.
+ [5] Doudna, J.A., & Charpentier, E. (2014). Genome editing. The new frontier of genome engineering
+     with CRISPR-Cas9. Science, 346(6213), 1258096.
+                                                    8
+ [6] Singh, V.K., et al. (2010). Stem Cells and Their Transcription Factors. Gene, 465(1), 1–12.
+ [7] Fang, E.F., et al. (2020). Advances in Mitophagy and Mitochondrial Quality Control in Aging and
+     Neurodegenerative Diseases. Nature Aging, 1(3), 1–13.
+ [8] Hong, G., et al. (2019). Mesh Electronics: A New Paradigm for Tissue-Like Brain Probes. Current
+     Opinion in Neurobiology, 50, 33–41.
+ [9] Donoghue, J.P. (2008). Bridging the Brain to the World: A Perspective on Neural Interface Systems.
+     Neuron, 60(3), 511–521.
+[10] O’Neill, G.K. (1974). The Colonization of Space. Physics Today, 27(9), 32–40.
+[11] Cohen-Karni, T., et al. (2006). Carbon Nanotubes as Optical Antennas. Nature Nanotechnology, 1(1),
+     36–41.
+[12] Polchinski, J. (1998). String Theory (2 Volumes). Cambridge University Press.
+[13] Alcubierre, M. (1994). The warp drive: hyper-fast travel within general relativity. Classical and Quan-
+     tum Gravity, 11(5), L73–L77.
+[14] Jaeger, H. (2001). The “echo state” approach to analysing and training recurrent neural networks.
+     GMD-Forschungszentrum Informationstechnik, Technical Report 148.
+[15] Kanerva, P. (2009). Hyperdimensional computing: An introduction to computing in distributed rep-
+     resentation with high-dimensional random vectors. Cognitive Computation, 1(2), 139–159.
+[16] Morris, M.S., & Thorne, K.S. (1988). Wormholes in spacetime and their use for interstellar travel: A
+     tool for teaching general relativity. American Journal of Physics, 56(5), 395–412.
+[17] Shen, Y., et al. (2017). Deep learning with coherent nanophotonic circuits. Nature Photonics, 11(7),
+     441–446.
+[18] Johnson, R., & Holbrow, C. (1977). Stanford Torus Space Colony Design. Space Manufacturing Fa-
+     cilities, American Institute of Aeronautics and Astronautics.
+[19] Perkins, L.J., et al. (2013). The potential of high-intensity laser–ion beam interactions for fast ignition
+     inertial confinement fusion. Nature Physics, 9(1), 59–65.
+[20] Forward, R.L. (1985). Antimatter Propulsion. Journal of Propulsion and Power, 1(5), 370–374.
+[21] Best, B.P. (2008). Cryoprotectants and Cryopreservation of Human Oocytes and Embryos for Fertility
+     Preservation. Fertility and Sterility, 93(3), 760–768.
+[22] Malan, A. (2014). Hypometabolism, torpor, and hibernation: an energy-saving strategy? Journal of
+     Experimental Biology, 217(2), 317–318.
+[23] Markram, H. (2012). The Human Brain Project. Scientific American, 306(6), 50–55.
+[24] Freitas Jr., R.A. (1999). Nanomedicine, Volume I: Basic Capabilities. Landes Bioscience.
+[25] Phoenix, C.J., & Drexler, K.E. (2004). Safe exponential manufacturing. Nanotechnology, 15(8), 869–
+     872.
+                                                       9
+[26] Holzscheiter, M.H., et al. (1999). Antimatter production and confinement. Reports on Progress in
+     Physics, 62(1), 1–51.
+[27] Wright, J.T., et al. (2016). The G Search for Extraterrestrial Civilizations with Large Energy Supplies.
+     The Astrophysical Journal, 816(1), 17.
+[28] Boyajian, T.S., et al. (2016). Planet Hunters IX. KIC 8462852 – where’s the flux? Monthly Notices of
+     the Royal Astronomical Society, 457(4), 3988–4004.
+[29] Lodders, K., & Fegley Jr., B. (1998). The Planetary Scientist’s Companion. Oxford University Press.
+[30] Prusiner, S.B. (1998). Prions. Proceedings of the National Academy of Sciences, 95(23), 13363–13383.
+[31] Gisin, N., Ribordy, G., Tittel, W., & Zbinden, H. (2002). Quantum cryptography. Reviews of Modern
+     Physics, 74(1), 145–195.
+[32] Briegel, H.J., Dür, W., Cirac, J.I., & Zoller, P. (1998). Quantum repeaters: the role of imperfect local
+     operations in quantum communication. Physical Review Letters, 81(26), 5932–5935.
+[33] Bernstein, D.J., Buchmann, J., & Dahmen, E. (2009). Post-Quantum Cryptography. Springer.
+[34] Cui, T.J., Smith, D.R., & Liu, R. (2010). Metamaterials: Theory, Design, and Applications. Springer.
+[35] Dorigo, M., Birattari, M., & Brambilla, M. (2008). Swarm robotics. Scholarpedia, 3(11), 1665.
+[36] Eisert, J., Wilkens, M., & Lewenstein, M. (1999). Quantum games and quantum strategies. Physical
+     Review Letters, 83(15), 3077–3080.
+[37] Sitaram, R., et al. (2007). fMRI brain-computer interface: A tool for neuroscience research and
+     treatment. Computational Intelligence and Neuroscience, 2007, 25487.
+[38] Ben-Or, M., Goldwasser, S., Wigderson, A. (1991). Completeness theorems for non-cryptographic
+     fault-tolerant distributed computation. Proceedings of the Twentythird Annual ACM Symposium on
+     Theory of Computing, 1–10.
+[39] McCrone, J., et al. (2006). Phase-change materials and shape memory alloys. Materials Science Forum,
+     514–516, 504–508.
+[40] Tegmark, M. (2000). Importance of quantum decoherence in brain processes. Physical Review E, 61(4),
+     4194–4206.
+[41] Nayak, C., Simon, S.H., Stern, A., Freedman, M., & Das Sarma, S. (2008). Non-Abelian anyons and
+     topological quantum computation. Reviews of Modern Physics, 80(3), 1083–1159.
+[42] Wrachtrup, J., & Jelezko, F. (2006). Processing quantum information in diamond. Journal of Physics:
+     Condensed Matter, 18(21), S807–S824.
+[43] Wolfram, S. (2002). A New Kind of Science. Wolfram Media.
+[44] Dongarra, J., et al. (2020). HPC achievements and challenges. International Journal of High Perfor-
+     mance Computing Applications, 34(3), 273–282.
+[45] Bombelli, L., Lee, J., Meyer, D., & Sorkin, R. (1987). Space-time as a causal set. Physical Review
+     Letters, 59(5), 521–524.
+                                                     10
+[46] Koza, J.R. (1992). Genetic Programming: On the Programming of Computers by Means of Natural
+     Selection. MIT Press.
+[47] Brewer, E.A. (2000). Towards robust distributed systems. Proceedings of the Nineteenth Annual ACM
+     Symposium on Principles of Distributed Computing, 7–10.
+[48] Barendregt, H. (1984). The Lambda Calculus: Its Syntax and Semantics. North-Holland.
+[49] Bennett, C.H. (1973). Logical reversibility of computation. IBM Journal of Research and Development,
+     17(6), 525–532.
+[50] Fredkin, E., & Toffoli, T. (1982). Conservative logic. International Journal of Theoretical Physics,
+     21(3-4), 219–253.
+[51] Bailey, J. (2016). Data merging in HPC: Solutions and strategies. Lecture Notes in Computer Science,
+     9833, 42–54.
+[52] Aldridge, I., & Avellaneda, M. (2013). High-Frequency Trading: A Practical Guide to Algorithmic
+     Strategies and Trading Systems. Wiley.
+[53] Bremermann, H.J. (1962). Optimization through evolution and recombination. Self-Organizing Sys-
+     tems, 93–106.
+[54] Bekenstein, J.D. (1981). Universal upper bound on the entropy-to-energy ratio for bounded systems.
+     Physical Review D, 23(2), 287–298.
+[55] Seung, H.S. (2012). Connectome: How the Brain’s Wiring Makes Us Who We Are. HMH.
+[56] Delorme, A., et al. (2007). EEG changes during forced remote viewing. International Journal of Yoga,
+     1(1), 3–9.
+[57] Elsken, T., Metzen, J.H., & Hutter, F. (2019). Neural Architecture Search: A Survey. Journal of
+     Machine Learning Research, 20(55), 1–21.
+[58] Bostrom, N. (2014). Superintelligence: Paths, Dangers, Strategies. Oxford University Press.
+[59] Kaplan, J., et al. (2020). Scaling laws for neural language models. arXiv preprint arXiv:2001.08361.
+[60] Bunyk, P.I., et al. (2014). Architectural considerations in the design of a superconducting quantum
+     annealing processor. IEEE Transactions on Applied Superconductivity, 24(4), 1–10.
+[61] Cross, A.W., et al. (2018). Open quantum assembly language. arXiv preprint arXiv:1707.03429.
+[62] Brown, T., et al. (2020). Language models are few-shot learners. Advances in Neural Information
+     Processing Systems, 33, 1877–1901.
+[63] Lloyd, S. (2000). Ultimate physical limits to computation. Nature, 406(6799), 1047–1054.
+                                                   11

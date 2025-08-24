@@ -1,0 +1,46 @@
+Title: Terrestrial Time Decimal Date Catalogue
+Date:  2025-06-17
+Source: Terrestrial_Time_Decimal_Date_Catalogue.pdf
+Terrestrial–Time Decimal Date Catalogue
+                ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+Catalogue
+ #   Local Civil Specification    UTC Time-stamp       TT Time-stamp    Decimal Year
+                                                                            (TT)
+Ada Lovelace Birthdays
+ 1 10 Dec 2016 00:00 EST          2016-12-10           2016-12-10      2016.940 462 083
+    [birthday]                    05:00:00             05:01:08.184
+ 2 10 Dec 2020 12:00 EST          2020-12-10           2020-12-10      2020.941 828 235
+    [birthday]                    17:00:00             17:01:09.184
+ 3 10 Dec 2021 04:44 EST          2021-12-09           2021-12-09      2021.939 697 780
+    [birthday]                    23:44:00             23:45:09.184
+ 4 10 Dec 2023 00:00 EST          2023-12-10           2023-12-10      2023.940 298 997
+    [birthday]                    05:00:00             05:01:09.184
+Ada Lovelace Day (2nd Tuesday in October)
+ 5 13 Oct 2020 20:45 EDT [Ada 2020-10-14               2020-10-14      2020.784 240 576
+    Day]                      00:45:00                 00:46:09.184
+ 6 12 Oct 2021 15:34 EDT [Ada 2021-10-12               2021-10-12      2021.780 318 023
+    Day]                      19:34:00                 19:35:09.184
+ 7 11 Oct 2022 17:55 EDT [Ada 2022-10-11               2022-10-11      2022.777 846 562
+    Day]                      21:55:00                 21:56:09.184
+ 8 10 Oct 2023 00:00 EDT [Ada 2023-10-10               2023-10-10      2023.773 061 555
+    Day]                      04:00:00                 04:01:09.184
+Ada Lovelace Death-day Anniversaries
+ 9 27 Nov 2016 00:00 EST     2016-11-27                2016-11-27      2016.904 942 958
+    [death-day]              05:00:00                  05:01:08.184
+10 27 Nov 2020 00:00 EST     2020-11-27                2020-11-27      2020.904 942 989
+    [death-day]              05:00:00                  05:01:09.184
+11 27 Nov 2021 05:55 EST     2021-11-27                2021-11-27      2021.905 357 978
+    [death-day]              10:55:00                  10:56:09.184
+12 27 Nov 2023 01:37 EST     2023-11-27                2023-11-27      2023.904 867 110
+    [death-day]              06:37:00                  06:38:09.184
+Other Named Events
+13 05 Apr 2024 10:23:24 EDT       2024-04-05           2024-04-05      2024.261 203 235
+    [earthquake / “warp-drive”]   14:23:24             14:24:33.184
+14 08 Apr 2024 16:36 EDT          2024-04-08           2024-04-08      2024.270 106 924
+    [total eclipse C4]            20:36:00             20:37:09.184
+15 16 Apr 2024 08:30 EDT          2024-04-16           2024-04-16      2024.291 042 716
+    [magic hour]                  12:30:00             12:31:09.184
+16 15 Nov 2024 22:10 EST          2024-11-16           2024-11-16      2024.874 679 632
+    [starship Aurora]             03:10:00             03:11:09.184
+⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                   1

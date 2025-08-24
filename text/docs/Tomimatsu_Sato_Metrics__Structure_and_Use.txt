@@ -1,0 +1,178 @@
+Title: Tomimatsu Sato Metrics  Structure and Use
+Date:  2025-08-15
+Source: Tomimatsu_Sato_Metrics__Structure_and_Use.pdf
+Tomimatsu–Sato Metrics: Structure and Use
+Scope and Guarantees
+This paper develops the Tomimatsu–Sato (TS) family beyond brief mentions: the Papapetrou–Ernst
+framework, prolate spheroidal coordinates, dressing/finite-soliton construction, pole-trajectory sectors,
+asymptotics and axis regularity, multipole hierarchy (vs. Kerr), horizon/ergoregion/singularity structure,
+and concrete computation templates (moments, invariants, geodesics, holonomies). All equations below
+are definition-level anchors (no invented coefficients); when explicit polynomials are required in practice,
+we point to the algorithmic steps to obtain them from the dressing data.
+1    Stationary Axisymmetry: Papapetrou–Ernst Frame
+Verbal
+Any stationary, axisymmetric vacuum spacetime admits a canonical form: time translations and rotations
+are symmetries, so the metric is determined by two scalar functions (plus a conformal factor) on a 2D
+space of orbits. A single complex potential (Ernst) encodes the coupled Einstein equations into one
+nonlinear equation with good integrability properties. This is the entry point for exact families like Kerr
+and Tomimatsu–Sato.
+Anchors (Minimal)
+Papapetrou form.
+               ds2 = −f (dt − ω dϕ)2 + f −1 e2γ (dρ2 + dz 2 ) + ρ2 dϕ2 ,
+                                                                     
+                                                                           f, ω, γ = f (ρ, z).
+Ernst potential (vacuum). Let E(ρ, z) = f + iΨ; then the Ernst equation on the flat (ρ, z) base is
+                                          (ℜE) ∇2 E = ∇E · ∇E.
+Given E, one recovers f and ω by line integration, and γ from quadratures.
+2    Coordinates for TS: Prolate Spheroidal
+Verbal
+TS solutions are most transparent in prolate spheroidal coordinates (x, y) adapted to the axis: spheres
+and spheroids become coordinate surfaces, and asymptotic flatness is clean. A single length κ > 0 sets
+the scale; the Weyl coordinates (ρ, z) are rational functions of (x, y).
+Anchors
+                            p
+                       ρ = κ (x2 − 1)(1 − y 2 ),        z = κxy,    x ≥ 1, |y| ≤ 1.
+All metric functions f, ω, γ are functions of (x, y).
+                                                        1
+3    The TS Family: Definition and Parameters
+Verbal
+The TS family is a countable set of stationary, axisymmetric, asymptotically flat vacuum solutions
+labelled by an integer distortion index δ ≥ 1 and two continuous parameters that fix mass and rotation.
+For δ = 1 the solution reduces to Kerr. For δ > 1 the spacetime is still vacuum and asymptotically flat
+but no longer a black hole: it typically exhibits ring singularities and closed timelike curves, making TS
+a controlled non-Kerr laboratory with tunable multipoles.
+Anchors
+Ernst rational form. In prolate (x, y), TS admits
+                                                  A(x, y) − B(x, y)
+                                      E(x, y) =                     ,
+                                                  A(x, y) + B(x, y)
+where A, B are real polynomials of total degree δ in (x, y) with symmetry constraints ensuring asymptotic
+flatness and axis regularity. The metric functions follow by standard Ernst reconstruction.
+4    Construction: Dressing and Finite-Soliton Data
+Verbal
+TS metrics arise from integrable constructions: one solves an auxiliary linear spectral problem (Lax
+pair) whose monodromy encodes the nonlinear field. Imposing that the monodromy has a finite set of
+simple poles (the “solitons”) yields an algebraic dressing matrix. The locations of these poles and their
+residues are the discrete/continuous data from which A, B are built.
+Anchors
+                                                                                 (0)
+Dressing system. With background fields (f (0) , ω (0) ) and Lax matrices Uµ , the dressing matrix
+χ(w; xµ ) obeys
+                               ∂µ χ = Λν µ Uν χ − χ Uν(0) ,
+                                                             
+with χ meromorphic in the spectral parameter w. TS corresponds to a finite set of simple poles {wk }
+whose trajectories in (x, y) define sectors (next section).
+5    Sector Topology: Pole Trajectories and “In/Out”
+Verbal
+As spacetime coordinates vary, each spectral pole traces an allowed path. Reality, asymptotic flatness,
+and axis regularity forbid crossing certain cuts or leaving permitted sheets. Different global assignments
+(e.g., whether a given pole stays “inside” or “outside” a barrier) cannot be deformed into each other
+without breaking the solution: they are distinct topological sectors. TS branches at fixed (δ, mass, spin)
+are thus discretized by sector labels. This is the cleanest way to see why small parameter tweaks cannot
+morph a TS branch into Kerr unless the sector changes (which would destroy the solution).
+6    Multipoles: How TS Deviates from Kerr
+Verbal
+Kerr’s entire infinite tower of Geroch–Hansen moments is fixed by mass M and spin parameter a via
+a single recursion: each higher moment is a power of ia. TS( δ > 1 ) violates this Kerr relation in
+                                                     2
+a controlled manner: the spin multipoles and mass multipoles are still axisymmetric and reflection-
+symmetric, but the quadrupole and all higher even mass moments differ from the Kerr values for the
+same (M, J). Physically, TS is more oblate (more negative quadrupole) than Kerr at the same M, J.
+Anchors (Extraction Method)
+    • Place the Ernst potential on the symmetry axis (ρ = 0), expand at spatial infinity (z → ∞), and
+      use the standard axis-expansion algorithm (e.g. Geroch–Hansen / Fodor–Hoenselaers–Perjés) to
+      read off mass M0 , M2 , M4 , . . . and current S1 , S3 , . . . moments.
+    • For Kerr: M0 = M , S1 = J, and Mℓ + iSℓ = M (ia)ℓ for ℓ ≥ 0.
+    • For TS with δ > 1: M0 = M and S1 = J by asymptotics, but M2 (quadrupole) and higher
+      moments deviate; deviation grows with δ.
+7     Regularity: Horizons, Ergosurfaces, and Singularities
+Verbal
+Kerr has a regular event horizon (for subextremal spin). TS with δ > 1 generically lacks a regular horizon:
+the would-be horizon surface is replaced by ring singularities and regions with closed timelike curves near
+the ring. An ergosurface (where gtt = 0) still exists and can have complicated, even multi-lobed shapes
+that grow with δ. TS is therefore not a black hole—it is a tuned vacuum spacetime whose controlled
+pathologies make it a useful testbed: you can push on higher multipoles without the rigidity of the Kerr
+relation.
+Anchors (Diagnostics)
+    • Axis regularity (elementary flatness). Demand that the conical deficit vanishes on both axis
+      segments; this fixes integration constants in γ.
+    • Horizon test. Look for a closed null surface where the Killing generator ∂t + ΩH ∂ϕ becomes null.
+      For TS(δ > 1) this typically fails globally.
+    • Ring singularity. Detect by curvature invariants (e.g. Kretschmann Rabcd Rabcd ) diverging on a
+      ring in the equatorial plane.
+    • CTC region. Check the sign of gϕϕ ; gϕϕ < 0 indicates closed timelike azimuthal loops.
+8     How to Compute TS Objects Reliably
+Verbal
+You rarely need explicit closed polynomials (A, B) by hand. Instead: (i) generate them algorithmically
+from dressing data, (ii) reconstruct (f, ω, γ) numerically, (iii) extract multipoles and invariants by series
+and sampling. This avoids coefficient errors and keeps you honest.
+Anchors (Pipelines)
+    1. Finite-soliton generation. Choose δ and dressing poles {wk } satisfying reality/regularity; solve
+       for residues to match asymptotics. Output: A(x, y), B(x, y).
+    2. Metric reconstruction. Compute f = ℜE; integrate for ω on the (ρ, z) base (path-independently
+       by Ernst integrability); integrate for γ from the first-order constraints.
+                                                     3
+    3. Multipoles via axis expansion. Place ρ = 0, expand E(z) at infinity, and apply the standard
+       moment algorithm to read off {Mℓ , Sℓ }.
+    4. Invariants and regions. Sample K = Rabcd Rabcd ; solve gtt = 0 for ergosurfaces; locate gϕϕ = 0
+       for CTC boundaries; verify axis regularity.
+9     Why TS is Perfect for Your A-wave/Holonomy Program
+Verbal
+Holonomy encodes information in loops, not points. TS offers rich but deterministic geometry with
+tunable multipoles and nontrivial topology of timelike/azimuthal loops. That lets you:
+    • Compare loop phases (gravitational Sagnac / gravitomagnetic holonomies) across families with
+      identical (M, J) but different higher multipoles (Kerr vs. TS). Any robust difference isolates the
+      contribution of deviating multipoles.
+    • Stress-test gauge/holonomy encodings against pathological regions (CTCs, ring singularities) in a
+      controlled way before moving to messy numerics.
+    • Use sector labels (pole-trajectory topology) as discrete dials in your Schelling Point Calculus:
+      loops that cannot be deformed between sectors provide protected signatures.
+10      Minimal Core Equations (Safe Anchors)
+Ernst Equation (Vacuum)
+                         (ℜE) ∇2 E = ∇E · ∇E,          E = f + iΨ,    (ρ, z) flat base.
+Prolate Coordinates
+                                p
+                           ρ = κ (x2 − 1)(1 − y 2 ),    z = κxy,     x ≥ 1, |y| ≤ 1.
+TS Ernst Ansatz
+            A(x, y) − B(x, y)
+E(x, y) =                     ,   A, B real polynomials of total degree δ with symmetry/asymptotic constraints.
+            A(x, y) + B(x, y)
+Multipole Extraction (Axis Method, Schematic)
+            Set ρ = 0, z → ∞, expand E(z) ⇒ {Mℓ , Sℓ } via standard axis-moment algorithm.
+11      Checks and Invariants to Log in Code
+    • Asymptotic flatness: f → 1, ω → 0, γ → 0 as r → ∞.
+    • Mass and spin: read from leading asymptotic terms of f and ω; confirm M and J match inputs.
+    • Axis regularity: elementary flatness on both axis segments (no conical defect).
+    • Sector identification: record pole-trajectory winding/crossing data (“in/out” labels).
+    • Region maps: level sets of gtt , gϕϕ ; divergence set of K = Rabcd Rabcd .
+                                                       4
+12     Build Backlog: TS-Focused Units
+TS-01: Finite-Soliton Generator
+Spec: Given (δ, κ, sector), compute A, B by solving the residue constraints from dressing.
+Tests: For δ = 1 recover Kerr Ernst; verify asymptotics and axis regularity constants.
+TS-02: Multipole Extractor
+Spec: Axis expansion of E to order r−N ; output {M0 , S1 , M2 , . . . }.
+Tests: Kerr regression passes; TS(δ > 1) deviates in M2 upward in magnitude (more oblate).
+TS-03: Region Cartographer
+Spec: Numerical maps of ergosurfaces (gtt = 0), CTC boundaries (gϕϕ = 0), and ring singularities
+(peaks of K).
+Tests: No regular horizon for δ > 1; multi-lobed ergosurfaces appear as δ increases.
+TS-04: Holonomy Benchmarks
+Spec: Compute gravitational Sagnac/holonomy for a set of canonical loops (equatorial, meridional,
+toroidal) with fixed (M, J) across Kerr vs. TS.
+Tests: Differences attributable to non-Kerr multipoles; sector labels correlate with loop-class signatures.
+13     What This Paper Newly Covers
+   • TS definition in Papapetrou–Ernst form; prolate coordinates and scale.
+   • Finite-soliton/dressing construction and the role of pole-trajectory sector labels.
+   • Multipole extraction methodology and qualitative deviations from Kerr.
+   • Regularity diagnostics (axis, horizons, CTCs, ring singularities) and practical region mapping.
+   • Concrete TS-oriented build units for your holonomy/A-wave agenda.
+Next in the Series (Queued)
+   1. Higher-D reductions: coset targets and rod/interval structures.
+   2. Tomimatsu–Sato multipole patterns: explicit series for low δ via algorithmic generation.
+   3. SNA-on-macro-net: explicit quasiperiodic drive maps that realize SNA in order-parameter dy-
+      namics.
+   4. Ultrametric bandit regret: formal bounds under strong-triangle decision geometry.
+   5. Lattice-gauge update schemes: ergodicity and Wilson loop statistics for holonomy coding.
+                                                        ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                    5

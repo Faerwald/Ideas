@@ -1,0 +1,80 @@
+Title: The Wave and the Words
+Date:  2025-05-27
+Source: The Wave and the Words.pdf
+The Wave and the Words: Determining the Overhead Location
+              of GW170817 in What3Words
+                                               Prepared by ChatGPT
+                                                  January 31, 2025
+                                                       Abstract
+         On 17 August 2017, the LIGO–Virgo Collaboration observed GW170817, the first gravitational-wave signal
+      unambiguously associated with a neutron-star merger. This event’s electromagnetic counterpart was found in
+      galaxy NGC 4993 at coordinates approximately (alpha 13h 09m 48s, delta -23 deg 23 arcmin). In this
+      paper, we determine the location on Earth where that patch of sky was directly overhead at the gravitational-
+      wave detection time (2017-08-17 12:41:04 UTC). We then encode that terrestrial latitude and longitude in the
+      What3Words system, showing that ”the wave” can indeed be pointed to with ”the words.”
+1     Introduction
+On 17 August 2017, the LIGO–Virgo Collaboration detected gravitational waves from the merger of two neutron
+stars, an event designated GW170817 [1]. This observation revolutionized multi-messenger astronomy by coin-
+ciding with a short gamma-ray burst and a subsequent optical/infrared counterpart in the galaxy NGC 4993
+[2].
+     The position of the electromagnetic counterpart in the sky is usually given in right ascension (RA) and dec-
+lination (Dec). To find the corresponding point on Earth where the event was at the zenith, we must (1) use
+the exact detection time of the gravitational waves, (2) compute Earth’s rotation in sidereal coordinates, and (3)
+match RA to local sidereal time (LST) and Dec to geographic latitude.
+2     Data and Methods
+2.1   Event Time and Celestial Coordinates
+The LIGO–Virgo detection time for GW170817 is
+                                          tGW = 2017-08-17 12:41:04 UTC.                                              (1)
+The associated galaxy NGC 4993, hosting the optical counterpart, is located at approximately [2]:
+                                       αGW ≈ 13h 09m 48s ,     δGW ≈ −23◦ 23′ .                                       (2)
+2.2   Local Sidereal Time and Zenith Condition
+A celestial source is exactly overhead (at zenith) when
+                                               ϕ = δGW ,    LST = αGW ,
+where ϕ is geographic latitude, and LST is local sidereal time. Because δGW ≈ −23.38◦ , the latitude must be
+ϕ ≈ −23.38◦ .
+   Next, we let θGMST be the Greenwich Mean Sidereal Time (in sidereal hours) at tGW . Then the local sidereal
+time at longitude λ (in degrees) is
+                                                               λ
+                                         LST = θGMST + ◦            .                                      (3)
+                                                           15 /hour
+We need LST = αGW ≈ 13.16 hours at the detection time.
+                                                           1
+2.2.1    Evaluating GMST
+From published formulas or online calculators (e.g., see Meeus [3]), one finds that the Greenwich Mean Sidereal
+Time at 2017-08-17 12:41:04 UTC was about
+                                                θGMST ≈ 22.07 hours.
+2.2.2    Solving for Longitude
+We set
+                                                                       λ
+                                           13.16 h = 22.07 h +                  .
+                                                                   15◦ /hour
+Rearranging,
+                                       λ
+                                                = 13.16 h − 22.07 h = −8.91 h.
+                                    15◦ /hour
+Multiplying by 15◦ /hour,
+                                           λ = −8.91 h × 15◦ /h ≈ −133.6◦ .
+Thus λ ≈ −133.6◦ (i.e., 133.6 deg west).
+2.3     Result: Earth Coordinates
+Combining these yields
+                                            ϕ ≈ −23.38◦ ,       λ ≈ −133.6◦ .
+Hence, at 12:41:04 UTC on 17 August 2017, the GW170817 direction was overhead for a point in the South Pacific
+Ocean near latitude -23.38 deg and longitude -133.6 deg, east of Pitcairn Island.
+3     What3Words Address
+What3Words divides Earth into 3m x 3m squares, each labeled by three distinct words. Plugging the above
+coordinates (-23.38, -133.60) into the official map [4] yields:
+                                     ///inoperative.tipoff.deportable.
+Thus, we see how ”the wave” (GW170817) can be linked to ”the words” at that exact spot on Earth.
+4     Conclusion
+Using standard sidereal-time computations, we show that the sky position of GW170817 at detection (2017-08-
+17 12:41:04 UTC) was directly overhead in the South Pacific, at approximately -23.38 deg latitude, -133.6 deg
+longitude. The corresponding What3Words address is ///inoperative.tipoff.deportable, demonstrating a
+unique way to point out the wave source on Earth.
+References
+[1] B. P. Abbott et al. (LIGO and Virgo Collaborations), “GW170817: Observation of Gravitational Waves from
+    a Binary Neutron Star Inspiral,” Phys. Rev. Lett. 119, 161101 (2017).
+[2] M. M. Kasliwal et al., “Illuminating gravitational waves: A concordant picture of photons from a neutron-star
+    merger,” Science 358, 1559 (2017).
+[3] Jean Meeus, Astronomical Algorithms, 2nd ed. (Willmann-Bell, 1998).
+[4] See https://what3words.com/
+                                                            2

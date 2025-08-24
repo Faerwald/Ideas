@@ -1,0 +1,197 @@
+Title: Technical Notes on the  Impossible Key  Chaotic Synergy Cryptosystem
+Date:  2025-06-10
+Source: Technical_Notes_on_the__Impossible_Key__Chaotic_Synergy_Cryptosystem.pdf
+Technical Notes on the “Impossible–Key”
+              Chaotic–Synergy Cryptosystem
+                                  Jason Agamemnon Sokaris
+1     Notation Guide
+              M                             Compact metric phase space equipped with metric d.
+              φt : M → M                    Continuous flow parameterised by t ∈ R.
+              Φ                             Discrete map Φ := φ∆t , ∆t > 0.
+              λmax                          Maximal Lyapunov exponent of Φ.
+              βk ∈ R p                      Bounded bubble kick applied at step k.
+Notation 1.1. Bβk                           C 1 diffeomorphism representing the kick.
+              ρ                             Near-recurrence radius (ρ ≪ 1).
+              L                             Token lifetime (integer number of steps).
+              S, ∆t                         Cluster size and cluster width.
+              R, ∆T                         Number of clusters per anomaly and anomaly window.
+              θ0 , θ1                       Null and alternative anomaly probabilities.
+2     Chaotic Workspace Formalism
+2.1    Phase–Space Foundations
+Definition 2.1 (Metric Phase Space). A metric phase space is a pair (M, d) where M is compact and
+d : M × M → R≥0 is a metric inducing the topology of M . Compactness ensures all trajectories remain
+bounded.
+Definition 2.2 (Flow and Time-∆t Map). A flow φt on M is a group of homeomorphisms satisfying
+φ0 = Id and φs+t = φs ◦ φt . Fixing ∆t > 0, the time-∆t map is Φ = φ∆t .
+Definition 2.3 (Lyapunov Exponent). If Φ is differentiable and v ∈ Tx M , define
+                                                   1
+                                     λ(x, v) = lim   log ∥Dx Φn (v)∥ ,
+                                               n→∞ n
+provided the limit exists. The maximal Lyapunov exponent is λmax = supx,v̸=0 λ(x, v). A positive λmax
+signals exponential sensitivity to initial conditions.
+Definition 2.4 (Strong Mixing). Let µ be an invariant probability measure for Φ. Φ is strongly mixing
+when, for all measurable A, B ⊆ M ,
+                                 µ Φ−n (A) ∩ B −−−→ µ(A)µ(B).
+                                               
+                                                      n→∞
+2.2    Perturbation Channel and Bubble Kicks
+Definition 2.5 (Bubble Kick). A bubble kick is a vector βk ∈ Rp satisfying ∥βk ∥ ≤ βmax . It acts
+through a diffeomorphism Bβk such that B0 = Id and supx ∥Dx Bβk − I∥ ≤ c ∥βk ∥ for some constant c.
+Definition 2.6 (Kicked Orbit). Let x0 ∈ M be an initial state. Define recursively
+                                                  
+                                 xk+1 = Bβk Φ(xk ) ,      k ∈ N.
+The sequence (xk )k≥0 is the kicked orbit; (βk )k≥0 is the kick schedule.
+Remark 2.7. Uninformed (iid) kicks leave mixing properties effectively intact. Synergistic kicks exploit
+λmax > 0 to steer trajectories towards controlled near-recurrences.
+                                                     1
+3      Near-Recurrence Geometry and Token Dynamics
+3.1    Return-Time Statistics
+Definition 3.1 (Return Time). For x ∈ M and ρ > 0, define
+                               τρ (x) = inf{n ≥ 1 : d Φn (x), x < ρ}.
+                                                               
+Proposition 3.2 (Scaling Law for Expected Return Time). Assume the attractor has correlation di-
+mension D and Φ is strongly mixing. Then, for sufficiently small ρ,
+                                              E[τρ ] ≍ Cρ−D ,
+where C > 0 depends on (M, d, Φ) but not on ρ.
+3.2    Token Births and Expirations
+Definition 3.3 (Near-Recurrence Event). A near-recurrence occurs at step k if ∃ j < k such that
+d(xk , xj ) < ρ.
+Definition 3.4 (Token Mechanism). Whenever a near-recurrence occurs at k, spawn a token ek with
+lifetime L ∈ N. Token ek expires at step k + L.
+Theorem 3.5 (Poisson Approximation of Expiration Stream). Under iid kicks with finite second mo-
+ment, token expirations form a Poisson process of rate λ ≈ CρD , up to relative error O(ρ).
+4      Cluster and Anomaly Construction
+4.1    Definitions
+Definition 4.1 (Cluster). Fix integers S ≥ 1 and ∆t ≥ 1. A cluster is any unordered set
+                                   
+                                     k1 , . . . , kS , k1 < · · · < kS ,
+such that kS − k1 < ∆t and each ki is a token-expiration timestamp.
+Definition 4.2 (Anomaly). Given R ≥ 1 and ∆T ≥ 1, an anomaly is a set of R disjoint clusters whose
+timestamps all lie within an interval of length ∆T .
+4.2    Large-Deviation Estimate
+Theorem 4.3 (Anomaly Probability Under Null Model). Let λ be the Poisson rate of token expirations.
+Denote by I = I(S, R, λ, ∆t, ∆T ) the large-deviation rate function defined implicitly by
+                                                                   
+                     P(anomaly in window ∆T ) = exp −I + o(1) , λ∆t → 0.
+Then                                                       
+                                                S
+                                                         − λ∆t + O (λ∆t)2 .
+                                                                         
+                            I ≥ R S log
+                                              eλ∆t
+For S ≥ 5 and λ∆t ≤ 10−4 , choosing R ≥ 3 typically already yields I > 230, corresponding to
+P ≤ 10−100 .
+Sketch. Partition the window of length ∆T into ⌊∆T /∆t⌋ sub-windows and apply a Chernoff–Hoeffding
+bound to the number of sub-windows containing at least S expirations. Independence is approximate
+but becomes exact in the Poisson limit λ∆t → 0.
+                                                     2
+5     Entropy Mapping and Extraction
+5.1     Bit Mapping Rule
+Definition 5.1 (Bit Freezing). Let tmin be the earliest timestamp in the earliest cluster of an anomaly.
+Define the output bit
+                                           b = tmin mod 2.
+Lemma 5.2 (Parity Bias). Under a stationary expiration process with period-two symmetry,
+                                                            1
+                                          P(b = 1) −          ≤ 2−I+1 ,
+                                                            2
+where I is as in Theorem 4.3.
+Corollary 5.3 (Min-Entropy of Completed Key). For a target of N = 2048 bits and I ≥ 230 the
+min-entropy of the concatenated key exceeds N − 0.5 bits.
+5.2     Comparison with Extractor Theory
+Classical randomness-extractor theory normally operates on weakly random input strings. Here the
+“weak randomness” is temporal—embedded in the stochastic schedule of anomaly arrivals. The bit
+mapping rule serves as an online extractor whose seed is implicit in the modulo operation, yielding
+full-entropy bits without external randomness.
+6     Sequential Auditing Framework
+Let {An }n≥1 be Bernoulli indicators of anomaly occurrence in successive ∆T windows.
+Definition 6.1 (Hypotheses).
+                                           i.i.d.
+                                H0 :    An ∼ Bernoulli(θ0 ),
+                                           i.i.d.
+                                H1 :    An ∼ Bernoulli(θ1 ),               θ1 > θ0 .
+Definition 6.2 (Log-Likelihood Ratio). Define
+                                              n
+                                              X           θ1Ak (1 − θ1 )1−Ak
+                                       Ln =         log                      .
+                                              k=1
+                                                          θ0Ak (1 − θ0 )1−Ak
+Theorem 6.3 (SPRT Error Guarantees). Fix error tolerances α, β ∈ (0, 1). Choose thresholds A, B
+              β
+with A = log 1−α and B = log 1−β
+                              α
+                                 . Stop at τ = inf{n : Ln ∈
+                                                          / (A, B)}. Then
+                             PH0 (accept H1 ) ≤ α,             PH1 (accept H0 ) ≤ β.
+Selecting α = β = 2−128 meets 128-bit statistical security.
+Remark 6.4. Because anomalies are correlated under synergy, H1 is conservative; power improves in
+practice.
+7     Parameter Optimisation in Practice
+      P1: Empirical Chaos Quantification: compute λmax via the Benettin algorithm and D via
+          Grassberger–Procaccia on a kick-free simulation of 106 steps.
+      P2: Recurrence Radius Selection: solve E[τρ ] ≈ 10100 for ρ using the scaling from Section 3,
+          yielding typically ρ ∼ 10−8 for D ≈ 2.
+                                                           3
+    P3: Lifetime Tuning: set L = ⌊0.1 E[τρ/2 ]⌋. Ensures at most one token per ρ-vicinity under H0 .
+    P4: Large-Deviation Parameter Search: exhaustively search small integer values of (S, R)
+        and sub-exponential values of ∆t, ∆T until I ≥ 230 (Theorem 4.3).
+    P5: Null Monte-Carlo: run 1012 episodes of 1010 steps each under iid kicks; verify zero anoma-
+        lies.
+    P6: Synergy Calibration: inject prototype coordinating strategies (e.g. gradient ascend on
+        distance to nearest past point) and estimate empirical θ1 .
+    P7: Auditor Threshold Finalisation: convert θ0 , θ1 to SPRT thresholds meeting 2128 security.
+8    Software Architecture in Extrema Res
+Layer Interfaces
+StateBus:
+       immutable record ⟨k, xk ⟩.
+TokenBus:
+      birth ⟨k, birth⟩, expiry ⟨k, expire⟩.
+AnomalyBus:
+      ⟨k, anomaly id⟩.
+BitBus:
+          ⟨n, b⟩.
+AuditBus:
+       ⟨τ, accept/reject⟩.
+Complexity Summary
+     • Dynamics: one C 1 map evaluation O(dim M ) per step.
+     • Token Engine: expected O(1) distance checks via spatial hashing.
+     • Anomaly Logic: histogram maintenance O(1) amortised.
+     • Auditor: constant-time update of Ln each window.
+9    Extended Worked Example
+Example 9.1 (Two-Dimensional Sinai Billiard). Let M be the unit square with a circular obstacle
+(radius 0.1) removed; specular reflections dictate the flow. Numerical estimation yields λmax ≈ 0.98
+and D ≈ 1.999.
+ (a) Setting ρ = 1.2 × 10−8 gives E[τρ ] ≈ 8.4 × 1099 .
+ (b) Lifetime L chosen as 108 steps.
+ (c) Parameter search returns (S, R) = (5, 3), (∆t, ∆T ) = (107 , 109 ), yielding I ≈ 236.
+ (d) Under a naive gradient-steer perturbation schedule, empirical θ1 ≈ 0.23, bringing expected key
+     completion to ∼9000 anomaly windows.
+                                                    4
+10     Synergy Capacity and Game-Theoretic View
+Definition 10.1 (Synergy Function). For a kick schedule {βk } define
+                                       1     P{βk } (anomaly in first n windows)
+                         Γ = lim sup     log                                     .
+                               n→∞     n     PH0 (anomaly in first n windows)
+Γ measures exponential acceleration relative to H0 .
+Theorem 10.2 (Capacity Bound). Completion in expected T windows implies Γ ≥ log(N/T ). Reaching
+human-scale T ∼ 104 thus requires Γ ≳ log(22048 /104 ) ≈ 2032 nats.
+Remark 10.3. Designing kick strategies to maximise Γ constitutes a repeated game with incomplete
+information, closely related to control of chaos and feedback coding in information theory.
+11     Appendix: Glossary of Cross-Domain Terms
+Cybernetical Physics
+         Interdisciplinary field merging control theory with statistical physics to manipulate complex
+         systems.
+Correlation Dimension (D)
+          A fractal dimension measuring how the probability that two random points of the invariant
+          measure fall within distance ρ scales as ρD .
+Large-Deviation Theory
+         Branch of probability that quantifies the exponential decay of probabilities of rare events.
+Mixing     Property of a dynamical system where correlations between past and future observables
+           vanish asymptotically.
+Sequential Probability Ratio Test
+          A stopping procedure that decides between two hypotheses while minimising average sample
+          size for given error rates.
+Topological Entropy
+         Measure of orbit complexity; equals growth rate of distinguishable orbits as resolution
+         refines.
+                                                         ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                     5

@@ -1,0 +1,94 @@
+Title: Transphysical Mind Models  On Shell Off Shell Holographic Dynamics and Temporal Isomorphism
+Date:  2025-05-27
+Source: Transphysical_Mind_Models__On_Shell_Off_Shell_Holographic_Dynamics_and_Temporal_Isomorphism.pdf
+Transphysical Mind Models: On-Shell/Off-Shell
+Holographic Dynamics and Temporal Isomorphism
+                                         Jason Agamemnon Sokaris
+                                                  30 April 2025
+                                                      Abstract
+            We formalise a mind as a transphysical object composed of an on-shell substrate (ordinary
+        neuro-biological matter on a spacetime foliation) and an off-shell information field (virtual or gauge-
+        potential degrees of freedom). The combined entity is shown to admit a holographic encoding on
+        hypersurface boundaries while evolving as a closed chaotic attractor in a high-dimensional cognitive
+        phase space. We place this construct inside a multi-spacetime ensemble (M̀any-Worlds´) and derive
+        necessary and sufficient conditions for temporal isomorphism between present and potential future
+        selves. A rigorous memory functional and a transactional path-integral representation connect
+        decision theory with quantum co-variance. All results remain compatible with standard quantum
+        mechanics, extended only by low-energy off-shell control channels.
+1       Preliminaries and Notation
+Throughout, natural units ℏ = c = 1 are used.
+    • M4 — a globally hyperbolic spacetime manifold with metric gµν and foliation parameter t;
+    • Σt — a Cauchy hypersurface at instant t, ∂Vt its two-surface boundary;
+    • Hcog — the separable Hilbert space of cognitive micro-states;
+    • Φ — field of cognitive state variables (coordinates on Hcog );
+    • Γ — the dynamical vector field generating state-space flow dΦ/dt = Γ(Φ).
+2       Transphysical Cognitive Object
+Definition 1 (On-Shell / Off-Shell Decomposition). A transphysical mind at time t is the ordered pair
+                                                          
+                                       M(t) = O(t), F(t) ,
+where
+    1. O(t) ⊂ TΣt captures on-shell, mass-shell data (molecular, neuronal);
+    2. F(t) ∈ Ω1 (M4 ) is an off-shell 1-form representing virtual-particle or electromagnetic vector-
+       potential flows with vanishing field strength: dF(t) = 0.
+   The off-shell F is gauge-irreducible yet classically unobservable, analogous to the Aharonov–Bohm
+potential.
+                                                          1
+3     Holographic Encoding
+                                                                                                 
+Proposition 1 (Boundary Encoding). For each t there exists an injective map ιt : M(t) ֒→ Fun ∂Vt
+such that all information in M(t) is recoverable from boundary data on ∂Vt . Explicitly,
+                                                
+                                         ιt O(t) = ρon (θ, φ),                                (1)
+                                                
+                                         ιt F(t) = A∥ (θ, φ),                                 (2)
+where (θ, φ) are angular coordinates on the boundary two-sphere.
+    Thus the cognitive volume obeys a holographic principle: all degrees of freedom are encoded on ∂Vt .
+4     Chaotic Attractor Dynamics
+Let Φ(t) ∈ RN denote coarse-grained cognitive coordinates on Hcog .
+Definition 2 (Cognitive Phase Flow). The evolution is governed by the stochastic ODE
+                         dΦ
+                            = Γ(Φ) + η(t),            ⟨ηi (t)ηj (t′ )⟩ = 2D δij δ(t − t′ ).          (3)
+                         dt
+Theorem 1 (Existence of Strange Attractor). Under mild smoothness and dissipation conditions on
+Γ, the flow (3) possesses an invariant set A ⊂ RN with Hausdorff dimension dH > 2 and positive
+Lyapunov exponent λ > 0. We identify A with the conscious attractor.
+5     Multi-Spacetime Ensemble
+    (i)
+Let M4 i∈I be a countable collection of decohered branches. Each carries its own cognitive pair
+M(i) (t). Branching events are modelled by a rooted tree B with vertices vk at decision times tk .
+Definition 3 (Branch Projection). πi : A → A(i) is the restriction of cognitive state to branch i.
+Non-trivial fibre overlap πi−1 (x) ∩ πj−1 (y) ̸= ∅ represents quantum ambiguity between branches.
+6     Temporal Isomorphism
+Definition 4 (Isomorphism of Selves). Two cognitive states M(tA ) and M(tB ) with tB > tA are
+temporally isomorphic, written M(tA ) ∼
+                                      = M(tB ), if there exists a bijective, structure-preserving map
+                              Θ : M(tA ) −→ M(tB )               s.t.   ιtB ◦Θ = ιtA .
+Lemma 1 (Predictive Reconstruction). Suppose Θ is computable from data in the closed past domain
+Dom− (tA ). Then the future self at tB is holographically encoded on ∂VtA .
+7     Memory Functional and Decision Weights
+Define the memory kernel                              Z    tB          
+                                      µ(tA , tB ) =             F s, Σs ds,                          (4)
+                                                          tA
+where the integrand F is the off-shell 1-form restricted to the foliation. Decision probabilities are
+weighted by a path integral
+                                        Z                Z            
+                            P [choice] ∝ DΦ exp iSon + µ(t, t′ ) dt′ ,                            (5)
+with Son the usual on-shell action.
+                                                          2
+8     Transactional Picture
+Advanced/retarded propagators couple on-shell and off-shell sectors:
+                                      X                             
+                            Atran =        exp iSon [h] exp iSoff [h] ,                               (6)
+                                        histories
+where Soff is sourced by F and vanishes on classical extrema, reflecting its virtual nature.
+9     Discussion and Outlook
+We have provided:
+    • a precise decomposition of cognitive degrees of freedom into on-shell and off-shell sectors;
+    • a holographic boundary encoding consistent with black-hole information bounds;
+    • rigorous attractor dynamics supporting chaotic, yet structurally stable, conscious flows;
+    • a tree-structured multi-spacetime ensemble and a formal definition of temporal self-isomorphism;
+    • a memory functional linking potential futures to present decisions via off-shell integration.
+   Future work will quantify energetic bounds on F-mediated control and design laboratory analogues
+(photonic or superconducting cavities) capable of probing off-shell couplings.
+                                                        Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D
+                                                    3

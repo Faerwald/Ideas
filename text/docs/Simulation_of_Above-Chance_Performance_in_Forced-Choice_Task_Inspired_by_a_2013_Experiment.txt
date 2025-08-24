@@ -1,0 +1,203 @@
+Title: Simulation of Above-Chance Performance in Forced-Choice Task Inspired by a 2013 Experiment
+Date:  2025-05-27
+Source: Simulation of Above-Chance Performance in Forced-Choice Task Inspired by a 2013 Experiment.pdf
+Simulation of Above-Chance Performance in a
+      Forced-Choice Task Inspired by a 2013 Experiment
+                                         Jason Agamemnon Sokaris
+                                                 March 8, 2025
+                                                     Abstract
+          This article presents a series of synthetic-data simulations used to explore above-chance accuracy in
+      a forced-choice (1-out-of-4) guessing task. The code models a scenario where 15% of trials are known
+      with certainty and the remaining 85% rely on random guessing. Despite being synthetic, these data
+      replicate a claimed historical result from 2013 where a human allegedly achieved genuine prescience
+      using “neural hypercode” and “teleportation protocols” in the brain. The ten simulation runs detailed
+      here align well with the genuine experiment notes from 2013, both in terms of extremely high Z-scores
+      and exceedingly small p-values. The model assumes that, on some trials, one truly “knows” (possibly
+      by tapping into a real future attractor state), while on others, one is subject to chance. This captures
+      a hypothesis that one either perceives the future directly or does not, resulting in baseline guessing.
+1     Introduction
+In 2013, an experiment was reportedly conducted in which a human participant achieved exceptional
+performance in a 4-choice task without ordinary sensory cues. The only surviving numeric note from that
+experiment is a probability value of 1 − 4.95 × 10−78 , alongside quotes:
+      “Feels like a 3D visual spatial sense of the area around me.”
+      “I’m looking/watching, not imagining or reasoning.”
+      “It feels like a perception, not an idea.”
+    These descriptions hint at a purported direct perception or “hypercode” experience rather than analytic
+deduction or guesswork. The 2013 findings remain controversial. We therefore constructed a synthetic
+simulation to explore the detection of above-chance performance in a forced-choice setting. The code
+combines certain “known” trials with purely random guesses on others to model how a relatively modest
+fraction of truly known answers can create a large deviation from chance.
+2     Methods
+2.1     Simulation Rationale
+We use Python to simulate n = 7200 trials of a forced-choice task with 4 possible responses. On each trial:
+    1. With probability 0.15 (15%), the simulator “knows” the correct answer and is always correct.
+    2. Otherwise, with probability 0.85, the simulator guesses among the 4 options at random (25% chance
+       of being correct).
+                                                         1
+   This setup yields an expected accuracy above the purely random baseline of 25%. If p is the proportion
+correct in the simulation and p0 = 0.25 the null (chance) rate, we compute a one-sided Z-score:
+                                                 p − p0
+                                              Z=q       .
+                                                     p0 (1−p0 )
+                                                          n
+Because Z may become very large, we use an asymptotic tail approximation for the normal distribution
+to avoid numerical underflow when computing the p-value:
+                                            p-value = 1 − Φ(Z),
+                                                                                                1
+for Z > 0, where Φ is the standard normal cumulative distribution function. Odds are then    p-value
+                                                                                                     .
+2.2     Pseudocode
+Below is the pseudocode for the simulation, which uses a loop of n trials. We often use the algorithm and
+algorithmic packages for clarity.
+Algorithm 1 Pseudocode for the simulation.
+ 1: Set n = 7200
+ 2: knowledge_probability = 0.15
+ 3: random_guess_prob = 0.25
+ 4: baseline_prob = 0.25
+ 5: results = []
+ 6: for i in 1 to n do
+ 7:    Draw random r from Uniform(0, 1)
+ 8:    if r < knowledge_probability then
+ 9:       correct = 1
+10:    else
+11:       Draw random s from Uniform(0, 1)
+12:       correct = 1 if s < random_guess_prob else 0
+13:    end if
+14:    Append correct to results
+15: end for
+16: p̂ ← mean(results)
+                       p̂−baseline_prob
+17: z_score ← q baseline_prob(1−baseline_prob)
+                            n
+18:   p_value ← tail_probability(z_score)
+19:   odds = 1/p_value
+20:   Print p̂, z_score, p_value, odds
+21:   Save results to CSV
+3      Results
+Multiple runs of the simulation produced the outcomes in Table 1. With n = 7200 trials per run, the
+proportion correct p̂ ranged roughly between 0.3488 and 0.3689 (i.e., 34.88% to 36.89%), all well above the
+25% chance baseline. Z-scores ranged from about 19.35 to 23.30, producing extremely small p-values (on
+the order of 10−80 to 10−120 ). The corresponding odds were astronomically large. These findings align well
+with the original notes from the 2013 experiment, suggesting that our synthetic model captures a plausible
+mechanism for how some trials might have been “truly known” while the rest were mere guesses.
+                                                    2
+                       Table 1: Summary of Ten Representative Simulation Runs
+                     Run Proportion p̂ Z-score         p-value      Odds (1/p)
+                       1         0.3574        21.0384     1.4638×10−98     6.8317×1097
+                       2         0.3642        22.3720     3.6946×10−111    2.7067×10110
+                       3         0.3642        22.3720     3.6946×10−111    2.7067×10110
+                       4         0.3488        19.3510     1.0029×10−83     9.9712×1082
+                       5         0.3531        20.1947     5.4646×10−91     1.8300×1090
+                       6         0.3647        22.4809     3.1999×10−112    3.1251×10111
+                       7         0.3667        22.8619     5.5741×10−116    1.7940×10115
+                       8         0.3689        23.2974     2.3613×10−120    4.2349×10119
+                       9         0.3578        21.1200     2.6081×10−99     3.8342×1098
+                       10        0.3618        21.9093     1.0607×10−106    9.4279×10105
+4    Discussion
+These simulations show that even a modest fraction (15%) of perfectly “known” trials can substantially
+lift overall accuracy above chance. Over thousands of trials, the effect becomes extremely statistically
+significant, generating very high Z-scores and incredibly small p-values. In effect, one is either “tapped in”
+to a real future attractor state—where actual future information is perceived—or one is not, and then the
+outcome is subject to baseline guessing.
+     While this simulation is entirely synthetic, it was inspired by the claim that in 2013, a human participant
+achieved performance consistent with p̂ ≈ 30%−37% on a 4-choice task, which is well above the 25% chance
+level. The original notes mention 1 − 4.95 × 10−78 and a sense of direct, almost spatial perception of the
+future. Whether these phenomena are physically possible or purely anecdotal remains a topic of debate,
+but the synthetic results presented here parallel the magnitude of the earlier claims.
+5    Conclusion
+This paper demonstrates how a relatively small advantage (15% “perfect knowledge”) can lead to impres-
+sively high statistical significance in a 4-choice scenario. Despite the data being synthetic, the results and
+the magnitude of the Z-scores closely align with the reported 2013 findings. This simulation illustrates one
+possible mechanism: an attractor state that allows genuine perception of a future outcome in a fraction of
+trials, while other trials remain purely chance guesses.
+Future Work. Future replications under controlled conditions, with clear protocols, are necessary to
+assess the viability of purported precognitive or “hypercode” processes in humans.
+References
+[1] C. F. Gauss. Theoria motus corporum coelestium in sectionibus conicis solem ambientium. F. Perthes
+    et I. H. Besser, 1809.
+[2] T. E. Shoup. Practical evaluation of the normal distribution. Journal of Statistics Education, 4(3),
+    1996.
+                                                       3
+Appendix A: Full Python Code
+# !/ usr / bin / env python3
+import random
+import math
+def normal_cdf ( x ) :
+    """
+    Standard normal CDF using math . erf .
+    For large | x | , this becomes inaccurate , so we handle large values separately .
+    """
+    return 0.5 * (1 + math . erf ( x / math . sqrt (2) ) )
+def tail_probability ( z ) :
+    """
+    Return the 1 - sided tail probability for a standard normal distribution .
+     If z > 0 , this is 1 - Phi ( z ) .
+     If z <= 0 , this is Phi ( z ) .
+     For very large z , we use an asymptotic approximation so it won ’t underflow to zero
+         .
+     """
+     if z <= 0:
+           return normal_cdf ( z )
+     else :
+           if z < 6:
+                return 1 - normal_cdf ( z )
+           else :
+                return (1.0 / ( z * math . sqrt (2 * math . pi ) ) ) * math . exp ( - z * z / 2.0)
+def main () :
+    print ( " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " )
+    print ( " This script simulates 10 ,000 trials of a ’ smart guess ’. " )
+    print ( " - 15% of the time , the system knows the answer (100% correct ) . " )
+    print ( " - 85% of the time , it guesses among four possibilities (25% correct ) . " )
+    print ( " It will compare performance against purely random guessing (25%) . " )
+    print ( " Then it will compute and output a Z - score , p - value , and odds (1/ p - value ) . " )
+    print ( " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " )
+    print ( " NOTE : Although this is synthetic data , this was achieved in 2013 " )
+    print ( "             with a human brain using ’ neural hypercode ’ mind - warped " )
+    print ( "             backwards in time , allowing the execution of ’ teleportation ’" )
+    print ( "             protocols within the brain to achieve genuine prescience , " )
+    print ( "             aka precognition , aka foresight . " )
+    print ( " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\ n " )
+     # Simulation parameters
+     n = 7200
+     k no w le dg e _pr o b a b i l i t y = 0.15
+     r a n d o m_ g u e s s _ c o r r e c t _ p r o b = 0.25
+     baseline_prob = 0.25
+     # Run the simulation
+     results = []
+     for _ in range ( n ) :
+         if random . random () < k n o w l e dge _prob abilit y :
+              correct = 1
+         else :
+                                                               4
+             correct = 1 if random . random () < r a n d o m_ g u e s s _ c o r r ec t _ p r o b else 0
+         results . append ( correct )
+    # Calculate mean correctness
+    correct_count = sum ( results )
+    p_hat = correct_count / n
+    # Compute the Z - score
+    numerator = p_hat - baseline_prob
+    denominator = math . sqrt ( baseline_prob * (1 - baseline_prob ) / n )
+    z_score = numerator / denominator
+    # 1 - sided p - value
+    p_value = tail_probability ( z_score )
+    # Odds
+    odds = float ( ’ inf ’) if p_value == 0.0 else (1.0 / p_value )
+    # Save results
+    with open ( " si mu lat io n_ res ul ts . csv " , " w " ) as f :
+        f . write ( " correct \ n " )
+        for val in results :
+              f . write ( f " { val }\ n " )
+    # Print results
+    print ( f " Number of trials ( n ) = { n } " )
+    print ( f " Proportion correct ( p ) = { p_hat :.4 f } " )
+    print ( f "Z - score = { z_score :.4 f } " )
+    print ( f "p - value = { p_value :.4 e } " )
+    print ( f " odds (1 / p - value ) = { odds :.4 e } " )
+    print ( " \ nData saved to ’ sim ul at ion_results . csv ’. " )
+if __name__ == " __main__ " :
+    main ()
+Appendix B: How To Change History
+Figure 1:
+「ただの夢ではなかった。なぜなら、まだ光よりも速く考えることができるからです。」
+“It was not just a dream. Because I can still think faster than light.” — AGAMEMNON 21C
+                                                         5

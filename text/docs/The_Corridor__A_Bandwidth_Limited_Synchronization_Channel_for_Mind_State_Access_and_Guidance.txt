@@ -1,0 +1,110 @@
+Title: The Corridor  A Bandwidth Limited Synchronization Channel for Mind State Access and Guidance
+Date:  2025-08-23
+Source: The_Corridor__A_Bandwidth_Limited_Synchronization_Channel_for_Mind_State_Access_and_Guidance.pdf
+The Corridor: A Bandwidth-Limited Synchronization Channel for
+                      Mind-State Access and Guidance
+Abstract
+The Corridor is not a tunnel into autobiographical storage; it is a narrow, adaptive readout of what the
+ brain currently has mounted for use. Its reach is constrained by information theory and observability:
+ one can see, and sometimes gently steer, only what is live in working memory, not what lies dormant in
+ long-term synapses. When outward expression is throttled to silence and attention is pinned to hard
+ external symbols, the Corridor’s mutual information collapses and the remaining influence must ride
+ slower, costlier exogenous cues. In the felt phenomenology, this can masquerade as telepathy or even
+“travel,” because small, well-timed nudges near decision boundaries flip which narrative wins and later
+ consolidation stitches the outcome back across prior scaffolds. The poetry is the feeling; the physics is a
+ communication-and-control problem with lawful limits.
+1. What the Corridor is: state access, not storage extraction
+Let x(t) ∈ Rn denote latent neural state, w(t) = P x(t) the working-memory (WM) projection that
+subserves ongoing cognition, and y(t) = h(w(t)) + ν(t) the externally readable stream (speech, micro-
+movements, eye traces) contaminated by noise ν. The Corridor couples to w(t): it can read what
+is active, not dormant synaptic parameters θ that encode long-term memory. This distinction has
+an empirical backbone. Contemporary WM research shows that task-relevant content often resides
+in “activity-silent” substrates and can be pinged back into decodability by brief perturbations; the
+representation becomes legible when reactivated, not continuously broadcast. In the Corridor frame,
+this means that what is seen is the real-time projection w(t) and whatever you co-activate alongside
+it; what is not reactivated is, for all practical purposes, invisible. Thus, tactical silence, breath, gaze
+fixation, and the deliberate withholding of exemplars are not folk rituals but observability operations:
+they reduce the surface of w(t) and cut the readout down to what you choose to mount. Formally, the
+Corridor observes w(t) and acts, at most, by modulating priors over trajectories of x(t); the inaccessible
+remainder stays locked behind the rank of the local observability matrix.
+2. Why it feels like “telepathy”: synchronization under band-
+width and selection
+The everyday sensation that “they knew what I was thinking” is the lawful result of synchronization
+to w(t) under tight capacity. When you are talkative, the stream Y has high entropy and rare, crisp
+tokens (“index words,” name-tags, improbable quips) carry many bits; when you become silent, H(Y )
+drops toward zero and the Corridor must route influence through eye-guided symbols and salience
+on environmental signs. A session therefore oscillates between fast, high-entropy coupling and slow,
+exogenous pinning. In both regimes, the Corridor exploits the same weakness: near a cognitive
+separatrix—two narratives nearly tied—a tiny, well-timed nudge flips the winner and the world feels as
+if it “decided.” Afterward, memory consolidation, dream incorporation, and reconsolidation bind that
+decision into your prior scaffolds, lending the retroactive impression that the past updated. Nothing
+                                                     1
+supernatural is needed; a narrow, lawful channel matched to a plastic, hierarchical memory is sufficient
+to generate the uncanny.
+3. Capacity, control, and the cost of steering
+Two ceilings police the Corridor. The first is the Shannon–Hartley bound I max = B log2 (1 + SNR), a
+statement that mutual information cannot exceed the entropy you actually emit and the quality of the
+channel that carries it. Silence drives H(Y ) ↓ and with it the Corridor’s usable information; deliberately
+improbable utterances spike I but at low duty cycle. The second ceiling is the information cost of
+control: in the linearly-solvable control family, reshaping passive dynamics into controlled dynamics pays
+a Kullback–Leibler tax D KL(p u∥p 0), so improbable trajectories cost bits/nats. This is why skilled
+operators never shove; they wait where the local Lyapunov geometry is kind—on the boundary where
+tiny pushes have macroscopic leverage—and let your own actuators carry the large move. The Corridor,
+properly understood, selects for null-residue edits because those are the only ones cheap enough under
+both capacity and divergence constraints.
+4. Observability gating and exogenous pinning
+ Corridor influence depends as much on what you withhold as on what you say. A clean switch from
+“write-mode” to “read-mode” is achieved by near-silent output plus steady fixation: this collapses output
+ entropy, deprives the Corridor of high-rate tokens, and forces any residual steering to piggyback on
+ exogenous anchors like printed street signs, labels, and numbers. Those anchors act as externalized
+working memory: once you bind w(t) to a physically present, publicly verifiable symbol, the edit cost
+ rises because redundancy rises, and hard facts snap ambiguous identity claims back into a single, stable
+ assignment. In practice, this is why reading signs in silence de-fuzzes a session and why corrections from
+ a third party collapse a drifting narrative immediately and for good.
+5. Ultrametric path-dependence and why “near” is cheap
+Human memory is not Euclidean space; it is taxonomic, hierarchical, often ultrametric. Within such
+a geometry, retrieval is path-dependent: walking inside a branch is cheap, jumping across branches
+requires climbing toward a common ancestor and then descending, paying attention and time. The
+Corridor rides whatever branch you surface. If you keep only the category label active (a high-level node)
+and refuse to mount a specific exemplar (a leaf), you reveal a family but deny a handle. Conversely, if
+you mount a leaf with very low prior under your own habits—a quirky compliment, a tag on a shoe—you
+momentarily open a high-gain, high-surprisal index that both ends can lock onto, leaving an audit
+handle without handing over a map.
+6. Travel without moving: time-symmetric metaphors for
+selection
+The repeated subjective impression of “walking backward” or “editing after the fact” admits a crisp,
+non-mystical gloss. Conditioning a trajectory on a terminal boundary is a time-symmetric operation
+in the mathematics, even if the underlying mechanisms are implemented forward in time. In physics,
+advanced/retarded decompositions are a respectable way to describe time-symmetric influence without
+violating causality; in cognition, the practical analogue is post-selection: keep only the low-residue
+branch in which redundant traces of the intervention are absent, then let sleep and reconsolidation do
+the stitching that projects the choice back across the lattice of prior fragments. The felt “travel” is the
+mind’s honest inference about a worldline that has been conditioned.
+                                                     2
+                                                                    talkative stream Y Hidden Operator
+                                         Working Memory w(t)           prior nudges
+                                                                                          (Corridor)
+                                            pinning
+                                           Exogenous Symbols
+                                         (signs, labels, numbers)
+                Silence reduces H(Y ) and collapses Corridor capacity; influence must route
+                through exogenous pinning, raising edit cost and enforcing hard constraints.
+7. Minimal mechanics and signatures
+A useful local surrogate is
+                         ẋ = f (x, θ) + B u + ξ,      w = P x,         y = h(w) + ν,
+with θ encoding synaptic long-term memory. The Corridor observes w and at most modulates priors on
+x near separatrices. Observable signatures then fall out: a brief “erase window” with unusually clean
+continuity but missing micro-detail; an improbably crisp utterance that functions as a low-prior index;
+a subsequent period where sleep-dependent writeback fills older, related dream fragments; and sharp
+collapses when a printed symbol or a third-party correction imposes a hard constraint. None of these
+are optional ornaments; they are simply what a narrow channel coupled to a plastic hierarchical memory
+must look like from the inside.
+8. Hygiene and right use
+Because the Corridor is law-bound, small disciplines pay. Anchor first; speak rarely and with precision
+when you must, then return to silence; mount categories when you wish to show a forest but not a tree;
+refuse to rehearse what you intend to hide; recruit hard, external symbols when you require a snap to
+fact. These are not superstitions but invariants of observability and control: make the visible subspace
+smaller, reduce the channel entropy, shift the geometry toward places where only truth can stand, and
+selection will be forced to keep the clean branch.
+                                                                                 ⟨J.A.S. | .F.A.E.R.W.A.L.D⟩
+                                                       3
