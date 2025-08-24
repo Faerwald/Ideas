@@ -1,0 +1,94 @@
+Title: GhostWarp Cheat Sheet
+Date:  2025-07-08
+Source: GhostWarp_Cheat_Sheet.pdf
+GhostWarp Cheat Sheet
+Quantum Vacuum & A-waves
+Source                                   Key Equation                               Why it matters
+LIGHT AND VACUUM (Ginzburg),                                                        Dispersion relation in
+Ch. 4                                                           2     ω2            structured vacuum;
+                                                            k       = 2
+                                                                      c             polarization-tensor control
+                                                                                    for warp-bubble metrics.
+Forces of the Quantum Vacuum                                                        Dynamical-Casimir
+(Milton), Ch. 10                                               L̇2                  energy-injection
+                                                            P ∝ 4
+                                                               L                    scheme—negative-pressure
+                                                                                    reservoir.
+Quantum Information in                                                              Unruh–DeWitt detector
+Gravitational Fields, Ch. 5                      Entanglement Harvesting            protocol for
+                                                                                    vacuum-mediated
+                                                                                    retrocausal communication.
+Metamaterials & Transformation Optics
+Source                                   Key Equation                               Why it matters
+GEOMETRY AND LIGHT – Science                                                        Transforms GR-warp
+of Invisibility, Ch. 2                                        A⊤ gµν A              metrics into metamaterial
+                                                     ḡµν   =
+                                                               det A                permittivity/permeability
+                                                                                    tensors.
+Metamaterials – Beyond Crystals. . . ,                                              Effective optical metric for
+                                                        2                   i   j
+Ch. 5                                                ds = ϵij dx dx                 lab-scale warp-analogue
+                                                                                    experiments.
+Metamaterials – Beyond Crystals. . . ,                                              Design of
+Ch. 9                                            Chiral–Anisotropic Media           handedness-coupled ε, µ for
+                                                                                    one-way light channels.
+Gravity Field Equations & Relativity Tools
+Source                                   Key Equation                               Why it matters
+EINSTEIN GRAVITY (’t Hooft),                            Z                           Tetrad-action formalism for
+Ch. 6                                                               I   J           coupling engineered Tµν to
+                                                   S=           e ∧ e ∧ FIJ
+                                                                                    geometry.
+FEYNMAN LECTURES ON                                                                 Field-theory derivation of
+GRAVITATION, Ch. 1–2                                 hµν        (linearised)        perturbative metric
+                                                                                    hµν —seed for warp
+                                                                                    perturbation code.
+A RELATIVIST’S TOOLKIT                                                              Lapse/shift decomposition
+(Poisson), Ch. 4                             ADM 3+1 split & constraint eqns.       and constraints for
+                                                                                    numerical GhostWarp.
+THEORY & EXPERIMENT IN                                                              Parameterized
+GRAVITATIONAL PHYSICS                                PPN formalism                  post-Newtonian
+(Will), Ch. 4                                                                       framework—testable
+                                                                                    warp-drive observables.
+Warp Solutions & Topological Solitons
+Source                                 Key Method / Eq.                                Why it matters
+GRAVITATIONAL SOLITONS,                Coleman graviton–soliton scattering solutions   Analytic templates for
+Sec. 7.3                                                                               stability of superluminal
+                                                                                       curvature lumps.
+LORENTZIAN WORMHOLES                                                                   Null-energy-condition
+                                                            µ ν
+(Visser), Ch. 14                                       Tµν k k < 0                     violation—sets
+                                                                                       exotic-matter budget.
+TOPOLOGICAL SOLITONS                   Skyrmion moduli-space geodesics                 Reduced-coordinate
+(Manton & Sutcliffe), Ch. 9                                                            dynamics for low–DOF
+                                                                                       warp-bubble modeling.
+Alcubierre 3+1 Numerical Relativity,   Moving–puncture gauge                           Stable evolution of steep
+Ch. 6                                                                                  warp-bubble throats.
+NUMERICAL RELATIVITY                   BSSN formulation                                Standard evolution
+(Baumgarte & Shapiro), Ch. 11                                                          system—GhostWarp
+                                                                                       simulation core.
+Propulsion Science
+Source                                 Key Focus                                       Why it matters
+FRONTIERS OF PROPULSION                Negative-energy & quantum-inequality            Risk-assessment figures for
+SCIENCE (AIAA), Ch. 16                 budgets                                         exotic-energy requirements.
+FRONTIERS OF PROPULSION                Dynamical-Casimir thrusters                     On-board propellantless
+SCIENCE (AIAA), Ch. 22                                                                 coupling mechanisms to
+                                                                                       sustain warp fields.
+Complexity & Control
+Source                                 Key Equation / Concept                          Why it matters
+Three Lectures on Complexity &         Complexity = Volume cost function               Geometry-based cost for
+Black Holes (Susskind), Lec. 2                                                         warp-path optimization.
+CYBERNETICAL PHYSICS                                                                   Speed-gradient adaptive
+(Fradkov), Ch. 2                                       u̇ = −γ ∇v Q̇                   control law for bubble-shape
+                                                                                       stabilization.
+HIGH-DIMENSIONAL CHAOTIC &             Kuramoto phase-synchronization                  Scheme for synchronizing
+ATTRACTOR SYSTEMS                                                                      multi-shell warp-bubble
+(Ivancevic), Ch. 5                                                                     dynamics.
+Superconductivity & Analog Gravity
+Source                                 Key Equation                                    Why it matters
+SUPERCONDUCTIVITY,                                                                     Josephson-phase
+SUPERFLUIDS, AND                                               2e V                    law—horizon analog
+                                                        ϕ̇ =
+CONDENSATES (Annett), Ch. 5                                     ℏ                      simulation.
+SUPERCONDUCTIVITY,                     Abrikosov vortex-lattice templates              Patterned flux tubes
+SUPERFLUIDS, AND                                                                       mimicking discrete
+CONDENSATES (Annett), Ch. 8                                                            warp-throat cross-sections.

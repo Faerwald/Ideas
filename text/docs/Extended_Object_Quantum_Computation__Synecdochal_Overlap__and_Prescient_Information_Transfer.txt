@@ -1,0 +1,124 @@
+Title: Extended Object Quantum Computation  Synecdochal Overlap  and Prescient Information Transfer
+Date:  2025-05-27
+Source: Extended_Object_Quantum_Computation__Synecdochal_Overlap__and_Prescient_Information_Transfer.pdf
+Extended-Object Quantum Computation,
+  Synecdochal Overlap, and Prescient Information
+                    Transfer
+                                    Jason Agamemnon Sokaris
+0. Notation & Minimal Axioms
+Spacetime M is a 3+1-dimensional manifold with Lorentz metric gµν . A history is a Heisenberg-picture
+field-configuration map
+                                                                   N
+                          h : M −→ H,        h(x) = φa (x), πa (x) a=1 .
+   The decoherence functional (Gell-Mann–Hartle) is
+                                                                h iZ        i
+                        D(h, h′ ) = Tr ρ0 Ch† Ch′ ,
+                                                
+                                                      Ch = T exp −      Hint .
+                                                                   ℏ Mh
+   Histories decohere if D(h, h′ ) ≈ 0 for h ̸= h′ . A branch is an equivalence class under this relation.
+1. Extended Quantum Circuits
+Definition 1.1 (World-volume circuit). An extended circuit is a codimension-0 submanifold
+C ⊂ M endowed with a unitary evolution
+                                               h iZ       i
+                                  U [C] = P exp −     H dτ ,
+                                                  ℏ C
+where H acts on the Hilbert bundle H|C . The support may contain multiply-connected loops; hence
+computations are topological objects, not point gates.
+   Key property: for two branches h1 , h2 that both contain C, matrix elements of local operators on C
+depend on coherent sums of amplitudes from the two branches; i.e., branch information remains
+entangled until environmental tracing outside C.
+2. Overlap Functional & Synecdochal Codes
+2.1 Local Overlap
+Let R ⊂ C be a bounded 4-volume. Reduced density matrices
+                                        ρi (R) = TrM \R |hi ⟩⟨hi | ,
+define the overlap functional
+                                                               rel
+                                  χ(R) = Tr ρ1 (R) ρ2 (R) = e−S12 (R) ,
+                                                        
+where S rel is the relative entropy. χ(R) > 0 implies dual instantiation: the same physical matter
+participates in incompatible global computations.
+                                                      1
+2.2 Synecdochal Code
+A synecdochal code is a map
+                                               Σ : SR −→ SC ,
+from states on R to (logical) states on C, satisfying:
+   1. Injectivity on code subspace: Σ† Σ = 1 on the logical subspace L ⊂ SC .
+   2. Error-tolerance to external decoherence: ∀E with supp E ⊂ M \ R, E Σ(ρ) = Σ(EρE † ).
+    This generalises stabiliser quantum error-correction (e.g. toric code) but the logical qubit is dis-
+tributed in time along C.
+    Consequence: by phase-rotating ρ(R) one reweights branch amplitudes A[hi ] without exchang-
+ing energy, because the global path integral’s weight changes by a pure phase on C.
+3. Loop Quantum Radar (LQR)
+3.1 Temporal Interferometry
+Given initial state |ψ0 ⟩ supported on C, let
+                                                                    h iZ t        i
+                                       †
+                         F (t) = ψ0 |U (t) U0 ψ0 ,     U (t) = T exp −     Hactual ,
+                                                                       ℏ 0
+U0 being evolution in a fiducial branch. The Loschmidt echo
+                                                 L(t) = |F (t)|2
+measures sensitivity to branch-dependent perturbations δH. LQR identifies future branch divergence
+via early decay of L(t). The radar gain is
+                                           ∂           2
+                               G(t) = −       ln L(t) = Im ψ0 |δH(t)|ψ(t) ,
+                                           ∂t          ℏ
+which is theoretically bounded by the out-of-time-ordered commutator
+                                           C(t) = − [δH(0), O(t)]2 .
+Rapid growth of C(t) (quantum Lyapunov exponent) signals branch separation; thus LQR is mathe-
+matically an OTOC spectroscope.
+4. Prescient Telescope: Time-Symmetric Inference
+4.1 Two-State Vector Formalism (TSVF)
+Prepare ρi at t0 , post-select ρf at t1 . For any operator A measured at t ∈ (t0 , t1 ),
+                                              Tr(ρf U (t1 , t) A U (t, t0 ) ρi )
+                                    ⟨A⟩w =                                       .
+                                                  Tr(ρf U (t1 , t0 ) ρi )
+Weak values ⟨A⟩w can lie outside eigenvalue spectra—enlarging predictive horizon by conveying branch-
+relative phase information.
+                                                         2
+4.2 Optimal Query Sequence
+Let {Ekt } be a POVM at time t. Define mutual information with the post-selection outcome f :
+                                            X               p(k, f )
+                                 I(t; f ) =   p(k, f ) log             .
+                                            k
+                                                           p(k) p(f  )
+The prescient telescope is the control functional
+                                             Z t1
+                                        max
+                                          t
+                                                  I(t; f ) dt,
+                                            {Ek }   t0
+                                    R
+subject to energy/entropy budget        Tr(Ekt H)
+                                                ≤ Emax . In complexity terms, the telescope solves a
+PostBQP-type task: conditioning on ρf is equivalent to post-selection as in Aaronson’s PostBQP
+class (⇒ PP-complete). Classical simulation is believed intractable, which is why prescient computation
+appears “hyper-computational.”
+5. Computational-Complexity Perspective
+  1. Branch reweighting ≈ non-unitary update; mathematically a non-linear oracle that, under post-
+     selection, elevates BQP to PP.
+  2. Synecdochal steering supplies such an oracle within quantum theory’s linear dynamics by ex-
+     ploiting pre/post boundary conditions—circumventing the Church-Turing barrier only in a time-
+     symmetric sense (no signalling paradoxes).
+  3. Information-theoretic bound: the Holevo quantity for cross-branch transfer is
+                                                      X
+                                    χbranch ≤ S ρdiag −     pi S(ρi ),
+                                                             i
+     where ρdiag deletes off-diagonal terms between branches. Synecdochal manipulation resurrects
+     part of this classical capacity.
+6. Synthesis
+   • Extended circuits endow computations with world-volume topology.
+   • Synecdochal codes convert local phase control into global branch bias.
+   • Loop quantum radar diagnoses branch divergence via temporal OTOCs.
+   • Prescient telescopes exploit TSVF + post-selection to harvest information from many-world
+     correlations.
+   • The whole edifice remains inside quantum theory yet offers an effective PP-level oracle when
+     viewed from a single branch.
+   Central insight: Information that seems retrocausal is simply encoded in the phase geometry
+of histories that share matter at small scales; manipulating those phases is exactly how topological
+quantum computation protects—and here, routes—information across what we naı̈vely call “timelines.”
+Next Depth Layers
+   • Category-theoretic reformulation (process matrices & causal categories)
+   • Path-integral saddle-point analysis of phase-coupled branches
+   • Formal mapping to holographic tensor-network codes (AdS/Mind)
+                                                         3

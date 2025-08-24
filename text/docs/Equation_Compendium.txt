@@ -1,0 +1,126 @@
+Title: Equation Compendium
+Date:  2025-07-16
+Source: Equation_Compendium.pdf
+Equation Compendium
+Equation Compendium
+Sector 1 Linear wave equation
+                                               utt = c2 uxx .                                        (1)
+This is the prototype hyperbolic PDE. All Fourier modes satisfy ω = ±ck, so every wavelength propa-
+gates with the same phase and group velocity c. Such perfect degeneracy means a finite packet translates
+rigidly without dispersing and, because the equation is linear, independent packets superpose without
+interacting. It serves as the “neutral” reference point for comparing shocks, dispersive spreading, and
+non-linear self-organisation in later sectors.
+Sector 2 Plane-wave and group-velocity relations
+                                          u(x, t) = ei(kx−ωt) ,                                      (2)
+                                               ω = ±ck,                                              (3)
+                                                    dω
+                                              vg =       = c.                                        (4)
+                                                    dk
+A single complex exponential solves the linear wave equation. The dispersion relation is linear, so the
+group velocity vg (speed of energy packets) equals the phase velocity c. Deviations from this simple
+relation are diagnostics for dispersion and are crucial for explaining why true solitons need non-linear
+cancellation.
+Sector 3 Heat (parabolic) equation
+                                               ut = κ uxx .                                          (5)
+Parabolic diffusion spreads and damps any disturbance; the analytic front speed is infinite, contrasting
+sharply with hyperbolic waves. Although not directly part of AS mechanics, this equation illustrates
+the dissipative corner of the “hyperbolic/dispersive/dissipative” triad used to classify all regimes.
+Sector 4 Inviscid Burgers (non-linear hyperbolic)
+                                                                     1
+                              ut + u ux = 0,       tshock =                  .                      (6)
+                                                                max −u0x (x)
+                                                                 x
+The quadratic convection term makes the local wave speed equal the field value, so large crests overtake
+slower troughs and a gradient catastrophe forms at tshock . Burgers therefore supplies the canonical
+“shock-forming” example that anticipatory kernels must tame if they are to avoid discontinuities.
+Sector 5 Airy (linear dispersive) equation
+                                ut + uxxx = 0,               ω = −k 3 ,             vg = −3k 2 .                        (7)
+Adding a third-derivative term breaks the ω ∝ k degeneracy: long waves and short waves travel
+at different speeds, so any packet broadens inexorably. This is the simplest illustration of dispersion
+without non-linearity—a behaviour anticipatory solitons must cancel by predictive feedback rather than
+by intrinsic non-linearity alone.
+Sector 6 Korteweg–de Vries (KdV) equation and 1-soliton
+                                                         c      h√         i
+                         ut + 6 u ux + uxxx = 0,           sech2 c (x − ct) .
+                                                              u(x, t) =                        (8)
+                                                         2
+KdV’s cubic derivative supplies dispersion, the 6uux term supplies steepening, and the exact sech2
+profile shows the balance point: a classical soliton. KdV therefore acts as the archetype for any
+mechanism—advanced kernel or otherwise—that aims to stabilise a finite wave against both spreading
+and blow-up.
+Sector 7 Non-linear Schrödinger (NLS) equation
+                                               i ut + uxx + |u|2 u = 0.                                                 (9)
+For quasi-monochromatic carrier waves (optical fibres, Bose–Einstein condensates) NLS provides en-
+velope solitons. Its cubic Kerr term is the analogue of Burgers’ quadratic non-linearity, while uxx
+gives dispersion. The mathematical intuition that two opposing effects can lock points the way toward
+including an anticipatory kernel as a third balancing influence.
+Sector 8 Airy dispersion length and non-linear length
+                                                    τ02                             1
+                                            LD =         ,         LN L =              .                               (10)
+                                                   |β2 |                          γ P0
+Here τ0 is initial pulse width, β2 the group-velocity-dispersion coefficient, γ the non-linear coefficient,
+and P0 peak power. Classical soliton formation requires LD = LN L . In anticipatory solitons a third
+length LA (anticipation length) must also match, establishing a triple-equality resonance condition.
+Sector 9 Recursive (integrodifferential) wave equation
+                               Z    ∞                                Z        ∞
+           ∂t2 ϕ     2   2
+                   =c ∇ ϕ+λ             K(τ ) ϕ(x, t − τ ) dτ − µ                 K(τ ) ϕ(x, t + τ ) dτ,   λ, µ > 0.   (R)
+                                0                                         0
+This is the central dynamical law for RW/AS. The first term is the hyperbolic skeleton; the second
+is retarded feedback, and the third is the advanced feed-forward prediction. Existence of a finite-
+energy, shape-preserving solution demands precise relations among c, λ, µ, and the kernel K. The
+advanced integral supplies the self-referential forecasting capacity that elevates an ordinary soliton to
+an anticipatory one.
+Sector 10 Lock-in resonance condition
+                                                         µ
+                                                 LN L = LD =
+                                                           LA .                                       (11)
+                                                         λ
+Here LA is the decay length of K. The equation defines a codimension-one manifold in parameter space
+on which anticipatory solitons are stable. Moving off this manifold yields either “breathing” oscillations
+(over-prediction) or shock/dispersion (under-prediction).
+                                                               2
+Sector 11Wilson-loop phase and A-wave integral
+                                     I
+                                Q=           Aµ dxµ ,        phase factor = e iQ .                       (12)
+The A-wave is the gauge-invariant flux through a closed curve, and inserting the phase eiQ into the
+advanced kernel selects a discrete spectral subset of loop-consistent solutions. This provides a physical
+“tuning knob” that does not inject on-shell energy yet steers which anticipatory solitons are allowed.
+Sector 12 Plane-wave Wilson-loop coupling (synthetic gauge)
+                                 ϕ 7−→ eiQ ϕ,                Aµ 7−→ Aµ + ∂µ Λ.                           (13)
+Gauge redundancy permits different potential/phase pairs to encode the same electromagnetic field,
+just as different paraphrases carry the same meaning. The advanced kernel is indifferent to Λ but fixes
+Q, so linguistic or physical gauge choices become internal degrees of freedom for error buffering.
+Sector 13 Shock-formation time (Burgers) revisited
+                                                             1
+                                             tshock =               .                                   (14)
+                                                        max −u0x (x)
+                                                         x
+If predictive feedback (advanced kernel) is too weak, the recursive wave reverts locally to Burgers-
+type evolution and reaches this finite-time singularity, demonstrating the boundary between stable and
+unstable regimes.
+Sector 14Dispersion relation for linearised recursive wave
+                                   ω 2 = c2 k 2 + λ K(iω)
+                                                    b     − µ K(−iω),
+                                                              b                                          (15)
+where K(s)
+       b    is the Laplace transform of K. Linear stability requires real roots ω(k); complex roots
+indicate exponential growth or decay. By suitably choosing K one can engineer normal dispersion,
+anomalous dispersion, or flat bands, each leading to qualitatively different anticipatory behaviours.
+Sector 15 ADM-form warp metric (Lentz curvature soliton)
+                             ds2 = − α2 dt2 + δij dxi − β i dt dxj − β j dt .
+                                                                          
+                                                                                                         (16)
+Here α is the lapse and β i the shift vector. Lentz chooses β x = β(x−ct) to build a curvature packet that
+migrates at effective superluminal speed while keeping α > 0 so no horizon forms. In the RW analogy
+the shift vector plays the role of the field ϕ, and Einstein constraints mirror the advanced–retarded loop
+condition.
+Sector 16 Wilson-loop recursion charge (topological invariant)
+                                     I
+                                Q=           Aµ dxµ ,            ∆θ = Q (mod 2π).                        (17)
+                                         C
+This restates that the loop integral fixes the accumulated phase ∆θ. Because Q is integer-quantised for
+compact gauge groups, anticipatory solitons come in discrete families labelled by Q. Each family occu-
+pies a different topological sector in functional space, ensuring robustness under small perturbations.
+                                                                 ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                             3

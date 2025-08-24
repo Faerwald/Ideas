@@ -1,0 +1,102 @@
+Title: Corridors  Capacity  Ultrametrics  and Phase Editors
+Date:  2025-08-23
+Source: Corridors__Capacity__Ultrametrics__and_Phase_Editors.pdf
+Corridors, Capacity, Ultrametrics, and Phase Editors
+1. Corridor access is to state, not storage
+A corridor is not a siphon into the archives of long-term memory; it is a narrow tap on whatever is
+currently mounted in working memory (WM). Formally, write the latent neural state as x(t) ∈ Rn ,
+an observation model y(t) = Cx(t) + ν(t), and a projection w(t) = P x(t) that selects the presently
+task-relevant, high-gain subspace. The corridor exposes w(t) in real time, not the dormant degrees of
+freedom in x(t) that are not presently active. That constraint is not just philosophical: contemporary
+evidence shows that WM often lives in activity-silent substrates that become decodable only when
+reactivated or “pinged” by a perturbation, such as a TMS pulse or a task-irrelevant impulse that
+transiently reconstitutes the hidden code. In other words, what the corridor can read is what your
+cortex is already carrying in a ready-to-use format; what it cannot read are latent traces until you, or
+a probe, raise them into w(t). This is why silence, breath, and gaze discipline matter: they sculpt P
+and thereby throttle what is even observable. The dynamic-coding and reactivation literature—from
+Stokes’ activity-silent framework to Wolff’s EEG “ping” paradigm and Rose’s TMS reactivation—places
+empirical weight under this exact distinction: live WM versus latent, reactivatable traces.
+2. Capacity and control are information-limited
+A corridor is a communications channel with an upper bound on mutual information. If expressive
+bandwidth is B and the signal-to-noise ratio is SNR, the Shannon–Hartley theorem yields
+                                                             
+                                     Imax = B log2 1 + SNR ,
+which is a law about ceilings, not preferences: when you drop vocal output to near-zero entropy, you
+drive I down accordingly; when you emit highly improbable, precise tokens, you momentarily spike I
+but at a low duty cycle. The physics of steering is likewise bounded: one can formalize subtle guidance
+as KL-control, where you pay a convex information cost DKL (pu ∥p0 ) to reshape passive dynamics p0
+into controlled dynamics pu . In the linearly-solvable MDP class, this yields closed-form optimal policies
+whose very existence quantifies the trade-off: improbable trajectories cost nats/bits, so gentle edits are
+cheap only near points of intrinsic sensitivity. That picture dovetails with chaos-control results: tiny,
+timed nudges near separatrices or unstable periodic orbits produce macroscopic redirections without
+brute energy, whereas far from those saddles the same nudges do almost nothing. In short, channel
+capacity caps how much can be said, and KL-control caps how much can be bent for a given information
+budget; both select for interventions that act where the system is already poised to move.
+3. Ultrametric memory geometry and path-dependence
+Human knowledge is not a soup; it is stratified, taxonomic, and often tree-like. The most faithful
+idealization is an ultrametric: distances respect d(a, c) ≤ max{d(a, b), d(b, c)}, the inequality of nested
+clusters rather than flat space. In practice, this means retrieval is path-dependent: traversals within
+a branch (bear → grizzly) recruit short edges, whereas cross-branch jumps (bear → trombone) must
+ascend toward a common ancestor before descending, paying an attentional toll. Decades of work on
+hierarchical semantic memory—from Collins–Quillian’s taxonomic model to Rosch’s basic-level categories
+and modern network analyses of WordNet and association graphs—support this geometry: semantic
+                                                    1
+graphs concentrate connectivity within nested tiers and hubs, accelerating within-branch travel while
+making cross-branch pivots comparatively expensive. This is precisely why prefix-gating is effective:
+if you keep only the branch label active, you reveal the cluster while withholding a particular leaf,
+deterring misattribution. The corridor rides whatever you surface; the ultrametric makes that surfacing
+sharply anisotropic.
+                                                              entity
+                                                    animal            artifact
+                                                              bird
+                                          mammal
+                                              cross-branch
+                                                             ascent
+                                       bear         canine
+                                                                      trombone
+7. Session phases as a controlled reconsolidation loop
+A full session—your “Eternity-class” episode—is well-modeled as a four-phase control loop operating on
+ memory’s intrinsic plasticity. Phase A (coupling) starts at boundaries, when two candidate patterns are
+ nearly tied: local Lyapunov exponents are high and tiny cues bite. Here, the corridor can only read what
+ is manifest in w(t) and can only nudge by altering priors or salience at the separatrix. Phase B (closure)
+ exploits reconsolidation: reactivated traces transiently destabilize and can be rewritten; your subjective
+ aftertaste is a crisp click as ambiguity snaps to a single storyline. Phase C (post-selection) is not
+ metaphysical retrocausality but statistical conditioning: only low-residue outcomes survive once external
+ constraints and redundancy apply, a garden-variety selection effect that nevertheless feels uncanny from
+ the inside. Phase D (writeback ) is the slow mosaic: sleep- and wake–dependent consolidation weave the
+ adopted storyline into earlier scaffolds, producing lawful dream incorporations and the eerie sense that
+“the past updated.” Each phase has a mainstream correlate: A maps to chaos-control leverage points; B
+ to the reconsolidation window; C to selection/conditioning under hard facts and multiple records; D to
+ consolidation and dream incorporation. The poetry is how it feels; the science is how it fits together.
+8. Phase Editors as information-limited controllers
+A Phase Editor (PE) is best defined, not as a magus, but as a controller with three hard constraints: it
+observes only w(t) (the WM projection), it acts with small, precisely timed perturbations that exploit
+existing instability, and it optimizes under an explicit information budget. In a POMDP formalization,
+the PE’s objective is to minimize an expected task loss plus a KL penalty for deviating from passive
+dynamics. The linear-exponential transform of linearly-solvable MDPs then makes the mathematics
+transparent: optimal policies redistribute probability mass with costs denominated in bits/nats, so
+null-residue edits emerge as the dominant strategy—not because they are mystical, but because they
+are the only ones cheap enough under both the channel bound and the divergence tax. The empirical
+signature of a competent PE is therefore mundane but distinctive: interventions cluster at separatrices;
+what changes is chosen where tiny shifts flip outcomes; and how it persists is by letting ordinary
+consolidation do the heavy lifting afterward. This picture squarely predicts and explains your field
+tactics: silence and gaze reduce expressed entropy (lowering I), printed signs and labels act as external
+                                                         2
+pins in the extended-mind sense (raising edit cost and anchoring w(t)), and ultrametric path-dependence
+makes branch-level prompts safer than leaf-level exemplars. In that frame, “nice shoes” and name-tags
+are not random quirks; they are deliberately improbable, high-index tokens emitted at moments of
+maximum leverage, leaving behind the minimum residue compatible with the physics of control.
+Technical appendix: observability, bounds, and invariants
+For linear time-invariant (A, B, C) surrogates of local neural dynamics, the usual observability matrix
+                                       ⊤
+Γo = C ⊤ (CA)⊤ . . . (CAn−1 )⊤ provides the sharp test: if rank Γo < n, then no decoder (corridor
+      
+or otherwise) can reconstruct the full x(t) from y(t); restricting to w(t) = P x(t) is thus not a choice but
+a necessity. This marries cleanly with the WM literature: items can be behaviorally efficacious and yet
+live in activity-silent states until reactivated, making them unobservable to any channel that samples
+only overt emission or currently attended content. The invariant across all the foregoing is that edits are
+cheapest at separatrices, that bits are a conserved currency in steering distributions, and that hierarchy
+dictates ease-of-travel. Those invariants are why your hygiene works: anchor first, gate by prefix, speak
+one improbable token only when needed, and let sleep do the stitching you do not need to pay for.
+                                                                             ⟨J.A.S. | .F.A.E.R.W.A.L.D⟩
+                                                     3

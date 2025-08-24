@@ -1,0 +1,79 @@
+Title: Foundations of Time Logical Causal Algebra
+Date:  2025-06-22
+Source: Foundations_of_Time_Logical_Causal_Algebra.pdf
+Foundations of Time-Logical Causal Algebra
+                        ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+1. Tensor–Cobordism Preliminaries
+Let C be a symmetric monoidal category (SMC) with tensor product ⊗ and unit object I. Diagrams are
+interpreted in the Penrose–Joyal–Street convention:
+   • Objects A, B, . . . are labelled wires.
+   • Morphisms f : A → B are nodes with one input and one output.
+   • Pair-of-pants surface: a 2-morphism µ : A ⊗ B −→ A∪B in the cobordism category, graphically
+                                               ⇐⇒      µA,B : A ⊗ B 7→ (A, B).
+Strictness.    In a strict SMC we freely identify
+                             (A ⊗ B) ⊗ C = A ⊗ (B ⊗ C),           A ⊗ I = I ⊗ A = A,
+so the graphical calculus is literally topological.
+2. Lorentzian Causal Order and Causal Sets
+A time-orientation on a Lorentzian manifold (M, g) defines the causal future J + (p) of any event p. The binary
+relation
+                                         p ≼ q :⇐⇒ q ∈ J + (p)
+is a partial order. [Causal set] A causet is a locally-finite poset (C, ≺) with
+                                (local finiteness)    |{r | x ≺ r ≺ y}| < ∞ ∀ x ≺ y.
+Chains in (C, ≺) realise a discrete proper time; antichains model equal-time hypersurfaces.
+3. Temporal and Resource-Sensitive Logics
+3.1 Linear Temporal Logic (LTL)
+Syntax: propositional variables φ, Boolean connectives, and modal operators
+                                  ⃝φ (next),     ♢φ (eventually),    □φ (always).
+Semantics: sequences (σi )i∈N with satisfaction relation |= satisfying the standard temporal clauses.
+3.2 Linear Logic
+Girard’s linear logic treats propositions as resources. The sequent
+                                                        Γ ⊢ ∆
+encodes a process that consumes Γ while producing ∆, mirroring irreversibility (dS ≥ 0) and Landauer cost
+kB T ln 2 per logically irreversible bit erase.
+4. Symmetric Monoidal 2-Categories and TQFT
+Let Cobd be the category whose objects are closed (d − 1)-manifolds and whose morphisms are d-dimensional
+cobordisms up to diffeomorphism. A (d + 1)-dimensional TQFT is a symmetric monoidal functor
+                                               Z : Cobd+1 −→ Vectk .
+Composition of cobordisms realises time evolution, while the monoidal structure (disjoint union) realises
+parallel composition.
+                                                           1
+5. Topos-Internal Time
+For any topos E there exists an internal Heyting algebra ΩE of truth values. If E is a sheaf topos Sh(X) over
+a base space X, truth can vary over X, so temporal variation of logic is encoded by geometric morphisms
+Sh(X) → Sh(Y ).
+6. Thermodynamic and Information-Theoretic Arrow
+Let Φt be a one-parameter semigroup of CPTP1 maps acting on density operators. Define the entropy pro-
+duction rate                                                
+                                    Ṡ(t) = −Tr ρ̇(t) ln ρ(t) ≥ 0,
+reflecting coarse-grained irreversibility. Logical operations whose Kraus rank > 1 correspond to entropy-increasing
+steps; reversible (unitary) steps satisfy Ṡ = 0.
+7. Time-Logic Frame
+[Time-Logic Frame] A triple (L, T , ⊩) where
+  1. L is a deductive system with entailment ⊢.
+  2. T = (T, ≤) is a poset of temporal indices.
+  3. ⊩⊆ T × L is a satisfaction relation such that t, φ ∈⊩ ∧ t ≤ t′ =⇒ t′ , φ ∈⊩ (persistence).
+                                                                            
+The fixed-point equation
+                                              t ⊩ φ ⇐⇒ ∀ t′ ≥ t : t′ ⊩ Next φ
+implements bidirectional (possibly retrocausal) consistency.
+8. Higher-Dimensional Causal Algebra
+[Time-Logical 2-Category] A TL-2-category H consists of
+      • Objects: informational states A, B, . . . .
+      • 1-Morphisms: computations f : A → B.
+      • 2-Morphisms: cobordisms of computations α : f ⇒ g; diagrammatically higher-genus surfaces.
+The boundary functor ∂ : Hom2 (H) → T assigns each 2-morphism a causal support interval, enforcing logical
+locality :
+                         α : f ⇒ g, ∂α = [t0 , t1 ] =⇒ supp α ⊆ J + (t0 ) ∩ J − (t1 ).
+Computation as Surface Composition. Sequential composition is vertical gluing; parallel composition is
+horizontal tensoring. The pair-of-pants 2-morphism realises a multiplication µA,B : A ⊗ B → A∪B. Its dual
+“cap” realises comultiplication. Together with unit/counit they satisfy Frobenius identities, encoding logical
+AND/OR operations under topological constraints.
+9. Retrocausal Fragment-Completion
+Given a partially observed 2-cobordism α with missing handle data, the fragment-completion problem asks
+for all α̃ such that ∂ α̃ = ∂α and α̃ satisfies the TL-field equations (e.g. Euler–Lagrange for an informa-
+tional action functional S[α]). Existence of non-trivial completions realises “accelerated solution discovery”:
+future-consistent fragments bias present inference toward the fixed point of δS = 0.
+                                                                  ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+  1
+      Completely positive, trace-preserving
+                                                             2

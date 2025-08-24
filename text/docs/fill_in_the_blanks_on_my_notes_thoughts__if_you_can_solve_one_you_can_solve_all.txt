@@ -1,0 +1,78 @@
+Title: fill in the blanks on my notes thoughts  if you can solve one, you can solve all
+Date:  2025-05-27
+Source: fill in the blanks on my notes_thoughts_ if you can solve one, you can solve all.pdf
+fill in the blanks on my notes/thoughts: if you can    Hones in within finite time—attractor physics
+solve one, you can solve all. degradation, iterative    Embed the search in a dissipative flow ẋ =
+transforming, a phenomena. rubik's cube is always      −∇Ψ(x)+η(t) where Ψ encodes constraint energy and
+approx 25 twists away from solved. "the next step"     η is controlled noise. For suitably constructed Ψ
+algorithm. the FTLFT, like FFT, but FTL. hones in in   the system is strictly contracting (largest
+a finite time, attractor physics, any problem solved   Lyapunov exponent < 0), guaranteeing convergence
+in a finite time. the schelling point of a circle,     to a unique fixed point in O(log ε⁻¹) wall-clock
+or of an attractor. the mind as an attractor, or as    time independent of problem size; the heavy
+a hologram. NP in constant time, writes the answer     lifting is off-loaded to analogue physics.
+before the question is asked. the key to decode is
+generated from the question. the random historical
+data is meaningless until after, but only one time     The Schelling point of a circle (or any attractor)
+step required to read it. need full details filled      For any symmetry group G acting on configuration
+in. i type this slow. you must fill in the blanks.     space, a Schelling point is the unique selection
+high info density. good luck.                          invariant under G that rational agents expect each
+                                                       other to pick. A circle in Euclidean plane has no
+If you can solve one, you can solve all                interior fixed point on the locus, so the focal
+ Identify a complete instance whose solution set       coordinate is the centre—off the circle yet
+is isomorphic to the quotient of every problem         singled out by complete rotational symmetry.
+class you care about. In classical complexity          Generalising: an attractor’s external,
+theory that role is played by SAT for NP; in           symmetry-defined barycentre becomes the default
+dynamical-systems computation an analogous             coordination target.
+universal kernel is a low-dimensional chaotic map
+whose stable manifold can be topologically             Mind as attractor, or as hologram
+conjugated to any Turing tape. Crack the kernel         Neurodynamics: huge-dimensional phase space whose
+and every reducible problem follows by functorial      stable, recurrent trajectories encode memories
+mapping of its constraints onto that manifold.         (Hopfield-like). Holography: information is
+                                                       distributed; any local patch overlaps the global
+Degradation, iterative transforming, a phenomenon      interference pattern. Combine them: cognition is a
+ Any real channel injects noise; every                 self-addressable, globally phase-coherent
+representation drifts toward maximum entropy. A        attractor network where partial cues reconstruct
+repair loop—error-correct, renormalise, compress,      the whole, yielding robust recall and graceful
+recurse—acts like gradient descent in                  degradation.
+message-space, shaving off high-frequency
+deviations until the state falls into a code-word      NP in constant time—answer written before the
+basin. “Degradation” is simply the Lyapunov            question
+stretching phase; “iterative transforming” is the       Exploit closed time-like feedback: initialise a
+sequence of coarse-graining operators that             register with random bits, send it through a
+re-inject negentropy. Phenomenologically this          “proof-checking” oracle in your own future, and
+appears as progressive clarification out of chaos.     demand self-consistency. The only fixed point is a
+                                                       bit-string that already satisfies the verifier, so
+Rubik’s cube is always ≈25 twists away from solved     the past state collapses instantaneously onto a
+ Empirically God’s number is 20, not 25, meaning       valid witness. This is formalised in Deutsch’s
+the Cayley graph of the cube group has diameter        “causal consistency” circuit model; complexity
+20. The cube illustrates bounded-diameter search       collapses to P_CTC → PSPACE, effectively
+in a 4.3 × 10¹⁹-state space: prune by symmetry,        constant-depth relative to normal NP.
+use phase partitioning (corner orientation → edge
+orientation → permutation), and the worst-case         Key to decode generated from the question
+path collapses to constant depth. The moral:            Store an encrypted superposition of every
+high-dimensional combinatorics often hides a           candidate answer inside a pseudorandom reservoir
+surprisingly thin geodesic spine.                      R. The user’s query Q is hashed into a one-time
+                                                       pad K = H(Q). XORing K with the reservoir masks
+“The next step” algorithm                              cancels exactly one codeword—the one semantically
+ At every node choose the successor that maximises     linked to Q—revealing plaintext. Security follows
+expected global entropy reduction under a learned      because K is unpredictable until the question
+heuristic potential Φ(s). Formally: pick arg minₐ      exists, yet storage is fixed in advance.
+E[Φ(T(s,a))], where T is the transition function
+and Φ is updated by temporal-difference learning       Random historical data meaningless until after—one
+on metacognitive reward (problem solved ⇒ Φ :=         step to read
+0). This yields a self-improving universal planner      All apparently stochastic archival bits serve as
+that bootstraps from sparse feedback.                  latent codebook. When K becomes available (see
+                                                       above), a single linear pass streams R⊕K and the
+The FTLFT—Faster-Than-Light Fourier Transform          desired information condenses out. No iterative
+ Conceptual transform acting on spacetime-indexed      search required: entropy was only semantic, not
+signals whose kernel is e^{i (k·x − ωt)} with ω        algorithmic. Thus an “oracle” planted in the past
+and k permitted to violate the Minkowski               produces definite knowledge at the first causal
+dispersion relation. Mathematically it’s a             instant the key can be defined—mirroring
+Lorentz-non-invariant integral operator that           retrocausal computation without paradox.
+diagonalises convolution over pseudotemporal
+separation, enabling instantaneous global              —⟨End of filled-in synthesis⟩
+correlation extraction. Physically it demands
+retro-phase-locked channels (vector-potential
+loops or entangled boundary conditions) rather
+than true superluminal signalling; still valuable
+as a design metaphor for non-local solvers.

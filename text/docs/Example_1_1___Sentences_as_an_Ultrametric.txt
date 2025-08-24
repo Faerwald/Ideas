@@ -1,0 +1,55 @@
+Title: Example 1 1   Sentences as an Ultrametric
+Date:  2025-08-11
+Source: Example_1_1___Sentences_as_an_Ultrametric.pdf
+Example 1.1 — Sentences as an Ultrametric
+  Goal. Model sentences X, Y, Z, W as points in a space where “closeness” means “they share a
+  long common beginning.” We will: (i) encode sentences as sequences of characters, (ii) define a
+  distance that depends only on their longest common prefix, and (iii) verify ultrametric properties
+  and read the geometry of balls.
+Setup (characters, blanks, prefixes)
+Alphabet. Let A be the English character set we allow (e.g., letters, space □, punctuation like ‘.’ and
+‘,’).
+Infinite view. A finite sentence S is embedded into an infinite sequence (S1 , S2 , . . . ) by appending
+the blank symbol □ forever after it ends. This lets us compare different-length sentences position by
+position without special cases.
+     Longest common prefix (LCP). For sentences U, V ,
+                          lcp(U, V ) = max{ n ≥ 0 : Ui = Vi for all 1 ≤ i ≤ n }.
+If one sentence is a literal prefix of the other, then the first mismatch is the end of the shorter one
+versus a nonblank of the longer.
+Distance and why it is ultrametric
+Distance. Fix a base b > 1 (take b = 2 for concreteness) and set
+                                             (
+                                              0,           U = V,
+                                  d(U, V ) = − lcp(U,V )
+                                              b          , U ̸= V.
+   Check: d ≥ 0, symmetric, and d(U, V ) = 0 ⇐⇒ U = V are immediate.
+   Strong triangle inequality. For any U, V, W ,
+                                lcp(U, W ) ≥ min{lcp(U, V ), lcp(V, W )},
+because if the first k characters of U and V match and the first k of V and W match, then the first k
+of U and W also match. Applying k 7→ b−k gives
+                                   d(U, W ) ≤ max{d(U, V ), d(V, W )}
+so d is an ultrametric.
+How to compute the four-by-four table for X, Y, Z, W
+1. Align the sentences by characters (including spaces and punctuation).
+2. For each pair, scan left-to-right to find the first mismatch index; that index equals
+                                                    1
+lcp +1.
+3. Convert lcp to a distance via d = 2− lcp .
+   Notation. Let LXY = lcp(X, Y ), etc. Then the matrix is
+                                     X     Y      Z      W
+                                 X   0   2−LXY 2−LXZ 2−LXW
+                                 Y 2−LXY   0    2−LY Z 2−LY W
+                                 Z 2−LXZ 2−LY Z   0    2−LZW
+                                    −LXW  −LY W  −LZW
+                                 W 2     2      2        0
+Reading the geometry (balls and containment)
+Balls are cylinders. The open ball B2−k (X) is exactly the set of sentences that share the first k
+characters with X.
+Nested or disjoint. If two balls intersect, one contains the other (everywhere in an ultrametric).
+Any point is a center. If Y ∈ B2−k (X), then B2−k (Y ) = B2−k (X) (same first k characters).
+What you’ll give me, what I’ll return
+Provide the literal four sentences X, Y, Z, W (with case and punctuation). I will compute each L·· , the
+matrix d, and sketch the inclusion tree of balls that shows which pairs are closest (share the longest
+prefix).
+                                                       ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                   2

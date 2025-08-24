@@ -1,0 +1,119 @@
+Title: Derivation of Neural Phase Communication Framework
+Date:  2025-07-30
+Source: Derivation_of_Neural_Phase_Communication_Framework.pdf
+Derivation of Neural-Phase Communication Framework
+               ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+12.1       Maxwell Formalism Revisited
+12.1.1     Four–Potential and Lorenz Gauge
+Introduce the four-potential Aµ = (Φ/c, A) (metric signature +, −, −, −). In natural units c = ε0 =
+µ0 = 1:
+                               F µν = ∂ µ Aν − ∂ ν Aµ , ∂µ F µν = J ν .
+Choosing the Lorenz gauge ∂µ Aµ = 0 decouples the components:
+                                               ∂α ∂ α Aµ = J µ .
+12.1.2     Retarded/Advanced Decomposition
+With retarded (Gret ) and advanced (Gadv ) Green functions,
+                            Z                           Z
+                    A (x) = d x Gret (x − x ) J (x ) + d4 x′ Gadv (x − x′ ) Λµ (x′ ),
+                      µ         4 ′          ′  µ ′
+where Λµ is a homogeneous solution fixed by future boundary data (kept explicit in two-state quantum
+mechanics).
+12.2       Gauge Topology and Physical Holonomy
+12.2.1     Fiber-Bundle Statement
+The potential A is a U(1) connection; its holonomy over a closed loop Γ is
+                                                  I
+                                                q
+                                          φΓ =      Aµ dxµ .
+                                                ℏ Γ
+This quantity is gauge-invariant modulo 2π.
+12.2.2     Aharonov–Bohm Phase via Path Integrals
+For electron propagator Kab between xa and xb ,
+                                 Z         n i Z xb h                     i o
+                                                      1     2        µ
+                           Kab = D[x] exp               mẋ   − q ẋ   A µ dτ .
+                                             ℏ xa 2
+Interference between homotopy-inequivalent paths differs by eiφΓ , measurable even where F µν = 0.
+12.3       Phase-Only Information Channel
+12.3.1     Logical Alphabet and Encoding Energy
+Assign symbols {φ0 , φ1 , . . . } ⊂ [0, 2π). Adiabatically vary solenoid flux Φ(t) so that
+                                                       q
+                                                ∆φ =     ∆Φ.
+                                                       ℏ
+                  R
+Work done W =         I dΦ can be made arbitrarily small for superconducting loops (I = Φ/L) via slow
+ramps.
+                                                      1
+12.3.2     Channel Capacity in Thermal Vacuum
+Vacuum phase fluctuations give Gaussian variance
+                                                       4αkB Tvac −1
+                                               σφ2 =            T ,
+                                                         ℏωc
+where ωc is transducer bandwidth. Binary error probability
+                                            1     ∆φ 
+                                      Pe ≈ erfc √          .
+                                            2     2 2 σφ
+12.4      Optimal Detection: Phase Matched Filters
+12.4.1     Classical Matched Filter Review
+For s(t) = A cos(ω0 t + φ) in AWGN of PSD N0 /2,
+                                                  A2 T
+                                    SNRout =           ,       h(t) = s∗ (T − t).
+                                                  2N0
+12.4.2     Extension to Discrete Phase Hypotheses
+With hypotheses Hk : φ = φk ,
+                                    T
+                      Lj                                                  A2 T
+                                Z
+                           2A                          1
+                                                                    
+                   ln    =              y(t) sin ω0 t + 2 (φj + φk ) dt −      cos(φj − φk ).
+                      Lk   N0   0                                         N0
+Maximum-likelihood selects the template of largest correlation.
+12.5      Neural Oscillatory Dynamics
+12.5.1     Linearised Cable and Resonance
+Fourier-domain cable equation for a dendrite of length ℓ:
+                                                                         r
+                                        I(ω)Zm                                1 + iωτm
+                                V (ω) =            ,             k=                    ,
+                                        1 + λ2 k 2                               D
+with resonance when ωτm ≈ Q, where
+                                                         gNa − gK
+                                               Q=                    .
+                                                       gNa + gK + gL
+12.5.2     Phase Response Curves
+For phase θ and infinitesimal shift function Z(θ),
+                                             θ̇ = ω0 + ϵ Z(θ) Iext (t).
+Locking bandwidth:                                                 Z     2π
+                                                             1
+                              ∆ωlock = ϵ|Z1 |,         Z1 =                   Z(θ)e−iθ dθ.
+                                                            2π       0
+12.6      Transduction Mechanism: Spin-Induced EMF
+12.6.1     Magnetite Nanocrystal Physics
+Magnetic moment µ ≈ 4.8 × 10−19 A m2 . Torque from vector-potential gradient:
+                                                    τ = µ ∇A.
+                                                           2
+12.6.2     Induced Voltage
+With gating current Igating ≈ 5 pA per channel,
+                                             Z   t
+                                      ρion                                 ρion Ngate
+                           Vind (t) =                Igating (t′ ) dt′ ≈              5 pA t,
+                                      Cm     0                                Cm
+reaching ∼ 50 µV within ≲ 200 ms under resonance.
+12.7      System-Level Phase Equation
+Let θ(t) be the dominant beta-oscillator phase:
+                                                                 hI               i
+                                   θ̇ = ω0 + ϵ Z(θ) ∂t                A(r, t) · dl .
+                                                                  Γ
+After writing, the retarded term is static; the advanced homogeneous term drives phase. Stationary
+lock occurs at
+                                             θ∗ = θ0 + ∆φ.
+12.8      Addressability Metric
+Define connectome-phase signature
+                                     Σ = {ϕmn }m,n ,                  N ∼ 104 .
+Distance between brains A, B:
+                                                     s
+                                                         1 X (A)    (B) 2
+                                  d(A, B) =                   ϕmn − ϕmn .
+                                                         N mn
+Reception requires d < δlock ≈ ϵ|Z1 |; with typical d ∼ 0.2π, δlock ∼ 10−3 π, probability of accidental
+lock < 10−100 .
+                                                                 ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                             3

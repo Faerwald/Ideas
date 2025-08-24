@@ -1,0 +1,104 @@
+Title: Detailed Expansion of A Wave Dynamics and Information Theory
+Date:  2025-06-12
+Source: Detailed_Expansion_of_A_Wave_Dynamics_and_Information_Theory.pdf
+Detailed Expansion of A-Wave Dynamics and Information
+                            Theory
+                                  Jason Agamemnon Sokaris
+1     II    Dynamics—How an A-Wave Evolves
+1.1    Action Principle Revisited
+Lagrangian density. The vacuum electromagnetic Lagrangian density, whose space–time integral is
+the action, reads
+                                                    1
+                                       LEM (Aµ ) = − Fµν F µν .
+                                                    4
+Varying the vector potential Aµ with fixed boundary data yields the Euler–Lagrange equation
+                                             ∂ν F νµ = 0,
+which reproduces the homogeneous Maxwell equations, ∇·E = 0 and ∇ × B − ∂t E = 0.
+   Gauge-invariant perturbation. Introduce a localized perturbation δAµ compact in space and
+time whose closed-loop integral equals a non-zero constant Φ0 . This loop integral cannot be removed
+by a gauge transformation; the constant lives in a non-trivial element of the first deRham cohomology
+group H 1 (R4 \ Σ).
+1.2    Gauge Fixing and Mode Decomposition
+Gauge condition. Impose Lorenz gauge, ∂ µ Aµ = 0, whereby each component solves the d’Alembert
+equation
+                                 □Aµ ≡ (∂t2 − ∇2 )Aµ = 0.
+    Mode separation. Every solution splits into transverse modes AT    µ , obeying ∂ Aµ = 0 and ∇·A =
+                                                                                    µ T             T
+0, and longitudinal modes ALµ proportional to ∂µ β. An A-wave is engineered so that
+   • ALµ ̸= 0,
+   • the field-strength tensor Fµν vanishes everywhere inside the packet,
+   • yet the line integral of Aµ around some non-contractible loop is non-zero.
+Such non-triviality appears only when a “flux-core” line Σ is excised, exactly as in the Aharonov–Bohm
+solenoid model.
+1.3    Canonical Quantisation and Constraints
+Canonical variables. In Coulomb gauge the canonical pair is (AT , ET ). Longitudinal components
+obey instantaneous Gauss-law constraints; Dirac quantisation enforces ∇·E |Ψ⟩ = 0.
+   Large gauge transformations. Transformations continuously connected to the identity are
+“small.” A “large” transformation wraps non-trivially around Σ and embeds into Hilbert space via
+the holonomy operator                          h      I        i
+                                  W (C) = exp iqℏ
+                                  c                −1
+                                                        Aµ dxµ ,
+                                                        C
+which commutes with Gauss constraints, mapping physical states to physical states.
+                                                  1
+1.4    Energy–Momentum Accounting
+Stress–energy tensor. With Fµν = 0, the electromagnetic stress–energy tensor
+                                                       1
+                                      T µν = F µλ Fλν − η µν Fλρ F λρ
+                                                       4
+vanishes; the Poynting vector is likewise zero. Classically, no energy or momentum flows.
+   Quantum back-reaction. Despite zero classical energy, a charged wavefunction encircling the
+core acquires a phase exp(iqΦ0 /ℏ) via the path integral—information transfer at no energy cost.
+1.5    Propagation Speed and Causality
+The jump in Aµ travels outward at light-speed because the underlying wave equation is hyperbolic.
+Thus holonomy updates respect light-cone causality; only by adding advanced Green functions, as in
+the transactional interpretation, do retrocausal questions arise.
+2     III Information Theory—A-Waves as Communication Chan-
+      nels
+2.1    Channel Model
+An A-wave pulse adds a deterministic phase shift ϕ to any loop it threads. Additive noise η (thermal,
+shot, vibrational) perturbs the observed phase. The channel relation is
+                                    θout = θin + ϕ + η   (mod 2π).
+Shot noise gives variance 1/N where N is the detected charged-particle count.
+2.2    Modulation Protocols
+BPSK: Encode binary data in phase 0 or π; optimum detection is a likelihood-ratio test on the
+     measured phase.
+M -ary PSK: Use M uniformly spaced phases; symbol error probability follows standard Gaussian-noise
+     formulas.
+Differential PSK: Encode data in successive phase differences, trading 3 dB of power for immunity
+     to slow reference drift.
+2.3    Error-Correcting Super-Layer
+Low-density parity-check (LDPC) codes provide soft-input decoding near channel capacity. Upgrading
+to M -level “qudit” variables retains sparse parity structure while passing wrapped-Gaussian beliefs.
+With realistic phase noise of 0.05 radians, rate-one-half LDPC at eight-ary PSK achieves bit-error rates
+below 10−9 .
+2.4    Energy and Thermodynamic Issues
+A-wave signalling transports phase, not energy, sidestepping the Landauer bound at the transmitter.
+Time–energy uncertainty imposes brightness requirements on probe beams: shorter pulses need broader
+energy spreads.
+2.5    Stealth and Security
+Classical detectors see no field. Only phase-coherent quantum loops detect A-waves, giving low prob-
+ability of intercept. Shared loops enable BB84-style key exchange using gauge holonomies rather than
+photon polarisations.
+                                                   2
+2.6     Quantum Memory and Delay Lines
+A network of flux-core loops forms a holonomy register. Incremental overwrites with successively smaller
+phase steps realise the p-adic pulse concept. Data persist until flux leakage or active reconnection.
+2.7     Retrocausal Protocol Template
+Prepare an interferometer, inject or withhold an A-wave mid-flight, then measure interference. Com-
+paring conditional statistics tests transactional predictions without leaving orthodox electrodynamics.
+2.8     Milestone Roadmap
+  1.   Establish 10−4 rad phase stability on a 20 cm interferometer.
+  2.   Detect a single-pulse, single-flux-quantum A-wave at five sigma.
+  3.   Demonstrate an eight-ary PSK link at ten kilobits per second with LDPC coding.
+  4.   Log decade-long p-adic convergence with slope minus one on a log–log plot.
+  5.   Measure λ ≥ 106 s−1 phase growth in a stadium cavity seeded by an A-wave.
+Summary
+  • Dynamics: A-waves are causal, topologically protected gauge configurations of zero classical
+    energy yet non-zero quantum holonomy.
+  • Information theory: They form additive phase-noise channels that approach Shannon capacity
+    with modern coding, double as long-term quantum memories, and furnish experimental platforms
+    for chaos-amplified computation and retrocausality tests.
+                                                       ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                   3

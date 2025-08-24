@@ -1,0 +1,172 @@
+Title: Future Keyed Randomization for Causal Tests
+Date:  2025-08-20
+Source: Future_Keyed_Randomization_for_Causal_Tests.pdf
+Future-Keyed Randomization for Causal Tests
+                ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+Verbatim Baseline Proposal (Unchanged Words)
+Great—there is a clean, testable wedge between the two stories.
+   I’ll label them to be precise:
+   • H_F (future-loop / two-time boundary): your worldline has both an initial and a future
+     boundary condition (post-selection). Early outputs can depend on a variable chosen later on your
+     own worldline.
+   • H_S (sideways / cross-branch bias): your early outputs are biased by weak coupling to
+     neighboring branches where “you” read earlier, but they cannot depend on a branch-unique choice
+     you haven’t yet made in this branch.
+    The difference is interventional dependence on a future, branch-unique random variable. Only H_F
+allows that.
+Discriminator: Future-Keyed Randomization (FKR)
+Idea: At time t0 you produce sealed notes. At t1 > t0 you generate a fresh random seed S (unique to
+this branch) and use it to define how success is scored. If your t0 notes systematically contain information
+about S, that can only be explained by H_F.
+Protocol (concise)
+   1. Pre-register the scoring template. Fix a public algorithm that, given a seed S, derives:
+        • a codebook CS (e.g., a pseudorandom mapping from indices to specific Asimov passages/keywords),
+           and
+        • a scoring rule fS (note) returning a numeric score (e.g., “does the note better match the
+           S-selected passage out of N candidates?”; or mutual-information style features keyed by S).
+      The algorithm is fixed in advance but not evaluable without S.
+   2. Lock the t0 notes. Write your “premonition” notes at t0 . Immediately commit their hash (any public
+      timestamping/commit system works). This prevents post-hoc edits.
+   3. Draw the future seed S at t1 . Generate S with a high-entropy source (hardware RNG, QRNG, or
+      independent coin flips) after (and ideally far after) step 2.
+   4. Instantiate the test with S. Use S to build CS and fS . Now compute fS on your locked t0 notes.
+   5. Repeat for many trials (days). Predefine N candidates per trial (e.g., N = 8 passages); chance
+      accuracy is 1/N .
+Prediction table
+   • H_F (future-loop): Because your cognition has a future boundary at t1 , the distribution of t0
+     notes can (slightly) depend on S. Across trials you get above-chance accuracy / positive mutual
+     information I(notest0 ; S) > 0.
+   • H_S (sideways): Cross-branch bias can echo Asimov content in general, but it cannot align
+     specifically to our branch’s seed S drawn after t0 . Over many trials you get chance-level
+     performance and I(notest0 ; S) = 0 (up to noise). Any real effect must wash out when S is freshly
+     randomized each time.
+   Formally, with common causes fixed at t0 :
+                      HF : P (O0 | S, ) ̸= P (O0 |) vs HS : P (O0 | S, ) = P (O0 |).
+So under H_S, do-intervening on S at t1 cannot change the distribution of O0 .
+                                                     1
+Minimal, robust scoring choices
+   • One-of-N identification (pre-registered): For each trial, S selects one target passage among
+     N candidates; your t0 note “guesses” which by nearest-neighbor under a fixed embedding or by
+     normalized compression distance. Expectation under chance is 1/N .
+   • Future-keyed feature test: Use S to choose a sparse set of k keywords (or character n-grams)
+     and a signed mask; score is the masked dot-product with the t0 note’s bag-of-features. Under H_F
+     the mask-dependent signal can be > 0; under H_S it averages to 0.
+   • Information metric: Across trials estimate I(O0 ; S) = o,s P (o, s) log PP(o)P (o,s)
+                                                                 P
+                                                                                        (s)
+                                                                                            . Predefine a
+     permutation test for significance.
+Two auxiliary wedges (nice to have)
+   1. Erasure control: Add a post-selection erasure arm: after drawing S, sometimes immediately
+      erase/avoid reading the S-selected passage (verified by external logging).
+        • H_F: removing the future boundary should collapse the effect toward chance (the post-selection
+           isn’t instantiated).
+        • H_S: no change; the sideways bias doesn’t care what you do at t1 in this branch.
+   2. Cross-subject split: Run the same FKR with a collaborator whose S ′ is independent.
+        • H_F predicts your O0 correlates with your S, not with theirs.
+        • Any correlation to S ′ (but not S) suggests shared sideways coupling rather than your own
+           future boundary.
+Why this truly separates them
+Sideways bias can explain anticipations of content that exists timelessly (Asimov’s books) by borrowing
+amplitude from branches where you read earlier; but it cannot let your past depend on a branch-unique,
+freshly drawn random seed S that did not yet exist at t0 and varies across branches. Only a same-worldline,
+two-time boundary (H_F) can couple O0 to S.
+    If you see statistically reliable I(O0 ; S) > 0 under a well-sealed, preregistered FKR, H_S is ruled out.
+If results stay at chance across many trials, H_F lacks evidence (or capacity is below your measurement
+floor).
+    If you want, I can draft the exact preregistration template (codebook generator, scoring function, and
+an analysis script) so you can run this cleanly and compute p-values and mutual information without any
+wiggle room.
+Technical Development and Formalization
+Causal Graphs and Two Hypotheses
+Let O0 denote outputs (notes) written at t0 , S a seed drawn at t1 > t0 , and latent common causes fixed
+at or before t0 (e.g., predispositions, library exposure, branch-shared environment). Under H_S:
+                                  O0 ⊥⊥ S |,   so P (O0 | S, ) = P (O0 |).
+Under H_F (two-time boundary/post-selection), S participates as a boundary variable on the same
+worldline, permitting:
+                                   P (O0 | S, ) ̸= P (O0 |).
+In Pearlian terms, only under H_F can the interventional distribution P (O0 | do(S = s)) differ across s
+when the intervention occurs at t1 > t0 .
+                                                     2
+Two-Time Boundary (TTB) Perspective
+Interpret H_F as a dynamical law with both initial and final constraints. Operationally, S acts as (a
+component of) a final boundary condition; observable influence requires actually realizing the post-selection
+(e.g., reading/attending to the S-selected content). This motivates the erasure arm: if the S-dependent
+post-selection is not instantiated, effect sizes should revert to chance.
+Erasure-Variable Model
+Introduce R ∈ {0, 1} indicating whether the S-selected content is read/consumed after t1 . Predictions:
+                           HF : I(O0 ; S | R=1) > 0,      I(O0 ; S | R=0) ≈ 0.
+                           HS : I(O0 ; S | R) ≈ 0 for both R ∈ {0, 1}.
+This yields a within-subject interaction test: a significant S × R interaction supports H_F.
+Future-Keyed Scoring: Concrete Constructions
+One-of-N passage identification. Fix N candidate passages {p1 , . . . , pN }. From S, derive an index
+i⋆ (S) ∈ {1, . . . , N } via a pseudorandom function (PRF). Score a t0 note x by
+                                  fS (x) = 1{i⋆ (S) = arg max sim(x, pi )},
+                                                            i
+with sim pre-registered (e.g., frozen text embedding cosine similarity, character n-gram Jaccard, or
+normalized compression distance). Chance accuracy is 1/N .
+Masked feature test. Let ϕ(x) ∈ Rd be a fixed, pre-registered feature map (e.g., TF–IDF). From S,
+derive a sparse mask m(S) ∈ {−1, 0, +1}d with ∥m∥0 = k. Define
+                                           fS (x) = ⟨m(S), ϕ(x)⟩.
+Under H_F, E[fS (x)] > 0 (or < 0) across trials; under H_S, the expectation averages to zero.
+Statistical Testing and Inference
+Frequentist accuracy test (one-of-N ). Across n trials, let X ∼ Binomial(n, p) be the number of
+correct identifications, with chance p0 = 1/N . Test H0 : p = p0 vs H1 : p > p0 by exact binomial or
+normal approximation with continuity correction. Pre-register α (e.g., 0.01).
+Effect size and sample size. For target improvement p1 > p0 , the normal-approximate one-sided
+sample size is                       q                    q           2
+                                  z1−α p0 (1 − p0 ) + z1−β p1 (1 − p1 )
+                          n ≳                                             .
+                                               (p1 − p0 )2
+Example: N = 8 ⇒ p0 = 0.125, p1 = 0.20, α = 0.01, power 1 − β = 0.80 gives n ≈ 218 trials.
+Mutual information (MI). Estimate I(O0 ; S) by a pre-registered estimator (plug-in for discrete
+outcomes, or kNN/binned for continuous scores). Use a permutation test shuffling S across trials to
+obtain a null MI distribution and p-value.
+Interaction test with erasure. Fit a pre-registered GLM (e.g., logistic regression for correct/incorrect)
+with predictors {S-keyed feature, R, S × R}. Under H_F the interaction coefficient is > 0 (or < 0), under
+H_S it is 0 within noise.
+Bayesian view. Compute a Bayes factor comparing p = p0 vs p ∼ Beta(a, b) centered above p0 .
+Alternatively, for MI use a prior over effect sizes with Savage–Dickey ratio.
+                                                      3
+Blinding, Randomness, and Commitments
+   • Random seed S. Generate via independent coin flips or hardware RNG. Record raw entropy and
+     a SHA-256 of the raw string.
+   • Commitment. Hash and publicly timestamp the t0 notes (e.g., sha256sum of a zip), preserving
+     immutability.
+   • Frozen code. Pre-register the exact PRF (e.g., HMAC-SHA256 with domain separation), similarity
+     function(s), feature maps, and analysis scripts. Freeze versions (hashes) of all binaries/models.
+   • Blinding. Analyst receives only anonymized trial folders where the mapping from S to indices is
+     concealed until analysis code outputs sealed results.
+Cross-Subject Independence Control
+With collaborator Y and independent seeds S ′ , compute four correlations: (O0X , S), (O0X , S ′ ), (O0Y , S),
+(O0Y , S ′ ). H_F predicts significance only for (O0X , S) and (O0Y , S ′ ). Any dominant cross-correlation to the
+other seed suggests shared sideways structure.
+Adversarial Robustness / Threat Model
+   • Leakage of S: Mitigate with offline seed generation and delayed reveal; audit trails.
+   • Researcher degrees of freedom: Eliminate by pre-registering all preprocessing, models, thresholds,
+     and stopping rules.
+   • Selection bias: Run fixed-length blocks; avoid optional stopping unless using alpha-spending functions
+     pre-registered.
+   • Overfitting in embeddings: Use frozen, out-of-domain embeddings or purely symbolic measures (e.g.,
+     n-gram overlap) to prevent post-hoc tailoring.
+Minimal Preregistration Checklist (Template)
+   1.   Hypotheses: H_F vs H_S with formal equalities/inequalities as above.
+   2.   Variables: O0 , S, , R. Trial structure, passage pools, and masking scheme.
+   3.   PRF: domain-separated HMAC-SHA256; seed length; mapping S 7→ i⋆ (S) and S 7→ m(S).
+   4.   Similarity/Features: exact tokenizer, n-gram order, TF–IDF parameters, embeddings (if any) with
+        version hashes.
+   5.   Primary endpoints: one-of-N accuracy and/or MI; alpha level; tails.
+   6.   Secondary endpoints: erasure interaction, cross-subject split.
+   7.   Sample size plan: n and block sizes; any interim looks and corrections.
+   8.   Randomization: seed source; logging format for raw entropy; audit procedure.
+   9.   Commitment: hashing method; timestamping mechanism; public location of commitments.
+  10.   Analysis code: repository hash; container image tag; deterministic seeds for simulations.
+Interpretation Ladder
+   • Evidence for H_F: Above-chance accuracy and/or I(O0 ; S) > 0, a positive S × R interaction,
+     and correct self/other seed specificity.
+   • Evidence for H_S: Chance-level performance, MI consistent with 0, no erasure interaction, and
+     absence of self-specific seed effects.
+   • Ambiguity: Mixed signals trigger replication with stronger blinding, larger n, or alternative scoring
+     families (symbolic vs embedding).
+                                                            ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                        4

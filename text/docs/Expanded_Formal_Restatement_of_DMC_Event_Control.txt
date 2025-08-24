@@ -1,0 +1,154 @@
+Title: Expanded Formal Restatement of DMC Event Control
+Date:  2025-06-18
+Source: Expanded_Formal_Restatement_of_DMC_Event_Control.pdf
+Expanded Formal Restatement of DMC Event Control
+                ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+0. Expanded formal restatement of the research problem
+0.1 Principle we wish to test
+Given a distributed, multi-temporal consciousness (DMC)—an agent whose cognitive influence is dispersed
+over many non-consecutive instants {τi } ⊂ R—determine, for every precisely specified target event E, the
+maximum attainable time-shift                        (0) (u) 
+                                          ∆t(E) = E tE − tE
+achievable through arbitrarily small, spacetime-distributed perturbations u(τ ) that respect physical energy
+and information constraints. We shall:
+  1. Enumerate the complete event set E relevant to the uploaded corpus—no omissions, no “etc.”
+  2. Map each E ∈ E to its natural dynamical substrate (SOC reservoir, threshold-failure process,
+     chaotic attractor, decision graph, or cognitive trigger).
+  3. State the quantitative observables (hazard rate, latent energy, Lyapunov spectrum, information
+     surplus) required for bounding ∆t(E).
+  4. Articulate the auxiliary pathway problem: steering an embodied agent so that the spatiotem-
+     poral coordinates (x, t) at which the shifted event materialises are beneficial.
+This restatement only clarifies the problem; solution architecture follows later.
+0.2 Exhaustive catalogue of target events E
+  Class           Label           Canonical definition of the event instant          Key dynamical litera-
+                                  tE                                                 ture / uploaded source
+  G—Geophysical EEQ Earth-        rupture onset at hypocentre, Mw ≥ 5                High-Dim Chaos Ch. 2–3
+  SOC           quake
+                EVOL       Vol-   first magmatic venting above background de-        ibid.
+                canic    erup-    gassing
+                tion
+                ELAN Land-        loss of static stability, onset of bulk motion     ibid.
+                slide
+                ETSU              arrival of leading crest at reference shoreline    ibid.
+                Tsunami
+                crest
+  M—AtmosphericETH Thun-          first sustained up-draft with column-integrated    Distributed-Consciousness
+  & Hydrologi- derstorm           CAPE ¿ 0                                           note
+  cal           genesis
+                ELTN Light-       peak current at ground contact ≥ 30 kA             ibid.
+                ning strike
+                ETOR      Tor-    condensation funnel contacts surface (EF-scale     Cybernetical Physics Ch. 6
+                nado touch-       start)
+                down
+                EFF     Flash-    local discharge Q(t) attains maximum during        ibid.
+                flood peak        event
+                ESUN Sun-ray      irradiance I(t) crosses Iclear for ∆t > 10 s       same
+                break
+  B—Biological EAMI Acute         first ECG ST-segment         elevation   meeting   High-Dim Chaos Ch. 8
+  /     Medical myocardial        STEMI criteria
+  thresholds    infarction
+                                                        1
+Class           Label             Canonical definition of the event instant           Key dynamical litera-
+                                  tE                                                  ture / uploaded source
+                ESCA Sudden       cessation of effective heartbeat (ECG asys-         ibid.
+                cardiac arrest    tole/VF)
+                ESTR Stroke       MRI-visible ischemic onset or hemorrhage rup-       ibid.
+                                  ture
+                ESZ Epileptic     first synchronous neural burst (EEG) lasting 2      Ultrametric BCI §§3–4
+                seizure           s
+                EAST Acute        FEV1 drop below 40 % baseline                       ibid.
+                asthma      at-
+                tack
+                ELAB Onset        first regular uterine contraction ¡10 min spacing   Medical fail-time lit.
+                of labour
+                ESLP     Sleep    polysomnographic N1 transition sustained 3          Cognitive models
+                onset             min
+L—Micro-        EBFY Butter-      contact force sensor registers f > 1 mN             Butterfly-effect exemplars
+ecological &    fly alights on
+low-energy      knee
+chaotic
+                EBEE        Bee   skin nociceptor discharge + venom delivery          same
+                sting             timestamp
+                EDIE Dice roll    rigid-body kinetic energy ¡ threshold, face ID      Classical chaos
+                final state       recorded
+                EPHO Single-      detector click time in heralded channel             Quantum noise models
+                photon detec-
+                tion
+F—Socio-        EFC Equity        |∆P/P | ≥ 5% in ∆t ≤ 300 s                          Economic Cumulonimbus
+economic &      flash-crash                                                           §3
+informational
+avalanches
+                EFU      Flash    ∆P/P ≥ 5% in ∆t ≤ 300 s                             ibid.
+                melt-up
+                EFX        Cur-   |∆P/P | ≥ 3% in 24 h                                ibid.
+                rency devalu-
+                ation
+                EINV Yield-       r10y − r3m < 0 crossing                             Macro-finance SOC
+                curve inver-
+                sion
+                ELQD Liquid-      bid–ask spread ¿ 10 × median for 15 min             ibid.
+                ity freeze
+                EMEM        Vi-   reshare rate R(t) hits supercritical > 1            Foresight vs Prediction §3
+                ral      meme
+                cascade
+                EPAT Patent       USPTO timestamp of submission                       Positron Day path-control
+                filing
+                EACC              time stamp of editor decision email                 same
+                Manuscript
+                acceptance
+                ETEC Prod-        first public release event start time               same
+                uct launch
+                EREG       Reg-   official posting time in registry                   same
+                ulatory
+                decision
+                ELOC Way-         GPS log within 3 m of target coordinate             ibid.
+                point arrival
+                EADA Ada-         speech-to-text detects key phrase on 10 Oct /       TT-Decimal Catalogue
+                aligned           10 Dec / 27 Nov
+                utterance
+                                                        2
+  Class          Label             Canonical definition of the event instant               Key dynamical litera-
+                                   tE                                                      ture / uploaded source
+  C—Cognitive    EIDE Idea in-     first conscious verbalisation of novel concept in       Memory Frame
+  & telemetric   ception           diary
+                 EUTB        Ul-   device logs first p-adic handshake                      Ultrametric BCI
+                 trametric
+                 Time-BCI
+                 activation
+                 ETPL      Tele-   corroborated cross-timeline checksum match              same
+                 pathic packet
+                 reception
+                 EDFS Dream        dream-journal entry within 24 h of waking               Distributed-Consciousness
+                 foresight flash                                                           note
+  No abbreviations have been left undefined; no class omits a member referenced anywhere in the ten
+PDFs.
+0.3 Dynamical variables and observables for every E
+For each event E ∈ E we associate:
+  1. Underlying state vector xE (t) in phase-space RdE .
+  2. Hazard function hE (t) (SOC power law, Weibull, Gompertz, or rate-shift model).
+  3. Latent-energy reservoir EE (tectonic strain, convective CAPE, myocardial oxygen debt, market
+     leverage, etc.).
+  4. Local Lyapunov spectrum {λE,k }dk=1
+                                      E
+                                         giving exponential separation rates.
+  5. Perturbation response kernel GE (t) satisfying
+                                                       Z   t
+                                          δxE (t) =                GE (t − τ ) u(τ ) dτ.
+                                                       −∞
+  6. Information-surplus coefficient κE measuring how DMC’s multi-timeline data reduce forecast
+     uncertainty.
+                                          R t to energy norm ∥u∥ ≤ Umax ) that maximises |∆t(E)| while
+The control objective is to choose u (subject
+keeping the secondary pathway cost JE = t0E ∥u∥2 dt within budget.
+0.4 Formal problem statement (concise mathematical form)
+                       Given each E ∈ E with dynamics ẋE = fE (xE , t) + BE u(t),
+                       find u ∈ UUmax such that
+                                                 (0)       (u)
+                                   ∆t(E) = E [tE − tE ] is extremised,
+                                   JE ≤ Jmax ,
+                                   s(tE ) ∈ ΣE (beneficial pathway constraint).
+    All constants, kernels, and sets have been explicitly named; every event referenced in the uploaded
+literature has been placed into E with an unambiguous operational definition. This completes the enlarged
+clarification phase.
+                                                                     ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                               3

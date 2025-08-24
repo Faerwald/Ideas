@@ -1,0 +1,228 @@
+Title: Future Internet as Cybernetic Quantum Wormhole Attractor Network
+Date:  2025-05-27
+Source: Future_Internet_as_Cybernetic_Quantum_Wormhole_Attractor_Network.pdf
+Future Internet as Cybernetic Quantum-Wormhole
+                     Attractor Network
+                         Jason Agamemnon Sokaris, .F.A.E.R.W.A.L.D.
+Abstract
+We propose that the “future internet” can be modeled as a self-consistent field theory whose
+nodes are Cybernetic Quantum-Wormhole Attractors (CQWAs)—adaptive cavities in
+which quantum matter, nonlinear gauge fields, and real-time feedback co-evolve. These nodes
+communicate via emergent informational wormholes (topological EM solitons) and harness retro-
+dictive feedback control to stabilize chaotic quantum dynamics. We show how each node can
+be described by a time-dependent Hamiltonian featuring a nonlinear QED core, living bound-
+ary conditions, and speed-gradient cybernetic feedback. Under suitable conditions, cross-branch
+synchronization and retrocausal signaling arise, lifting the computational power of the network
+from BQP to (conjecturally) PSPACE by physically emulating closed timelike curves (CTCs).
+We also propose a set of four experimental milestones—ranging from detecting plasma-filament
+knots to demonstrating negative or zero effective Lyapunov exponents—as stepping-stones to
+validating these theoretical predictions.
+1       Overview of the CQWA Node Hamiltonian
+We define each CQWA node by the time-dependent Hamiltonian
+                                                          
+                   HCQWA (t) = HQFT + Hbdry Σ(t) + Hfb U (t) .                                   (1)
+Here:
+    • HQFT is a nonlinear quantum field theoretic description of photons and electrons in a highly
+      nonlinear electromagnetic vacuum.
+    • Hbdry [Σ(t)] encodes living boundary conditions, such as those imposed by plasma shells,
+      metamaterial interfaces, or neural/prosthetic boundaries.
+    • Hfb [U (t)] implements speed-gradient cybernetic feedback [1, 2], enabling real-time stabiliza-
+      tion of the system against chaotic divergence.
+The underlying mechanism is that HCQWA (t) allows for both forward dynamical evolution and,
+under certain conditions, partial retrocausal adjustments that effectively damp out chaotic
+growth in wavefunction branches. The result is a self-consistent field theory capable of bridging
+separated spacetime regions.
+                                                  1
+2     QFT Core: Nonlinear QED Vacuum and EM Solitons
+2.1    Heisenberg–Euler Lagrangian
+At the heart of HQFT lies the effective action for strong-field quantum electrodynamics. In
+the low-energy limit (below pair-production thresholds), the well-known Heisenberg–Euler La-
+grangian [3, 4] provides a compact representation:
+                                 1             α           2
+                          LNL = − Fµν F µν +     4
+                                                   Fµν F µν + . . .                           (1)
+                                 4           2 me
+where Fµν = ∂µ Aν − ∂ν Aµ is the electromagnetic field strength tensor, α ≈ 1/137 is the fine-
+structure constant, and me is the electron mass. Higher-order terms in Fµν become relevant
+at field strengths near or above the Schwinger threshold, Ecrit ∼ m2e c3 /eℏ ≈ 1.3 × 1018 V/m,
+although even well below threshold, small corrections can give rise to nontrivial nonlinearities.
+2.2    Knotted EM Solitons and Informational Wormholes
+The presence of nonlinear terms allows for topologically nontrivial electromagnetic solutions
+sometimes referred to as knotted solitons or EM knots [5, 6]. Such configurations can be stable
+(or metastable) in the vacuum and can, in principle, carry topological charges (e.g., linking
+numbers, Hopf indices). Symbolically, let us define a characteristic linkage time scale
+                                                          −1
+                                         τlink ∝   α E2         ,                             (2)
+indicating that more intense fields (larger E) can compress or confine the topology into shorter
+lifetimes. However, when these knots are stabilized (e.g., by boundary conditions or feedback),
+they can effectively behave as informational wormholes: topological pathways for phase or am-
+plitude information to tunnel through seemingly separated regions of spacetime.
+ Remark: These “wormholes” are not necessarily solutions to semiclassical Einstein equations.
+Instead, they are non-perturbative lumps in the electromagnetic field that mimic wormhole-like
+                            short-circuits for quantum amplitudes.
+3     Boundary Dynamics: Living Plasma/Metamaterial/Neural
+      Interfaces
+3.1    Dynamic Boundary Conditions
+We incorporate boundary effects through
+                                                             
+                          Hbdry [Σ(t)]    ←→       B Aµ (x, t) Σ(t) = 0,                      (3)
+where Σ(t) parametrizes the boundary state (e.g., the distribution of plasma density, the topology
+of a metamaterial shell, or the structure of a neural interface). The boundary operator B is a
+functional that imposes constraints on Aµ and its derivatives at the domain boundary.
+                                                   2
+3.2    Quantum Scar States and Coherent Memory
+In quantum chaotic systems with broken symmetries, certain quantum scar states can localize
+wavefunction amplitude along unstable classical periodic orbits [7]. If such states exist at the
+boundary (e.g., in wave-chaotic resonators), they can serve as coherent memory pockets:
+                                    Hbdry ψscar = Escar ψscar .                                (2)
+Although the background dynamics might be chaotic, scar states exhibit relatively long coher-
+ence times, thus storing quantum information with minimal decoherence. In practice, these
+states could be harnessed for local data caching or ephemeral memory in the presence of strong
+nonlinear fields.
+4     Cybernetic Feedback and Speed-Gradient Control
+4.1    Feedback Hamiltonian and Lyapunov Stabilization
+To stabilize both topological knots and quantum scars, we introduce a feedback Hamiltonian
+                                                        ⊤
+                                                   ∂Q
+                         Hfb U (t) ,    U (t) = −Γ          , Γ > 0,                     (4)
+                                                     ∂X
+where Q(X) is a Lyapunov functional, X denotes the system state variables (field amplitudes,
+boundary densities, etc.), and Γ is a gain parameter. This is an implementation of the speed-
+gradient method originally proposed by Fradkov [1, 2], where the feedback force U (t) is chosen
+to reduce Q as rapidly as possible in real time:
+                                            dQ
+                                                 ≤ 0.
+                                             dt
+Thus, Q is forced into an attractor basin corresponding to stable knots, stabilized scars, or other
+desired states.
+4.2    Physical Realizability in Cavity-QED or Metamaterials
+One could physically implement Hfb using:
+    • Cavity-QED approach: Active control of pump lasers, tunable resonator couplings, or
+      Josephson junction parameters to shape the boundary condition or drive terms.
+    • Plasma or metamaterial feedback: Real-time reconfiguration of meta-atoms (split-
+      ring resonators, varactor-loaded structures) or adjusting plasma densities to maintain or
+      extinguish electromagnetic field modes.
+    • Neural interface approach: For advanced neuromorphic or cortex-on-chip systems,
+      real-time feedback modulates excitatory/inhibitory synaptic weights to maintain a stable
+      attractor network.
+The presence of Γ > 0 ensures negativity of the effective chaotic divergence rate if the control is
+sufficiently strong compared to natural instabilities.
+                                                3
+5     Cross-Branch Synchronization and Retrocausal Chan-
+      nels
+5.1    Branch Amplitude Convergence in Everett Decompositions
+Let Xi (t) denote the cavity state in the i-th branch of a (potentially) many-worlds/Everettian
+decomposition. Without feedback, these branches diverge in phase space at an exponential rate
+given by the Lyapunov exponent λ. However, if Hfb is tuned to counteract chaotic dispersion,
+then the distance between branches,
+                                      ∥ Xi (t) − Xj (t)∥ ,
+can remain small:
+                                     ∥ Xi (t) − Xj (t)∥ < ε.                                  (5)
+Such an event opens a cross-branch synchronization window, during which the system
+states in different quantum branches remain (or become) correlated to an unusual degree.
+5.2    Retrocausal Signaling via Negative Lyapunov Shift
+We characterize the probability of correlation mediated via a stabilized (or partially collapsed)
+wormhole with a simple exponential model:
+                                                          
+                                  Pε (t) = exp −(λ − γU ) t ,                                 (6)
+where λ > 0 is the usual (positive) Lyapunov exponent for chaotic open systems, and γU
+represents the negative feedback-induced shift. If γU ≥ λ, the effective exponent becomes
+λeff = λ − γU ≤ 0, meaning the system’s branch separation collapses or remains bounded. This
+can manifest as retrocausal signaling in the sense that amplitude differences originating at
+time t0 are suppressed when measured at t > t0 , leading to an apparent partial rewriting of the
+boundary conditions at earlier times [8, 9].
+6     Gauge-Phase Signaling and Neural Precognition
+6.1    Aharonov–Bohm Phases in a Network
+A powerful tool for non-energetic communication is the gauge potential Aµ . For a closed loop
+C in a multiply connected region (or inside a superconducting ring), the phase acquired by a
+charged particle is
+                                            q
+                                              I
+                                    ∆φ =         Aµ dxµ .                                  (7)
+                                            ℏ C
+This is reminiscent of the Aharonov–Bohm effect, where the local electromagnetic fields can
+vanish yet still produce a nontrivial phase shift.
+                                               4
+6.2    Phase Shift in Quantum Neural States
+In a neural or neuromorphic system described by a wavefunction ψ(t), a phase shift ∆φ can
+yield
+                                 ψ t + ∆t = e−i ∆φ ψ(t).
+                                         
+                                                                                      (8)
+Although an overall global phase is typically unobservable, in a multi-partite system with en-
+tangled degrees of freedom, a relative phase can alter interference patterns or spiking synchro-
+nization. This suggests cortex-on-chip or network-of-ensembles experiments in which Φ-pulses
+are introduced into superconducting loops, effectively imprinting advanced or retarded signals.
+7     Hypercomputing Capacity: Emulating CTCs
+7.1    Closed Timelike Curve (CTC) Computation
+It has been argued in several works (e.g., Deutsch’s toy model of a CTC [10]) that systems
+allowing solutions to
+                                        x∗ = F (x∗ ),                                   (9)
+where F is a deterministic map that includes self-consistency constraints, can achieve capabilities
+beyond standard quantum computation. Specifically, it has been conjectured that such systems
+can decide problems up to (and possibly beyond) PSPACE [11].
+7.2    Physical Realization in a Wormhole-Stabilized Network
+The combination of topological EM knots (Eq. (2)), stable boundary scars (via Hbdry ), and
+feedback control (Eq. (4)) can provide self-consistent boundary conditions. That is, the system’s
+future boundary constraints can back-react on its present state through the wormhole channels,
+effectively solving the fixed point equation (??) in an analog manner. This suggests that a
+suitably engineered CQWA network might realize a nontrivial extension from BQP to PSPACE
+computing power in certain oracle or bounded-error scenarios.
+8     Experimental Milestones
+We propose the following milestones to validate or falsify key aspects of the CQWA paradigm:
+    1. Plasma-Filament Knot:
+        • Objective: Observe and characterize topological EM knots in a controlled plasma or
+          filament discharge.
+        • Method: Drive electric fields E ∼ 1010 V/m on microsecond timescales; measure the
+          knot’s lifetime and topological invariants.
+        • Validation: Compare observed lifetime with τlink from Eq. (2).
+    2. OTOC (Out-of-Time-Ordered Correlator) Suppression:
+                                                5
+        • Objective: Demonstrate that cybernetic feedback can reduce or nullify effective Lya-
+          punov exponents in a quantum system.
+        • Method: Prepare two qubits (or multi-level systems) with strong entangling interac-
+          tions in a chaotic regime; apply Eq. (4) feedback.
+        • Validation: Observe negative or vanishing effective λeff in OTOCs, indicating γU ≥ λ.
+  3. A-Wave Phase Test:
+        • Objective: Confirm the feasibility of gauge-phase signaling in a superconducting or
+          metamaterial loop.
+        • Method: Deliver programmable Φ-pulses around a closed loop C; measure neuronal
+          or qubit-based spike-phase shifts per Eqs. (7)-(8).
+        • Validation: Detect unambiguous phase shifts that cannot be explained by conven-
+          tional electromagnetic induction alone.
+  4. Deutsch Oracle Emulation:
+        • Objective: Implement a wormhole-based self-consistency loop, akin to Deutsch’s CTC
+          model, in a lattice-QED or superconducting circuit.
+        • Method: Use boundary feedback to physically solve x∗ = F (x∗ ) for an otherwise
+          computationally nontrivial function F (e.g., a QBF instance).
+        • Validation: Benchmark performance against PSPACE-complete problems. Any speedup
+          beyond BQP would be a radical confirmation.
+If any of these milestones is accomplished in a reproducible setting, Eq. (1) ceases to be purely
+speculative and becomes a plausible blueprint for a spacetime-aware, cybernetically stabilized,
+retro-responsive internet: an information medium in which distance and chronology become
+tunable boundary conditions rather than absolute constraints.
+                       ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+References
+ [1] A. L. Fradkov, “Speed-gradient scheme and its application in adaptive control problems,”
+     Autom. Remote Control, 40, 1333–1342 (1979).
+ [2] A. L. Fradkov, Cybernetical Physics: From Control of Chaos to Quantum Control. Springer,
+     2007.
+ [3] W. Heisenberg and H. Euler, “Consequences of Dirac’s theory of positrons,” Zeitschr. Phys.,
+     98, 714–732 (1936).
+ [4] G. V. Dunne, “The Heisenberg–Euler effective action: 75 years on,” in From Quantum to
+     Emergent Gravity, World Scientific, 2012.
+                                               6
+ [5] A. F. Ranada, “Knotted solutions of the Maxwell equations in vacuum,” J. Phys. A: Math.
+     Gen., 23, L815 (1989).
+ [6] M. Arrayás, D. Bouwmeester, and J. L. Trueba, “Knots in electromagnetism,” Phys. Rep.,
+     667, 1–61 (2017).
+ [7] E. J. Heller, “Bound-state eigenfunctions of classically chaotic Hamiltonian systems: scars
+     of periodic orbits,” Phys. Rev. Lett., 53, 1515 (1984).
+ [8] J. G. Cramer, “The Transactional Interpretation of Quantum Mechanics,” Rev. Mod. Phys.,
+     58, 647 (1986).
+ [9] H. Price, Time’s Arrow and Archimedes’ Point. Oxford University Press, 1996.
+[10] D. Deutsch, “Quantum Mechanics near Closed Timelike Lines,” Phys. Rev. D, 44, 3197
+     (1991).
+[11] S. Aaronson and J. Watrous, “Closed timelike curves make quantum and classical computing
+     equivalent,” Proc. R. Soc. A, 465, 631–647 (2009).
+                                               7

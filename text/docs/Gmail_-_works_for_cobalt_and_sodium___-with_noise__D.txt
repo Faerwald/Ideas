@@ -1,0 +1,68 @@
+Title: Gmail - works for cobalt and sodium  ) -with noise  D
+Date:  2025-06-04
+Source: Gmail - works for cobalt and sodium _) -with noise _D.pdf
+Jason Sokaris <sokarisjason@gmail.com>
+works for cobalt and sodium :) -with noise :D
+4 messages
+Jason Sokaris <sokarisjason@gmail.com>                                Sun, May 25, 2025 at 11:22 PM
+To: Matthew Szydagis <matthew.szydagis@gmail.com>
+ Matthew!!
+ the screenshots are good. the code works for single isotopes and with noise. BUT! unless
+ you get the parameters set right at the start, the program won't say "found em!" - so to
+ speak.
+ i made it very "auto-magical"
+ you click three buttons: "suggest parameters", "generate data", and "analyze"... oh wait..
+ and you gotta check which isotopes you want at the bottom, and click the box for noise
+ versus no noise..
+ ... but .. it's limited to identifying things cuz it's knowledge is a just handful os isotopes (five
+ in the code)... ...
+ the code it below if you wanna play with it :)
+ still improving it. and the paper is garbage. (i'll write up something after i get it to work for
+ more isotopes.)
+ just sharing.
+ Take Care Matthew!
+ -Jason
+  6 attachments
+                                              Screenshot from 2025-05-25 23-11-29.png
+                                              137K
+                                           Screenshot from 2025-05-25 23-10-51.png
+                                           123K
+                                           Screenshot from 2025-05-25 23-13-47.png
+                                           140K
+                                           Screenshot from 2025-05-25 23-11-58.png
+                                           122K
+       radioactive_decay_explorer.py
+       18K
+       Radioactive_Decay_Explorer.pdf
+       396K
+Matthew Szydagis <matthew.szydagis@gmail.com>                   Mon, May 26, 2025 at 11:57 AM
+To: Jason Sokaris <sokarisjason@gmail.com>
+ Awesome, thanks! This is great progress!!
+ (But when there is no noise.. why is the peak at 0.0 instead of the current mean life time?)
+ [Quoted text hidden]
+Matthew Szydagis <matthew.szydagis@gmail.com>                      Wed, Jun 4, 2025 at 8:25 AM
+To: Jason Sokaris <sokarisjason@gmail.com>
+ Is your mom Lucy? And is she in real estate?
+ I just saw a house for sale in my neighborhood by Lucy Sokaris
+ [Quoted text hidden]
+Jason Sokaris <sokarisjason@gmail.com>                                  Wed, Jun 4, 2025 at 5:38 PM
+To: Matthew Szydagis <matthew.szydagis@gmail.com>
+ Yes! that's my mom :)
+ i wrote but forgot to send earlier, im working on awesome software :D
+ also, now im setting up "codex" (openai github)
+ sorry bout this late reply, i wanted to have the software complete.
+ it's taking a while cuz im working on stuff in parallel... (i know i know...) but i want to be able
+ to make best use of the 3 hours, so i need everything ready
+ i want to have my best ideas typed and with notes for the time we'll have, AND have "all my
+ other crazy ideas" typed, And... ... ... ...
+ i think with your enthusiasm, .. if i can plan out who to connect with for each idea, and have
+ them all in writing,... ... ........
+ i want to make it all real. and i know i can't do it alone. so i need to be right, i need it
+ communicated well, and i need to talk to the right people, ....
+ i'm working to get everything in order. the software is the key. the key to unlocking the deal
+ for 3 hours that is.
+ so... that's my update. im working on the software and the ideas i want ready to present.
+ and coming up with a plan for the months afterward to get them all in motion.
+ you're algorithm is part of something much bigger - a machine that can solve the
+ millenium problems in minutes. i will explain better later. it will work.
+ [Quoted text hidden]

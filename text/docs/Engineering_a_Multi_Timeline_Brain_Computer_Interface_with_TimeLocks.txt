@@ -1,0 +1,369 @@
+Title: Engineering a Multi Timeline Brain Computer Interface with TimeLocks
+Date:  2025-05-27
+Source: Engineering_a_Multi_Timeline_Brain_Computer_Interface_with_TimeLocks.pdf
+Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks:
+       Towards A Framework for Cognitive Vacuum State Modulation & Many-Worlds Interference
+                      ... and someday ... Vilenkin-Everett Mind Transfer
+                                                                                ∗
+                                                Jason Agamemnon Sokaris
+                  Independent Researcher, Theoretical Neuroengineering and Quantum Information Systems
+                                                        March 5, 2025
+                                                           Abstract
+            We present a hardware and software architecture for a high-density brain–computer interface (BCI) platform
+        that can both measure and modulate brain activity to influence cognitive trajectories in a high-dimensional
+        “thought space.” Our design includes a novel concept called TimeLocks, which partitions cognitive-state explo-
+        ration into discrete stages that unlock only after certain temporal, computational, or cognitive conditions are
+        met. By combining closed-loop neural decoding, transcranial current stimulation, and real-time optimization al-
+        gorithms, the system is hypothesized to guide a user’s cognitive trajectory along different pathways through this
+        space. We then introduce a theoretical extension in which these cognitive trajectories can interfere or “collide”
+        across multiple timeline branches. Motivated by analogies to the path integral and transactional interpretations
+        in quantum mechanics, we propose a set of engineering steps to capture small deviations in measured neu-
+        ral patterns that might arise from hypothetical cross-timeline interactions. The paper provides explicit design
+        details—from electrode placement and stimulation parameters to data structures, algorithms, and system-level
+        diagrams—aimed at enabling rigorous prototyping and testing of these ideas within the bounds of established
+        physics, engineering, and mathematics.
+Contents
+1 Introduction                                                                                                               2
+2 Background and Motivation                                                                                                  2
+  2.1 High-Density, Two-Way BCI . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                2
+  2.2 TimeLocks for Cognitive Trajectory Management . . . . . . . . . . . . . . . . . . . . . . . . . . . .                  3
+  2.3 Cross-Timeline Interference Hypothesis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             3
+3 Hardware and System Architecture                                                                                           3
+  3.1 Electrode Array and Amplification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              3
+  3.2 Real-Time Processing Unit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              4
+  3.3 Data Structures: Logging and TimeLocks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                 5
+4 Mathematical Modeling of Cognitive                 Trajectories                                                            5
+  4.1 State-Space Representation . . . . .           . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+  4.2 Decoded Neural Feedback Control .              . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+  4.3 Stochastic Exploration and Learning            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+5 TimeLock Mechanics and Security                                                                                            6
+  5.1 Definition of TimeLocks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            6
+  5.2 Implementation and Encryption . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              6
+  ∗
+      Email: OneiroCybernetics@gmail.com
+                                                               1
+                     Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks
+6 Cross-Timeline Interference Framework                                                                                                                      6
+  6.1 Conceptual Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                             6
+  6.2 Mathematical Formalism (Speculative) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                               7
+  6.3 Detection Mechanism . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                              7
+7 Algorithmic Implementation                                                                                                                                 7
+8 Safety and Practical Considerations                                                                                                                        8
+  8.1 Human Safety Constraints . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                             8
+  8.2 Artifact Management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                            8
+  8.3 Ethical and Privacy Considerations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                             8
+9 Experimental Protocol for Prototyping                                                                                                                      9
+  9.1 Phase 1: Baseline and System Identification . . . . . . . . . . .      .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   9
+  9.2 Phase 2: Decoded Neural Feedback Trials . . . . . . . . . . . .        .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   9
+  9.3 Phase 3: TimeLock Integration . . . . . . . . . . . . . . . . . .      .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   9
+  9.4 Phase 4: Cross-Interference Experiment (Optional, Speculative)         .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   9
+10 Discussion and Outlook                                                                                                                                    9
+1     Introduction
+Advances in brain–computer interfaces (BCIs) have enabled increasingly sophisticated and targeted interactions
+with neural activity [1, 2]. Typically, BCIs operate through a unidirectional or bidirectional flow of informa-
+tion: signals are read from the brain (via EEG, ECoG, or other modalities), processed by a machine-learning
+algorithm, and used to drive a device or application; or the system delivers carefully chosen stimulation patterns
+(e.g., transcranial direct-current stimulation (tDCS), transcranial magnetic stimulation (TMS), or transcranial
+alternating-current stimulation (tACS)) aimed at modulating cortical excitability [3, 4].
+    Here, we describe a closed-loop, high-density system capable of simultaneously reading neural activity and
+writing stimulation currents via an array of electrodes placed on the scalp. We leverage standard EEG measurement
+and transcranial electrical stimulation hardware, but at a density of at least 64 channels [5, 6] to attain fine-grained
+spatiotemporal control and measurement. The system’s software employs real-time inference of the user’s cognitive
+state, arranged within a high-dimensional manifold called “thought space,” and attempts to steer these cognitive
+trajectories to specific target states or along specific paths via decoded neural feedback [9, 10].
+    A novel element introduced here is TimeLocks, a method of gating access to certain neural or computational
+states until specific time or cognitive effort criteria are met. These TimeLocks are used to structure the user’s
+interaction with the system, ensuring that certain advanced or emergent states can only be accessed once sufficient
+temporal and cognitive progression has occurred.
+    Finally, we explore a speculative framework in which multiple timeline branches of a user’s cognition could, in
+principle, interfere or converge at certain points in their respective timelines. Drawing inspiration from quantum
+mechanical analogies, we propose that cross-timeline couplings might manifest as small correlated deviations in
+neural signals, especially under highly controlled software conditions (e.g., identical initial conditions, identical
+learning algorithms, and enforced synchronization points). While the notion of cross-timeline interference re-
+mains outside mainstream physics, this paper provides an engineering blueprint for systematically probing such
+phenomena within rigorous experimental bounds.
+2     Background and Motivation
+2.1   High-Density, Two-Way BCI
+Traditional EEG-based BCIs focus on reading cortical signals such as α, β, or γ band oscillations and applying
+feature extraction (Fourier transforms, wavelet transforms, or machine-learning classifiers) to decode user inten-
+tions [2]. Noninvasive stimulation typically uses 2–8 electrodes in tDCS or tACS to alter cortical excitability in
+targeted regions [7].
+                                                           2
+                     Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks
+    In contrast, the proposed system integrates:
+    • High-Density Electrode Array (64+ channels): Both for simultaneous EEG recording and for flexible
+      current stimulation.
+    • Closed-Loop Control: An adaptive algorithm that infers the user’s cognitive state in real time and
+      modulates the stimulation pattern accordingly.
+    • Decoded Neural Feedback: Techniques allowing the user to train their brain activity to converge to
+      specific target neural signatures, guided by real-time error metrics.
+2.2    TimeLocks for Cognitive Trajectory Management
+The TimeLocks concept is introduced to manage and organize the exploration of the thought manifold. Rather
+than allowing all cognitive states to be accessible at once, the system partitions the manifold into stages, each of
+which “unlocks” only after:
+    1. A certain amount of physical time has passed, ensuring that the user’s neural plasticity or learning processes
+       can take effect;
+    2. A certain number of training epochs or tasks have been completed, ensuring the user has meaningfully
+       engaged in decoded feedback trials;
+    3. Certain identified cognitive patterns have matured, ensuring that the user has integrated prior thoughts or
+       experiences.
+    TimeLocks are thus a form of gating mechanism that ensures partial ordering in the user’s progression through
+the manifold, functioning as a built-in measure to prevent “short-circuiting” or any attempt to jump into advanced
+states prematurely.
+2.3    Cross-Timeline Interference Hypothesis
+Drawing an analogy from the path integral formalism in quantum mechanics, every possible path (or trajectory)
+of a system in a state space is considered, but only those paths that exhibit coherent interference significantly
+shape the final outcome [8]. If we suppose that the user’s cognition in timeline branch A could have quasi-coherent
+overlap with an alternative timeline branch B, then small biases may emerge in the measured EEG signals due to
+partial synchronization between the two branches.
+    We emphasize that this portion is hypothetical and not a standard feature of recognized physics. Nonetheless,
+we provide an engineering structure for how one might detect or engineer such correlations should they exist. This
+includes:
+    • Ensuring software equivalence and initial condition equivalence across repeated BCI sessions (i.e., across
+      different “branches”).
+    • Designing shelling points, or specific mental states that the software systematically trains and stabilizes,
+      thereby increasing the probability of cross-timeline overlap in the user’s neural configuration.
+    • Logging and analysis protocols for detecting correlated deviations in real-time or during post-hoc analysis.
+3     Hardware and System Architecture
+3.1    Electrode Array and Amplification
+We propose a 64-channel (or higher) electrode array based on standard EEG layouts such as the 10–20 system
+extended to high density [5]. Each channel is capable of:
+    • Recording Mode: High-impedance amplifiers acquire signals in the 0.5–100 Hz range, with a 24-bit reso-
+      lution ADC sampling at 1–2 kHz.
+                                                          3
+                     Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks
+   • Stimulation Mode: Biphasic current pulses or low-amplitude constant/alternating currents, with typical
+     intensities up to 2 mA (limited for safety considerations [3]).
+  To switch between modes quickly, each electrode is connected through a multiplexer controlled by the main
+BCI processor. Figure 1 illustrates a schematic of the electrode-level structure.
+Figure 1: Conceptual hardware diagram of the high-density electrode array, amplifiers, and stimulation drivers. Each
+electrode can be switched between recording or stimulation mode. Safety and monitoring subsystems ensure compliance with
+regulatory limits.
+3.2   Real-Time Processing Unit
+The central processing can be performed on a high-performance embedded system or a GPU-equipped PC, running
+the following main tasks:
+  1. Neural Signal Preprocessing: Filtering, artifact removal, and normalization.
+                                                           4
+                    Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks
+    2. Feature Extraction: Computing spectral power, phase relationships, connectivity measures (coherence,
+       phase-locking value), or more advanced latent-state embeddings [10].
+    3. Decoded Neural Feedback Control: Minimizing an objective function that measures the difference
+       between the user’s current neural state and a target pattern.
+    4. Stimulation Pattern Optimization: Determining which electrodes to stimulate (and how) based on
+       real-time feedback, stochastic exploration, and user performance.
+    5. TimeLock Management and Log Security: Enforcing unlock criteria, storing logs, and maintaining
+       data structures that track user progress.
+3.3    Data Structures: Logging and TimeLocks
+A robust logging mechanism is crucial for correlating past and present user states and for potential cross-timeline
+inferences. We propose the following hierarchical structure:
+SessionLog
+         • sessionID: Unique identifier for each BCI session.
+         • timestampStart, timestampEnd: Real-world times bounding the session.
+         • initialNeuralSignature: Hash of the user’s neural baseline at session start.
+         • softwareVersion, algorithmSeeds: Ensure identical conditions across potential branches.
+         • TimeLockStages: Array or map describing each unlocked stage.
+             – stageID
+             – unlockTime
+             – unlockCriteria
+             – cognitivePatternsLearned: List of recognized or target patterns at this stage.
+         • epochRecords: List of sub-structures capturing data for each training epoch or trial.
+    Each epochRecord contains:
+    • EEGRaw: Time series of 64+ channels for the epoch duration.
+    • StimPattern: Dictionary of electrode stimulation parameters used in that epoch.
+    • DecodedFeedbackError: Scalar or vector measure of difference from target pattern.
+    • EstimatedCognitiveState: Real-time inference of the user’s cognitive manifold coordinates (e.g., a vector
+      x(t)).
+    TimeLocks are enforced by requiring that unlockCriteria for each stage is satisfied. For instance, to unlock
+stage Sk :
+                                                                                                                
+unlockCriteria(Sk ) = TimeElapsed > Tk ∧ DecodedFeedbackError < Ek ∧ CognitivePatternCount ≥ Ck ,
+where Tk , Ek , and Ck are thresholds defined by the user or experiment design.
+4     Mathematical Modeling of Cognitive Trajectories
+4.1    State-Space Representation
+We model the user’s momentary cognitive state by a high-dimensional vector x(t) ∈ Rn . This vector can be
+extracted from EEG features using dimensionality reduction or manifold-learning techniques (e.g., principal com-
+ponent analysis, independent component analysis, or autoencoders) [10]:
+                                              x(t) = Φ(EEGRaw(t)),
+where Φ(·) is a learned embedding mapping from raw EEG signals to an n-dimensional latent space.
+                                                        5
+                     Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks
+4.2    Decoded Neural Feedback Control
+Define a target cognitive pattern ztarget ∈ Rn and an error function E(x(t), ztarget ). At each time step, the BCI
+algorithm applies a stimulation input u(t) to minimize the expected future error:
+                                                                         
+                                         u(t) = arg min J x(t), u, ztarget ,
+                                                    u
+where J is a cost functional that may include immediate error plus a regularization term for user comfort or
+safety:                                                                   
+                            J (x, u, ztarget ) = α E x + f (x, u), ztarget + β ∥u∥2 .
+The function f (x, u) captures the approximate change in the latent cognitive state x due to stimulation u.
+Estimating f can be done via system identification or machine-learning models [10].
+4.3    Stochastic Exploration and Learning
+Because the neural response to transcranial stimulation can be highly nonlinear and individual-specific, we augment
+the deterministic control with a stochastic exploration term. For example, define
+                                              u(t) = udet (t) + urand (t),
+where urand (t) is drawn from a small-variance noise distribution (e.g., Gaussian) to allow exploration of alternative
+control actions. Over many epochs, the system uses a gradient-based or Bayesian optimization approach to refine
+its model of f (x, u) [11].
+5     TimeLock Mechanics and Security
+5.1    Definition of TimeLocks
+Formally, a TimeLock is a function Tk (x(t), t) that returns true if and only if the k-th stage’s conditions are
+satisfied:                                 
+                                           1 if t > Tk ∧ ∥x(t) − xk ∥ < δk ∧ . . .
+                            Tk (x(t), t) =
+                                           0 otherwise.
+Each TimeLock state transition is recorded in the TimeLockStages field of the SessionLog. Once stage k is
+unlocked, a new set of instructions, stimulation protocols, or manifold expansions become available to the user.
+5.2    Implementation and Encryption
+To ensure that earlier stages cannot be revisited or manipulated arbitrarily:
+    • Each sessionLog entry is cryptographically signed and timestamped.
+    • A Merkle-tree or blockchain-like structure can be used to anchor logs to an external, verifiable timeline [12].
+    • Software versioning and random seeds are hashed to ensure identical conditions if the protocol is repeated.
+6     Cross-Timeline Interference Framework
+6.1    Conceptual Model
+Assume the same software and hardware configuration are run under the same initial conditions in separate
+sessions. Potentially, these sessions (“branches”) could have diverged at some earlier time, but if the user and
+environment remain sufficiently similar, these branches might produce correlated or interfering patterns. We
+represent each branch by:
+                                                 xA (t), xB (t).
+The question is whether cross-branch correlations can appear beyond the classical correlation that might arise
+from shared hardware or environment.
+                                                           6
+                     Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks
+6.2    Mathematical Formalism (Speculative)
+An (admittedly speculative) approach is to treat xA (t) and xB (t) as local projections of a joint wavefunction
+Ψ(xA , xB , t) that evolves according to a Schrödinger-like equation:
+                                        ∂
+                                   iℏ      Ψ(xA , xB , t) = Ĥ(xA , xB , t) Ψ(xA , xB , t),
+                                        ∂t
+where Ĥ is a hypothetical Hamiltonian that couples the two branches under certain boundary conditions or
+constraints (enforced via software-engineered synchronization points).
+    While standard quantum mechanics would not typically allow macroscale cross-branch communication, if we
+relax interpretational constraints or posit new physics, partial coherence might appear at special times t = tsync
+where boundary conditions align. Our system design attempts to engineer such alignment through:
+    • Identical initial seeds;
+    • Identical or correlated random number generator states;
+    • Identical neural feedback tasks aimed at the same target patterns;
+    • TimeLock gating to ensure that certain states can only be accessed at pre-defined times or after certain
+      computational effort.
+6.3    Detection Mechanism
+We define a small residual measure ∆(xA (t), xB (t)), which captures whether the distribution of states in timeline
+A deviates from the distribution of states in timeline B in a manner exceeding classical correlation. For each
+epoch, we compute:
+                             ∆t = ∥xA (t) − xB (t)∥2 − Eclassical [∥xA (t) − xB (t)∥2 ].
+If over many trials ∆t systematically trends lower (or otherwise deviates) than expected by purely classical means,
+the system flags a potential cross-timeline effect. Statistical significance tests (e.g., permutations, bootstrap) can
+be used to evaluate whether these deviations exceed random chance.
+7     Algorithmic Implementation
+We outline a high-level procedure to integrate all components (TimeLocks, neural feedback, timeline interference
+checks) into a single pipeline.
+                                                               7
+                      Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks
+Algorithm 1 Multi-Timeline BCI with TimeLocks and Cross-Interference Check
+ 1: Initialize:
+ 2:   Load or set softwareVersion, algorithmSeeds, userProfile
+ 3:   Acquire baseline EEG → compute initialNeuralSignature
+ 4:   k←1                                                                                   ▷ Initialize stage index
+ 5: while not end of experiment do
+ 6:    Record EEG → x(t) = Φ(EEGRaw(t))
+ 7:    Compute DecodedFeedbackError = E(x(t), ztarget )
+ 8:    Apply stimulation pattern u(t) by solving:
+                                                                   
+                                   u(t) = arg min J x(t), u, ztarget + urand (t).
+                                                u
+ 9:      Log epoch to epochRecord, update sessionLog
+10:      if Tk (x(t), t) == 1 then
+11:          unlock stage k in TimeLockStages, reveal new tasks or stimuli
+12:          k ←k+1
+13:      end if
+14:      Cross-Interference Check:
+15:      if compareWithOtherBranches == true then
+16:          Obtain or simulate reference xB (t) from stored logs or parallel experiment
+17:          ∆t ← ∥x(t) − xB (t)∥2 − Eclassical [∥x(t) − xB (t)∥2 ]
+18:          Accumulate ∆t statistics over time
+19:      end if
+20:   end while
+21:   End of experiment:
+22:   Perform final analysis on aggregated logs and ∆t distribution
+8      Safety and Practical Considerations
+8.1     Human Safety Constraints
+All transcranial electrical stimulation methods must respect clinical safety limits:
+      • Maximum Current: Typically restricted to < 2 mA (peak) per electrode for tDCS/tACS.
+      • Thermal Constraints: Ensure no significant heating of scalp tissue.
+      • Adverse Effects Monitoring: Real-time detection of user discomfort, headaches, or other side effects.
+8.2     Artifact Management
+When stimulating and recording simultaneously, large artifacts can saturate EEG amplifiers. We use short stim-
+ulation pulses interleaved with recording windows, or adopt artifact removal algorithms that subtract known
+stimulation waveforms [3].
+8.3     Ethical and Privacy Considerations
+      • User Autonomy: The user should have full control over whether to engage in advanced TimeLock stages.
+      • Data Encryption and Consent: BCI data are sensitive; logs must be encrypted, and informed consent
+        is mandatory.
+      • Speculative Nature of Timeline Interference: Users must be clearly informed that any cross-timeline
+        or backward information flow aspect is currently hypothetical and not an established scientific phenomenon.
+                                                          8
+                     Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks
+9     Experimental Protocol for Prototyping
+9.1    Phase 1: Baseline and System Identification
+    1. Recruit volunteers. Acquire baseline EEG under rest and simple cognitive tasks.
+    2. Apply mild stimulations in a controlled pattern to gather data for model estimation of f (x, u).
+    3. Evaluate and refine safety and artifact mitigation strategies.
+9.2    Phase 2: Decoded Neural Feedback Trials
+    1. Define target patterns ztarget based on specific mental tasks (e.g., visual imagery, motor imagery).
+    2. Run closed-loop neural feedback, adaptively adjusting stimulation to drive the user’s EEG toward ztarget .
+    3. Evaluate user performance, comfort, and consistency across repeated sessions.
+9.3    Phase 3: TimeLock Integration
+    1. Implement TimeLock gating: require certain minimal number of trials, time intervals, or pattern recognitions
+       before unlocking advanced tasks.
+    2. Verify the integrity of the logging system, ensuring each stage is unlocked in the correct sequence.
+9.4    Phase 4: Cross-Interference Experiment (Optional, Speculative)
+    1. Use multiple sets of participants or repeated sessions from the same participant in distinct times but identical
+       software/hardware configurations.
+    2. Compare divergences in xA (t) vs. xB (t) to classical baseline expectation.
+    3. Attempt to orchestrate the same TimeLock schedules to create consistent “collisions” or “synchronization
+       points.”
+    4. Analyze ∆t across large sample sizes to detect any systematic anomalies.
+10      Discussion and Outlook
+We have outlined a blueprint for a high-density, two-way BCI that simultaneously measures EEG and applies
+transcranial stimulation, managed by real-time decoding and control algorithms. The system introduces the
+TimeLock mechanism for staged cognitive exploration and a hypothetical method for cross-timeline interference
+detection. While the latter is speculative from a mainstream physics standpoint, the engineering framework
+described here allows for a well-controlled, falsifiable test environment.
+    By enforcing identical initial conditions, logging all data in a cryptographically verifiable manner, and system-
+atically analyzing correlations across repeated BCI sessions, we can probe whether any nonclassical effects emerge.
+Regardless of the outcome, the design remains valuable for more conventional closed-loop BCI applications: multi-
+session neural feedback, advanced user training paradigms, and structured time-gated interaction with complex
+cognitive tasks.
+Acknowledgments
+The author thanks the open-source EEG community, as well as the many researchers in transcranial stimulation
+who have built the foundations for this work. Any mention of cross-timeline physics is intended as a hypothetical
+extension, not as an assertion of fact, and proper caution should be employed.
+                                                           9
+                    Engineering a Multi-Timeline Brain-Computer Interface with TimeLocks
+References
+[1] Rainey, K., et al. (2019). A review of EEG-based brain–computer interfaces as access pathways for individuals
+    with severe disabilities. Assistive Technology, 31(4): 203–211.
+[2] Bashashati, A., Fatourechi, M., Ward, R. K., and Birch, G. E. (2007). A survey of signal processing algorithms
+    in brain–computer interfaces based on electrical brain signals. Journal of Neural Engineering, 4(2): R32–R57.
+[3] Herrmann, C. S., Strübing, F. C., Helfrich, R. F., and Engel, A. K. (2016). Transcranial alternating current
+    stimulation: a review of the underlying mechanisms and modulation of cognitive processes. Frontiers in Human
+    Neuroscience, 10: 1–7.
+[4] Polanı́a, R., Nitsche, M. A., and Ruff, C. C. (2018). Studying and modifying brain function with non-invasive
+    brain stimulation. Nature Neuroscience, 21(2): 174–187.
+[5] Micera, S., Carpaneto, J., and Raspopovic, S. (2010). Control of hand prostheses using peripheral information.
+    IEEE Reviews in Biomedical Engineering, 3: 48–68.
+[6] Picton, T. W., et al. (2011). Guidelines for using human event-related potentials to study cognition: recording
+    standards and publication criteria. Psychophysiology, 37(2): 127–152.
+[7] Nitsche, M. A., and Paulus, W. (2008). Transcranial direct current stimulation–update 2011. Restorative
+    Neurology and Neuroscience, 29(6): 463–492.
+[8] Feynman, R. P., Hibbs, A. R., and Styer, D. F. (2010). Quantum Mechanics and Path Integrals. Dover
+    Publications.
+[9] Shibata, K., Watanabe, T., Sasaki, Y., and Kawato, M. (2011). Perceptual learning incepted by decoded fMRI
+    neurofeedback without stimulus presentation. Science, 334(6061): 1413–1415.
+[10] Yamashita, O., et al. (2008). Multidimensional neuroimaging: Inferring spatiotemporal decompositions of
+    neural dynamics. NeuroImage, 42(3): 869–878.
+[11] Snoek, J., Larochelle, H., and Adams, R. P. (2012). Practical Bayesian optimization of machine learning
+    algorithms. In Advances in Neural Information Processing Systems, pp. 2951–2959.
+[12] Narayanan, A., Bonneau, J., Felten, E., Miller, A., and Goldfeder, S. (2016). Bitcoin and Cryptocurrency
+    Technologies. Princeton University Press.
+                                                        10

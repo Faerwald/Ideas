@@ -1,0 +1,163 @@
+Title: Gated Wormhole Networks and AB Holonomy
+Date:  2025-08-20
+Source: Gated_Wormhole_Networks_and_AB_Holonomy.pdf
+Gated Wormhole Networks and AB Holonomy
+                                      Jason Agamemnon Sokaris
+0. Context
+This note extends the prior loop/gauge formalism for self-consistent retrocausal dynamics by introduc-
+ing gated multi-wormhole networks. Intuitively: (i) many closed information-carrying loops coexist;
+(ii) wormhole throats act as tunable couplers whose effective transparency and phase are controlled
+by other wormholes (“a wormhole choking another”), or by holonomies of gauge potentials threaded
+through nontrivial cycles; (iii) self-consistent histories arise as fixed points of a global transfer operator;
+(iv) interference between loops selects originless eigenmodes (bootstrap solutions) that live on closed
+paths; (v) the loop-preserved structure is captured by gauge-invariant holonomies, while microstate
+details in the complement (periphery) fluctuate. Quantum scars supply the semiclassical picture: am-
+plitudes concentrate on unstable periodic orbits (closed loops), and “gating” reshapes which scars
+persist.
+1. Topology and kinematics of a wormhole network
+Model spacetime as a manifold M with a finite set of traversable wormhole throats {e ∈ E} producing
+nontrivial topology (handle attachments). Abstract the kinematics by a directed multigraph G =
+(V, E) whose edges e represent oriented throat transits and whose cycles C ⊂ E represent closed
+causal/information paths (which may be timelike, nearly null, or effective CTCs in a computation-
+theoretic sense).
+    For a signal carrier (classical symbol, quantum amplitude, or hybrid) with angular frequency ω,
+assign each edge a single-pass propagator
+                                                p                             
+                                                            i ωτe (ge )+ϕe (Φ)
+                               Ue (ω, ge , Φ) =  ηe (ge ) e                     Re ,
+where τe is the traversal delay, ηe ∈ [0, 1] the intensity transmission, ϕe a holonomy phase due to
+gauge fluxes Φ threading noncontractible cycles, and Re an internal rotation/mixing on a finite mode
+space (polarization/spin/channels). The “gate” variable ge (controlled locally or by another wormhole)
+modulates ηe , τe ; ϕe depends only on Φ (Aharonov–Bohm-type holonomy). Composition around a cycle
+C yields the cycle propagator
+                                                     ⟲
+                                                     Y
+                                      UC (ω, g, Φ) =   Ue (ω, ge , Φ).
+                                                       e∈C
+A closed-loop (single-roundtrip) phase is φC = argTr UC (for scalar modes φC is simply the phase of
+the product).
+Holonomy and knot/link data. Let {Ci } be a basis of independent cycles (first homology H1 ).
+Let {Σk } be independent 2-cycles dual to handles that carry U (1) fluxes Φk . The Aharonov–Bohm
+phase accumulated on Ci is
+                                                q X
+                                     ϕCi (Φ) =        Lik Φk ,
+                                                ℏ k
+where Lik ∈ Z is the linking number between Ci and Σk . This captures “closed AB paths” in a multiply
+connected geometry and extends naturally to non-Abelian holonomies.
+                                                      1
+2. Fixed-point (bootstrap) modes and originlessness
+Let a collect complex mode amplitudes on a set of reference cross-sections (e.g., immediately after each
+throat). One roundtrip of all loops defines a global transfer operator
+                                               U(ω, g, Φ) a = a.
+Nontrivial solutions a ̸= 0 exist iff det(I − U) = 0. These are bootstrap modes: closed-loop eigenstates
+whose support is confined to cycles. They possess no external “source” in the usual causal sense;
+rather, they are fixed points of the network evolution under loop closure. Spectrally, they are the
+1-eigenvectors of U, or, for lossy networks, the Perron modes of largest modulus (with gain provided
+by feedback subloops, parametric drive, or boundary conditions).
+Quantization by holonomy. In scalar, single-cycle limit, the consistency reduces to
+                              p
+                                ηC (g) e i(ωτC (g)+ϕC (Φ)) = 1,
+so ηC (g) = 1 and ωτC (g)+ϕC (Φ) = 2πn. In multi-cycle networks the constraints couple through shared
+edges and junction scattering; holonomies ϕCi act like topological “knobs” that slide the spectrum.
+3. Gating by wormholes: “choking” as a control primitive
+A second wormhole can gate a throat e by altering its effective redshift profile, tidal geometry, or quan-
+tum stress-energy, which we package into ge . Operationally, gating implements a controlled deformation
+                           (ηe , τe ) 7→ (ηe (g), τe (g)),       ∂g ηe ≤ 0,   ∂g τe ≥ 0,
+i.e., increased choking lowers transparency and increases dwell time. Crucially, choking an edge in one
+loop modifies all cycles that contain e, and thus all fixed-point constraints in which e participates.
+Transistor/MOSFET analogy. Identify two distinguished loops as “source” and “drain” cycles,
+CS , CD , that exchange amplitude through a shared subpath containing a gated edge eg . A third loop
+(the “gate loop”) CG controls either geg (through geometric back-reaction/quantum inequalities) or the
+holonomy ϕCG (Φ) that shifts interference at a coupler shared with CS ∪ CD . The small parameter δg
+or δΦ then yields a large change in occupation of the drain eigenmode when U sits near a spectral
+degeneracy (avoided crossing), i.e.,
+                               d                   1
+                                 |aCD |2 ∝                   ,          λ ∈ {g, Φ},
+                              dλ           minj |1 − λj (λ)|
+with {λj } the eigenvalues of U. This is the interferometric gain mechanism (cf. SQUID-like control in
+phase space).
+4. Interference of quantum scars across nested boundaries
+In chaotic ray/trajectory limits, closed unstable orbits {γ} support quantum scars: enhanced amplitude
+of eigenmodes near γ. In our setting, cycles C (topological) and orbits γ (dynamical) coincide in the
+semiclassical support of bootstrap modes. When two loops share segments or enclose oneRanother, their
+scar subspaces are non-orthogonal and interfere. Gating adjusts (i) action phases S[γ] = γ p·dx−ω∆t,
+(ii) AB phases ϕ, and (iii) local stabilities. The net effect is a selection among competing scarred
+eigenmodes via a topological-dynamical Fano interference:
+                                           X
+                                     ψ =      Aγ (g, Φ) e i(S[γ]/ℏ+ϕγ (Φ)) ,
+                                             γ∈Γ
+with amplitudes Aγ suppressed/enhanced by choking and by holonomy-controlled phase alignment.
+                                                             2
+5. Closed Aharonov–Bohm control and knot data
+Let L be the integer linking matrix between basis cycles and threaded fluxes. Holonomies enter only
+through LΦ; knotting/linking among loops therefore acts as a routing matrix for phase control. A
+minimal two-loop gate has
+                                                
+                           ϕC1       q L11 L12      Φ1
+                                 =                       , L12 = L21 ∈ Z.
+                           ϕC2      ℏ    L21 L 22   Φ2
+Tuning Φ2 (through C2 ) modulates ϕC1 if and only if L12 ̸= 0; this is the precise AB-mediated gating
+criterion. In non-Abelian variants, holonomies are group elements and gating acts via conjugacy classes,
+enabling richer switching (e.g., topological selection rules).
+6. Consistency, memory, and what can/cannot change
+Embed an agent with memory m = M (h) attempting to set a target variable z that lives on a holonomy
+(e.g., the phase of a specific loop). As in the “no-target theorem,” if z is functionally entangled with
+m across closure, the network equations force z to a fixed point z ⋆ compatible with m(z ⋆ ). Therefore:
+   • Invariant (code) layer: cycle holonomies {ϕCi } and roundtrip delays {τCi } that are logically
+     referenced by the agent’s own recollection behave as fixed invariants.
+   • Periphery layer: local scattering phases, mode partitions, and amplitudes orthogonal to the
+     invariant algebra fluctuate and can carry coordination signals. Gating steers which periphery
+     channels dominate by moving the spectrum of U, while leaving the invariants intact.
+Pragmatically, we shape which bootstrap mode wins, not an invariant that is coupled to memory.
+7. Minimal algebra: two loops with a shared, gated throat
+Let a1 , a2 be complex roundtrip amplitudes on cycles C1 , C2 , each with intrinsic return factors r1 eiφ1
+and r2 eiφ2 (including AB phases). A shared throat implements bidirectional coupling t(g) (real for
+simplicity), yielding                     iφ               
+                                   a1        r1 e 1 t(g)eiθ      a1
+                                        =         iθ     iφ2         .
+                                   a2       t(g)e    r2 e        a2
+Nontrivial solutions require
+                                 1 − r1 eiφ1 1 − r2 eiφ2 − t(g)2 e2iθ = 0.
+                                                       
+A small holonomy shift δφ2 = (q/ℏ)L2k δΦk or a small choke δt can toggle the existence/weight of the
+a1 -dominated mode if the system sits near the root manifold above; this is the transistor-like action.
+8. Multi-loop coordination (Schelling layer)
+Given a family of networks {Gα } with different absolute durations but identical structure type (same
+linking matrix L, same cycle adjacency), agents restricted to invariants (shared holonomies) can select
+the same focal bootstrap mode by adopting a policy a = f ({ϕCi } mod 2π) that maximizes mutual
+predictability. Gating then enforces that mode by spectral separation (opening a gap to competitors),
+while periphery fluctuations distribute microscopic details. This directly realizes a Schelling-Point
+Calculus on holonomy space.
+                                                    3
+9. Observables and signatures
+   • Holonomy-tuned spectral flow: eigenfrequencies/roundtrip phases of bootstrap modes slide
+     linearly with AB flux (∝ LΦ); near degeneracies, small flux shifts cause large amplitude realloca-
+     tion (interferometric switching).
+   • Gate choking response: as a single throat is pinched (ηe ↓), modes supported by cycles travers-
+     ing e quench selectively; modes on disjoint cycles are unaffected except via interference terms.
+   • Scar selection: spatial intensity maps (classical/semiclassical) reorganize along closed orbits
+     consistent with the switched mode; overlapping scars show Fano-like lineshapes as gates sweep
+     phases through resonance.
+   • Invariance under memory coupling: quantities explicitly referenced in the agent’s recollection
+     revert to loop-fixed values across attempts; only orthogonal observables wander.
+10. Analog simulators (practical toy models)
+The mathematics above is captured exactly by quantum graphs/wave networks:
+  1. Photonic ring-resonator lattices: rings as cycles, tunable directional couplers as throats (gate
+     via heater/EO phase shifter). AB holonomy via synthetic gauge fields (dynamic modulation).
+     Bootstrap modes are lasing/oscillation eigenmodes in feedback.
+  2. Microwave networks: coax/waveguide graphs with phase shifters and variable attenuators;
+     direct readout of det(I − U) zeros (network resonances).
+  3. Cold-atom circuits / atomtronics: superfluid on a ring with weak links; flux (rotation/artificial
+     gauge field) controls Josephson phases; scars correspond to persistent-current states.
+These platforms instantiate the transfer-operator, holonomy control, and gating physics without invok-
+ing exotic spacetime engineering, yet faithfully test the fixed-point and interference logic.
+11. Synthesis
+A gated multi-wormhole network is a topological interferometer whose computational state is an eigen-
+mode of a holonomy- and choke-controlled transfer operator. “Originless” information corresponds to
+fixed points living on closed cycles. Control is exerted indirectly: not by forcing a memory-entangled
+invariant (which self-consistency pins), but by spectrally selecting among admissible bootstrap modes
+via (i) wormhole choking ( g ) and (ii) AB holonomy ( Φ ). Knot/link data encode who can gate whom.
+Quantum scars provide the semiclassical geometry of where amplitude lives; gates and holonomies
+sculpt those scars and thereby the realized loop-computation.
+                                                      ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                  4

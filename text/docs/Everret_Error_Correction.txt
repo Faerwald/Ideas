@@ -1,0 +1,68 @@
+Title: Everret Error Correction
+Date:  2025-05-27
+Source: Everret Error Correction.pdf
+Information Theory and Inter-World / Inter-Time
+                     Communication Error Correction
+                                       Jason Agamemnon Sokaris
+                                              March 14, 2025
+                                                   Abstract
+          Communication across multiple contexts—human-to-human, human-to-AI, or across temporal
+      boundaries—introduces intrinsic errors due to translation, interpretation, and informational encoding
+      and decoding. This paper outlines the analogy between iterative misinterpretation across these con-
+      texts and cryptographic one-way functions, formalizing concepts using information theory, statistical
+      inference, and physics principles. We emphasize error correction methodologies, transformer-based
+      translation errors, and cross-modal information mapping.
+1     Introduction
+Communication between individuals separated by time, technological interfaces, or even consciousness
+states can introduce significant informational distortions. These distortions, analogous to cryptographic
+one-way functions, render the original meaning nearly irretrievable or heavily obfuscated without additional
+context or keys. Such distortion is especially apparent in interpreting abstract notes from potential future
+consciousness, as errors accumulate and compound iteratively.
+2     Classification of Errors
+We identify the following error categories relevant to this framework:
+    • Misinterpretation Errors: Incorrectly assigning meaning to information due to ambiguity or
+      cognitive biases.
+    • Transformer-based Translation Errors: Semantic distortions introduced by deep learning mod-
+      els translating between languages.
+    • One-way Functional Errors: Asymmetric translation, akin to one-way cryptographic functions,
+      causing irreversible ambiguity in meaning.
+    • Cross-modal Errors: Information losses occurring when converting data from one modality (e.g.,
+      image, text, EEG) to another.
+3     Mathematical Formalism
+Information theory provides the ideal formalism. Considering Shannon’s entropy:
+                                                 X
+                                       H(X) = −     p(x) log2 p(x)                                            (1)
+                                                     x∈X
+                                                       1
+                                Information and Temporal Misinterpretation
+where distortion corresponds to entropy increases, reducing mutual information I(X; Y ) between source
+(X) and receiver (Y ), calculated as:
+                                        I(X; Y ) = H(X) − H(X|Y )                                       (2)
+Misinterpretation corresponds mathematically to high conditional entropy H(X|Y ).
+4    Transformer-based Translation Errors
+Transformer models approximate conditional probability distributions of translations. Errors manifest
+through loss functions optimized via cross-entropy:
+                                                              X
+                                   Lcross-entropy (ŷ, y) = −   yi log(ŷi )                      (3)
+                                                             i
+where ŷ is the predicted translation distribution, and y the true distribution.
+5    Error Correction
+To mitigate information loss, error-correcting codes (ECC), specifically low-density parity-check (LDPC)
+codes, are applied:
+                             HcT = 0, where H is the parity-check matrix                              (4)
+Implementing ECC (error-correcting codes) analogous to temporal and cognitive contexts can substantially
+reduce noise and enhance fidelity.
+6    One-Way Functions and Temporal Cryptography
+Time-directional communication is analogous to cryptographic one-way functions:
+                   y = f (x),   such that finding x given y is computationally infeasible               (5)
+This provides an intuitive parallel: future selves possess computational resources or keys unavailable to
+past selves, making information easily verified but not originated in past contexts.
+7    Discussion
+Just as transformers improve language translation, iterative contextual interactions and self-feedback loops
+(recursive communications) gradually correct informational distortions. However, fundamental information-
+theoretic barriers limit reconstruction accuracy, suggesting that absolute accuracy remains asymptotic.
+8    Conclusion
+The informational complexity of communication across time and modality demands robust error correction
+informed by mathematical rigor. Employing information theory and cryptographic analogies clarifies the
+nature of distortion and facilitates strategies to mitigate or even leverage it.
+                                                      2

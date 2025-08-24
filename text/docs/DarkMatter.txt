@@ -1,0 +1,396 @@
+Title: DarkMatter
+Date:  2025-05-27
+Source: DarkMatter.pdf
+Dark Matter: Scientific and Engineering Perspectives
+                  A Rigorous Exploration of Real-World Physics and Technology Foundations
+1. Introduction
+The television series Dark Matter (2015–2017) follows the crew of the starship Raza, a small group of amnesiac
+individuals accompanied by an advanced Android. While the narrative largely focuses on character-driven plots,
+the show references a variety of advanced scientific and technological concepts, from Faster-Than-Light (FTL)
+engines to neural memory manipulation. This document seeks to transform these fictional elements into a grounded
+analysis, bridging the gap between on-screen speculation and real-world science, mathematics, and engineering.
+By exploring the underlying principles, ongoing research, and potential development pathways, we gain a clearer
+picture of how Dark Matter ’s technologies might be realized—or at least approached—in contemporary or near-
+future scientific disciplines.
+2. Propulsion, Travel, and Transport
+2.1 Faster-Than-Light (FTL) Travel
+Fictional Depiction: In the show, ships jump between star systems almost instantaneously, suggesting advanced
+spacetime manipulation and near-instant navigation.
+Real-World Foundations:
+   • General Relativity (GR) Constraints: Einstein’s field equations set constraints on superluminal travel.
+     Conventional physics prohibits FTL in flat spacetime. However, certain theoretical constructs, such as the
+     Alcubierre metric (“warp drive”) [1], introduce the idea of locally contracting and expanding spacetime.
+   • Energy Requirements: Alcubierre’s original solution required “negative mass-energy,” a hypothetical ex-
+     otic matter that remains unproven experimentally. Contemporary lab work on quantum vacuum fluctuations
+     has sought to probe whether the Casimir effect or other phenomena could produce the needed negative
+     energy densities [2].
+   • Engineering and Computational Aspects: Even if exotic matter existed, controlling a dynamic warp
+     bubble would demand real-time solutions of Einstein’s field equations. High-performance computing (HPC)
+     would be essential for continuous metric reconfiguration. Numerical relativity codes (like EinsteinToolkit)
+     [3] could theoretically evolve the spacetime geometry around a vessel in real time, requiring petascale or
+     exascale-level computing.
+   • Incremental Advancements: While true FTL remains speculative, incremental steps include:
+        – Ion and Plasma Propulsion: NASA’s NEXT ion thrusters, or other plasma-based drives, offer high specific
+          impulse for efficient in-system travel.
+        – Beamed Energy Propulsion: Proposed methods using lasers or microwaves (e.g., laser-sail concepts)
+          could accelerate a craft to fractions of the speed of light.
+2.2 Blink Drive
+Fictional Depiction: The Blink Drive performs near-instantaneous jumps, occasionally causing time travel
+anomalies or accessing parallel universes.
+Real-World Foundations:
+                                                       1
+   • Wormholes and Topological Features: A theoretical approach is the Einstein-Rosen bridge (wormhole).
+     Stability requires exotic matter [4]. If stabilized, a wormhole could connect distant points in spacetime
+     instantaneously.
+   • Time Travel Loops: Solutions with Closed Timelike Curves (CTCs) arise in certain spacetime geometries
+     (e.g., Tipler cylinders). Real physics strongly hints at paradoxes and the chronology protection conjecture
+     [5].
+   • Quantum Entanglement and Teleportation: Laboratory experiments on quantum teleportation [6]
+     transfer quantum states, not matter, and do not allow superluminal signaling. Scalability to macro-objects
+     remains far beyond current capability.
+   • Practical Experimentation: To approach any form of “instantaneous jump,” a device would need:
+        – Extremely precise quantum field measurements to detect or create spacetime defects.
+        – High-energy particle colliders or large-scale vacuum research to generate negative energy densities.
+2.3 The Marauder Shuttle
+Fictional Depiction: A short-range craft for planetary landings and infiltration, relying on advanced thrusters
+and minimal stealth.
+Real-World Foundations:
+   • Fusion or High-Energy Thrusters: Practical near-term solutions may involve nuclear thermal or fusion
+     propulsion [7]. Fusion drives like the Direct Fusion Drive proposed by Princeton Satellite Systems could
+     yield higher thrust and efficiency than chemical rockets.
+   • Stealth Technology: Involves radar absorbent materials (RAM) and thermal management. Experimen-
+     tal metamaterials can alter a vehicle’s electromagnetic signature, but truly “invisible” craft would require
+     advanced, tunable cloaking [8].
+3. Androids and Artificial Intelligence
+3.1 The Raza’s Android
+Fictional Depiction: A human-like synthetic endowed with advanced cognition, an emotional upgrade, and a
+neural link to ship systems.
+Real-World Foundations:
+   • AI Architecture and Embodiment: Modern robotics and AI rely on deep neural networks, symbolic
+     reasoning modules, or hybrid approaches [9]. Achieving human-level general intelligence remains an open
+     challenge in AGI research.
+   • Positronic Brain Analogy: The term “positronic” references Asimov’s vision. Real-world neuromorphic
+     chips (e.g., IBM TrueNorth, Intel Loihi) mimic neuronal structures for efficient parallel processing [10].
+   • Emotion and Empathy Simulations: Current research in Affective Computing attempts to detect and
+     respond to emotional states [?]. Integrated neuromorphic hardware and specialized software could eventually
+     simulate or approximate empathic behavior.
+   • Neural Ship Interface: Wireless data links (via Wi-Fi, Li-Fi, or specialized RF bands) could allow robots to
+     interface with a vessel’s control systems. For real-time feedback loops, onboard sensor fusion and concurrency
+     frameworks (e.g., ROS2) [11] could be used.
+                                                        2
+3.2 Other Androids and AI Systems
+Fictional Depiction: Corporate security androids, automated facilities, and locked-down AI designed for combat
+or logistics.
+Real-World Foundations:
+   • Combat Robotics: Already in development for military applications (e.g., Boston Dynamics prototypes),
+     but heavily constrained by power supply, reliability, and ethical frameworks [12].
+   • Automation in Industry: Large space stations or facilities could use distributed AI solutions (similar to
+     edge computing in IoT) for tasks like docking, resource allocation, and life support.
+4. Transfer Transit (Cloning Technology)
+4.1 Concept of Digital Consciousness Transfer
+Fictional Depiction: Bodies are grown or provided as “blanks” for remote consciousness imprinting.
+Real-World Foundations:
+   • Cloning and Regenerative Medicine: Stem cell research and tissue engineering have advanced signifi-
+     cantly (e.g., organoids). However, creating a fully developed, short-lived adult clone remains impossible with
+     current bioengineering.
+   • Neural Encoding: Projects like the Blue Brain Project attempt to simulate a rodent brain at the neuronal
+     level [13]. Extrapolating to a full human connectome [14] is extraordinarily complex.
+   • Data Transfer and Mind Uploading: True mind uploading requires scanning all synaptic connections
+     (potentially at the atomic scale) and replicating them computationally. The scanning alone (through ad-
+     vanced fMRI, electron microscopy, or novel scanning techniques) is an active field of speculation but lacks a
+     complete solution [15].
+5. Neurotechnology and Memory Manipulation
+5.1 Memory Wipes and Restorations
+Fictional Depiction: Crew members suffer from amnesia induced by specialized neural tampering.
+Real-World Foundations:
+   • Neural Blockers: Pharmaceuticals like benzodiazepines can disrupt memory formation [16], but targeted
+     wiping of specific memories requires more advanced techniques (e.g., optogenetics in animal models to selec-
+     tively erase or implant memories) [17].
+   • Memory Reinforcement and Recovery: Transcranial Magnetic Stimulation (TMS), transcranial Direct
+     Current Stimulation (tDCS), and deep brain stimulation (DBS) are being explored for memory deficits and
+     PTSD [18].
+   • Quantum-Level Storage: While the show suggests quantum processes in memory, real neuroscience pri-
+     marily involves synaptic plasticity. True quantum effects in the brain remain an open question.
+                                                        3
+5.2 Neural Implants and Brain-Computer Interfaces
+Fictional Depiction: Characters interface mentally with computers, or install new personalities or abilities.
+Real-World Foundations:
+   • BCIs in Research: Current BCIs (e.g., BrainGate) use microelectrode arrays to decode motor commands
+     [19]. Future expansions might integrate machine learning to interpret more complex cognitive data.
+   • Skill Uploading: While direct “knowledge implants” remain speculative, VR training combined with neu-
+     rofeedback [20] has shown improvements in motor skills and memorization.
+   • Memory/Personality Overlays: The closest analog is neural plasticity-based therapy or partial EEG-
+     to-EEG training [21], though these methods do not “overwrite” personalities, only modulate certain neural
+     pathways.
+6. Medical Technology and Biotech
+6.1 Stasis Pods
+Fictional Depiction: Cryo-chambers that put people into suspended animation.
+Real-World Foundations:
+   • Cryopreservation: Vitrification methods (using cryoprotectants) allow human embryos or organs to be
+     preserved without damaging ice crystals [22]. Whole-body cryopreservation is still experimental.
+   • Metabolic Suppression: Certain animals (e.g., Arctic ground squirrels) drastically reduce metabolism
+     in hibernation. Translating this to humans is an active field with NASA-funded research for long-duration
+     spaceflight [23].
+6.2 Genetic Engineering and Nanotechnology
+Fictional Depiction: Enhanced super-soldiers, nanites that repair damage or cause sabotage.
+Real-World Foundations:
+   • CRISPR/Cas9 and Gene Drives: Powerful tools for genetic edits [24], but far from creating large-scale
+     super-soldiers.
+   • Medical Nanorobots: Early-stage research focuses on targeted drug delivery or localized tumor treatment
+     using nanoscale structures. Fully autonomous nanorobots that repair tissues seamlessly remain decades away,
+     given material, power, and control challenges [25].
+7. Weapons, Defenses, and Military Tech
+7.1 Energy Weapons and Conventional Firearms
+Fictional Depiction: Pulse sidearms and ballistic weapons in parallel.
+Real-World Foundations:
+   • Laser and Plasma Technology: High-power lasers (chemical or solid-state) exist for military prototypes,
+     but issues include beam dispersion, atmospheric attenuation, and massive power requirements. Plasma
+     weaponization is still largely experimental [26].
+                                                       4
+   • Railguns and Coilguns: Electromagnetic projectile launchers are under testing by various navies. They
+     achieve hypervelocity projectiles using strong electric fields [27].
+7.2 Shipboard Weapon Systems
+Fictional Depiction: Particle beam arrays, missiles with exotic warheads, and powerful energy shields.
+Real-World Foundations:
+   • Particle Beams: Accelerators (linear or circular) can produce high-energy beams, but their sheer size
+     and power consumption are prohibitive for spacecraft weaponization. Space-based tests, like the SDI-era
+     “particle beam concept,” never reached operational stages.
+   • Antimatter Warheads: Antimatter production is extremely limited (nanograms in lab settings) and
+     storing it safely remains a monumental challenge due to annihilation hazards [28].
+   • Energy Shielding: Plasma magnetospheres or electromagnetic fields might deflect charged particles [29],
+     but deflecting high-speed kinetics or neutral particles is far more difficult.
+7.3 The Asimov Exclusion Field
+Fictional Depiction: A field that restricts AI activity or enforces certain robotic limitations.
+Real-World Foundations:
+   • AI Safeguards: One can program kill-switches or ethical subroutines into AI [30], but no known physical
+     field can selectively block an AI from “acting.”
+   • Electromagnetic Isolation: High-intensity EMPs or Faraday cages could disrupt electronics, though they
+     lack the fine-grained control implied by the show.
+   • Neuromorphic Firewalls: If an android’s hardware is neuro-inspired, specialized interfaces or trusted
+     platform modules might forcibly lock out certain behaviors.
+8. Corporate and Political Technologies
+8.1 Corporate Warships
+Fictional Depiction: Large fleets with stealth systems, advanced drives, and heavy armaments.
+Real-World Foundations:
+   • Stealth in Space: True stealth in space is difficult due to thermal emission constraints. Passive cooling or
+     radiative heat dispersion can reduce IR signatures, but total concealment from advanced sensors (IR, radar,
+     gravitational wave detectors) is challenging.
+   • Military Contractor R&D: Many defense contractors (e.g., Lockheed Martin’s Skunk Works) develop
+     cutting-edge prototypes with advanced materials and propulsion concepts. However, space-based militariza-
+     tion is regulated by international treaties (e.g., OST).
+8.2 Station Infrastructure
+Fictional Depiction: Automated docking, environment controls, ID implants for security.
+Real-World Foundations:
+                                                        5
+   • Autonomous Docking: Already tested on the ISS with vehicles like SpaceX’s Dragon or the Russian
+     Progress modules. Algorithms rely on LiDAR, computer vision, and sensor fusion [32].
+   • Biometric Authentication: Implants using RFID or near-field communications (NFC) exist experimen-
+     tally, with increasing interest in subdermal chips for secure access [31].
+9. Advanced Physics and Phenomena
+9.1 Temporal Anomalies and Time Loops
+Fictional Depiction: The Blink Drive occasionally creates repeated time loops or timeline inversions.
+Real-World Foundations:
+   • Closed Timelike Curves (CTCs): Theoretical solutions in GR (e.g., Gödel universe). Highly speculative,
+     with potential causality issues.
+   • Quantum Entanglement: Despite popular misconceptions, entanglement does not allow backward-in-time
+     messaging. Experimental protocols confirm the no-communication theorem [33].
+9.2 Parallel Universes
+Fictional Depiction: Characters cross into universes where alternate versions of themselves exist.
+Real-World Foundations:
+   • Many-Worlds Interpretation: In quantum mechanics, this interpretation posits branching wavefunction
+     states [34]. Actual physical crossovers are not supported by standard QM.
+   • Multiverse in Cosmology: Inflationary models suggest bubble universes, but no known mechanism enables
+     travel between them.
+10. Virtual Realities and Digital Consciousness
+10.1 Virtual Environments
+Fictional Depiction: Characters are trapped in realistic VR constructs.
+Real-World Foundations:
+   • Neural VR: Current VR headsets stimulate audio-visual senses. Future BCIs might provide tactile and
+     proprioceptive feedback. Achieving a “realistic” sim requires advanced haptic devices, neural stimulation,
+     and possibly direct cortical implants.
+   • Software Tools: Game engines (Unity, Unreal) already produce high-fidelity environments. Coupled with
+     AI-driven procedural generation, these can simulate complex physics and interactions in real time.
+10.2 Mind Probing and Interrogation Tech
+Fictional Depiction: Machines forcibly read or extract information from a subject’s mind.
+Real-World Foundations:
+   • Modern Neuroscience Techniques: fMRI, EEG, and MEG can partially “decode” neural activity for
+     basic stimuli. Detailed memory extraction is science fiction given current resolution limits [?].
+                                                       6
+11. Other Notable Technologies and Concepts
+11.1 Robotics and Drones
+Fictional Depiction: Small maintenance robots for cargo loading or surveillance.
+Real-World Foundations:
+   • Swarm Robotics: Research on cooperative drone swarms uses decentralized algorithms (e.g., multi-agent
+     reinforcement learning). Practical challenges remain in robust real-time communication and collision avoid-
+     ance.
+11.2 Cloaking and Stealth Systems
+Fictional Depiction: Sensor obfuscation and adaptive hull plating for near-invisibility.
+Real-World Foundations:
+   • Metamaterials: Engineered structures with negative refractive indices can bend electromagnetic waves
+     around an object [8]. Proof-of-concept cloaking devices exist at specific frequencies (e.g., microwave).
+   • Thermal Suppression: Radiating heat away in a direction opposite to enemy sensors or storing heat
+     internally for short durations can reduce IR detection.
+11.3 Holographic Displays
+Fictional Depiction: Free-floating holograms for ship controls and communications.
+Real-World Foundations:
+   • Volumetric Displays: Techniques such as swept-volume displays, laser-induced plasma voxels, or aug-
+     mented reality headsets can create 3D visuals, though truly “free-floating” illusions in open air remain
+     limited [35].
+   • FTL Communication: Since real physics disallows superluminal signals, advanced radio or laser-based
+     transmissions, relayed by satellites or subspace-like nodes, are the plausible near-term solutions.
+12. Conclusion
+Dark Matter merges speculative science with dramatic storytelling. By juxtaposing warp-like propulsion, AI-
+driven robotics, and memory manipulation, it highlights technologies far beyond current capability. Yet each
+concept—from near-instant FTL to advanced neuroimplants—can be traced to real-world research areas such as
+general relativity, quantum computing, genomics, and robotics. While substantial theoretical, engineering, and
+ethical barriers stand between modern science and the show’s futuristic achievements, Dark Matter spurs critical
+thought about how we might push technological frontiers—and what moral dilemmas could emerge along the way.
+13. White Hole Technology
+Fictional Depiction: White holes expel matter and energy, theoretically harnessed for power or weaponry.
+Real-World Foundations:
+   • General Relativity Solutions: White holes appear as time-reversed black holes in GR. They are considered
+     non-physical by many physicists due to instability and lack of observational evidence [36].
+                                                       7
+   • Energy Generation: If such an entity existed, capturing high-energy outflows would be akin to harnessing
+     a continuous burst from a singularity. Engineering constraints would include managing enormous radiation
+     flux and gravitational distortions.
+   • Containment Fields: A hypothetical attempt would involve strong gravitational lensing or advanced
+     magneto-gravitic traps, requiring materials and field strengths not demonstrably feasible with known physics.
+14. Chip-Based Consciousness Upload
+Fictional Depiction: Complete neuronal maps stored on a specialized chip, allowing indefinite backups.
+Real-World Foundations:
+   • High-Fidelity Brain Imaging: Detailed electron microscopy can map neural circuits, but scaling up to
+     an entire human brain and capturing dynamic states remains an unsolved challenge.
+   • Computational Substrate: Simulating a full connectome requires massive parallelism. Advanced neuro-
+     morphic chips or future quantum computers might handle partial or full brain emulations [15].
+   • Ethical Issues: Such technology would question personal identity, consent, digital personhood, and poten-
+     tial indefinite data captivity.
+15. The Prescient Seers and Collective Consciousness
+Fictional Depiction: A faction uses implants and drug regimens for limited precognition, functioning as a hive
+mind.
+Real-World Foundations:
+   • Predictive Analytics and Big Data: Modern machine learning can forecast events given sufficient data.
+     Human cognition augmented by real-time analytics might resemble a limited “precognition” for strategic
+     decisions.
+   • Neural Synchronization: Brain-to-brain communication experiments (using EEG-based signals) are in
+     very early stages. Multi-brain integration for group tasks is investigated in hyper-scanning studies [?].
+   • Drug-Induced Cognitive Enhancement: Substances like modafinil or nootropics can improve focus or
+     alertness, but far from literal clairvoyance.
+16. Phasing Technology (Wall-Passing / Intangibility)
+Fictional Depiction: A wearable device shifts the user slightly out of phase, letting them pass through matter.
+Real-World Foundations:
+   • Quantum Tunneling: Electrons can tunnel through potential barriers, but large-scale macroscopic tun-
+     neling is negligible due to extremely low probability at human-sized mass scales.
+   • Dimensional Shifting: No known physical mechanism allows matter to decouple from its spatiotempo-
+     ral coordinates. Proposed brane-world scenarios are purely theoretical and offer no near-term engineering
+     approach.
+   • Metamaterial Illusions: At best, illusions of passing through walls could be staged via advanced hologra-
+     phy or hidden passageways. True intangible phasing remains beyond mainstream physics.
+                                                        8
+17. Advanced or Rarely Mentioned Concepts
+17.1 Nano-Engineered Human Hybrids
+Fictional Depiction: Individuals with embedded nanites for rapid healing and anti-aging.
+Real-World Foundations:
+   • Continuous Nano-Repair: Ongoing research in nanomedicine focuses on targeted drug delivery, not
+     indefinite cellular repair. Power sources and control mechanisms remain unsolved.
+   • Life Extension: Telomere manipulation, senolytic drugs, and gene therapy are being studied to slow aging.
+     Full cellular regeneration with embedded nanites is not yet feasible.
+17.2 Dimensional Key Artifacts
+Fictional Depiction: Artifacts that open gateways or micro-rifts in spacetime.
+Real-World Foundations:
+   • Quantum Topology Manipulation: Concepts like quantum foam at the Planck scale are purely theoret-
+     ical. Building a device to exploit these topological fluctuations is currently beyond our engineering horizon.
+   • Genetic or Neural Interface: Biometric activation of specialized devices is akin to an advanced version
+     of fingerprint scanners or neural activation. Possible, but linking that to actual dimension manipulation is
+     unsubstantiated.
+17.3 Gravitational Displacement Mines
+Fictional Depiction: Mines that create localized gravity wells on detonation.
+Real-World Foundations:
+   • Gravity Generation: Artificial gravitational fields in labs are minuscule. Generating a localized well strong
+     enough to damage ships would require mass-energy on astrophysical scales [37].
+   • Exotic Matter Explosives: No known route to produce stable, deployable exotic matter bombs.
+17.4 Enhanced Cyber-Hacking Suites
+Fictional Depiction: Quantum-based hacking tools that break encryption or override android neural nets.
+Real-World Foundations:
+   • Quantum Computing: Shor’s algorithm can theoretically break RSA-type encryption at scale [38]. Cur-
+     rent quantum computers have limited qubits with high error rates.
+   • Neuromorphic Exploits: If androids run neuromorphic hardware, specialized malware might target the
+     spiking neural network parameters. Detailed architectural knowledge would be required.
+17.5 Subspace Communication Relays
+Fictional Depiction: Communication across vast distances almost instantaneously.
+Real-World Foundations:
+                                                        9
+   • Relay Networks: Current proposals for deep-space comm include laser-based systems and high-gain radio
+     arrays [39].
+   • Latency Limits: Signals cannot exceed c (the speed of light) in known physics, making real-time interstellar
+     communications impossible without hypothetical FTL relays.
+By re-examining each fictional technology through the lens of contemporary physics, mathematics, and engineering,
+we see both the immense challenge and the seeds of inspiration. Although many of Dark Matter ’s advancements
+lie well outside verified science, incremental breakthroughs in quantum mechanics, neuromorphic AI, genetic
+engineering, and advanced propulsion could one day illuminate alternative paths to some of these once-unthinkable
+possibilities.
+References (Illustrative):
+References
+ [1] M. Alcubierre, “The warp drive: hyper-fast travel within general relativity,” Classical and Quantum Gravity
+     11.5 (1994): L73.
+ [2] L. H. Ford and T. A. Roman, “Negative energy, wormholes and warp drive,” Scientific American 282.1 (2000):
+     46–53.
+ [3] The Einstein Toolkit: Open software for relativistic astrophysics, http://einsteintoolkit.org/.
+ [4] M. S. Morris and K. S. Thorne, “Wormholes in spacetime and their use for interstellar travel: A tool for
+     teaching general relativity,” American Journal of Physics 56.5 (1988): 395–412.
+ [5] S. W. Hawking, “Chronology protection conjecture,” Physical Review D 46.2 (1992): 603–611.
+ [6] D. Bouwmeester et al., “Experimental quantum teleportation,” Nature 390.6660 (1997): 575–579.
+ [7] J. F. Santarius, R. C. Hainebach, et al., “Conceptual design of a fusion-powered exploration vehicle,” Journal
+     of Propulsion and Power 6.3 (1990): 315–324.
+ [8] D. Schurig et al., “Metamaterial electromagnetic cloak at microwave frequencies,” Science 314.5801 (2006):
+     977–980.
+ [9] I. Goodfellow, Y. Bengio, and A. Courville, Deep Learning, MIT Press, 2016.
+[10] C. Mead, “Neuromorphic electronic systems,” Proceedings of the IEEE 78.10 (1990): 1629–1636.
+[11] Open Robotics, “ROS 2 (Robot Operating System 2),” https://docs.ros.org/.
+[12] P. W. Singer, Wired for War: The Robotics Revolution and Conflict in the 21st Century, Penguin, 2009.
+[13] H. Markram, “The Blue Brain Project,” Nature Reviews Neuroscience 7.2 (2006): 153–160.
+[14] D. C. Van Essen et al., “The WU-Minn Human Connectome Project: an overview,” NeuroImage 80 (2013):
+     62–79.
+[15] A. Sandberg and N. Bostrom, “Whole Brain Emulation: A Roadmap,” Technical report, Future of Humanity
+     Institute, Oxford University, 2008.
+[16] S. L. Savić, “Benzodiazepine therapy in the prophylaxis of post-traumatic epilepsy,” Epilepsia 17.1 (1976):
+     1–8.
+[17] S. Ramirez et al., “Creating a false memory in the hippocampus,” Science 341.6144 (2013): 387–391.
+                                                        10
+[18] A. R. Laxton et al., “A phase I trial of deep brain stimulation of memory circuits in Alzheimer’s disease,”
+     Annals of Neurology 68.4 (2010): 521–534.
+[19] L. R. Hochberg et al., “Neuronal ensemble control of prosthetic devices by a human with tetraplegia,” Nature
+     442.7099 (2006): 164–171.
+[20] S. J. L. Johnstone, “Neurofeedback: An insider’s perspective on the next frontier in psychology,” Journal of
+     Psychological Practice 1.1 (2018): 27–47.
+[21] J. Grau et al., “Conscious Brain-to-Brain Communication in Humans Using Non-Invasive Technologies,” PLoS
+     ONE 9.8 (2014): e105225.
+[22] G. M. Fahy, “Cryoprotectant toxicity neutralization,” Cryobiology 60.3 (2010): S45–S53.
+[23] J. Bradford, “Hibernation for Mars Missions,” NASA Innovative Advanced Concepts Symposium, 2014.
+[24] E. Deltcheva et al., “CRISPR RNA maturation by trans-encoded small RNA and host factor RNase III,”
+     Nature 471.7340 (2011): 602–607.
+[25] R. A. Freitas Jr., Nanomedicine, Volume I: Basic Capabilities, Landes Bioscience, 1999.
+[26] S. P. Obenschain et al., “High-energy lasers for directed-energy applications: Eyeing the future,” Physics of
+     Plasmas 25.6 (2018): 060501.
+[27] B. V. Oliver, “Electromagnetic launch science and technology in the United States: History and the path
+     forward,” IEEE Transactions on Plasma Science 41.5 (2013): 1141–1149.
+[28] S. J. M. Pearton et al., “Antihydrogen physics: A review,” Physics Reports 666 (2017): 1–52.
+[29] M. Tajmar, “Possibility of a propulsive effect by plasma bubble expansion in vacuum,” Acta Astronautica
+     132 (2017): 48–56.
+[30] S. Russell, D. Dewey, and M. Tegmark, “Research priorities for robust and beneficial artificial intelligence,”
+     AI Magazine 36.4 (2015): 105–114.
+[31] A. Gasson, “Human RFID implants: From corporate control to ubiquitous computing,” IEEE Consumer
+     Electronics Society 36.2 (2008): 79–86.
+[32] P. M. Kachmar, “NASA Docking System: Automated Docking With Crew Override,” NASA Tech Report,
+     2015.
+[33] W. K. Wootters and W. H. Zurek, “A single quantum cannot be cloned,” Nature 299.5886 (1982): 802–803.
+[34] H. Everett III, “Relative State Formulation of Quantum Mechanics,” Reviews of Modern Physics 29.3 (1957):
+     454–462.
+[35] D. E. Smalley et al., “A photophoretic-trap volumetric display,” Nature 553.7689 (2018): 486–490.
+[36] C. W. Misner, K. S. Thorne, and J. A. Wheeler, Gravitation, W. H. Freeman, 1973.
+[37] B. Schutz, Gravity from the Ground Up, Cambridge University Press, 2003.
+[38] P. W. Shor, “Polynomial-time algorithms for prime factorization and discrete logarithms on a quantum
+     computer,” SIAM Journal on Computing 26.5 (1997): 1484–1509.
+[39] L. Dorado-Munoz, R. Muskens, J. Guo, “Deep space optical communications and advanced photonics: A
+     survey,” IEEE Aerospace Conference, 2017.
+                                                        11

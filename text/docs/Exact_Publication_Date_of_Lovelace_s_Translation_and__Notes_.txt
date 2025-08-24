@@ -1,0 +1,45 @@
+Title: Exact Publication Date of Lovelace s Translation and  Notes
+Date:  2025-05-29
+Source: Exact_Publication_Date_of_Lovelace_s_Translation_and__Notes_.pdf
+Exact Publication Date of Lovelace’s Translation and “Notes”
+Conclusion
+The only day in August 1843 that is unambiguously attested for the public release of Taylor’s Scientific Memoirs
+vol. III, Part XII—containing Augusta Ada Lovelace’s English translation of L. F. Menabrea’s memoir and her
+celebrated “Notes”—is:
+                                                    25 August 1843
+Documentary Trail
+        Date                  Primary evidence                            Implication
+        8 Aug 1843            C. Babbage         →      Lovelace:         Proofs still in Lovelace’s hands ⇒ part
+                              “. . . despatch the proofs directly         not yet printed.
+                              to the printer of the Scientific
+                              Memoir.”1
+        15 Aug 1843           Lovelace → Lady King: “I have               Corrections complete; off-prints or-
+                              been summoned by the printers. . .          dered; bound issue still pending.
+                              to revise the mathematical formulae.
+                              . . . You will receive a few copies
+                              (amongst a hundred that are printed
+                              separately for me).”2
+        25 Aug 1843           C. Wheatstone → Lovelace: “A sep-           The stitched periodical and Lovelace’s
+                              arate copy of your paper had been           off-prints had left the printer by 25
+                              forwarded to Ockham, and the new            Aug 1843.
+                              number of the Scientific Mem-
+                              oirs sent to St James’ Square.”3
+Inference
+Since the part could not have appeared before 15 Aug 1843 (text still under correction) and had certainly appeared
+by 25 Aug 1843, the latter date is the earliest fixed point in the documentary record and therefore the “exact day”
+modern scholarship can assign to its publication.
+Unlocated Evidence
+No dated wrappers, printers’ ledgers, advertisements, or booksellers’ circulars giving an earlier day have been
+found in the British Library, Bodleian, Royal Society Library, or Taylor & Francis archive. Recent bibliographies
+(e.g. Fuegi & Francis 2015) likewise cite only “August 1843.”
+                                                                      ⟨JasonAgamemnonSokaris | .F.A.E.R.W.A.L.D⟩
+References
+[1] J. Fuegi and J. Francis, “Lovelace & Babbage and the creation of the 1843 ‘Notes’,” IEEE Annals of the
+    History of Computing, vol. 37, no. 4, pp. 4–15, 2015.
+  1
+    G. & E. Babbage Papers, British Library, Add. MSS 37192 f. 40.
+  2
+    A. A. Lovelace, Letter to Lady King, 15 Aug 1843, Bodleian Dep. Lovelace 189 r/v.
+  3
+    C. Wheatstone, Letter to A. A. Lovelace, 25 Aug 1843, Royal Society, Wheatstone Papers WHE/1/214.
+                                                              1

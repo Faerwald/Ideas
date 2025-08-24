@@ -1,0 +1,55 @@
+Title: Evanescent Waves and the Transactional Interpretation
+Date:  2025-06-07
+Source: Evanescent_Waves_and_the_Transactional_Interpretation.pdf
+Evanescent Waves and the Transactional Interpretation
+In the Transactional Interpretation (TI) of quantum mechanics, a quantum event is mediated by
+ahandshake between a retarded offer wave, ψoff (x, t), and an advanced confirmation wave, ψconf (x, t).
+Evanescent solutions, satisfying
+                                                       p
+                                 ψ(x) ∼ e−κx ,   κ = 2m(V − E)/ℏ,                                  (1)
+appear in classically forbidden regions (e.g. tunneling). Under TI, such evanescent amplitudes represent
+nonlocal offer/confirmation waves that decay exponentially in |x| but still contribute to the standing
+wave Ψ(x, t) = ψoff + ψconf which enforces conservation across spacetime boundaries.
+Vector Potentials and Gauge Fields
+The fundamental mediator in QED is the four-potential Aµ = (ϕ, A), governed by the action
+                                   Z
+                               1
+                         S=−         Fµν F µν d4 x, Fµν = ∂µ Aν − ∂ν Aµ .                            (2)
+                              4µ0
+The Aharonov–Bohm effect demonstrates the physical reality of Aµ even when F µν = 0 locally. Within
+TI, Aµ carries the quantum phase information of offer/confirmation waves; gauge invariance,
+                                             Aµ → Aµ + ∂µ Λ,                                         (3)
+maps families of transactions into equivalent classes without altering empirical outcomes.
+  Non-Abelian generalizations, Aaµ with field strength
+                                    a
+                                   Fµν = ∂µ Aaν − ∂ν Aaµ + gf abc Abµ Acν ,                          (4)
+mediate strong and weak interactions, extending the handshake metaphor to SU(N ) charges.
+Ghost Fields and BRST Cohomology
+Gauge fixing in the path integral requires introduction of Faddeev–Popov ghost fields ca , c̄a , governed
+by                             Z
+                       Sghost = c̄a −∂ µ Dµb a
+                                                b 4       a
+                                                c d x , Dµb  = ∂µ δba + gf ac b Acµ .                 (5)
+The anti-commuting scalars ca cancel unphysical polarizations in loop diagrams, ensuring unitarity.
+Ghosts never appear as external states, analogous to TI confirmation waves which are not directly
+observed but enforce consistency.
+   In BRST quantization, physical states |Φ⟩ satisfy
+                                   QBRST |Φ⟩ = 0,      |Φ⟩ =
+                                                           ̸ QBRST |χ⟩,                              (6)
+structuring the Hilbert space via cohomology. TI’s transaction boundary conditions likewise project
+out nonphysical solutions.
+Conceptual Synthesis
+   • Evanescent waves implement off /on –shell offer/confirmation amplitudes across classically forbid-
+     den zones.
+   • Vector potentials Aµ are the primary carriers of quantum phase in both QED and TI, beyond
+     local fields.
+                                                      1
+   • Gauge fields generalize the transactional handshake to non-Abelian charges, preserving local sym-
+     metry.
+   • Ghost fields play the formal role of enforcing gauge consistency, analogous to TI’s absorber waves
+     which maintain conservation without direct detection.
+    These elements together suggest a unified view: quantum processes arise from boundary-conditioned
+fields— established via advanced and retarded solutions, gauge redundancy, and auxiliary ghost degrees
+of freedom— which collectively form the standing-wave transactions observed as particle interactions.
+⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                  2

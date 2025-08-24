@@ -1,0 +1,72 @@
+Title: Fermi Analysis of Partner Encounter Probability
+Date:  2025-05-27
+Source: Fermi_Analysis_of_Partner_Encounter_Probability.pdf
+Fermi Analysis of Partner-Encounter Probability
+      Demographics, Trait Intersections and Contact Dynamics (1985–1999
+                                    Cohort)
+                        ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                May 27, 2025
+Abstract
+We estimate (i) the number of females born between 1985 and 1999 in North America, Europe, Russia
+and Australia, (ii) the sub-population satisfying seven specified intellectual, behavioural and interpersonal
+traits, and (iii) the ten-year probability that an individual following a high-interaction lifestyle (with or
+without large-scale media visibility) encounters at least one such partner. Updated UN and World-Bank
+natality series yield ≈ 1.12 × 108 female births. Monte-carried Fermi compounding of trait prevalences
+narrows the compatible cohort to 3 × 102 −3.3 × 103 worldwide. Under 100 meaningful new contacts yr−1
+for 10 years within a ∼ 106 -person effective pool, the encounter probability ranges from 26
+1     Regional Female Births, 1985–1999
+Table 1 derives crude births from mid-period populations P and average crude birth rates b (per 103 yr−1 ):
+                     Region           P / 106     b   Births / 106   Female births / 106
+                     North America      385      16        92.4             45.3
+                     Europe             650      11       107.3             52.6
+                     Russia             148      11        24.4             12.0
+                     Australia           18      15         4.1              2.0
+                     Total                                228.1            111.9
+                        Table 1: Fifteen-year totals; 49 % of births assumed female.
+2     Seven-Dimensional Trait Filter
+Let F0 = 1.119 × 108 be the baseline female cohort. Define conditional prevalences (literature-anchored
+mid-estimates in parentheses):
+    1. High STEM engagement (p1 = 0.10)
+    2. Adventurous disposition, solo travel (p2 = 0.20)
+    3. Explicit long-term (¿22nd century) horizon (p3 = 0.20)
+                                                      1
+    4. “Hacker” problem-solving mindset (p4 = 0.15)
+    5. Emotional/relationship maturity (p5 = 0.25)
+    6. Communication compatibility with autistic cognition (p6 = 0.05)
+    7. High integrity and kindness (p7 = 0.50)
+Assuming approximate independence past trait 1, the expected compatible count is
+                      7
+                      Y
+             F = F0         pi = 1.119 × 108 (0.10)(0.20)(0.20)(0.15)(0.25)(0.05)(0.50) ≈ 1.9 × 103 .
+                      i=1
+Varying each pi within a plausible ±50 % band yields 3 × 102 ≤ F ≤ 3.3 × 103 .
+3     Encounter Probability Model
+Model contacts as Bernoulli trials on an effective pool N . For k independent high-salience interactions,
+                                                                   k
+                                                            F
+                                              Penc   =1− 1−              .
+                                                            N
+3.1     Baseline Mobile Lifestyle
+Set k = 1,000 over 10 yr (100 quality contacts yr−1 )     and N = 106 (STEM-adventure community scale).
+                                              
+                                              
+                                               0.26          (F = 300),
+                                              
+                                       Penc ≈ 0.78            (F = 1,800),
+                                              
+                                              
+                                                0.96          (F = 3,300).
+                                              
+3.2     YouTube Outreach
+A niche technical channel can expose the author to v = 105 viewers essentially instantaneously. Taking
+k = v, N = 5 × 106 (global anglophone STEM-oriented audience),
+                                                Penc ≈ 0.44 – 0.99.
+3.3     Global-Figure Visibility
+For v = 1.0 × 107 unique engagers (N = 3 × 107 ), Penc > 0.995 across the full F range. Visibility, not
+travel velocity, becomes the limiting factor.
+4     Discussion
+The demographic base—about one hundred million females born in the target years—restricts sharply
+once multilayer personality and cognitive traits are compounded. Even under conservative overlap, the
+compatible set is large enough (102 −103 ) that high-interaction strategies confer non-negligible encounter
+probabilities. Digital broadcast mechanisms dominate physical mobility once audience size crosses 105 .
+                                                          2

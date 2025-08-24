@@ -1,0 +1,121 @@
+Title: Distributional Chaos in Token Ultrametrics
+Date:  2025-08-11
+Source: Distributional_Chaos_in_Token_Ultrametrics.pdf
+Distributional Chaos in Token Ultrametrics
+  Purpose. This note reads Distributional Chaos in the Baire Space and reframes its definitions and
+  theorems inside our prefix-ultrametric program (characters/tokens, Example 1.1, tokenizer view,
+  KV-cache geometry, and loop/flip/remap invariance). Citations in purple brackets refer to that
+  paper.
+1. Baire space = prefix-ultrametric shift
+Baire space. X = ω ω (one-sided infinite sequences over a countable alphabet) with the product
+topology and metric
+                             d(x, y) = inf{2−n : xi = yi ∀ i < n}.
+This is exactly our longest-common-prefix ultrametric with base 2: if the first mismatch
+occurs at position k, then d(x, y) = 2−k . :contentReference[oaicite:0]index=0
+     Shift. σ(x0 x1 x2 . . .) = x1 x2 . . .; (X, σ) is the Baire-space shift. Shifting discards the first
+symbol, so “closeness at scale 2−k ” means: the next k symbols coincide. :contentRefer-
+ence[oaicite:1]index=1
+     Subshifts. Γ ⊂ X closed and σ-invariant. Allowed/forbidden words, cylinder sets [w] = {x :
+x[0,|w|) = w}. Cylinders are exactly balls in the ultrametric (fix a prefix). :contentRefer-
+ence[oaicite:2]index=2
+     SFT/SBT. SFT: finite basis of forbidden words. SBT: there is K so every forbidden word has length
+< K (bounded memory). SFT⇒ finite-state grammar; SBT⇒ K-step Markov constraint.
+:contentReference[oaicite:3]index=3
+2. Distributional chaos (DC1) in prefix language
+Visit counter.
+                             ξ(x, y, ε, n) = {0 ≤ i < n : d(σ i x, σ i y) < ε} .
+DC1 pair. (x, y) is DC1 if
+                                          1
+                                   lim sup ξ(x, y, ε, n) = 1 ∀ε > 0,
+                                     n→∞ n
+but for some δ > 0,
+                                          1
+                                        lim inf
+                                            ξ(x, y, δ, n) = 0.
+                                    n→∞ n
+Translation to prefixes: for every depth k (take ε = 2−k ), the two orbits often share
+k-long next-blocks (upper density 1), yet there exists a fixed depth k0 where they also
+often fail to share even k0 -long next-blocks (lower density 0). This is recurrent synchro-
+nize/desynchronize in sliding windows. :contentReference[oaicite:4]index=4
+   Dense DC1. An uncountable DC1 set dense in Γ (distributionally scrambled ). :contentRefer-
+ence[oaicite:5]index=5
+                                                     1
+3. Main results and why they matter to us
+Theorem A (SFTs are densely DC1). Every subshift of finite type in Baire space contains an
+uncountable dense DC1 set. Even with finite local constraints, the shift supports ubiquitous
+synchronize/desynchronize behavior. :contentReference[oaicite:6]index=6
+    Theorem B (SBTs with periodic density and perfectness are DC1). A bounded-type sub-
+shift that is perfect and has a dense set of periodic points has an uncountable DC1 set. Bounded
+memory plus “no isolated points” and plenty of cycles already suffices. :contentRefer-
+ence[oaicite:7]index=7
+    Why this is aligned with our work.
+• Our character example (Example 1.1) and token ultrametric are exactly this metric space, just with
+  finite or learned alphabets. DC1 now has a precise meaning for streams of characters/tokens: long
+  stretches of prefix-agreement recur at all scales, yet there is a fixed scale where disagreement also
+  recurs with positive frequency.
+• In LLM engineering: orbits under σ are sliding prediction windows. DC1 pairs are sequences whose
+  windows repeatedly align (prefix-equal) and repeatedly misalign. This predicts heavy-tailed reuse
+  of KV-cache chunks (alignment phases) interleaved with hard resets (misalignment phases).
+4. How their constructions look in our language
+Key gadget. In SFTs they prove existence of a symbol K never used in the forbidden basis. That
+lets them build sequences by splicing very long K-runs between payload blocks. These runs force long
+matches (close orbits), while payload choices force long mismatches (far orbits), yielding DC1. Think
+of K as a reserved <SENTINEL> token. :contentReference[oaicite:8]index=8
+    Operational recipe (prefix-ultrametric view).
+1. Choose a reserved token K admissible in your constraint grammar (SFT/SBT).
+2. Build two sequences by alternating very long K-blocks and payload blocks decided by two binary
+   choices.
+3. Under σ, whenever the window sits inside the K-blocks the sequences are 2−k -close for large k; when
+   the window straddles payloads, they are separated by a fixed δ.
+This is exactly the density-one / density-zero pattern required by DC1. :contentRefer-
+ence[oaicite:9]index=9
+5. Mapping to our prior papers
+5.1 From characters to tokens
+Our tokenization paper defined dT (x, y) = b−lcpT (x,y) and showed balls = token-prefix cylinders. Replace
+b by 2 and T by identity to recover Baire’s metric; replace identity by any fixed tokenizer to get the
+same proofs on V N . All DC1 definitions lift verbatim to token streams.
+5.2 Loop/flip/remap invariance
+We introduced a canonicalizer F (dihedral rotation/flip + optional relabel/rewrite) and the invariant
+Maddox dF (x, y) = 2−lcp(F (x),F (y)) . DC1 on (X, σ) transfers to DC1 on (F (X), σ) because we
+just pre-process each sequence by the same map. Use this when your strings form closed
+loops or admit symmetries.
+                                                    2
+5.3 Example 1.1 and your Example 2
+Character level. The pairs (Y, Z) share the long prefix I·go·to· (depth 8) while pairs with W
+disagree at the first character. Under shifts, windows repeatedly land inside shared substrings (close)
+and elsewhere (far), mirroring DC1’s alternating densities.
+    Your sentences. she’s a shapeshifter vs she’s a transformer share she’s·a· (depth 8);
+vs she transformed they split at position 4. Alternating long “agreement zones” with payload zones
+implements the DC1 mechanism concretely.
+6. Practical consequences for our systems
+Cache planning. Model prefix-alignment phases as balls B2−k (x) visited with upper density 1. This
+suggests paged KV caches and reuse heuristics that assume almost-sure long reuse bursts punctuated
+by “reset shocks.”
+   RAG prefilter. Prefix-cylinder filters (balls) are guaranteed to be nested/disjoint; a DC1-rich
+corpus implies many deep balls recur. Index by token-tries and prune first by depth-k balls before
+semantic search.
+   Grammar-constrained decoding. SFT/SBT guarantees do not kill chaotic richness; they merely
+shape which cylinders exist. Expect recurrent synchronization even under strict JSON/schema gram-
+mars.
+   Retrocausal coding (your loop/flip idea). Reserved sentinels and dihedral-canonical pay-
+loads let you plant long alignment runs visible under shifts, while payload bits carry the signal in
+the desynchronization phases—precisely the K-block method in a different vocabulary. :contentRefer-
+ence[oaicite:10]index=10
+7. Minimal test one can run on data
+Given finite prefixes of two streams x, y and a depth k:
+1. Compute Ak (n) = n1 i<n 1{lcp(σ i x, σ i y) ≥ k} for increasing n.
+                         P
+2. Check whether lim supn Ak (n) is near 1 for several k, while for some fixed k0 the lim inf n Ak0 (n) stays
+   near 0.
+This empirical DC1 check is exactly the paper’s ξ/n upper–lower density criterion, but
+written with LCP. :contentReference[oaicite:11]index=11
+8. Takeaways (compressed)
+• The Baire metric is our prefix ultrametric; cylinders are balls. :contentReference[oaicite:12]index=12
+• DC1 means sliding-window sync almost everywhere, desync infinitely often at a fixed scale. :con-
+  tentReference[oaicite:13]index=13
+• SFTs (finite grammar) are densely DC1; SBTs (bounded memory) with mild richness are DC1.
+  Constraints do not remove the mechanism. :contentReference[oaicite:14]index=14
+• The paper’s K-block construction = our sentinel/chunk method; it ports to tokens and to your
+  loop/flip canonicalization. :contentReference[oaicite:15]index=15
+                                                         ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                     3
