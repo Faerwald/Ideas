@@ -1,0 +1,68 @@
+Title: Maddox Distance with Loop Flip Remap Invariance
+Date:  2025-08-11
+Source: Maddox_Distance_with_Loop_Flip_Remap_Invariance.pdf
+Maddox Distance with Loop/Flip/Remap Invariance
+0. Baseline (Maddox/Baire ultrametric)
+Let A be a finite alphabet and x = (x1 , x2 , . . .), y = (y1 , y2 , . . .) ∈ AN (finite strings padded by blanks). Let
+lcp(x, y) = max{k ≥ 0 : ∀i ≤ k, xi = yi }. For a fixed q ∈ (0, 1) define
+                                                 ρM (x, y) = q lcp(x,y) .
+This is an ultrametric.
+1. The generalization you asked for
+You want invariance under:
+      • Cycles (loops): treat strings up to rotation;
+      • Flips: allow reversal (orientation doesn’t matter);
+      • Remappings: optional symbol renamings or canonical rewrites on substrings.
+1.1 Canonicalization map F
+We define a deterministic map F : A⋆ → A⋆ as a composition of three normalizations:
+   1. Dihedral canonicalization CD : pick a unique representative among all rotations and the reverse-
+      rotations (the dihedral orbit). Use the lexicographically smallest rotation (Booth/Duval) and then
+      take the lexicographic minimum of that and its reverse.
+   2. Alphabet relabeling COFA (optional): rename symbols by order of first appearance (a → α1 , first
+      new symbol → α2 , . . . ). This makes strings invariant to global symbol permutations.
+   3. Rewrite normal form CR (optional): apply a terminating, confluent rewrite system (e.g., lowercase,
+      collapse whitespace, map synonyms to a headword, etc.) to obtain a unique normal form.
+Set
+                                                F = CR ◦ COFA ◦ CD .
+(You can drop any layer you don’t want; F just needs to be a function.)
+1.2 The invariant Maddox distance
+                                                                                       
+                                 ρFM (x, y)           F (x), F (y) = q lcp   F (x),F (y)
+                                                                  
+                                              := ρM                                        .
+Why this stays ultrametric. Let d0 = ρM (ultrametric). Define d(x, y) = d0 (F (x), F (y)). For any
+x, y, z,
+           d(x, z) = d0 (F (x), F (z)) ≤ max{d0 (F (x), F (y)), d0 (F (y), F (z))} = max{d(x, y), d(y, z)}.
+So d is ultrametric. (If F identifies two different strings, d is a pseudometric on A⋆ and a genuine ultrametric
+on the quotient by the equivalence x ∼ y ⇐⇒ F (x) = F (y).)
+2. Operational meaning (connects to your pink notes)
+   • Closed loop / rotation test: CD “closes the chain” by picking a start that makes rotations equiv-
+     alent. Your “rotate to see if it clicks” becomes: compute F once and compare prefixes there.
+   • Flip: the reverse is absorbed in CD (dihedral canonicalization).
+   • Partial remappings: if they are deterministic and confluent, put them into CR and keep the ultra-
+     metric.
+3. Step-by-step algorithm (what you’d actually do)
+  1. Pre-normalize text (casefold, normalize whitespace, keep spaces as tokens if you want character ul-
+     trametric).
+  2. Compute u = CD (x) and v = CD (y): find the least rotation of x; take the lexicographic minimum of
+     that and its reverse. Do the same for y.
+  3. Optionally apply COFA to u, v to remove dependence on symbol names.
+  4. Optionally apply the rewrite normal form CR to u, v (must be deterministic).
+  5. Scan u and v from the first character to get lcp(u, v) = k.
+  6. Report distance ρFM (x, y) = q k , balls Bqk (u) = {strings sharing the first k symbols of u}.
+4. Tiny worked example (rotation+flip invariance)
+                                           1
+Let x = abcab and y = cabab. Take q =      m
+                                             .
+   • Least rotation of x is abcab; of xrev is bacba. Canonical CD (x) = abcab.
+   • Least rotation of y is ababc; of y rev is babac. Canonical CD (y) = ababc.
+   • lcp(F (x), F (y)) = lcp(abcab, ababc) = 2.
+   • Distance ρFM (x, y) = q 2 .
+If you rotated by hand searching for a “click,” this is the same answer but computed once via F .
+5. What balls look like now
+Balls are still cylinders by prefix, but prefixes are taken after F . Nested/disjoint and “any point is a
+center” continue to hold verbatim.
+6. When you should not fold a transform into F
+If a transform depends on matching the other string (e.g., “pick the rotation that maximizes the match
+with y”), defining d(x, y) by a max over transforms can break the ultrametric. Use a canonical F (same
+choice independent of the counterpart) to keep the strong triangle inequality.
+                                                           ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩

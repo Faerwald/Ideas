@@ -1,0 +1,19 @@
+Title: MIT Most Important Task Software Project One
+Date:  2025-06-01
+Source: MIT_Most_Important_Task_Software_Project_One.pdf
+(MIT) Most Important Task: Software Project One
+         Replicate the Radionuclide Algorithm, Unlock the 3-Hour Idea Pitch
+                     ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                            June 1, 2025
+Candidate Names
+  1. Radionuclide Decay Analyzer (RDA)
+  2. Multi-Radionuclide Deconvolution Toolkit (MRDT)
+  3. Pair-Slope Half-Life Extractor (PSHLE)
+  4. Isotope Cocktail Solver (ICS)
+Project summary. The software ingests aggregate radioactive count data from a mixed-isotope sam-
+ple, converts random point pairs into slope-based decay estimates, isolates peak half-lives, and refines
+amplitudes via bounded nonlinear least-squares. The automated spectrum of radionuclide half-lives and
+activities is the proof-of-replication that earns a dedicated three-hour session with my professor—an
+essential stepping stone toward publishing the method, recruiting collaborators, and launching the
+company’s next phase.
+                                                   1

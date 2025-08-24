@@ -1,0 +1,155 @@
+Title: Hyper Moments  Threads  and Retro Causal Information Dynamics  A Comprehensive Mathematical Framework
+Date:  2025-06-10
+Source: Hyper_Moments__Threads__and_Retro_Causal_Information_Dynamics__A_Comprehensive_Mathematical_Framework.pdf
+Hyper-Moments, Threads, and Retro-Causal Information
+      Dynamics: A Comprehensive Mathematical Framework
+                                 Jason Agamemnon Sokaris.03-pro
+                                                   Abstract
+      We present a self-contained mathematical synthesis that unifies concepts from space–time ge-
+      ometry, quantum-phase interference, p-adic dynamical systems, chaotic itinerancy, Hamiltonian
+      information flows, and information-theoretic individuality. The goal is to formalise the intuitive
+      picture of a conscious agent whose internal “threads” of off-shell information pierce a finite set
+      of “hyper-moments”, enabling retro-causal loops, prescient perception, and decision-dependent
+      self-consistency. All notation is introduced from first principles, making the exposition accessible
+      to physicists, computer scientists, and complexity theorists alike.
+1     Foundational Concepts
+Manifold and Metric
+A Lorentzian manifold (M, g) is a smooth four-dimensional manifold equipped with a metric tensor of
+signature (−+++). A curve γ : [0, 1] → M is timelike if its tangent vector is timelike everywhere; its
+image is the world-line of a pointlike system.
+Closed Timelike Curves (CTCs)
+A closed timelike curve is a timelike curve whose endpoints coincide. We denote by C ⊂ M the compact
+region that contains all such curves. Outside C the space–time is assumed globally hyperbolic (ordinary
+causal order holds).
+Hilbert and Phase Spaces
+For quantum or mixed classical–quantum descriptions, H denotes a complex Hilbert space of finite (but
+arbitrarily large) dimension. For classical phase-space formulations we use the cotangent bundle T∗Q
+or, when working over p-adic fields, the ultrametric phase space Z2p (Section 7).
+2     Physical Events and Hyper-Moments
+Physical Events
+Let
+                                      E = {A1 , B1 , C1 , A2 , B2 , A3 , C2 }
+be seven small but finite space–time regions arranged in proper-time order A1 ≺ B1 ≺ C1 ≺ A2 ≺
+B2 ≺ A3 ≺ C2 . Each region is large enough to support irreversible measurement interactions yet small
+relative to macroscopic time scales.
+                                                        1
+Hyper-Moments
+                                                                                                    
+Define an equivalence relation e ∼ f ⇐⇒ e, f ∈ {A1 , A2 , A3 } ∨ e, f ∈ {B1 , B2 } ∨ e, f ∈ {C1 , C2 } .
+The equivalence classes A = {A1 , A2 , A3 }, B = {B1 , B2 }, C = {C1 , C2 } are called hyper-moments.
+They model the subjective “instants” of an agent: physically distinct events inside the same class are
+experienced as simultaneous.
+3     Threads and Shot Budget
+Threads
+A thread is a timelike curve τj : [0, 1] → M, j = 1, . . . , N that intersects every region in E. It carries
+two key labels:
+    • A phase ϕj ∈ [0, 2π) accumulated from gauge potentials (e.g. Aharonov–Bohm fluxes).
+    • A shot index : each intersection contributes one “shot” of informational capacity.
+Intersection Counts
+For thread τj and hyper-moment H ∈ {A, B, C} define nj,H = |τj ∩H|. The total shots per hyper-moment
+are NH = N                                                              4
+            P
+              j=1 nj,H . We impose a fixed resource budget (e.g. NH = 10 ) so the system can execute
+only finitely many subjective jumps before exhausting capacity.
+4     Subjective Dynamics
+Mental Trajectories
+A mental trajectory is a finite sequence (Hi0 , Hi1 , . . . , HiK ) of hyper-moments. Each transition Hik →
+Hik+1 consumes one shot, so K ≤ NA + NB + NC . The directed graph on {A, B, C} with all edges
+present is the allowable transition skeleton.
+Phase Aggregate and Decision Rule
+At hyper-moment H collect the phases ΦH = (ϕj1 , . . . , ϕjNH ) ∈ [0, 2π)NH . Define the complex aggregate
+amplitude
+                                          XN
+                                     ΨH =     1{τj ∩H̸=∅} eiϕj .
+                                                j=1
+A decision function is a map δH : [0, 2π)NH → D, where D is a finite or countable set of possible actions.
+A simple threshold rule is                        (
+                                                   don , |ΨH | ≥ θ,
+                                       δH (ΦH ) =
+                                                   doff , |ΨH | < θ,
+with θ ∈ [0, NH ].
+5     Coupling Between Hyper-Moments
+Propagation Operator
+A choice d = δH (ΦH ) modifies environmental fields on the path to a future hyper-moment H ′ . Model
+this by
+                              PH→H ′ : D −→ [0, 2π)NH ′ → [0, 2π)NH ′ ,
+                                                                     
+so that the new phase vector is ΦH ′ 7→ PH→H ′ (d)(ΦH ′ ).
+                                                      2
+Feedback Loop
+                    δH      P
+                            H→H  ′
+The sequence ΦH −→      d −− −−→ ΦH ′ generates a feedback loop. Stability depends on constructive or
+destructive interference governed by ΨH .
+6     Global Soliton–Attractor Formalism
+Phase Configuration Space
+Let Φ = (ϕ1 , . . . , ϕN ) ∈ (S 1 )N . Interpret the union of threads as a closed one-dimensional “string” in
+space–time; its phase configuration lives in the torus (S 1 )N .
+Self-Interaction Map
+Define a smooth map S : (S 1 )N → (S 1 )N that encodes gauge-mediated and chaotic couplings. Physi-
+cally, S combines
+    • vector-potential holonomies (Aharonov–Bohm phases),
+    • nonlinear self-feedback (neural or field-theoretic),
+    • stochastic perturbations (noise).
+Fixed-points Φ⋆ with S(Φ⋆ ) = Φ⋆ are Milnor attractors. Small perturbations eject the system along
+unstable manifolds, realising chaotic itinerancy—long dwells near quasi-attractors interspersed with
+rapid hops.
+7     p-Adic Dynamics and Ultrametric Geometry
+p-Adic Numbers
+For a prime p every non-zero rational x can be written x = pk u with u coprime to p. The p-adic
+norm is |x|p = p−k . The completion of Q under this norm is Qp ; its unit ball Zp is compact, totally
+disconnected, and ultrametric: the triangle inequality strengthens to |x + y|p ≤ max{|x|p , |y|p }.
+p-Adic Balls as Hyper-Moments
+Hyper-moments can be realised as clopen balls
+                               A = x ∈ Zp : x ≡ a0 a1 a2 mod p3 ,
+                                    
+with analogous definitions for B, C. Nested balls A1 ⊂ A2 ⊂ A3 represent increasing p-adic precision.
+Discrete p-Adic Dynamics
+Let f : Zp → Zp be a polynomial map. Iterates xn+1 = f (xn ) generate a trajectory. Ergodic components
+of f correspond to statistical distributions of thread counts NH . The ultrametric property makes small
+digit differences persist or vanish in a manner that models “memory vs. imagination”.
+                                                     3
+8     Chaotic Itinerancy and Decision Jumps
+High-dimensional nonlinear systems often harbour Milnor attractors: invariant sets with positive mea-
+sure basins but no local stability. The system itinerates—dwelling near one ruin, then following unstable
+manifolds to another. In our framework:
+    • Each hyper-moment H is a Milnor attractor of S.
+    • Decisions perturb phases, nudging the state off the ruin.
+    • The ensuing unstable flow channels the system to the next hyper-moment in the mental trajectory.
+9     Hamiltonian Information Flows
+p-Adic Hamiltonian Mechanics
+On Z2p with coordinates (q, p) define a Hamiltonian H(q, p, t). Hamilton’s equations q ′ = ∂H/∂p, p′ =
+−∂H/∂q give an information time evolution. Threads can be assigned (qj (t), pj (t)) such that phase
+                     Rt
+accumulation ϕj (t) = 0 A dt is influenced by the p-adic flow.
+Motivation as Conjugate Momentum
+The variable p can be interpreted as “motivation” or endogenous drive, while q represents perceived
+state. Decisions act by instantaneous kicks p 7→ p + ∆p, implemented via the propagation operator
+PH→H ′ .
+10      Information-Theoretic Individuality
+Predictive Information
+Let ΦHk be the phase vector at the k-th visited hyper-moment. Define the predictive mutual information
+                                   Ik = H(ΦHk+1 ) − H(ΦHk+1 | ΦHk ),
+where H(·) is Shannon entropy. Large Ik signals non-random, prescient structure.
+Partial Information Decomposition
+Given multiple CTC loops (each a subgroup of threads), decompose the mutual information into re-
+dundancy, uniqueness, and synergy. Bootstrap ambiguity appears when synergy dominates: no single
+loop uniquely explains the verified future data.
+11      Full Model Workflow
+    1. Specify geometry: choose M, g, C and locate regions E.
+    2. Instantiate threads: select N curves τj and initialise phases ϕj .
+    3. Set decision thresholds: fix θ and decision space D.
+    4. Define coupling: prescribe PH→H ′ via gauge potentials or Hamiltonian kicks.
+    5. Iterate dynamics: compute sequence ΦH → δH → ΦH ′ .
+    6. Analyse stability: solve S(Φ) = Φ, compute Lyapunov exponents, Milnor basin measures.
+    7. Quantify information: evaluate Ik and PID terms to detect prescience and bootstrap ambiguity.
+                                                   4
+Conclusion
+The framework unites Lorentzian space–time with ultrametric information geometry, nonlinear dynam-
+ical systems, and information theory. Hyper-moments codify subjective simultaneity; threads embody
+retro-causal information flow. Decision thresholds, Hamiltonian kicks, and chaotic itinerancy govern
+mental jumps, while p-adic dynamics and PID quantify memory, imagination, and bootstrap ambi-
+guity. The resulting synthesis offers a mathematically rigorous platform for exploring consciousness,
+retro-causality, and hyper-computational phenomena.
+⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                 5

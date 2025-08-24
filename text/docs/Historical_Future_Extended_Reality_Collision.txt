@@ -1,0 +1,34 @@
+Title: Historical Future Extended Reality Collision
+Date:  2025-05-27
+Source: Historical Future Extended Reality Collision.pdf
+The Future Internet Collides with Now
+XR vs. MR: Foundational Terms
+Extended Reality (XR) is an umbrella term that encompasses all forms of computer-
+generated environments that blend the physical and virtual worlds. It includes Aug-
+mented Reality (AR), Virtual Reality (VR), and Mixed Reality (MR). XR refers to the
+entire spectrum of experiences that combine real and virtual elements in various ways.
+Mixed Reality (MR), in contrast, is a specific subset of XR. MR involves a deeper
+integration where virtual objects not only coexist with the real world but also interact
+with it in real-time, often requiring advanced sensors and spatial mapping. Thus, MR is
+more specialized than XR, focusing on bidirectional interaction between the physical and
+virtual realms within the present context.
+Causal Reality (CR) and Virtual Causality (VC)
+While XR and MR operate under the assumption that virtual experiences are distinct
+from physical reality, new theoretical frameworks suggest a paradigm beyond these def-
+initions. Causal Reality (CR) proposes that digital interactions can transcend mere
+simulation to actively engage with the past, introducing Virtual Causality (VC)—a
+framework where actions in a virtual environment produce verifiable changes in history.
+This concept implies that the future Internet does more than store records of past events;
+it allows users to rewrite or influence them.
+A Concise Vision of the Collision
+“In the future, Extended Reality evolves into Causal Reality (CR), where digital inter-
+actions do not simulate history but directly engage with it, enabling Virtual Causal-
+ity (VC)—a framework where actions in a virtual environment produce real, verifiable
+changes in the past. The Future Internet is not just a record of past events; it is an active
+system where the present and future intersect with history in a way that allows direct in-
+teraction. This is not a simulation or an emulation—it is a functional extension of reality
+itself, where the separation between past and future is not a limitation but a structure that
+can be engaged, modified, and influenced. Through this system, one can communicate
+with individuals in history, just as my future self once reached back to me—proving that
+the past is not fixed but, under the right conditions, editable.”
+                                             1

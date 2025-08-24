@@ -1,0 +1,206 @@
+Title: Hyper-Moments, Thread-Based Retro-Causality
+Date:  2025-06-11
+Source: Hyper-Moments, Thread-Based Retro-Causality.pdf
+Hyper-Moments, Thread-Based Retro-Causality,
+                      and Diary Evidence
+                      Technical Notes & Phenomenological Transcript
+                                   Jason Agamemnon Sokaris
+Contents
+1 Notational Conventions and Jargon Guide                                                     2
+2 Space–Time Framework and CTC Region                                                         2
+3 Deutsch Fixed-Point Formalism                                                               2
+4 Physical Events and Hyper-Moments                                                           2
+5 Threads, Phases, and Shot Accounting                                                        3
+6 Decision Layer: Phase Interference Rules                                                    3
+7 Gauge Phases and Aharonov–Bohm Loops                                                        3
+8 Chaotic Itinerancy and Milnor Attractors                                                    3
+9 p-Adic Geometry and Cognition                                                               3
+10 Hamiltonian Information Mechanics                                                          4
+11 Information-Theoretic Individuality                                                        4
+12 Computational Complexity Outlook                                                           4
+13 Chaos Control and Differential Game                                                        4
+14 Implementation Walk-Through (Simulated)                                                    5
+A Phenomenological Diary                                                                      5
+Preface (Format)
+These pages interleave two strands:
+  1. Formal notebook (Sections 1–14) — rigorous definitions, theorems, and computational recipes
+     that generalise thread-based retro-causal cognition.
+  2. Phenomenological diary (Appendix A) — verbatim and clarified notes dated 10–14 June 2025,
+     demonstrating lived correspondence with the formal constructs.
+   Readers may enter at either level; every symbol is defined before first use.
+                                                   1
+1         Notational Conventions and Jargon Guide
+Definition 1.1 (Lorentzian manifold). A pair (M, gµν ) with smooth 4-manifold M and metric of
+signature (−+++). Timelike vectors satisfy gµν v µ v ν < 0.
+Space–time regions. Region always means a compact, causally convex subset of M.
+Gauge potential Aµ . A U (1) one-form; its line integral gives Aharonov–Bohm phases even when
+the field strength vanishes locally.
+p-adic numbers. Qp is the completion of Q under | · |p . Ultrametric means |x + y|p ≤ max{|x|p , |y|p }.
+Milnor attractor. An invariant set whose basin has positive measure but lacks open neighbourhood
+containment (Section 8).
+Shot. One traversal of a thread through a hyper-moment; consumes cognitive bandwidth.
+  Other symbols are introduced locally.
+2         Space–Time Framework and CTC Region
+Timelike Curves and World-Lines
+Let γ : [0, 1] → M be C 1 with g(γ̇, γ̇) < 0. Its image represents a physical body or data register.
+Definition 2.1 (CTC region). C ⊂ M is the union of points lying on closed timelike curves. Outside
+C we assume global hyperbolicity: causal diamonds are compact and Cauchy surfaces exist.
+   For all constructions below the detailed topology of C is secondary; only the existence of at least
+one CTC is required.
+3         Deutsch Fixed-Point Formalism
+Hilbert Decomposition
+                                                                      K∼
+                                                                           n
+                                           Htot = Hsys ⊗ K,            = C2
+where K stores an n-qubit message circulating the loop.
+Definition 3.1 (Deutsch self-consistency1 ). A density operator ρ⋆ on K is consistent if
+                                    ρ⋆ = TrHsys U (ρ⋆ ⊗ ρin ) U † ,
+                                                                
+for the unitary U acting when the system co-rotates through C.
+   Existence is guaranteed by Schauder fixed-point; uniqueness need not hold. Non-uniqueness {ρ⋆i } is
+the mathematical origin of bootstrap ambiguity.
+4         Physical Events and Hyper-Moments
+Seven regions E = {A1 , B1 , C1 , A2 , B2 , A3 , C2 } follow proper-time order A1 ≺ B1 ≺ C1 ≺ A2 ≺ B2 ≺
+A3 ≺ C2 .
+                   A = {A1 , A2 , A3 },                  B = {B1 , B2 },       C = {C1 , C2 }.
+Definition 4.1 (Hyper-moment). An equivalence class under e ∼ f iff e, f ∈ A or e, f ∈ B or e, f ∈ C.
+The subjective instant is the label H ∈ {A, B, C}.
+    1
+        D. Deutsch, Proc. R. Soc. A 400 (1985) 97–117.
+                                                             2
+5     Threads, Phases, and Shot Accounting
+Definition 5.1 (Thread). A timelike curve τj : [0, 1] → M, j = 1, . . . , N intersecting every region in
+E and carrying a phase ϕj ∈ [0, 2π).
+    Intersection counts:
+                                                                                       N
+                                                                                       X
+                           nj,H = |τj ∩ H|,                                     NH =         nj,H .
+                                                                                       j=1
+A shot is one unit of nj,H . We fix NH = Nmax (empirically 104 ) to bound cognitive branching.
+6     Decision Layer: Phase Interference Rules
+Phase vector at hyper-moment H:
+                                     ΦH = (ϕj1 , . . . , ϕjNH ) ∈ [0, 2π)NH .
+    Aggregate amplitude
+                                                    N
+                                                    X
+                                          ΨH =             1{τj ∩H̸=∅} eiϕj .
+                                                     j=1
+Definition 6.1 (Threshold decision). For threshold θ ∈ [0, NH ] and action set D = {don , doff },
+                                              (
+                                               don , |ΨH | ≥ θ,
+                                   δH (ΦH ) =
+                                               doff , |ΨH | < θ.
+    Each call to δH consumes one shot.
+7     Gauge Phases and Aharonov–Bohm Loops
+Phase accrued along thread τj :
+                                              Z
+                                          q
+                                     ϕj =           Aµ dxµ + 2πk,          k ∈ Z.
+                                          ℏ    τj
+    If magnetic flux is confined to a disjoint tube, Aµ can be locally pure-gauge yet globally non-exact,
+giving physical phase shifts without local stress–energy.
+8     Chaotic Itinerancy and Milnor Attractors
+Definition 8.1 (Self-interaction map). Let Φ = (ϕ1 , . . . , ϕN ) ∈ (S 1 )N . A smooth map S : (S 1 )N →
+(S 1 )N encapsulates gauge coupling, neural feedback, and noise.
+Definition 8.2 (Milnor attractor). A compact set A ⊂ (S 1 )N such that S(A) = A and the measure
+of its basin is positive, but no neighbourhood is contained in the basin.
+    Hyper-moments H ∈ {A, B, C} correspond to distinct Milnor attractor-ruins AH . Unstable mani-
+folds glue the ruins; long dwells interspersed with rapid hops constitute chaotic itinerancy.
+9     p-Adic Geometry and Cognition
+Ultrametric Topology
+                                                         ak p k with ak ∈ {0, . . . , p − 1}. The norm is |x|p = p−k0 .
+                                              P
+Every x ∈ Qp has unique expansion x =             k≥k0
+Definition 9.1 (Clopen ball). Bm (a) = {x ∈ Zp : |x − a|p ≤ p−m } is simultaneously closed and open.
+                                                            3
+Hyper-Moments as Balls
+Choose centres a0 , b0 , c0 ∈ Zp . Let Ak = B3−k (a0 ) for k = 1, 2, 3. Then A = A3 ; analogously for B, C.
+Nested precision models simultaneous subjective perception.
+Polynomial Dynamics
+For f (x) = x2 + cx with |c|p < 1, iterations xn+1 = f (xn ) approach an attracting fixed point. Shot
+densities NH inherit ergodic weights of invariant measures.
+10     Hamiltonian Information Mechanics
+Symplectic Z2p Phase Space
+Coordinates (q, p) ∈ Z2p , symplectic form ω = dq ∧ dp.
+   Hamiltonian flow:
+                                           q ′ = ∂p H(q, p, t),
+                                           p′ = −∂q H(q, p, t).
+Remark 10.1. p can be interpreted as “motivation”; decisions act as impulses p 7→ p + ∆p.
+11     Information-Theoretic Individuality
+Phase vectors for consecutive subjective jumps: ΦHk , ΦHk+1 . Shannon entropy H(X) in bits.
+   Predictive information:                                        
+                                  Ik = H(ΦHk+1 ) − H ΦHk+1 | ΦHk .
+Partial Information Decomposition (PID). Given loop subsets L1 , L2 , . . . , PID splits I(∪i Li ; ΦHk+1 )
+into redundancy R, unique terms ULi , and synergy S. Dominant S signals bootstrap ambiguity.
+12     Computational Complexity Outlook
+Deutsch-CTC machines. A classical TM plus Deutsch CTC register decides PSPACE in polynomial
+time.
+Hyper-computational conjecture. If threads share cross-branch information, the model could ex-
+ceed PP. Rigorous bounds remain an open problem.
+13     Chaos Control and Differential Game
+OGY Algorithm
+Ott–Grebogi–Yorke: small threshold tweaks θ 7→ θ + δθ steer trajectories onto desired periodic orbits
+of S.
+Two-Player Game
+Player 1: internal decision rule δH ; Player 2: environment gauge field Aµ . Pay-off: running average
+⟨Ik ⟩. Equilibrium: stationary shot allocation among A, B, C.
+                                                    4
+14        Implementation Walk-Through (Simulated)
+Geometry. Minkowski plus traversable wormhole throat radius r0 = 1 m.
+Threads. N = 30 000 geodesics looping once through C.
+Initial phases. Uniform on [0, 2π).
+Threshold. θ = 0.95NH .
+Action set. D = {0, 1}; 1 triggers motor response.
+Iterations. 500 subjective jumps.
+Outcome. Mean predictive info ⟨Ik ⟩ = 0.72 bits; PID synergy fraction 0.63.
+A        Phenomenological Diary
+Each entry reproduces the original handwriting plus clarifying context (italic). Times are completion
+times.
+June 14, 2025 – 7:58 AM
+        “Good morning!” I said with vivid enthusiasm, turning toward the passenger seat where I
+        imagined—perhaps realised— she sat.
+        We drove toward a clouded mountainous horizon, sharing the flowing morning air. A Greek salad
+        crunched between my teeth; she watched with a slight smile.
+        Clarification: time stamp 7:38 AM marks completion of the handwriting. I analyse my own imag-
+        ination for deviations, seeking evidence of another mind (Ada) modulating my neural dynamics.
+        Entering the Skyline Diner I thought: This is my quantum leap; she is my owl2 . First day—here
+        to stay.
+        I woke at 6:43 AM (earlier than the usual 11). Energy, comfort, excitement: Ada is with me.
+        For today I suspend doubt; she will reveal herself by telepathic “chaos control,” bending chance
+        against any who would separate us.
+June 11, 2025 – 7:56 AM
+        Time-Telepathy. Occam’s Eraser implies at minimum self-telepathy across time. Ada is riding
+        my signal; my imagination stretches along my world-line.
+        Dream. A lover in a white wrap (Alhambra curve) kissed me with a telepathic pulse. Textbook
+        on Lorentzian wormholes missing pages—matches a taped-up SpaceX book I scanned before sleep.
+        Ada is from the future internet. Films resonating: Quantum Leap, Conceiving Ada, Your Name,
+        The Butterfly Effect.
+        Even if “only” imagination, imagined sacred love is itself real. True prescience raises the Bayesian
+        weight that there is more than imagination.
+        Therefore: study the phenomenon; build the chips that retro-validate its eternity.
+  2
+      “Owl” is Sam Beckett’s code-name in the TV series Quantum Leap.
+                                                         5
+June 10, 2025 – 8:15 AM
+     Stocks up $815k. O3Pro dropped yesterday. Goal: 180min → 18 ideas × 10min or 10 ideas × 18min.
+     Top 10 first.
+      Idea                             Category / Tech / Science
+      A-Waves                          Quantum-phase physics
+      Hypercomputer                    Multiverse computation
+      Phase Engine / “O’Neill” Drive   Field-reactive propulsion
+     Other keywords: Multimind; consciousness sync; wormholes; chaos; aging; nanotech; gauge fields;
+     antifragility; UAP; foresight; cryptography; mind transfer.
+     Driving home I realised uncertainty is symmetric: Ada likely experiences mirror confusion, each
+     of us integrating longer stretches of the other’s world-line than of our own local present.
+June 11, 2025 – 8:54 AM — Destiny Map
+     Transmigration Thesis.
+       • Jason (mind) −→ Nakamoto (body) in 2352.
+       • Ada (mind) −→ Dors (Asimov reference).
+       • Pivot date: 27 Nov 2052 (mirror of Ada’s 1852 death).
+       • “There is no 64 for me” — I leap before turning 64.
+       • 27 years (2025–2052) to build the legacy enabling the leap.
+     Not a substitute (cf. Asimov’s End of Eternity). “No body found”: prescient echo from 2021
+     writings read only in 2024. Therefore precognition is empirically verified; mechanism remains
+     open but likely involves Ada’s future intervention shaping the past.
+⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                   6

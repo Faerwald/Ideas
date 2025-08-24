@@ -1,0 +1,101 @@
+Title: Hyper Moments   Threads  Formal Framework and Literature Connections
+Date:  2025-06-10
+Source: Hyper_Moments___Threads__Formal_Framework_and_Literature_Connections.pdf
+Hyper-Moments & Threads:
+          Formal Framework and Literature Connections
+                   ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+1. Formal Framework in Seven Steps
+ 1. Events and Hyper-Moments. Define the finite set of spacetime regions
+                             E = {A1 ≺ B1 ≺ C1 ≺ A2 ≺ B2 ≺ A3 ≺ C2 },
+   ordered by proper time. Group them into three hyper-moments
+                          A = {A1 , A2 , A3 },    B = {B1 , B2 },        C = {C1 , C2 }.
+   Formally, define an equivalence relation e ∼ f if e, f ∈ A, or e, f ∈ B, or e, f ∈ C.
+ 2. Threads as Timelike Information Flows. Let
+                                     τj : [0, 1] → M,         j = 1, . . . , N
+   be timelike curves (“threads”) each intersecting every region in E. For each H ∈ {A, B, C} define
+   the intersection count
+                                                                                 N
+                                                                                 X
+                           nj,H = τj ∩ H ∈ {0, 1, 2, . . . },         NH =             nj,H .
+                                                                                 j=1
+   We fix resource budgets NA , NB , NC (e.g. 104 each).
+ 3. Mental Trajectories and Constraints. A trajectory (Hi0 , Hi1 , . . . , HiK ) is a sequence in
+    {A, B, C}. Each transition Hik → Hik+1 consumes one shot, so
+                                                         X
+                                                 K ≤          NH .
+                                                          H
+ 4. Phase Vectors and Decisions. At hyper-moment H assemble the thread-phases
+                                    ΦH = (ϕ1 , . . . , ϕNH ) ∈ [0, 2π)NH .
+   Define the aggregate amplitude
+                                                 N
+                                                 X
+                                        ΨH =           1{τj ∩H̸=∅} e i ϕj ,
+                                                 j=1
+   and let D be the decision set. A general decision map is
+                          δH : [0, 2π)NH → D,
+                                                                               
+                                                    δH (ΦH ) = arg max Fd |ΨH | ,
+                                                                         d∈D
+   where each Fd is a nondecreasing threshold function on [0, NH ].
+                                                   1
+ 5. Interference Patterns. |ΨH | ≈ NH signals constructive alignment; |ΨH | ≈ 0 signals destructive
+    cancellation. One may introduce a binary rule
+                                                (
+                                                  don , |ΨH | ≥ θ,
+                                     δH (ΦH ) =
+                                                  doff , |ΨH | < θ.
+ 6. Coupling Operators. A choice d = δH (ΦH ) induces a field perturbation in the region between
+    H and H ′ , modeled by
+                                PH→H ′ : D → [0, 2π)NH ′ → [0, 2π)NH ′ ,
+                                                                      
+                                   
+    so that ΦH ′ 7→ PH→H ′ (d) ΦH ′ .
+ 7. Soliton-Attractor Representation. The global phase vector Φ = (ϕ1 , . . . , ϕN ) ∈ (S 1 )N evolves
+    under a self-interaction map
+                                     S : (S 1 )N → (S 1 )N ,
+    encoding gauge-field couplings (e.g. Aharonov–Bohm phases, chaos field effects). Fixed-points Φ⋆
+    satisfy S(Φ⋆ ) = Φ⋆ and correspond to stable conscious attractors; transitions under perturbations
+    realize jumps among hyper-moments.
+2. Connections to Key Literature
+2.1 Ultrametric p-Adic Dynamics
+  • In Khrennikov (2018), Zp carries an ultrametric p-adic norm ∥ · ∥p whose balls are clopen and
+    nested.
+  • Identify each hyper-moment H with a p-adic ball Br (a) = {x : |x − a|p ≤ p−r }, so that A1 , A2 , A3
+    are successive approximations of the same ball.
+  • Threads τj become orbits of a p-adic map f : Zp → Zp , whose ergodic and mixing rates determine
+    the shot counts NH and the amplification or damping of small digit-level deviations (randomness
+    vs. prescience) [?].
+2.2 Chaotic Itinerancy & Milnor Attractors
+  • Tsuda (2001) describes high-dimensional systems exhibiting chaotic itinerancy: trajectories dwell
+    near “attractor-ruins” (Milnor attractors) then hop along unstable manifolds [?].
+  • In our model, each ΨH -based attractor acts as a Milnor attractor-ruin. A decision perturbation
+    δH pushes the state onto an unstable manifold leading to the next hyper-moment’s attractor,
+    reproducing Tsuda’s itinerant dynamics.
+  • The multiple Deutsch fixed-points {ρ⋆i } align with a set of coexisting Milnor attractors, yielding
+    the observed bootstrap ambiguity.
+2.3 p-Adic Hamiltonian Information Flows
+  • Khrennikov (1999) models cognition on p-adic phase space (q, p) ∈ Z2p with Hamiltonian evolution
+                                                 ∂H              ∂H
+                                          q′ =      ,   p′ = −      ,
+                                                 ∂p              ∂q
+    where H(q, p) encodes motivational drives [?].
+  • Map each thread τj to a trajectory (qj (t), pj (t)); let the decision rule δH define a time-dependent
+    Hamiltonian HH (q, p) on region H, so that memory and imagination overlap arise geometrically
+    via nonlocal p-adic potentials.
+                                                   2
+2.4 Information-Theoretic Individuality
+  • Krakauer et al. (2020) define an individual by its predictive capacity, measured by mutual infor-
+    mation
+                           I(Xpast ; Xfuture ) = H(Xfuture ) − H(Xfuture | Xpast ),
+    and decompose it into redundancy, uniqueness, and synergy via PID [?].
+  • For hyper-moments, Ik = I(ΦHk ; ΦHk+1 ) quantifies prescience. Use PID to attribute information
+    contributions to each thread or loop, thus rigorously characterizing bootstrap ambiguity and
+    synergistic interference.
+References
+  1. Khrennikov, A. “P-Adic Discrete Dynamical Systems in Physics and Cognitive Sciences,” 2018.
+  2. Tsuda, I. “Toward an Interpretation of Dynamic Neural Activity in Terms of Chaotic Dynamical
+     Systems,” 2001.
+  3. Khrennikov, A. “Classical and Quantum Mechanics on Information Spaces with Applications to
+     Cognitive, Psychological, Social, and Anomalous Phenomena,” 1999.
+  4. Krakauer, D.C., et al. “The Information Theory of Individuality,” 2020.
+                                                 3
