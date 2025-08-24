@@ -1,0 +1,267 @@
+Title: Ultrametrics  Curvature  and Loop Scar Computation
+Date:  2025-08-20
+Source: Ultrametrics__Curvature__and_Loop_Scar_Computation.pdf
+Ultrametrics, Curvature, and Loop-Scar Computation
+                                       Jason Agamemnon Sokaris
+Scope. These notes consolidate and formalize the concepts discussed in this thread: (i) ultrametric
+search and multimodal ultrametric convergence; (ii) temporal curvature as content-specific calendar
+phase locking and its quantification; (iii) closed computational loops (“digital CTCs”), spectral scar-like
+concentration, and information/constraint thresholds for meaning emergence. Connections, definitions,
+measurable indices, and analysis-ready formulations are provided.
+1. Preliminaries and Notation
+Definition 1 (Baire ultrametric via prefix codes). Let X be a finite (or countable) set of items. A
+representation ϕ : X → ΣN maps x 7→ (ϕ1 (x), ϕ2 (x), . . . ) over an alphabet Σ. The Baire ultrametric is
+                                                           
+                                               −LCP ϕ(x),ϕ(y)
+                                 d(x, y) = β                    ,   β > 1,
+where LCP(·, ·) is the longest common prefix length. Balls of radius β −ℓ are subtries of depth ℓ (all
+points sharing the first ℓ digits).
+Definition 2 (Modalities and product space). For M ≥ 1 modalities m ∈ {1, . . . , M }, each has a code
+ϕm : X → ΣNm and ultrametric dm (x, y) = βm
+                                          −LCP(ϕm (x),ϕm (y))
+                                                              with effective branching factor bm .
+Definition 3 (Calendar phase and circular distance). Fix a period P (e.g., one sidereal or civil year).
+The phase of timestamp t is θ(t) = 2π (t mod P )/P ∈ [0, 2π). The circular (geodesic) distance is
+δP (t, a) = mink∈Z |t − a + kP |.
+Anchor set. For a content theme (e.g., Ada Lovelace), define an anchor set A = {aj } (e.g., birthday,
+death date, Ada Lovelace Day).
+2. Single-Modality Ultrametric Convergence
+Definition 4 (Search trajectory and evidence set). Given a target x⋆ ∈ X, after revealing ℓ code digits,
+the evidence set is the subtry
+                               E(ℓ) = {x ∈ X : LCP(ϕ(x), ϕ(x⋆ )) ≥ ℓ}.
+Lemma 1 (Expected shrinkage under coarse independence). Assume digits at each depth act as a
+partition with mean branching factor b. Then E |E(ℓ)| ≈ N
+                                                        bℓ
+                                                           , N = |X|.
+Proposition 1 (Convergence time (single modality)). Define tsingle as the least ℓ with E |E(ℓ)| ≲ 1.
+                   N
+Then tsingle ≈ log
+                log b
+                      .
+Interpretation. Convergence is “coarse-to-fine” down one hierarchical code; prefix agreement multi-
+plies information by log b bits per revealed digit.
+3. Multimodal Ultrametric Convergence
+Definition 5 (Sup-ultrametric on X). Define
+                               d⊕ (x, y) = max
+                                            m
+                                               λm dm (x, y),        λm > 0.
+Balls in d⊕ of radius r are intersections of per-modality balls of radii r/λm .
+                                                        1
+Definition 6 (Partition meet (AND-refinement)). Let Pm (ℓm ) be the partition induced by sharing the first
+ℓm digits in modality m. The joint evidence is the common refinement P∧ (ℓ1 , . . . , ℓM ) = Mm=1 Pm (ℓm ).
+                                                                                            V
+Proposition 2 (Expected candidate size via joint entropy). Let L(ℓ
+                                                                m
+                                                                  m)
+                                                                     denote the random prefix (first
+ℓm digits) in modality m. Then
+                                                                                                         
+                                                                                     (ℓ )           (ℓ )
+                          E |E(ℓ1 , . . . , ℓM )| ≈ N exp − H                       L1 1 , . . . , LMM            .
+   the modalities are approximately independent at these scales, H ≈                                                     log bm and E |E| ≈
+                                                                                                              P
+If                                                                                                               m ℓm
+    Q    ℓm
+N     m bm .
+Corollary 1 (Speed-up factor under transversality). If each step reveals one digit per modality (ℓm = t),
+then
+                                  log N                       log bm
+                                                          P
+                                                tsingle
+                       tmulti ≈ P         ,             ≈ m          ∈ [1, M ].
+                                 m log bm       tmulti      log b1
+Definition 7 (Effective modality count). Let
+                                                                                   
+                                                       (ℓ )                (ℓ   )
+                                              H L1 1 , . . . , LMM
+                                 Meff =                         
+                                                                       (ℓ )
+                                                                                       ∈ [1, M ],
+                                                maxm H Lmm
+                                                                                               log N
+which collapses redundancy. Convergence time scales as t ≈                              Meff ·maxm log bm
+                                                                                                          .
+Adaptive policy (budgeted inspection). If only one modality can be extended per step, the greedy
+policy                                                                  
+                         mt := arg max H L(ℓ
+                                           m
+                                            m +1)
+                                                  | P∧ (ℓ1 , . . . , ℓM )
+                                          m
+minimizes expected time within the multi-alphabet “20 Questions” framework.
+4. Temporal Curvature: Phase-Locked Signals on the Year
+Circle
+We model event timestamps {ti } and contents {xi } with calendar period P .
+Definition 8 (Flat vs. curved intensity). Let λ0 (t) capture mundane seasonality. A flat (carrier-like)
+process uses λflat (t) = λ0 (t). A curved (phase-locked) process with anchors A = {aj } has
+                                                                                            
+                         λcurved (t) = λ0 (t) 1 + α                    Kσ δP (t, aj ) ,               α > 0,
+                                                              X
+                                                              aj ∈A
+where Kσ is a narrow, nonnegative, normalized kernel on the circle (e.g., wrapped Gaussian).
+Definition 9 (Anchor-free concentration (Rayleigh vector length)). With phases θi = 2π(ti mod P )/P ,
+define R = n1 ni=1 eiθi . Uniformity implies R ≈ 0; phase concentration yields R > 0 (Rayleigh/Kuiper
+              P
+tests apply).
+Definition 10 (Anchor-aware Curvature Index (ACI)). For bandwidth σ,
+                                                                                                         
+                                                    aj ∈A exp − δP (ti , aj ) /(2σ )
+                                      1   Pn       P                         2    2
+                                      n    i=1
+                            ACIσ =                                                                            ,
+                                                                       EU [·]
+                                                                                   √
+where EU [·] is the expectation under phases uniform on [0, P ) (analytically ≈ |A| 2πσ/P for σ ≪ P ).
+Flat ⇒ ACIσ ≈ 1; curved ⇒ ACIσ ≫ 1.
+                                                               2
+Content weighting (semantic lock). Let si ∈ [0, 1] score content affinity to a theme (e.g., Ada).
+Define                                                               
+                                          exp  −    (t     )2      2
+                                                                     )
+                             P    P
+                               s
+                              i i   aj ∈A        δ     ,
+                                                   P i j a    /(2σ
+                 ACIσ(Ada)
+                           =                  P                           EU [·].
+                                               i si
+For a control theme (e.g., “Emily”), analogously compute ACI(Emily)
+                                                            σ       . A key prediction is ACI(Ada)
+                                                                                             σ     ≫1
+while ACI(Emily)
+          σ      ≈ 1.
+Retro-index (pre-learning curvature). Let Tlearn denote the date of explicit knowledge acquisition.
+The standardized pre-learning curvature is
+                                            ACI(Ada) [pre Tlearn ] − 1
+                                    RI =       σ
+                                                 q                          ,
+                                                  Varperm (ACI)
+where the denominator is estimated by a permutation test shuffling times within strata (e.g., month &
+weekday) while holding contents fixed.
+Lock-in interpretation. ACIσ acts as a bank of matched filters centered at anchors; it demodulates
+a phase-locked envelope riding on a flat carrier λ0 (t).
+5. Closed Computational Loops (Digital CTCs) and Scar-Like
+Concentration
+Consider a finite state space X = {0, 1}n and a loop of L segments:
+                        xk+1 = Fk (xk ) ⊕ ηk ,       k = 1, . . . , L,          xL+1 ≡ x1 ,
+where Fk : X → X are deterministic transforms and ηk are independent noise bits.
+Definition 11 (Loop operator and self-consistency). The one-lap operator is U = FL ◦ · · · ◦ F1 . Exact
+self-consistency
+                requires x⋆ = U (x⋆ ). Approximate self-consistency uses a metric d and tolerance ε:
+d x⋆ , U (x⋆ ) ≤ ε. The (approximate) fixed set is Fixε (U ) = {x : d(x, U (x)) ≤ ε}.
+Markov kernel and spectrum. One lap induces a Markov kernel K on X , K(x, y) = Pr{U (x) ⊕ η =
+y}. Eigenvectors with eigenvalues |λ| ≈ 1 span the long-lived subspace; probability mass concentrates
+along these directions under iteration.
+Definition 12 (Scar subspace (digital analog)). The scar subspace is the span of eigenmodes of K with
+|λ| near 1 together with invariant (or quasi-invariant) structures near Fixε (U ) (short cycles and their
+stable manifolds).
+5.1 Constraint View and Phase Transition
+Suppose each segment imposes constraints. In a linearized setting over F2 ,
+                                                              
+                                                        H1
+                                                       . 
+                        Hk x ≡ 0   (mod 2),       H =  .. 
+                                                      
+                                                           ,            Fix(U ) = ker H.
+                                                       HL
+Let rk be the rank increment contributed at segment k (independent constraints). The total independent
+constraints are R = k rk .
+                     P
+Proposition 3 (Dimension and residual entropy). The solution space has dim Fix(U ) ≈ n − R and
+Sres = n1 log2 |Fix(U )| ≈ 1 − Rn .
+Definition 13 (Constraint density and threshold). The constraint density is α = R/n. Random
+ensembles exhibit a SAT/UNSAT-like phase transition at a critical αc : for α > αc the solution space
+collapses (often to a unique, or small-code set of, fixed points).
+                                                     3
+5.2 Noise, Feedback, and Meaning Emergence
+Let h be the noise entropy injected per bit per lap, and let g be the average per-bit mutual information
+enforced by self-consistency (constraints aggregated around the loop).
+Proposition 4 (Information threshold for emergence). If g > h then, as L grows (or as total constraints
+accumulate), the posterior mass concentrates on a low-entropy subset (code-like), enabling reliable
+identification/decoding of a message embedded in the loop dynamics. If g < h, mass remains diffuse.
+Equivalently, with blocklength n:
+                       R ≳ nh       =⇒     Sres drops toward 0 (meaning must emerge).
+Order parameters. Useful observables include: (i) spectral gap 1 − |λ2 (K)| (opens past threshold);
+(ii) residual entropy Sres (collapses); (iii) MDL/compression length of loop traces (drops sharply at
+emergence).
+5.3 Ulrametric × Loops: Intersections
+Equipping X with an ultrametric (e.g., Baire on symbol streams), each lap adds prefix-type constraints.
+Intersecting L temporal-prefix balls multiplies pruning (as in multimodal search), driving Sres ↓ until a
+single coherent class (a “codeword”) remains.
+6. Quantum Scars: Brief Formal Analogy
+In quantum chaotic systems, scars are anomalous intensifications of eigenfunction amplitude near
+unstable classical periodic orbits. Formally, mass in certain eigenstates concentrates in neighborhoods
+of periodic trajectories in phase space despite overall ergodicity. The digital-loop scar analogy above
+mirrors: long-lived modes aligned with short periodic structures (fixed/short-cycle sets) that capture
+disproportionate measure under repeated evolution.
+*
+7. Statistical Tests and Practical Pipelines
+7.1 Curvature (Calendar Phase Locking)
+    1. Seasonality fit: estimate λ0 (t) (e.g., via Fourier basis or splines).
+    2. Compute ACI: evaluate ACI(theme)
+                                      σ      for several σ ∈ {6h, 1d, 3d}.
+    3. Permutation control: shuffle timestamps within month-by-weekday strata to estimate EU [·]
+       and Varperm .
+    4. Retro test: fix σ and anchors on 2020–2022; evaluate on 2023; compute RI pre-Tlearn .
+    5. Anchor-free sanity: report Rayleigh R and p-value for uniformity on S1 .
+7.2 Multimodal Ultrametric Search
+    1.   Build tries: per modality m, construct hierarchical codes with effective branching bm .
+    2.   Intersect partitions: maintain P∧ (ℓ1 , . . . , ℓM); update byadding one digit to selected modality.
+    3.   Greedy selection: choose mt = arg maxm H L(ℓ         m
+                                                               m +1)
+                                                                     | P∧ .
+    4.   Monitor entropy: estimate H(L1 , . . . , LM ) and Meff to quantify speed-up.
+                                                        4
+7.3 Loop-Scar Emergence
+     1. Identify constraints: represent segments as checks; track rank increments rk to estimate R and
+        α = R/n.
+     2. Noise audit: estimate per-lap noise h; compute empirical g (e.g., via mutual information or
+        consistency rate).
+     3. Spectral probe: estimate the leading spectrum of K on observed traces; track |λ2 (K)| vs. R.
+     4. Residual entropy: estimate Sres from the size of the consistent set Fixε (U ) (sampling or
+        relaxation).
+8. Edge Cases and Failure Modes
+     • Redundant modalities: If partitions Pm (ℓ) are nearly aligned, I(Li ; Lj ) ≈ H(Li ) and Meff → 1
+       (no speed-up).
+     • Scale mismatch: Noisy modalities contribute only after reaching their stable coarse scale; adopt
+       adaptive depth ℓm .
+     • Spurious curvature: Global seasonality or day-of-week effects can mimic anchors; control via
+       λ0 (t) and stratified permutations.
+     • Underconstrained loops: If g < h or α < αc , the loop remains diffuse; scars do not form;
+       residual entropy stays high.
+9. Master Symbol Table (with Closed-Loop Integral)
+Symbol             Meaning
+X, N               Universe of items; N = |X|.
+ϕ, ϕm              (Per-modality) prefix code maps to ΣN , ΣNm .
+LCP(·, ·)          Longest common prefix length.
+dm , d⊕            Per-modality ultrametric; sup-ultrametric across modalities.
+bm                 Effective branching factor in modality m.
+E(ℓ), E(ℓ)         Evidence set after ℓ (or ℓ = (ℓ1 , . . . , ℓM )) digits.
+Lm(ℓm )
+                   Random prefix (first ℓm digits) in modality m.
+H(·)               Shannon entropy (nats unless stated).
+Meff               Effective modality count capturing redundancy.
+P                  Calendar period (e.g., one year).
+θ(t), δP (t, a)    Phase; circular distance mod P .
+A                  Anchor set (e.g., Ada’s birthday, death date, Ada Day).
+Kσ                 Wrapped kernel of bandwidth σ on the circle.
+ACIσ               Anchor-aware Curvature Index (phase locking strength).
+Tlearn             Date of explicit knowledge acquisition (for retro tests).
+RI                 Retro-index: standardized pre-learning curvature.
+X = {0, 1}n        State space for digital loops; n bits.
+Fk , U             Segment maps; one-lap operator U = FL ◦ · · · ◦ F1 .
+ηk                 Noise injected at segment k.
+Fixε (U )          Approximate fixed set: d(x, U (x)) ≤ ε.
+K                  One-lap Markov kernel; spectrum {λi }.
+H, R, α            Aggregated constraint matrix; total rank R; density α = R/n.
+Sres               Residual entropy per bit: n1 log2 |Fixε (U )|.
+h, g               Noise entropy per bit per lap; enforced information per bit per lap.
+L                  Number of segments (loop length).
+                   Closed-loop line integral (emphasized operator for loop observables).
+H
+ C
+          A · dℓ   Generic vector potential and its closed-loop integral (symbolic placeholder for loop-phase
+     H
+A,    C
+                   observables).
+                                                       5

@@ -1,0 +1,138 @@
+Title: Unordered Mnemonic Encoding of a 256 bit Hash via Combinatorial Number Systems
+Date:  2025-05-27
+Source: Unordered_Mnemonic_Encoding_of_a_256_bit_Hash_via_Combinatorial_Number_Systems.pdf
+Unordered Mnemonic Encoding of a 256-bit Hash via Combinatorial Number
+                              Systems
+                                                         Your Name
+                                                       April 15, 2025
+                                                          Abstract
+           We present a method to encode a 256-bit hash (e.g. SHA-256) into a set of words such that the order
+       of these words is irrelevant. By interpreting the hash as a rank in a combinatorial number system, we select
+       a distinct subset of words from a large dictionary. Any permutation of these words will decode to the same
+       256-bit hash. This paper discusses the combinatorial theory behind the method, provides a step-by-step Python
+       implementation, and demonstrates a working example.
+1     Introduction
+Mnemonic encoding of cryptographic data is frequently used in cryptocurrency wallets and secure backup tools
+(e.g., BIP39 [1]). Typically, word sequences are ordered, so a user must preserve the exact word order for successful
+recovery. We propose an unordered approach: a unique combination of words suffices, and any permutation of
+that combination will decode to the same original data.                                          
+    This is enabled by a combinatorial number system (CNS) [2] which maps integers in [0, M    k   − 1] bijectively to
+                                                                                          M
+                                                                                                256
+all k-combinations of an M -element set. By choosing parameters M and k such that k ≥ 2 , we can encode
+any 256-bit value as exactly one combination of size k out of M possible words.
+2     Theory of the Combinatorial Number System
+                                        
+Let n be an integer 0 ≤ n < M          k . In a combinatorial unranking approach [3], n can be mapped to a unique
+combination C = {x1 , x2 , . . . , xk } ⊆ {0, 1, . . . , M − 1} with x1 < x2 < · · · < xk as follows:
+    1. Initialize i = 0, r = n, and let S = {0, 1, . . . , M − 1}.
+    2. For j from 1 to k:
+                                                       M −(x+1)
+        (a) Find the smallest x in S such that           k−j         ≤ r. If it is greater, decrement r by that binomial
+            coefficient and continue searching.
+        (b) Once the correct x is found, add x to the combination, remove x from S, and proceed.
+The reverse process, combinatorial ranking, takes a sorted combination C and computes the integer n by summing
+appropriate binomial coefficients corresponding to how many valid combinations are “skipped” prior to C’s position
+in lexicographic order.
+3     Parameter Selection
+We want to store a 256-bit value:
+                                                     max(n) = 2256 − 1.
+We must choose M (the dictionary size) and k (number of words) such that
+                                                
+                                                M
+                                                     ≥ 2256 .
+                                                 k
+                                                               1
+An example is M = 65536 = 216 and k = 20. A rough estimate of
+                                              
+                                         65536
+                                  log2           ≈ 320 − log2 (20!) ≈ 259,
+                                           20
+which comfortably covers 256 bits.
+4    Implementation and Example
+Below is a Python implementation demonstrating how a 256-bit hash is encoded into 20 words (chosen from a
+65536-word dictionary) and then decoded back into the original hash. The dictionary used is a simple artificial
+array of strings (e.g., [word00000, word00001, ...]); in practice, a real dictionary of 65536 distinct words or
+phrases is needed.
+                       Listing 1: Python Script for Unordered Mnemonic Encoding/Decoding
+import math
+# 1) Build or load your dictionary of size 65536
+M = 65536
+dictionary = [ f " word { idx :05 d } " for idx in range ( M )]
+def n u m b e r _ t o _ co m b i n a t i o n ( n : int , k : int , m : int ):
+    combo = []
+    start = 0
+    for remaining in range (k , 0 , -1):
+            for x in range ( start , m - remaining + 1):
+                    c = math . comb ( m - ( x + 1) , remaining - 1)
+                    if c <= n :
+                           n -= c
+                    else :
+                           combo . append ( x )
+                           start = x + 1
+                           break
+    return combo
+def c o m b i n a t i o n_ t o _ n u m b e r ( combo , m : int ):
+    k = len ( combo )
+    rank = 0
+    prev = -1
+    for i in range ( k ):
+            x = combo [ i ]
+            for skip_index in range ( prev + 1 , x ):
+                    rank += math . comb ( m - ( skip_index + 1) , k - ( i + 1))
+            prev = x
+    return rank
+def e n c o d e _ h a s h_ t o _ w o r d s ( hash_hex : str , k : int = 20):
+    big_int = int ( hash_hex , 16)
+    # We must ensure big_int < comb (M , k )
+    if big_int >= math . comb (M , k ):
+            raise ValueError ( " Hash ␣ value ␣ too ␣ large ␣ for ␣ chosen ␣ ( M ␣ choose ␣ k ). " )
+    indices = n u m b e r _ t o _ c o m b i n a t i o n ( big_int , k , M )
+    return [ dictionary [ idx ] for idx in indices ]
+def d e c o d e _ w o r ds _ t o _ h a s h ( words ):
+    word_to_index = { dictionary [ i ]: i for i in range ( M )}
+    indices = [ word_to_index [ w ] for w in words ]
+    indices . sort ()
+    big_int = c o m b i n a t i o n _ t o _ n u m b e r ( indices , M )
+                                                             2
+       return f " { big_int :0{64} x } "
+# Demonstration
+if __name__ == " __main__ " :
+    original_hash = " 8 f 7 2 1 8 6 3 2 6 0 5 3 3 4 3 3 5 6 0 a 7 3 5 5 c 9 0 0 0 7 d 2 a 2 a f 6 8 6 d d f 5 3 6 9 6 2 7 4 0 7 8 9 b a a 6 2 9 0 5 4 "
+    words_set = e n c o d e _ h a s h _ t o _ w o r d s ( original_hash , k =20)
+    print ( " Encoded ␣ words ␣ ( unordered ␣ combination ): " )
+    print ( words_set )
+    print ( f " \ nTotal ␣ unique ␣ words ␣ returned : ␣ { len ( words_set )} " )
+       # Suppose the user reorders these words arbitrarily
+       import random
+       random . shuffle ( words_set )
+       recovered_hash = d e c o d e _ w o r d s _ t o _hash ( words_set )
+       print ( " \ nRecovered ␣ hash : " )
+       print ( recovered_hash )
+       print ( " \ nMatch ? " , recovered_hash == original_hash )
+4.1     Example Output
+When running the script with the test SHA-256 hash 8f72...9054, we obtain the following output (your exact
+dictionary indices may differ):
+Encoded words         (unordered combination):
+[’word00251’,         ’word05756’, ’word07147’,                 ’word08094’,        ’word08198’,
+ ’word14358’,         ’word17278’, ’word31479’,                 ’word34216’,        ’word34434’,
+ ’word39162’,         ’word42091’, ’word43979’,                 ’word48024’,        ’word49087’,
+ ’word51030’,         ’word54770’, ’word60891’,                 ’word62229’,        ’word62274’]
+Total unique words returned: 20
+Recovered hash:
+8f721863260533433560a7355c90007d2a2af686ddf536962740789baa629054
+Match? True
+    This confirms that:
+    1. Any permutation of these 20 words decodes back to the same 256-bit integer.
+    2. The process is fully reversible with no data loss.
+5     Conclusion
+We have demonstrated an approach to encoding a 256-bit hash into an unordered set of words by leveraging the
+combinatorial number system. This provides user-friendly mnemonic storage that is robust to the ordering of
+words. Future directions include optimizing performance for large k, exploring smaller dictionaries with higher
+word counts, and integrating error-detection or error-correction features.
+References
+[1] BIP 39 – Mnemonic Code for Generating Deterministic Keys. https://github.com/bitcoin/bips/blob/
+    master/bip-0039.mediawiki
+[2] N. N. Vorob’ev, Combinatorial Theory and Its Applications. Courier Corporation, 2020.
+[3] D. Knuth, The Art of Computer Programming, Vol. 4, Fasc. 1. Addison-Wesley, 2011.
+                                                                          3

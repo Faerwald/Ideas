@@ -1,0 +1,176 @@
+Title: What You Are Looking At
+Date:  2025-07-01
+Source: What_You_Are_Looking_At.pdf
+1 What You Are Looking At
+The sheet reproduces the retarded–potential solution of Maxwell’s equations in the Lorenz gauge:
+                                             J(r′ , tr ) 3 ′                                   ρ(r′ , tr ) 3 ′
+                                       Z                                                  Z
+                                  µ0                                            1
+                        A(r, t) =                       d r,         Φ(r, t) =                            d r
+                                  4π     Ω   |r − r′ |                         4πε0        Ω   |r − r′ |
+                                     |r−r′ |
+with the retarded time tr = t −        c .          These integrals are the causal (Green–function) solutions of the
+inhomogeneous wave equations
+                                                          ρ
+                                ∇2 −     1 2
+                                                                      ∇2 −   1 2
+                                                                                   
+                                           ∂
+                                         c2 t
+                                                    Φ=−      ,                 ∂
+                                                                             c2 t
+                                                                                        A = −µ0 J
+                                                          ε0
+together with the Lorenz–gauge constraint ∂t Φ + c2 ∇·A = 0.
+    At a purely descriptive level Φ is the electro-static (scalar) potential and A its vector counterpart whose
+curl yields B. The denominator |r − r′ | encodes the 1/r fall-off of Coulomb geometry, while the argument tr
+enforces causality: only sources that had time to communicate at light-speed contribute.
+    Potentials are not unique—they admit gauge transformations. Adopting the Lorenz gauge decouples Φ and
+A, so each satisfies a hyperbolic operator ∇2 − c12 ∂t2 , i.e. the relativistic upgrade of Poisson’s law. Because
+A-waves exploit subtleties of A that survive gauge choices, retarded potentials are the indispensable first step
+in any design.
+2 How That Connects to A-waves
+An A-wave is a space–time disturbance of A that carries (essentially) no classical field energy yet imposes a
+measurable holonomy. Mathematically it lives among the homogeneous solutions
+                                  ∇2 − c12 ∂t2 A = 0 (outside sources).
+                                              
+  Conceptual requirement                        Mathematical statement
+                                                I
+  Gauge irreducibility: closed                    A·dℓ = Φlink ̸= 0.
+  holonomy cannot be gauged away                    C
+  Negligible field energy in region of          E = −∂t A − ∇Φ ≈ 0, B = ∇ × A ≈ 0.
+  interest
+  Propagation at light speed                    Time-dependent boundary conditions inject a pulse that satisfies
+                                                the free wave equation.
+    The retarded–potential integrals are practical because they map a chosen current distribution J(r′ , t′ ) inside
+a device (toroidal solenoid, coaxial return path, . . . ) onto the exterior A. For instance, a toroid whose flux
+ΦB (t) is ramped yields                        I
+                                                             A·dℓ = ΦB (t),
+                                                        ∂S
+so a pure-A pulse emerges even though B = 0 outside the core. Any charge that encloses that loop accumulates
+the Aharonov–Bohm phase ∆φ = ℏq ΦB (t), the experimental fingerprint of an A-wave.
+3 When the Displayed Equations Are Not Enough
+                                                                                                  R    
+  1. Quantum phase accounting. The integrals give A but not the gauge-invariant phase exp i(q/ℏ) A·dℓ .
+     Designing interferometers therefore pushes one into path-integral or Schrödinger analyses with noise
+     budgets.
+  2. Topological boundary conditions. Maintaining A ̸= 0 yet E, B ≈ 0 demands flux-confining ge-
+     ometries— toroids, coaxes, superconducting rings— whose Helmholtz decomposition keeps longitudinal
+     (instantaneous) components while cancelling transverse (radiative) ones.
+                                                                 1
+  3. Dissipation & back-reaction. Even “energy-free” far-field holonomy costs drive power locally. Min-
+     imising unwanted radiation becomes an impedance-matching optimisation of J, often solved with 3-D
+     full-wave numerics.
+4 More Directly “A-wave-Centric” Equations
+(i) Four–vector wave equation.
+                                      ∂ µ ∂µ Aν = −µ0 J ν ,          ∂µ Aµ = 0,
+written in manifestly covariant form, highlights that each component of the four-potential Aν = (Φ/c, A) is
+itself a propagating field whose causal evolution is set by a universal Green-function G(x − x′ ).
+(ii) Quantum phase functional.                              Z
+                                                     q
+                                           SAB [A] =              Aµ dxµ ,
+                                                     ℏ        γ
+showing that only the line integral along a closed path matters for interference—essential when the goal is
+information without energy transfer.
+(iii) Gauge-invariant residual (Coulomb gauge).
+                                         Aphys = A − ∇ ∇−2 ∇·A ,
+                                                              
+the part of A that survives any scalar gauge transformation and therefore embodies the measurable content of
+an A-wave.
+5 How to Explain A-waves Succinctly
+     Definition. An A-wave is a propagating, gauge-irreducible excitation of the electromagnetic vec-
+     tor potential whose closed-loop holonomy modulates quantum phase, while its local electric and
+     magnetic fields are engineered to cancel.
+   • It satisfies the free wave equation □ A = 0 in source-free regions.
+   • Its presence is detected only through interference (Aharonov–Bohm loops, Berry-phase gyroscopes,
+     SQUIDs).
+   • It transports negligible classical energy–momentum, yet its time-dependent holonomy carries actionable
+     information.
+6 Next Practical Steps
+  1. Choose a geometry   I : confine magnetic flux in a toroid, coaxial line, or superconducting ring so that
+     B = 0 externally but A·dℓ ̸= 0.
+  2. Compute the exterior potential : insert the chosen current I(t) into the retarded-potential integral
+     to obtain A(r, t); verify E, B ≪ 1 in the link region.
+  3. Design the interferometer R : model electron or photonic loops that enclose the holonomy and quantify
+     the phase shift ∆φ = (q/ℏ) A·dℓ.
+  4. Optimise the drive waveform : iterate I(t) to maximise signal-to-noise while keeping radiative leakage
+     and ohmic losses below budget.
+                                                        2
+  5. Implement shielding & biasing : suppress stray fields with µ-metal or superconducting shields and
+     bias the receiver (e.g. Josephson junction) at its amplification edge so a sub-mrad phase shift triggers a
+     macroscopic readout.
+7 From Pure A-waves to Field-Carrying Radiation
+7.1 Gauge Potential versus Field Strength
+Classically the vector potential HA is not observable; only its curl and time derivative—B and E—carry en-
+ergy–momentum. A loop with A·dℓ ̸= 0 yet E = B = 0 is allowed because Maxwell’s action is quadratic:
+adding a pure-gauge solution to a radiative one leaves the stress–energy tensor unchanged. Hence two static
+pure-gauge disturbances do not interfere into a real field; energy remains zero so long as the curls remain zero.
+7.2 Topology and Boundaries
+Introduce a non-contractible loop—toroidal solenoid, coax return, cosmic string—and a pure gauge acquires
+global holonomy. Nothing radiates until the boundary condition changes in time: ramping flux, opening a
+Josephson junction, or accelerating the torus. That drive injects energy locally and pushes the solution onto
+the branch where ∂t A ̸= 0; an outward-moving (E, B) pulse appears.
+7.3 Interference of Two A-waves in Free Space
+Given two solutions A1,2 with ∇ × Ai = 0 and ∂t Ai = 0, their sum remains curl-free and static. To obtain
+a real field one needs phase-misaligned gradients such that ∇ × (A1 + A2 ) ̸= 0; in practice at least one wave
+must already contain non-trivial field content or the overlap must fall outside each wave’s pure-gauge domain
+(e.g. beams escaping different flux tubes).
+7.4 Virtual Photons and “Becoming Real”
+In QED the propagator mixes on-shell and off-shell photons. Off-shell exchange cannot be detected individually.
+Conversion to on-shell quanta requires a channel that satisfies energy–momentum and charge conservation—for
+example, lowering a cavity Q-factor so that modes once trapped as virtual leakage escape as real photons. The
+boundary change again supplies the energy.
+7.5 High-Field or Non-linear Regimes
+At the Schwinger limit E ∼ 1018 V m−1 or in strong-coupling cavity QED, the Heisenberg–Euler effective action
+adds non-linear terms. Two nominally pure-A pulses may scatter into real photons (*light-by-light scattering*),
+but the pump power is drawn locally from the intense background field.
+7.6 Operational Checklist
+  1. Topology: create a loop that locks holonomy.
+  2. Drive: vary the holonomy in time (currents, moving boundaries, external fields).
+  3. Release: open a channel—break symmetry or lower Q.
+  4. Detection: use an interferometer or SQUID that encloses the loop or samples the radiated pulse.
+7.7 Synopsis
+Two ideal static A-waves in vacuum never “turn into” fields. Supply a time-varying boundary, matter cou-
+pling, or ultra-strong pumps and the gauge excitation converts to detectable radiation—always with en-
+ergy–momentum provided locally by the drive.
+                                                       3
+8 Phase-Only Signalling Architecture
+                                                                                   H
+Core Principle. Information rides on space–time modulation of gauge phase A·dℓ; net Poynting flux is
+(ideally) zero. The sender perturbs the holonomy; the receiver, already energised, uses a bias supply to amplify
+the microscopic phase cue into a macroscopic read-out.
+8.1 Minimal Physical Stack
+      Element                         Practical implementation / role
+      Topology anchor                 Superconducting toroid or coax loop; confines B-flux yet leaves
+                                      E ≈ B ≈ 0 externally.
+      Sender (pump)                   Flux-ramp SQUID driven by arbitrary-waveform current; injects
+                                      holonomy step ∆Φ(t)—drive energy remains local.
+      Free-space link                 Shielded region where only the gauge phase propagates.
+      Receiver (energised)            Josephson interferometer or phase-biased qubit encircling the same
+                                      loop; bias current converts incoming ∆Φ to a voltage pulse or qubit
+                                      rotation.
+8.2 Engineering Checklist
+  1. Radiation hygiene. Simulate the toroid/coax so that |dB/dt| < 10−12 T and |dE/dt| < 10−3 V m−1 in
+     the link region.
+  2. Bias at the amplification edge. Set the Josephson phase difference δ ≈ π/2; a sub-mrad shift then
+     triggers a macroscopic read-out.
+  3. Clock synchronisation. Share a classical clock (jitter tolerance ∆t ∼ L/c) or embed a calibration ping
+     carried by ordinary photons.
+  4. Error budgeting. Dominant noise is 1/f flux noise; µ-metal and superconducting shields plus spin-glass
+     substrate can push the spectrum below (1 nΦ0 )2 /Hz at 1 Hz.
+8.3 No Fundamental Paradox
+Landauer’s bound is paid inside the receiver where the bit is registered; energy comes from the bias supply
+on site. Phase is a relational variable, so its modulation can be broadcast without energy transport provided
+both ends already contain phase-sensitive reservoirs.
+8.4 Beyond the Linear Regime
+At Schwinger-scale intensities or inside ultra-strong-coupling cavities, Heisenberg–Euler terms allow “pure-A”
+pulses to scatter into on-shell photons without boundaries, but the pump energy is again local. For laboratory-
+scale strengths, boundary-driven schemes are the practical route.
+8.5 Condensed-Matter Analogies
+   • Population-inverted laser medium ↔ phase-biased Josephson array: external pumping stores free energy;
+     an incoming phase seed selects the emitted state.
+   • Negative-temperature nuclear-spin ensemble ↔ flux-biased superconducting loop: the order parameter
+     is inverted yet metastable, awaiting a minimal trigger.
+Bottom Line. Engineer a flux-confined topology, drive its holonomy at the sender, bias a phase-sensitive
+amplifier at the receiver, and let gauge phase— energy-free yet causally limited at c—carry your bits.
+                                                       4

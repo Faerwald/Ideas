@@ -1,0 +1,170 @@
+Title: Wide Deep Overview to Start Learning AI Stuff
+Date:  2025-05-27
+Source: Wide Deep Overview to Start Learning AI Stuff.pdf
+Wide & Deep Overview to Start Learning AI Stuff
+                                         Compiled by ChatGPT
+                                            February 23, 2025
+Note: This document is structured in three phases. 3. Cloud Platforms & Computing Resources
+Each phase adds new categories, tools, and resources.
+The aim is to provide an information-dense index of top- • AWS (EC2 for GPU/TPU instances, ECS/EKS for
+ics you can explore further. All references and links are   container orchestration, SageMaker )
+listed at the end.
+                                                          • Microsoft Azure (Machine Learning Studio, Azure
+                                                            Batch AI )
+Phase 1: Core Overview
+                                            • Google Cloud Platform (Vertex AI, Compute En-
+1. Swarm Intelligence and Evolutionary Com-   gine, TPU Pods)
+putation
+                                                            • IBM Cloud (Watson Studio, IBM HPC clusters)
+• Swarm Frameworks and Tools:
+    – PSO (Particle Swarm Optimization) Libraries 4. Containerization and Orchestration
+      for Python: EvoloPy, PySwarms
+                                                  • Docker (industry standard for containers)
+    – ACO (Ant Colony Optimization) Implementa-
+      tions: ACO in Python, MATLAB toolboxes      • Kubernetes (production-grade orchestration)
+• Evolutionary Algorithms (EA):                             • Singularity (popular in HPC settings)
+    – DEAP (Distributed Evolutionary Algorithms in • Helm (package manager for Kubernetes)
+      Python)
+    – ECJ (Java-based evolutionary computation 5. Data and Knowledge Repositories
+      framework)
+                                                • Wikipedia (general overview, quick references)
+    – Pyevolve (simple GA/GP library in Python)
+                                                            • ArXiv (cs.AI, cs.LG, cs.NE, etc.)
+• Genetic Programming (GP):
+                                                            • Papers With Code (state-of-the-art models, code
+    – GP Frameworks: DEAP, gplearn
+                                                              links)
+    – Cartesian Genetic Programming:     libraries in
+      Python, C++                                           • UCI Machine Learning Repository, Kaggle
+                                                              Datasets
+2.  Neural Network and Deep Learning • Open Data Portals (government, NASA, NOAA,
+Frameworks                             etc.)
+• PyTorch (primary choice in research)
+                                                            6. Conferences and Journals
+• TensorFlow (high-level Keras API, large ecosystem)
+                                                            • NeurIPS, ICML, AAAI, ICLR (ML/AI)
+• JAX (used at Google Research, fast function trans-
+                                                     • GECCO, PPSN, CEC (evolutionary computation)
+  formations)
+                                                  • Swarm Intelligence (Springer journal)
+• Hugging Face Transformers (pretrained models,
+  NLP pipelines)                                  • IEEE Transactions on Evolutionary Computa-
+                                                    tion
+• MXNet, CNTK, Theano (legacy, still relevant for
+  older code)                                     • ALife (Artificial Life conferences)
+                                                        1
+7. Classic and Modern Textbooks / Publica- 5. Key Individuals (Non-Exhaustive)
+tions                                      • Yann LeCun, Geoffrey Hinton, Yoshua Bengio (deep
+• Artificial Intelligence:   A Modern Approach                learning pioneers)
+  (Russell & Norvig)
+                                                            • David E. Goldberg, John R. Koza (evolutionary com-
+• Deep Learning (Goodfellow, Bengio, Courville)               putation)
+• Swarm Intelligence (Bonabeau, Dorigo, Theraulaz) • Marco Dorigo (ant colony optimization)
+• Handbook      of   Metaheuristics    (Gendreau   & • Peter Bentley, Kenneth O. Stanley (neuroevolution,
+  Potvin)                                              novelty search)
+• Genetic Programming: On the Programming
+  of Computers by Means of Natural Selection 6. Additional Swarm / Evolutionary Con-
+  (Koza)                                     cepts
+                                                            • Differential Evolution, CMA-ES (Covariance Ma-
+Phase 2: Expansion with Additional                            trix Adaptation)
+Tools, Researchers, Categories                              • Neuroevolution (NEAT, HyperNEAT)
+1. HPC (High-Performance Computing) & • Multi-Objective EAs (NSGA-II, SPEA2)
+Distributed Systems
+                                                            • Surrogate-Assisted EAs (model-based optimiza-
+• SLURM, PBS/Torque, LSF (job schedulers)                     tion)
+• MPI (Message Passing Interface) for distributed HPC
+                                                            7. Mathematical Tools / Libraries
+• Ray, Dask (scalable Python for distributed comput-
+  ing)                                               • NumPy, SciPy, pandas (fundamental Python data
+                                                       libraries)
+• Apache Spark (big data processing, MLlib for ML
+  tasks)                                             • MATLAB, Octave (numerical computing environ-
+                                                       ments)
+2. Development Environments and Tools                       • R and Bioconductor (statistical computing, espe-
+                                                              cially for bio-data)
+• JupyterLab, VSCode, PyCharm (common IDEs)
+• GitHub, GitLab (source control, CI/CD)                    8. Security, Cryptography, and Privacy Tools
+• Conda, Pipenv, Poetry (Python env management) • Zero-Knowledge Proof libraries: Zcash-related
+                                                   (for advanced usage)
+• Ansible, Terraform (infrastructure automation)
+                                                 • Homomorphic Encryption tools: Microsoft SEAL,
+                                                   Google FHE
+3. Reinforcement Learning (RL)
+                                                            • Federated Learning frameworks: PySyft, Tensor-
+• OpenAI Gym, Gymnasium, DeepMind Control                     Flow Federated
+  Suite
+• Stable Baselines3 (RL implementations for Py-             Phase 3: Further Branching and Sup-
+  Torch)
+                                                            plementary Topics
+• RLlib (Ray-based scalable RL)
+                                                            1. Probabilistic Programming & Advanced
+4. Key Research Labs and Companies                          Statistical Tools
+• DeepMind, OpenAI, Meta AI (FAIR), Google • Stan, PyMC, Edward2, Bean Machine (Bayesian
+  Brain                                      inference)
+• Microsoft Research, IBM Research, NVIDIA • Probabilistic Graphical Models (PGM) refer-
+  Research                                   ences
+• Baidu Research, Tencent AI Lab, Bytedance • WinBUGS/JAGS (older frameworks for MCMC
+  AI Lab                                      sampling)
+                                                        2
+2. Specialized Hardware & Neuromorphic 8. Additional Conferences and Journals
+Computing                              • IJCAI (International Joint Conference on AI)
+• NVIDIA GPUs, AMD GPUs, Intel OneAPI                         • AAMAS (Autonomous Agents and Multi-Agent Sys-
+• TPUs (Google Cloud), Graphcore IPUs                           tems)
+                                                              • ICRA, IROS (robotics conferences with AI compo-
+• Loihi (Intel neuromorphic chip), SpiNNaker (Uni-
+                                                                nents)
+  versity of Manchester)
+                                                              • IEEE Transactions on Neural Networks and
+                                                                Learning Systems
+3. Large-Scale Data and Distributed File Sys-
+tems
+• HDFS (Hadoop Distributed File System)
+                                                              References
+                                                              1. Russell, S. J., & Norvig, P. Artificial Intelligence: A
+• Ceph, GlusterFS (software-defined storage)                     Modern Approach.
+• Alluxio (virtual distributed storage for big data)          2. Goodfellow, I., Bengio, Y., & Courville, A. Deep
+                                                                 Learning.
+4. Model Deployment and Serving                               3. Bonabeau, E., Dorigo, M., & Theraulaz, G. Swarm
+                                                                 Intelligence: From Natural to Artificial Systems.
+• TensorFlow Serving, TorchServe
+                                                              4. Koza, J. R. Genetic Programming: On the Program-
+• NVIDIA Triton Inference Server                                 ming of Computers by Means of Natural Selection.
+                                                              5. Goldberg, D. E. Genetic Algorithms in Search, Opti-
+• BentoML, MLflow (model management, tracking)                   mization, and Machine Learning.
+                                                              6. Gendreau, M., & Potvin, J.-Y. Handbook of Meta-
+5. Additional High-Value Online Resources                        heuristics.
+• Semantic Scholar, ResearchGate (paper discov- 7.               Dorigo, M., & Stützle, T. Ant Colony Optimization.
+  ery)
+                                                  8.             Floreano, D., & Mattiussi, C. Bio-Inspired Artificial
+                                                                 Intelligence: Theories, Methods, and Technologies.
+• Wolfram Alpha (computational knowledge engine)
+                                                  9.             Sutton, R. S., & Barto, A. G. Reinforcement Learn-
+• Stack Overflow, Reddit r/MachineLearning                       ing: An Introduction.
+  (community Q&A)                                10.             Koller, D., & Friedman, N. Probabilistic Graphical
+                                                                 Models: Principles and Techniques.
+• KDnuggets, Towards Data Science (blogs, tuto-
+  rials)                                        11. Online Resources:
+                                                                   • ArXiv: https://arxiv.org/
+6. Notable Independent Researchers / Orga-                         • Papers     With     Code:       https://
+nizations                                                            paperswithcode.com/
+                                                                   • UCI ML Repository: https://archive.
+• François Chollet (Keras, measure of AI intelligence)              ics.uci.edu/
+• Juergen Schmidhuber (LSTM co-inventor, evolution                 • Kaggle: https://www.kaggle.com/
+  of NN research)                                                  • DeepMind: https://www.deepmind.com/
+                                                                   • OpenAI: https://openai.com/
+• EleutherAI, LAION (open collaborative AI re-                     • EleutherAI: https://www.eleuther.ai/
+  search groups)                                                   • LAION: https://laion.ai/
+• Stability AI (Stable Diffusion, generative model re-             • NVIDIA HPC: https://www.nvidia.com/
+                                                                     en-us/data-center/hpc/
+  search)
+                                                                   • Docker: https://www.docker.com/
+                                                                   • Kubernetes: https://kubernetes.io/
+7. Hybrid / Neuro-Symbolic Systems                                 • Hugging Face: https://huggingface.co/
+• Neural Theorem           Provers,     Differentiable             • Ray: https://www.ray.io/
+  Knowledge Graphs                                                 • Dask: https://www.dask.org/
+• Logical Neural Networks, Deep Relational                         • Anaconda/Conda: https://www.anaconda.
+  Models                                                             com/
+                                                                   • GitHub: https://github.com/
+• OpenCog       Hyperon,      MICrONS         program              • GitLab: https://gitlab.com/
+  (DARPA)
+                                                          3

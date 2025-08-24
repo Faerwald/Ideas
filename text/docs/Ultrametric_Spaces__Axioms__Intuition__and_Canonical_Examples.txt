@@ -1,0 +1,87 @@
+Title: Ultrametric Spaces  Axioms  Intuition  and Canonical Examples
+Date:  2025-08-11
+Source: Ultrametric_Spaces__Axioms__Intuition__and_Canonical_Examples.pdf
+Ultrametric Spaces: Axioms, Intuition, and Canonical Examples
+  Color legend. Blue = definitions/axioms. Red = the ultrametric (strong triangle) rule. Purple
+  = consequences you can use blindly. Green = examples. Orange = quick intuition.
+1. Ordinary metrics vs. ultrametrics
+Definition (metric). A function d : X × X → [0, ∞) is a metric if for all x, y, z ∈ X:
+   1. (M1) Nonnegativity: d(x, y) ≥ 0.
+   2. (M2) Identity of indiscernibles: d(x, y) = 0 ⇐⇒ x = y.
+   3. (M3) Symmetry: d(x, y) = d(y, x).
+   4. (M4) Triangle inequality: d(x, z) ≤ d(x, y) + d(y, z).
+   Definition (ultrametric). A metric d is an ultrametric if it satisfies the stronger rule
+d(x,z)≤ max{d(x, y), d(y, z)}d(x,z)≤ max{d(x, y), d(y, z)}d(x,z)≤ max{d(x, y), d(y, z)}d(x,z)≤ max{d(x, y), d(y, z)}   (strong tri
+  What changes? In an ultrametric, the two longest sides of every triangle are equal and dominate
+  the third. Triangles look like isosceles with a very short base.
+   Non-example. On R with usual distance |x − y|,
+                                    |0 − 2| = 2 ̸≤ max{|0 − 1|, |1 − 2|} = 1,
+so R with | · | is not ultrametric.
+2. Immediate consequences you should memorize
+Let (X, d) be an ultrametric space. Then:
+   1. Isosceles rule. For any x, y, z,
+                               max{d(x, y), d(y, z), d(x, z)} is attained at least twice.
+      Mini-derivation: WLOG let d(x, y) be the largest. Then by STI,
+                                       d(x, y) ≤ max{d(x, z), d(z, y)} ≤ d(x, y),
+      so the max of {d(x, z), d(y, z)} equals d(x, y).
+   2. Nested-or-disjoint balls. For any balls Br (a) = {x : d(x, a) < r} and Bs (b):
+                              Br (a) ∩ Bs (b) ̸= ∅ ⇒ Br (a) ⊆ Bs (b) or Bs (b) ⊆ Br (a).
+      Reason: pick x in the intersection and use STI twice: if y ∈ Br (a) then d(y, b) ≤ max{d(y, a), d(a, b)} <
+      max{r, s}. A short case split on r ≤ s or s < r finishes it.
+                                                          1
+  3. Balls are “center-free”. If y ∈ Br (a) then Br (y) = Br (a). Reason: For any z, STI gives
+                    d(z, a) ≤ max{d(z, y), d(y, a)} and d(z, y) ≤ max{d(z, a), d(a, y)}.
+     If d(z, y) < r then d(z, a) < r; conversely if d(z, a) < r then d(z, y) < r.
+  4. Balls are clopen. Every open ball is also closed, and every closed ball is open. Sketch: Use the
+     previous item to show complements of balls are open.
+  Hierarchy picture. Because intersecting balls must nest, the space behaves like a rooted tree:
+  balls are “subtrees” and any two either sit one inside the other or separate completely. This is why
+  ultrametrics model genealogies, taxonomies, and prefix similarity.
+3. A canonical example: texts as infinite sequences (prefix
+ultrametric)
+Fix a finite alphabet A (e.g. English letters). Consider infinite texts
+                                          x = (x1 , x2 , x3 , . . . ) ∈ AN .
+For two texts x, y, define the longest common prefix length
+                            lcp(x, y) := max{n ≥ 0 : xi = yi for all 1 ≤ i ≤ n}.
+Now set the distance
+                           (
+                            0,           x = y,
+              d(x, y) :=                                (any base b > 1 works; 2 is convenient)
+                            2− lcp(x,y) , x ̸= y.
+Why this is an ultrametric (micro-steps).
+  1. M1–M3 are immediate by construction.
+  2. The key combinatorial fact:
+                                                     
+                                      lcp(x, z) ≥ min lcp(x, y), lcp(y, z) .
+     Reason: if the first k letters of x and y agree and the first k of y and z agree, then the first k of
+     x and z also agree.
+  3. Apply the monotone map n 7→ 2−n to the previous inequality:
+                  d(x, z) = 2− lcp(x,z) ≤ max{2− lcp(x,y) , 2− lcp(y,z) } = max{d(x, y), d(y, z)}.
+     This is exactly STI.
+Balls are cylinders (explicit description). Fix a word (finite prefix) w = (w1 , . . . , wk ). Then the
+ball
+                                 B2−k (x) = { y : lcp(x, y) ≥ k }
+consists precisely of all texts that start with w. In other words:
+                                      {y ∈ AN : y1 = w1 , . . . , yk = wk }.
+So balls correspond to fixing an initial segment; nested-or-disjoint becomes “either one prefix extends
+the other, or they are incompatible.”
+                                                          2
+4. Another standard example: the p-adic metric
+For a prime p, define the p-adic absolute value on integers:
+                          (
+                            0,          n = 0,
+                   |n|p =     −vp (n)
+                                                where vp (n) = the exponent of p in n.
+                            p         , n ̸= 0,
+Then dp (x, y) := |x − y|p on Z (and Q) is an ultrametric.
+  Read it. Numbers are close if their difference is divisible by a large power of p. So “agreement far
+  to the right in base-p” mirrors “long common prefix” for texts. Both are hierarchical similarity.
+5. One-page checklist (use without re-deriving)
+   • Ultrametric test: check d(x, z) ≤ max{d(x, y), d(y, z)}.
+   • Triangles: two longest sides equal; base is the short side.
+   • Balls: if they intersect, one contains the other; every point of a ball can serve as its center; balls
+     are clopen.
+   • Prefix model: d(x, y) = 2− lcp(x,y) on AN .
+   • p-adics: dp (x, y) = |x − y|p on Z or Q.
+                                                        ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                    3

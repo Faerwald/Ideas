@@ -1,0 +1,132 @@
+Title: Ultrametrics for Tokenization and Transformers
+Date:  2025-08-11
+Source: Ultrametrics_for_Tokenization_and_Transformers.pdf
+Ultrametrics for Tokenization and Transformers
+  Context. This is a companion to the “Ultrametric Spaces” note. There the prefix ultrametric
+  was defined on character sequences. Here we repeat the construction for modern tokenizations and
+  connect it to LLM training, decoding, caching, retrieval, and evaluation.
+0. Characters vs. modern tokens
+Alphabetic view. Let A be a finite alphabet (characters). For x, y ∈ AN ,
+                                   dchar (x, y) = b− lcp(x,y)         (b > 1),
+is an ultrametric (from the first note).
+    Tokenizer view. A modern tokenizer is a map
+                                               T : A⋆ → V ⋆ ,
+where V is a finite vocabulary of subword tokens (e.g. BPE/WordPiece/SentencePiece units, or bytes).
+Given two texts x, y ∈ AN , write T (x) = (τ1 , τ2 , . . .) ∈ V N for their token streams. Define the token-
+level longest common prefix
+                      lcpT (x, y) := max{n ≥ 0 : τi (x) = τi (y) for all 1 ≤ i ≤ n}.
+Then the token ultrametric
+                                    dT (x, y) := b− lcpT (x,y)        (b > 1)                           (1)
+is again an ultrametric. Reason: the same prefix argument applies at the token level.
+  Interpretation. Two texts are “close” if they share a long token prefix under T . Balls are
+  cylinder sets of token prefixes. All ultrametric consequences (nested-or-disjoint balls, center-free
+  balls, clopen balls) hold verbatim.
+1. Tries, merge trees, and p-adic analogy
+Token trie. The set of all token sequences in a corpus induces a rooted trie TT (root is empty prefix;
+edges are tokens). For x ̸= y, let LCAT (x, y) be their lowest common ancestor in TT ; then
+                     depth LCAT (x, y) = lcpT (x, y), dT (x, y) = b− depth(LCAT ) .
+                                        
+Thus dT is the tree ultrametric induced by TT .
+    BPE hierarchy. Byte-Pair Encoding builds tokens by successive merges. Reading merges fine→coarse
+yields a canonical hierarchy; the induced levels provide a natural scale for
+                                                           lcpT (x,y)       
+                                                              X
+                                    dT,w (x, y) := exp −                 w(i) ,
+                                                                i=1
+                                                       1
+with w : N → (0, ∞) aPlevel weight depending only on depth. Because dT,w = ϕ(lcpT ) for the
+monotone ϕ(k) = exp(− i≤k w(i)), dT,w is ultrametric.
+    p-adic analogy. The p-adic distance |x − y|p = p−vp (x−y) measures shared suffix in base-p. Token
+ultrametrics measure shared prefix in T . Both are valuations on a rooted hierarchy (positional for
+p-adics, lexical for T ).
+2. Aggregating multiple granularities
+Modern systems use byte, character, and subword views simultaneously.
+  Family of ultrametrics. Let {dm }m∈M be ultrametrics on the same set (e.g. bytes, chars, tokens).
+Then
+                                     dmax (x, y) := sup dm (x, y)
+                                                         m∈M
+is an ultrametric. Proof sketch: apply strong triangle to each dm and take sup.
+    Multiresolution distance. Define
+                                          
+                          d⋆ (x, y) := max dbyte (x, y), dchar (x, y), dT (x, y) .
+Balls in d⋆ are intersections of byte/char/token cylinders—useful for robust prefix indexing across
+tokenization changes.
+3. Probabilistic refinements aligned with LLMs
+Autoregressive factorization. A language model πθ defines
+                                                        n
+                                                        Y
+                                       πθ (x1 :xn ) =         πθ (xi | x<i ).
+                                                        i=1
+Ultrametrics leverage the same prefix filtration.
+    Level-weight by surprisal. Choose a depth-only sequence w(i) ≡ s̄i , where s̄i is a global aver-
+age surprisal at depth i. Then dT,w down-weights agreement at very shallow levels that carry little
+information (e.g. BOS, whitespace tokens) while preserving ultrametricity.
+    Content-dependent weights. If w depends on the specific prefix, strong triangle can fail. Use
+depth-only weights (or coarsen by taking an upper envelope across prefixes) to keep the ultrametric
+guarantee.
+4. Direct systems links (last five years)
+4.1 KV-cache reuse and paged attention
+During inference, Transformer layers cache key/value tensors for a request prefix. Requests sharing a
+long token prefix can re-use caches. Let Bk (x) = {y : lcpT (x, y) ≥ k}; then all y ∈ Bk (x) use the
+same first k cache positions. The family {Bk (x)}k is nested, matching the allocator’s page partition.
+Takeaway: cache reuse regions are exactly balls in dT .
+4.2 Beam search and hypothesis tries
+Hypotheses in beam search form a trie; pruning is ball removal. Because balls are clopen, pruning a
+branch cannot later “re-enter” an earlier ball—this justifies irreversible pruning criteria tied to depth.
+                                                        2
+4.3 Retrieval, dedup, and filtering
+Lexical near-dup detection often needs fast “same beginning” checks (e.g. boilerplate, license headers,
+disclaimer blocks). Index with the token trie and query the ball Bk (w); nested-or-disjoint implies
+O(branching) candidate enumeration. Combine with embedding search by using the product space
+(X, max{dT , dcos }) where dcos is a thresholded cosine dissimilarity; the max preserves ultrametric on
+the discrete side and behaves as a guardrail for lexical constraints.
+4.4 Constrained decoding and grammars
+For structured outputs (JSON, code, EBNF grammars), feasible continuations are a subtree S ⊆ TT .
+Decoding restricted to S is search inside balls of S; validation and rollback stay local because balls are
+center-free.
+4.5 Hierarchical softmax and VQ codebooks
+Tree-based softmax and vector-quantized codebooks (VQ-VAE, RVQ) induce explicit hierarchies; dis-
+tances like (1) appear as natural priors/regularizers. Ultrametric penalties stabilize training by encour-
+aging coarse-to-fine separation before fine-grained branching.
+5. Precise statements and micro-derivations
+  Proposition 1 (Token ultrametric). For any tokenizer T and base b > 1, dT in (1) is an
+  ultrametric.
+  Proof. Let kxy = lcpT (x, y). For any x, y, z, the combinatorial fact lcpT (x, z) ≥ min{kxy , kyz }
+  holds because equalities of the first k tokens persist through transitivity. Applying k 7→ b−k yields
+  dT (x, z) ≤ max{dT (x, y), dT (y, z)}.
+  Proposition 2 (Level-weighted ultrametric). Let w : N → (0, ∞) depend only on depth and
+  be arbitrary. Then
+                                                lcpX
+                                                    T (x,y)     
+                              dT,w (x, y) = exp −           w(i)
+                                                          i=1
+  is an ultrametric.
+                         P
+  Proof. Write Φ(k) = i≤k w(i), strictly increasing in k. Then dT,w = exp(−Φ(lcpT )) is a decreasing
+  function of lcpT , so the same argument as above applies.
+  Proposition 3 (Supremum stability). If {dm } are ultrametrics on X, then dmax = supm dm is
+  an ultrametric.
+  Proof. For each m, dm (x, z) ≤ max{dm (x, y), dm (y, z)}. Taking supm on both sides gives
+  dmax (x, z) ≤ max{dmax (x, y), dmax (y, z)}.
+6. Engineering patterns (explicit recipes)
+Prefix-cache key. Use the pair (k, hash(τ1:k )) where k is depth and τ1:k the shared tokens. Collisions
+are ruled out by equality at depth k; reuse is exact on Bk (x).
+Trie-index RAG filter. Before embedding search, intersect documents with Bk (q) for a small k
+chosen so that πθ (· | q1:k ) has entropy below a budget; this removes boilerplate and stabilizes retrieval
+latency.
+                                                    3
+Ultrametric curriculum. Pretrain with a loss that increases penalty by depth, e.g. weight token
+NLL at position i by w(i) with w increasing; this enforces coarse global syntax before fine detail.
+Mixture-of-tokenizers. Maintain tokenizers T1 , . . . , TM (bytes, char, subword, code-specific). Use
+dmax to get robustness to segmentation drift; index once per tokenizer and intersect candidate sets.
+7. What changed relative to the original page
+   • Characters→tokens. Replace A by a learned vocabulary V ; all proofs go through at the token
+     level.
+   • Weighted depths. We allow arbitrary depth weights w(i) (content-independent) to match
+     information carried by early vs. late positions.
+   • Multi-view aggregation. Supremum of byte/char/token ultrametrics is ultrametric, giving a
+     practical, tokenizer-agnostic index.
+   • Direct LLM ties. KV-cache reuse regions, beam-search pruning, and constrained decoding
+     correspond exactly to balls in the token ultrametric.
+                                                     ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                 4

@@ -1,0 +1,161 @@
+Title: Worked Ultrametric Examples With Sentences
+Date:  2025-08-11
+Source: Worked_Ultrametric_Examples_With_Sentences.pdf
+Worked Ultrametric Examples With Sentences
+  Legend. We compare strings as sequences of characters (letters, spaces, punctuation). If two
+  strings match for the first k characters and differ at the next, the ultrametric distance is
+                                                    1
+                                      ρ(x, y) =                  (0 < 1/m < 1).
+                                                    mk
+  In the strips below, green = matching prefix, red = first differing character. We render a space
+  as ·.
+A. Example 1.1 (from the book): four sentences X,Y,Z,W
+Alphabet and rule. Alphabet = English letters + space + punctuation + “blank” symbol used only
+to pad the end. Distance: if the longest common prefix (LCP) length is k, then ρ = 1/mk .
+Sentences (verbatim):
+                             X    :   I have to go to the University
+                             Y    :   I go to the University
+                             Z    :   I go to a shop
+                             W    :   He has to go to the University
+A1. Pairwise LCPs ⇒ distances (all six pairs)
+Below, the top row shows indices 1, 2, . . .. The next two rows show characters. Green boxes are the
+matching prefix; the first red box is the first mismatch.
+X vs Y .
+                               index        1        2           3       4
+                               X            I        ·           h       a       k=2
+                               Y            I        ·           g       o
+       1
+  ρ=      (= 1/m2 )
+       m2
+Y vs Z. Common prefix is “I·go·to·” (8 characters). First mismatch: t vs a.
+                index    1    2         3       4        5           6       7    8    9
+                Y       I     ·         g       o        ·           t       o    ·    t   k=8
+                Z       I     ·         g       o        ·           t       o    ·    a
+       1
+  ρ=      (= 1/m8 )
+       m8
+                                                             1
+X vs Z.
+                                 index       1   2       3   4
+                                 X           I   ·       h   a     k=2
+                                 Z           I   ·       g   o
+        1
+   ρ=      (= 1/m2 )
+        m2
+X vs W . First character differs: I vs H.
+                                         index   1       2
+                                         X       I       ·   k=0
+                                         W       H       e
+        1
+   ρ=      (= 1)
+        m0
+Y vs W .
+                                         index   1       2
+                                         Y       I       ·   k=0
+                                         W       H       e
+        1
+   ρ=      (= 1)
+        m0
+Z vs W .
+                                         index   1       2
+                                         Z       I       ·   k=0
+                                         W       H       e
+        1
+   ρ=      (= 1)
+        m0
+A2. Distance table for X, Y, Z, W (character metric)
+                                              X     Y      Z   W
+                                      X        0   1/m 1/m
+                                                       2     2
+                                                               1
+                                      Y      1/m 2
+                                                     0   1/m 8
+                                                               1
+                                      Z      1/m2 1/m8     0   1
+                                      W        1     1     1   0
+A3. Balls and the “first bits matter” point
+Let B1/mk (a) = {x : ρ(x, a) ≤ 1/mk }.
+  • B1/m (Y ) = all texts starting with I. It contains X, Y, Z but not W .
+  • B1/m2 (Y ) = all texts starting with I·. It contains X, Y, Z; excludes W .
+  • B1/m8 (Y ) = all texts starting with I·go·to·. It contains Y, Z only.
+This is exactly the book’s message: the earliest characters partition the space into far clusters.
+                                                     2
+A4. Strong triangle inequality (check on the numbers)
+Take X, Y, Z:
+                                            1             1 1                           1
+                                                                               
+                               ρ(X, Z) = 2 ≤ max 2 , 8                              =      .
+                                           m             m m                            m2
+Equality holds, so the ultrametric condition is satisfied.
+B. Example 2 (your page): four sentences S1–S4
+Sentences (exact text we’ll use):
+                                     S1 :   she’s a shapeshifter
+                                     S2 :   she’s a transformer
+                                     S3 :   she’s the key
+                                     S4 :   she transformed
+B1. Pairwise LCPs ⇒ distances
+S1 vs S2. Common prefix “she’s·a·” (8 chars). Mismatch next: s vs t.
+                index     1     2       3       4           5           6       7       8      9
+                S1        s     h     e         ’           s           ·       a       ·      s     k=8
+                S2        s     h     e         ’           s           ·       a       ·      t
+       1
+  ρ=      (= 1/m8 )
+       m8
+S1 vs S3. Common prefix “she’s·” (6 chars). Next: a vs t.
+                        index   1       2           3       4           5       6       7
+                        S1      s       h       e           ’           s       ·       a      k=6
+                        S3      s       h       e           ’           s       ·       t
+       1
+  ρ=      (= 1/m6 )
+       m6
+S1 vs S4. Common prefix “she” (3 chars). Next: ’ vs ·.
+                                index       1           2           3       4
+                                S1          s           h           e       ’       k=3
+                                S4          s           h           e       ·
+       1
+  ρ=      (= 1/m3 )
+       m3
+S2 vs S3. Same as above: “she’s·” (6), then a vs t.
+                                                            k=6
+       1
+  ρ=      (= 1/m6 )
+       m6
+                                                                3
+S2 vs S4. Common prefix “she” (3), then ’ vs ·.
+                                                  k=3
+        1
+   ρ=      (= 1/m3 )
+        m3
+S3 vs S4. Common prefix “she” (3), then ’ vs ·.
+                                                  k=3
+        1
+   ρ=      (= 1/m3 )
+        m3
+B2. Distance table for S1, S2, S3, S4 (character metric)
+                                          S1    S2    S3    S4
+                                    S1     0   1/m 1/m 1/m3
+                                                   8     6
+                                    S2   1/m 8
+                                                 0   1/m6 1/m3
+                                    S3   1/m6 1/m6     0   1/m3
+                                    S4   1/m3 1/m3 1/m3      0
+B3. Balls and hierarchy you can see
+  • B1/m3 (S1) = all strings starting with she. It contains S1, S2, S3, S4.
+  • B1/m6 (S1) = all strings starting with she’s·. It contains S1, S2, S3 (but not S4).
+  • B1/m8 (S1) = all strings starting with she’s·a·. It contains S1, S2 (but not S3, S4).
+Because ultrametric balls are nested or disjoint, you can read this as a clean, tree-shaped refinement:
+                                     she ⊃ she’s· ⊃ she’s·a·.
+B4. Strong triangle inequality (checked on your strings)
+Consider S1, S2, S3:
+                                           1       1 1                    1
+                                                                 
+                               ρ(S1, S3) = 6 ≤ max 8 , 6              =      .
+                                          m       m m                     m6
+Consider S1, S4, S2:
+                                             1            1 1           1
+                                                                 
+                              ρ(S1, S4) = 3 ≤ max 8 , 3 = 3 .
+                                            m            m m           m
+Both hold with equality, visually reflecting that two longest sides tie in each “triangle.”
+                                                        ⟨Jason Agamemnon Sokaris | .F.A.E.R.W.A.L.D⟩
+                                                    4
