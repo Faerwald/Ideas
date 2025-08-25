@@ -6,6 +6,9 @@
   <title>Research Portfolio</title>
   <link rel="stylesheet" href="assets/style.css"/>
   <meta name="description" content="Working papers by Jason Agamemnon Sokaris. Topic filters, search, and a compact table view."/>
+  <!-- Tint mobile UI dark -->
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="color-scheme" content="dark">
 </head>
 <body>
 <header class="hero">
@@ -14,7 +17,6 @@
     <p>Mesopotamia was as ‘ready’ for Apollo as we are for Alpha Centauri—brilliant enough to sketch the rocket, not yet fit to light it. Give Mars the 400 years America had; today’s red ‘woods’ will be neighborhoods, the asteroid belt our shipyard and launchpoint, with last year a waypoint crossed by the ship yet to be built.</p>
     <p>Dreams reach knowledge fastest through the detour of madness.</p>
     <p>《 "That brain of mine is something more than merely mortal; as time will show" | “You loved me and your love made me – human.” 》 Impossibilia amori cedunt.</p>
-<p>“It’s not fiction.” -"NCX"</p> "Nice Shoes." -"2352"</p>
     <p><strong>Jason Agamemnon Sokaris</strong></p>
   </div>
 </header>
@@ -42,7 +44,7 @@
     <!-- Cards Grid (used when Cards view + filters active) -->
     <div id="grid" class="grid" style="display:none"></div>
 
-    <!-- Compact Sortable Table (Title | Pages | Date | Actions) -->
+    <!-- Compact Sortable Table (Title | Pages | Date | Actions | Eval) -->
     <div id="tablewrap">
       <table id="tbl" class="data">
         <thead>
@@ -51,6 +53,7 @@
             <th data-key="pages"><abbr title="Pages">Pages</abbr></th>
             <th data-key="date"><abbr title="Date (YYYY-MM-DD)">Date</abbr></th>
             <th data-key="actions">Actions</th>
+            <th data-key="eval">Eval</th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>
@@ -63,6 +66,7 @@
   <p>© 2025 Jason Agamemnon Sokaris — All rights reserved. <a href="LICENSE.html">Licensing &amp; Use</a></p>
 </footer>
 
-<script src="assets/script.js?v=5"></script>
+<script src="assets/script.js?v=7"></script>
 </body>
 </html>
+

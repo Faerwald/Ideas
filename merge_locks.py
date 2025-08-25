@@ -1,54 +1,106 @@
 #!/usr/bin/env python3
-# Merge "Locked" flags from CSV into papers.json by File ID (driveId).
+# Merge fields from LinkList.csv into papers.json by Drive File ID.
+# - Locked : 0/1 (or true/false/yes/no)
+# - Wait   : 1..7  (optional)
+# - Eval   : free text (from "Eval", "Evaluation", "AI Eval", "Description", or "Notes")
 
-import csv, json, argparse
+import csv, json, argparse, sys
 
-def normcol(name): return name.strip().lower().replace(" ", "")
+def norm(s: str) -> str:
+    return str(s or "").strip().lower().replace(" ", "").replace("-", "").replace("_", "")
+
+def parse_bool(v):
+    s = str(v).strip().lower()
+    return s in ("1","true","yes","y")
+
+def parse_wait(v):
+    s = str(v).strip()
+    if not s: return None
+    try:
+        n = int(float(s))
+        if 1 <= n <= 7: return n
+    except:
+        return None
+    return n
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("papers_json")
-    ap.add_argument("csv_with_locked")   # the export from your sheet
+    ap.add_argument("papers_json", help="existing papers.json to update")
+    ap.add_argument("csv_with_flags", help="LinkList.csv with File ID, and optionally Locked/Wait/Eval")
     ap.add_argument("-o","--out", default="papers.json")
     args = ap.parse_args()
 
-    # load current papers.json
-    with open(args.papers_json, "r", encoding="utf-8") as f:
-        papers = json.load(f)
-
-    # map by driveId for quick lookup
-    by_id = {p.get("driveId",""): p for p in papers if p.get("driveId")}
-
-    # read CSV; find columns (case-insensitive)
-    with open(args.csv_with_locked, newline="", encoding="utf-8") as fp:
-        r = csv.reader(fp)
-        rows = list(r)
-    header = [normcol(h) for h in rows[0]]
+    # load JSON
     try:
-        idx_id = header.index("fileid")
-    except ValueError:
-        raise SystemExit("CSV must contain a 'File ID' column.")
-    # Locked column may be 'Locked' or 'Private'
-    idx_lock = None
-    for want in ("locked","private"):
-        if want in header:
-            idx_lock = header.index(want)
-    if idx_lock is None:
-        raise SystemExit("CSV must contain a 'Locked' (or 'Private') column with 0/1.")
+        with open(args.papers_json, "r", encoding="utf-8") as f:
+            papers = json.load(f)
+    except Exception as e:
+        print(f"ERROR reading {args.papers_json}: {e}", file=sys.stderr); sys.exit(1)
+    if not isinstance(papers, list):
+        print("ERROR: papers.json must be a JSON array.", file=sys.stderr); sys.exit(1)
 
-    updates = 0
-    for row in rows[1:]:
-        fid = row[idx_id].strip()
-        if not fid or fid not in by_id: 
-            continue
-        val = row[idx_lock].strip().lower()
-        locked = val in ("1","true","yes","y")
-        if by_id[fid].get("locked") != locked:
-            by_id[fid]["locked"] = locked
-            updates += 1
+    by_id = {p.get("driveId",""): p for p in papers if p.get("driveId")}
+    if not by_id:
+        print("WARNING: No driveId keys found in papers.json; nothing to merge.", file=sys.stderr)
+
+    # read CSV
+    with open(args.csv_with_flags, newline="", encoding="utf-8") as fp:
+        reader = csv.DictReader(fp)
+        if not reader.fieldnames:
+            print("ERROR: CSV has no header row.", file=sys.stderr); sys.exit(1)
+        header_map = {norm(h): h for h in reader.fieldnames}
+
+        def get(row, *candidates):
+            for key in candidates:
+                real = header_map.get(norm(key))
+                if real in row:
+                    return row.get(real, "")
+            return ""
+
+        updated = 0
+        for row in reader:
+            fid = get(row, "File ID", "Drive ID", "ID", "fileid", "drivefileid", "driveid").strip()
+            if not fid: continue
+            p = by_id.get(fid)
+            if not p: continue
+
+            touched = False
+
+            # Locked
+            locked_raw = get(row, "Locked", "Private", "Lock")
+            if locked_raw != "":
+                locked = parse_bool(locked_raw)
+                if p.get("locked") != locked:
+                    p["locked"] = locked
+                    touched = True
+
+            # Wait
+            wait_raw = get(row, "Wait", "W", "Rating", "Score")
+            if wait_raw != "":
+                w = parse_wait(wait_raw)
+                if w is None:
+                    if "wait" in p:
+                        del p["wait"]; touched = True
+                else:
+                    if p.get("wait") != w:
+                        p["wait"] = w; touched = True
+
+            # Eval (free text)
+            eval_raw = get(row, "Eval", "Evaluation", "AI Eval", "Description", "Notes")
+            if eval_raw != "":
+                eval_text = str(eval_raw).strip()
+                if p.get("eval","") != eval_text:
+                    p["eval"] = eval_text
+                    touched = True
+
+            if touched:
+                updated += 1
 
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(papers, f, indent=2, ensure_ascii=False)
-    print(f"[done] wrote {args.out} (updated {updates} items)")
+
+    print(f"[done] wrote {args.out} (updated {updated} items)")
 
 if __name__ == "__main__":
     main()
+
