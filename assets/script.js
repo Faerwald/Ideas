@@ -1,13 +1,12 @@
-/* Desktop = Table by default; Mobile = Cards by default (auto).
-   Topic buttons (AND across topics, OR inside a topic via topics.json).
-   Search over title + abstract + tags + full/firstPage.
-   Locked items: password gate (Ada Lovelace). If wrong, redirect to notice PDF.
-   Table columns order: Title | Pages | Date | Actions.
+/* Table on desktop / Cards on mobile (auto).
+   Search over title + abstract + tags + full/firstPage + eval.
+   Password gate for locked items (Ada Lovelace).
+   Table columns: Title | Pages | Date | Actions | Eval.
 */
 
-const PRIVATE_NOTICE_ID = "https://drive.google.com/file/d/1iCLtsAIsN8Gu7BpH3owzZfIKBvntBh-_/view?usp=sharing"; // your fixed notice URL
-const LOCK_PASSWORD    = "Ada Lovelace";      // not case-sensitive, as requested
-const MOBILE_BP        = 979;
+const PRIVATE_NOTICE_ID = "https://drive.google.com/file/d/1iCLtsAIsN8Gu7BpH3owzZfIKBvntBh-_/view?usp=sharing";
+const LOCK_PASSWORD     = "Ada Lovelace";
+const MOBILE_BP         = 979;
 
 const state = {
   data: [],
@@ -15,12 +14,34 @@ const state = {
   topics: [],
   selected: new Set(),
   view: null,                        // "table" | "cards"
-  sort: { key: "date", dir: "desc" },// default: newest first
-  autoView: true                     // auto until user clicks a view toggle
+  sort: { key: "date", dir: "desc" },
+  autoView: true
 };
 
 const els = { q:null, topicBox:null, sections:null, grid:null, count:null, tbody:null, viewTable:null, viewCards:null };
 
+/* ------------ helpers ------------ */
+function escapeHTML(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
+function haystack(p){
+  return [
+    p.title || "",
+    p.abstract || "",
+    (Array.isArray(p.tags)? p.tags.join(" ") : ""),
+    getEvalText(p) || "",
+    p.full || p.firstPage || p.fp || ""
+  ].join(" ").toLowerCase();
+}
+function isLocked(p){ return !!p.locked; }
+function previewLink(idOrUrl){ if(!idOrUrl) return null; return String(idOrUrl).startsWith("http") ? idOrUrl : `https://drive.google.com/file/d/${idOrUrl}/preview`; }
+function downloadLink(idOrUrl){ if(!idOrUrl) return null; return String(idOrUrl).startsWith("http") ? idOrUrl : `https://drive.google.com/uc?export=download&id=${idOrUrl}`; }
+function promptOk(){ const ans = prompt("Enter password:"); if (ans==null) return null; return ans.trim().toLowerCase() === LOCK_PASSWORD.toLowerCase(); }
+
+/* Accept multiple CSV header spellings for evaluation text */
+function getEvalText(p){
+  return p.eval || p.Eval || p.evaluation || p["AI Eval"] || p.Description || p.Notes || p.Text || "";
+}
+
+/* ------------ boot ------------ */
 document.addEventListener("DOMContentLoaded", () => {
   els.q = document.getElementById("q");
   els.topicBox = document.getElementById("topicButtons");
@@ -44,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* ---------- auto view: desktop table / mobile cards ---------- */
+/* ------------ auto view ------------ */
 function initAutoView(){
   const mq = window.matchMedia(`(max-width: ${MOBILE_BP}px)`);
   setView(mq.matches ? "cards" : "table", "auto");
@@ -63,34 +84,7 @@ function setView(v, source="manual"){
   applyFilters();
 }
 
-/* ---------- helpers ---------- */
-function escapeHTML(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
-function haystack(p){
-  return [
-    p.title || "",
-    p.abstract || "",
-    (Array.isArray(p.tags)? p.tags.join(" ") : ""),
-    p.full || p.firstPage || p.fp || ""   // prefer full -> firstPage -> fp
-  ].join(" ").toLowerCase();
-}
-function isLocked(p){ return !!p.locked; }
-function previewLink(idOrUrl){
-  if (!idOrUrl) return null;
-  if (String(idOrUrl).startsWith("http")) return idOrUrl;
-  return `https://drive.google.com/file/d/${idOrUrl}/preview`;
-}
-function downloadLink(idOrUrl){
-  if (!idOrUrl) return null;
-  if (String(idOrUrl).startsWith("http")) return idOrUrl;
-  return `https://drive.google.com/uc?export=download&id=${idOrUrl}`;
-}
-function checkPassword(){
-  const ans = prompt("Enter password:");
-  if (ans == null) return null;                       // user cancelled
-  return ans.trim().toLowerCase() === LOCK_PASSWORD.toLowerCase();
-}
-
-/* ---------- topics ---------- */
+/* ------------ topics ------------ */
 function renderTopicButtons(){
   const box = document.getElementById("topicButtons");
   box.innerHTML = "";
@@ -122,16 +116,16 @@ function renderTopicButtons(){
   box.appendChild(frag);
 }
 
-/* ---------- events ---------- */
+/* ------------ events ------------ */
 function attachEvents(){
   els.q.addEventListener("input", ()=>{ state.q=els.q.value.toLowerCase(); applyFilters(); });
   els.viewTable.onclick = ()=> setView("table","manual");
   els.viewCards.onclick = ()=> setView("cards","manual");
 
-  // sortable headers
+  // sortable headers (ignore actions & eval)
   document.querySelectorAll("#tbl thead th").forEach(th=>{
     const key = th.getAttribute("data-key");
-    if(!key || key==="actions") return;
+    if(!key || key==="actions" || key==="eval") return;
     th.addEventListener("click", ()=>{
       if(state.sort.key===key){ state.sort.dir = state.sort.dir==="asc" ? "desc":"asc"; }
       else {
@@ -142,33 +136,26 @@ function attachEvents(){
     });
   });
 
-  // password gate: intercept clicks on locked links
+  // password gate
   document.addEventListener("click", (e)=>{
     const a = e.target.closest("a");
     if (!a) return;
+    if (!(a.classList.contains("unlock-read") || a.classList.contains("unlock-dl"))) return;
 
-    // read/preview gate
-    if (a.classList.contains("unlock-read")){
-      e.preventDefault();
-      const real = a.getAttribute("data-real");
-      const ok = checkPassword();
-      const url = ok ? previewLink(real) : previewLink(PRIVATE_NOTICE_ID);
-      if (url) window.open(url, "_blank", "noopener");
-      return;
+    e.preventDefault();
+    const real = a.getAttribute("data-real");
+    const ok = promptOk();
+    let url;
+    if (ok && real) {
+      url = a.classList.contains("unlock-read") ? previewLink(real) : downloadLink(real);
+    } else {
+      url = a.classList.contains("unlock-read") ? previewLink(PRIVATE_NOTICE_ID) : downloadLink(PRIVATE_NOTICE_ID);
     }
-    // download gate
-    if (a.classList.contains("unlock-dl")){
-      e.preventDefault();
-      const real = a.getAttribute("data-real");
-      const ok = checkPassword();
-      const url = ok ? downloadLink(real) : downloadLink(PRIVATE_NOTICE_ID);
-      if (url) window.open(url, "_blank", "noopener");
-      return;
-    }
+    if (url) window.open(url, "_blank", "noopener");
   });
 }
 
-/* ---------- filters ---------- */
+/* ------------ filters/sort ------------ */
 function matchesQuery(p){ return !state.q || haystack(p).includes(state.q); }
 function matchesTopics(p){
   if(state.selected.size===0) return true;
@@ -187,15 +174,13 @@ function matchesTopics(p){
   return true;
 }
 
-/* ---------- render pipeline ---------- */
 function applyFilters(){
   let items = state.data.filter(p => matchesQuery(p) && matchesTopics(p));
 
-  // sort: locked last, then by selected column
   const dir = state.sort.dir==="asc" ? 1 : -1;
   items.sort((a,b)=>{
     const la=isLocked(a), lb=isLocked(b);
-    if(la!==lb) return la? 1 : -1;
+    if(la!==lb) return la? 1 : -1;   // locked last
     const key = state.sort.key;
     const sa = v=>String(v||"").toLowerCase();
     if(key==="title") return dir * sa(a.title).localeCompare(sa(b.title));
@@ -226,26 +211,27 @@ function applyFilters(){
   }
 }
 
-/* ---------- table ---------- */
+/* ------------ table ------------ */
 function renderTable(items){
   const tb = els.tbody;
   tb.innerHTML = "";
   const frag = document.createDocumentFragment();
+
   for(const p of items){
     const locked = isLocked(p);
-    const hasReal = !!p.driveId;
     let readBtn, dlBtn;
 
-    if (locked && hasReal){
-      // gate via prompt
-      readBtn = `<a href="#unlock" class="btn unlock-read" data-real="${escapeHTML(p.driveId)}">Read</a>`;
-      dlBtn   = `<a href="#unlock" class="btn ghost unlock-dl" data-real="${escapeHTML(p.driveId)}">Download</a>`;
-    }else{
-      const target = locked ? PRIVATE_NOTICE_ID : p.driveId;
+    if (locked){
+      const real = escapeHTML(p.driveId || "");
+      readBtn = `<a href="#unlock" class="btn unlock-read" data-real="${real}">Read</a>`;
+      dlBtn   = `<a href="#unlock" class="btn ghost unlock-dl" data-real="${real}">Download</a>`;
+    } else {
+      const target = p.driveId;
       readBtn = target ? `<a class="btn" target="_blank" rel="noopener" href="${previewLink(target)}">Read</a>` : "";
       dlBtn   = target ? `<a class="btn ghost" target="_blank" rel="noopener" href="${downloadLink(target)}">Download</a>` : "";
     }
 
+    const evalHtml = escapeHTML(getEvalText(p));
     const tr = document.createElement("tr");
     if(locked) tr.className = "row-locked";
     tr.innerHTML = `
@@ -253,28 +239,30 @@ function renderTable(items){
       <td class="nowrap">${p.pages ?? ""}</td>
       <td class="nowrap">${p.date ?? ""}</td>
       <td class="nowrap">${readBtn} ${dlBtn}</td>
+      <td class="evalcell">${evalHtml}</td>
     `;
     frag.appendChild(tr);
   }
   tb.appendChild(frag);
 }
 
-/* ---------- cards ---------- */
+/* ------------ cards ------------ */
 function card(p){
   const locked = isLocked(p);
-  const hasReal = !!p.driveId;
   let readBtn, dlBtn, lockBadge = "";
-
   if (locked) lockBadge = `<span class="lock-badge" title="Locked">🔒</span>`;
 
-  if (locked && hasReal){
-    readBtn = `<a href="#unlock" class="btn unlock-read" data-real="${escapeHTML(p.driveId)}">Read</a>`;
-    dlBtn   = `<a href="#unlock" class="btn ghost unlock-dl" data-real="${escapeHTML(p.driveId)}">Download</a>`;
-  }else{
-    const target = locked ? PRIVATE_NOTICE_ID : p.driveId;
+  if (locked){
+    const real = escapeHTML(p.driveId || "");
+    readBtn = `<a href="#unlock" class="btn unlock-read" data-real="${real}">Read</a>`;
+    dlBtn   = `<a href="#unlock" class="btn ghost unlock-dl" data-real="${real}">Download</a>`;
+  } else {
+    const target = p.driveId;
     readBtn = target ? `<a class="btn" target="_blank" rel="noopener" href="${previewLink(target)}">Read</a>` : "";
     dlBtn   = target ? `<a class="btn ghost" target="_blank" rel="noopener" href="${downloadLink(target)}">Download</a>` : "";
   }
+
+  const evalHtml = getEvalText(p) ? `<p class="meta" style="margin-top:.35rem">${escapeHTML(getEvalText(p))}</p>` : "";
 
   const el=document.createElement("article");
   el.className = "card" + (locked ? " locked" : "");
@@ -291,6 +279,7 @@ function card(p){
       ${(Array.isArray(p.tags)? p.tags : []).map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join('')}
     </div>
     <div class="actions">${readBtn} ${dlBtn}</div>
+    ${evalHtml}
   `;
   return el;
 }
@@ -301,7 +290,7 @@ function renderGrid(items){
   g.appendChild(frag);
 }
 
-/* ---------- grouping for cards (no filters) ---------- */
+/* ------------ grouping for cards (no filters) ------------ */
 function groupByCategory(items){
   const map=new Map();
   items.forEach(p=>{
@@ -324,7 +313,7 @@ function renderSections(groups){
   box.appendChild(frag);
 }
 
-/* ---------- misc ---------- */
+/* ------------ misc ------------ */
 function updateCounts(shown,total){
   const c=document.getElementById("countLabel");
   if(c) c.textContent = `${shown} of ${total} shown`;
