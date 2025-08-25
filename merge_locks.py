@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Merge Locked (0/1), Wait (1..7), Eval (text) from LinkList.csv into papers.json by File ID.
 
-import csv, json, argparse, sys
+import csv, json, argparse, sys, re
 
 def norm(s:str)->str:
     return str(s or "").strip().lower().replace(" ", "").replace("-", "").replace("_", "")
@@ -14,10 +14,24 @@ def parse_wait(v):
         n=int(float(s));  return n if 1<=n<=7 else None
     except: return None
 
-COL_ID   = {"driveid","fileid","id","drivefileid"}
-COL_LOCK = {"locked","private","lock"}
-COL_WAIT = {"wait","w","rating","score"}
-COL_EVAL = {"eval","evaluation","evaluationlike","evaluation_like","aieval","description","notes","textlink","text-link"}
+COL_ID     = {"driveid","fileid","id","drivefileid"}
+COL_ID_URL = {"driveviewurl","drivedownloadurl","link","textlink","text-link","url"}
+COL_LOCK   = {"locked","private","lock"}
+COL_WAIT   = {"wait","w","rating","score"}
+COL_EVAL   = {"eval","evaluation","evaluationlike","evaluation_like","aieval","description","notes","text"}
+
+ID_RE_1 = re.compile(r"/d/([A-Za-z0-9_-]{10,})")
+ID_RE_2 = re.compile(r"[?&]id=([A-Za-z0-9_-]{10,})")
+def id_from_url(u:str):
+    if not u: 
+        return None
+    m = ID_RE_1.search(u)
+    if m:
+        return m.group(1)
+    m = ID_RE_2.search(u)
+    if m:
+        return m.group(1)
+    return None
 
 def detect_delimiter(path):
     with open(path,"r",encoding="utf-8-sig",newline="") as fp:
@@ -26,7 +40,7 @@ def detect_delimiter(path):
         d=max(counts,key=counts.get)
         if counts[d]>0: return d
         fp.seek(0); sample=fp.read(4096)
-        try: import csv as _csv; return _csv.Sniffer().sniff(sample,delimiters=[",",";","\t","|"]).delimiter
+        try: return csv.Sniffer().sniff(sample,delimiters=[",",";","\t","|"]).delimiter
         except Exception: return ","
 
 def main():
@@ -61,10 +75,16 @@ def main():
         updated=0
         for row in dr:
             if None in row: row.pop(None,None)
-            fid=str(get(row,COL_ID)).strip()
-            if not fid: continue
-            p=by_id.get(fid)
-            if not p: continue
+
+            fid = str(get(row, COL_ID)).strip()
+            if not fid:
+                fid = id_from_url(str(get(row, COL_ID_URL)))
+            if not fid:
+                continue
+
+            p = by_id.get(fid)
+            if not p:
+                continue
 
             touched=False
             lraw=get(row,COL_LOCK)

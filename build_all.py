@@ -1,32 +1,43 @@
 #!/usr/bin/env python3
 """
-build_all.py — single-shot builder:
+build_all.py — one-shot builder with auto-backup.
 
 1) scripts/csv_to_papersjson.py     (CSV -> base JSON)
 2) update_dates_from_dir.py         (set date/year from PDFs: filename -> birth -> mtime)
 3) add_fulltext_from_dir.py         (pages + optional full text)
-4) merge_locks.py                   (Locked/Wait from CSV)
+4) merge_locks.py                   (Locked/Wait/Eval from CSV)
 
-Usage (from Ideas-main):
-  python3 build_all.py LinkList.csv ../Ideas papers.json --year 2025 --venue "Working Draft" --max-chars 100000 --prefer pdftotext
+Before writing the final papers.json:
+- if papers.json exists, back it up to papers.backup_YYYYmmdd_HHMMSS.json
+
+Usage:
+  python3 build_all.py LinkList.csv ../Ideas papers.json --csv-delim tab --year 2025 --venue "Working Draft" --max-chars 100000 --prefer pdftotext --date-order name,birth,mtime
 """
-import argparse, subprocess, sys, json
+import argparse, subprocess, sys, json, shutil
 from pathlib import Path
+from datetime import datetime
 
 def run(cmd):
     print("→", " ".join(str(c) for c in cmd))
     subprocess.run(cmd, check=True)
+
+def backup_if_exists(path: Path):
+    if path.exists():
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        bkp = path.with_name(f"{path.stem}.backup_{ts}{path.suffix}")
+        shutil.copy2(path, bkp)
+        print(f"[backup] {path.name} -> {bkp.name}")
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("csv")
     ap.add_argument("pdf_root")
     ap.add_argument("out_json")
+    ap.add_argument("--csv-delim", choices=["auto","tab","comma","semicolon","pipe"], default="auto")
     ap.add_argument("--year", type=int, default=2025)
     ap.add_argument("--venue", default="Working Draft")
     ap.add_argument("--max-chars", type=int, default=100000)
     ap.add_argument("--prefer", choices=["pypdf2","pdftotext"], default="pdftotext")
-    # new: order for dates
     ap.add_argument("--date-order", default="name,birth,mtime")
     args = ap.parse_args()
 
@@ -43,7 +54,8 @@ def main():
         run([sys.executable, "scripts/csv_to_papersjson.py",
              str(csv_path), str(t1),
              "--year", str(args.year),
-             "--venue", args.venue])
+             "--venue", args.venue,
+             "--delimiter", args.csv_delim])
 
         # 2) Dates from PDFs
         run([sys.executable, "update_dates_from_dir.py",
@@ -56,7 +68,8 @@ def main():
              "--max-chars", str(args.max_chars),
              "--prefer", args.prefer, "-o", str(t3)])
 
-        # 4) Locked/Wait from CSV
+        # Backup old papers.json (if any), then 4) merge locked/wait/eval to final
+        backup_if_exists(out_json)
         run([sys.executable, "merge_locks.py",
              str(t3), str(csv_path), "-o", str(out_json)])
 
